@@ -7,8 +7,8 @@
     <ProjectGuid>{C1907A03-6C4A-4C73-BD3D-C689347B5A7C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProtoTest.TestRunner.Nightshade</RootNamespace>
-    <AssemblyName>ProtoTest.TestRunner.Nightshade</AssemblyName>
+    <RootNamespace>ProtoTest.Nightshade</RootNamespace>
+    <AssemblyName>ProtoTest.Nightshade</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
