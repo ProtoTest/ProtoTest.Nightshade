@@ -60,10 +60,10 @@ namespace ProtoTest.TestRunner.Nightshade
            
             Gallio.Common.Action executeTest = new Gallio.Common.Action(delegate
             {
-                //driver.Connect(host);
-                //driver.ExecuteScript(scriptName,description);
-                //VerifySuccess();
-                //AttachTestFiles();
+                driver.Connect(host);
+                driver.ExecuteScript(scriptName,description);
+                VerifySuccess();
+                AttachTestFiles();
             });
             
             return TestStep.RunStep(testName, executeTest, new TimeSpan(0, 0, timeoutMin, 0), true, null).Outcome;

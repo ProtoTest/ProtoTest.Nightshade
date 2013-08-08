@@ -150,6 +150,25 @@ namespace ProtoTest.TestRunner.Nightshade
             return newImage;
         }
 
+        /// <summary>
+        /// This function deletes the batch file if it already exists and recreates it with the runscript path from the config file.
+        /// </summary>
+        /// <returns></returns>
+        public static string CreateBatchFile()
+        {
+            string filePath = Directory.GetCurrentDirectory() + "\\StartDrive.bat";
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+            string runScriptPath = "\"" + Common.GetValueFromConfigFile("//RunScript/@path") + "\"";
+            string startDriveCommand = runScriptPath + " -driveport 5400";
+            string[] lines = new string[1];
+            lines[0] = startDriveCommand;
+            System.IO.File.WriteAllLines(filePath, lines);
+            return filePath;
+        }
+
         
     }
 }

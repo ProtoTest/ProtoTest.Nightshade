@@ -7,17 +7,16 @@ Nightshade is a test runner written in C#.  It's built to execute and validate s
 ## Installation and execution instructions
 - You must be on a Windows PC, with 8GB or more of RAM.
 - Download and install GallioBundle-3.4.xx.msi from https://code.google.com/p/mb-unit/downloads/list
-- Download and install TestPlant's Eggplant.  Choose the default installation path.
-- On your computer, If required, install the Android controller to your PC : http://www.vmlite.com/vaac/.  Start the "VMLite Android App Controller" program, and click USB Connect to start the VMLite VNC Server on the device.  Verify the app says the server is running.
+- Download and install TestPlant's Eggplant.  http://www.testplant.com/support/downloads/current/ 
 - Download and Install .Net 4.0 if it's not already installed.
 - Connect the device(s) via USB to your computer.
 - Verify the device has VMLite VNC Server for Android installed.  If necessary, download and install from google play.  
-- On the device, launch the VMLite VNC Server app, and start the server. 
+- Install the Android controller to your PC : http://www.vmlite.com/vaac/.  Start the "VMLite Android App Controller" program, and click USB Connect to start the VMLite VNC Server on the device.  Verify the app says the server is running.
 - On the PC, Install Github GUI.  Go to http://www.github.com/ and Click "download github for windows".
 - Download the Nightshade framework from http://www.github.com/prototest/Nightshade.  Click the "Clone on desktop" to download all source to the default github folder.
-- Edit the Nightshade config file ProtoTest.TestRunner.Nightshade\bin\Release\TestConfig.xml and verify all path settings are correct. 
+- Edit the Nightshade config file ProtoTest.Nightshade\bin\Release\TestConfig.xml and verify all path settings are correct. 
 - Edit the config file to reflect which scripts need to be run on which devices. A description of all the config file entries is at the bottom of this page.  
-- Launch Gallio - Icarus GUI Test Runner, click "Add" and select the framework dll :  ProtoTest.TestRunner.Nightshade\bin\Release\ProtoTest.TestRunner.Nightshade.dll.  
+- Launch Gallio - Icarus GUI Test Runner, click "Add" and select the framework dll :  ProtoTest.Nightshade\bin\Release\ProtoTest.Nightshade.dll.  You should see a test show up called "RunTestsFromConfigFile"
 - Launch Eggplant GUI, and verify you can connect to the device(s) you will be testing with.  For best results, connect via USB device name, not IP address.
 - Close Eggplant GUI, as it will prevent eggplant drive from launching.  
 - Click "Start" in Gallio Icarus.  A command prompt will be launched to start eggplant drive, and tests should start to get executed against the devices.  Once a test is finished, the GUI should update to show the pass/fail state of each test.  Additionally, a log of all commands should display in the runtime log.  
@@ -43,17 +42,17 @@ Included in the project will be a file called TestConfig.xml.  This is a custom-
 	- retry - The number of times to retry a failed test.  Will retry all contained scripts in sequential order.
 ####Script - A .script file to be executed against a specific host.  Assumed to live in the SuiteName\\Scripts\\ScriptName.script location.
 	- scriptName - the name of the script file.  Just the name, not the full path, and should not include .script extension.  
-	- host - The host to execute the test on.  Can be an IP address or a device name (if connected over usb)
+	- host - The host to execute the test on.  Can be an IP address or a device name (if connected over usb)   host="10.10.1.99" or host="TC55 (4e8f191b)"
 	- timeout - The maximum test duration time.  After this many minutes the test will automatically stop and fail.  
 	
 
 ## Technical information
 
-Nightshade is built using MbUnit 3.4, and is designed to be executed using a GUI called Gallio Icarus 3.4.  MbUnit.dll is included in the Gallio 3.4 bundle which can be downloaded from http://www.gallio.org.  The Nightshade runner works just like a unit test.  The C# code is built into a .dll (library) file.  The tests can be executed using Galio Icarus (GUI) or Echo (Command).  Using a unit testing framework like MbUnit means that all of the functionality is already built, we just have to execute it in the right way.  For instance, the report is formatted by Gallio, all we have to do is write to it. 
-Nightshade uses an XML config file to specify all run-time values, such as which scripts to execute, the path to the suite, test timeouts, etc.  
-Nightshade uses MbUnit's DynamicTestFactory attribute to generate tests at run-time.  The DynamicTestFactory is a function that builds tests dynamically.  Normally with a unit testing framework you have to define one function per test case.  With the Factory, we can build one function, have it parse the XML file, and build the tests dynamically.  This lets us define which tests we want to run without having to recompile.  In addition, each Test can have multiple actions assosicated with it, and the test case will automatically keep track of how many of those actions ran, and how many passed or failed.  
-Nightshade executes Eggplant commands using Eggplant Drive.  Once eggplant is installed on a computer, you can start drive via a command prompt.  Drive exposes an XmlRpc service that allows us to tell it what commands to execute.  You can call the service from a client and tell it to execute a variety of commands.  Nightshade basically sends XmlRpc commands to that service to tell it to run a specific script against a specific host.  Full details of eggplant drive can be found here : http://docs.testplant.com/?q=content/eggplant-drive
-Eggplant Drive is started using a batch file included with the Suite.  If eggplant is not installed to the default directory, that batch file needs to be updated with the correct path. 
+- Nightshade is built using MbUnit 3.4, and is designed to be executed using a GUI called Gallio Icarus 3.4.  MbUnit.dll is included in the Gallio 3.4 bundle which can be downloaded from http://www.gallio.org.  The Nightshade runner works just like a unit test.  The C# code is built into a .dll (library) file.  The tests can be executed using Galio Icarus (GUI) or Echo (Command).  Using a unit testing framework like MbUnit means that all of the functionality is already built, we just have to execute it in the right way.  For instance, the report is formatted by Gallio, all we have to do is write to it. 
+- Nightshade uses an XML config file to specify all run-time values, such as which scripts to execute, the path to the suite, test timeouts, etc.  
+- Nightshade uses MbUnit's DynamicTestFactory attribute to generate tests at run-time.  The DynamicTestFactory is a function that builds tests dynamically.  Normally with a unit testing framework you have to define one function per test case.  With the Factory, we can build one function, have it parse the XML file, and build the tests dynamically.  This lets us define which tests we want to run without having to recompile.  In addition, each Test can have multiple actions assosicated with it, and the test case will automatically keep track of how many of those actions ran, and how many passed or failed.  
+- Nightshade executes Eggplant commands using Eggplant Drive.  Once eggplant is installed on a computer, you can start drive via a command prompt.  Drive exposes an XmlRpc service that allows us to tell it what commands to execute.  You can call the service from a client and tell it to execute a variety of commands.  Nightshade basically sends XmlRpc commands to that service to tell it to run a specific script against a specific host.  Full details of eggplant drive can be found here : http://docs.testplant.com/?q=content/eggplant-drive
+- Eggplant Drive is started using a batch file included with the Suite.  If eggplant is not installed to the default directory, that batch file needs to be updated with the correct path. 
 
 ## Code overview
 There are 5 .cs files.  Each should be commented with more details.

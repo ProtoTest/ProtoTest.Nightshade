@@ -1,5 +1,7 @@
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Debug\TestConfig_Stability.xml
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Debug\TestConfig.xml
-C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Debug\TestConfig_Test.xml
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Debug\ProtoTest.Nightshade.dll
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Debug\ProtoTest.Nightshade.pdb
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Debug\CookComputing.XmlRpcV2.dll
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Debug\Gallio.dll
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Debug\MbUnit.dll
@@ -10,8 +12,5 @@ C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Debug\MbUnit.pdb
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Debug\MbUnit.xml
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Debug\NHamcrest.pdb
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Debug\Gallio.XmlSerializers.dll
-C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Debug\ProtoTest.Nightshade.csprojResolveAssemblyReference.cache
-C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Debug\ProtoTest.Nightshade.dll
-C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Debug\ProtoTest.Nightshade.pdb
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Debug\ProtoTest.Nightshade.dll
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Debug\ProtoTest.Nightshade.pdb

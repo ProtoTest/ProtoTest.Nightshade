@@ -1,0 +1,16 @@
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\TestConfig_Stability.xml
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\TestConfig.xml
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\ProtoTest.Nightshade.dll
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\ProtoTest.Nightshade.pdb
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\CookComputing.XmlRpcV2.dll
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\Gallio.dll
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\MbUnit.dll
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\NHamcrest.dll
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\Gallio.pdb
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\Gallio.xml
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\MbUnit.pdb
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\MbUnit.xml
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\NHamcrest.pdb
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\Gallio.XmlSerializers.dll
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.dll
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.pdb

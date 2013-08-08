@@ -27,7 +27,7 @@ namespace ProtoTest.TestRunner.Nightshade
     class EggplantDynamicTestFactory
     {
         private static string configFilePath = Directory.GetCurrentDirectory() + "\\TestConfig.xml";
-        private static string batchFilePath = Common.GetValueFromConfigFile(@"//DriveBatchFile/@path");
+        private static string batchFilePath = Directory.GetCurrentDirectory() + "\\StartDrive.bat";
         private static string suitePath = Common.GetValueFromConfigFile("//Suite/@path");
         private static XmlNodeList tests = Common.GetNodesFromConfigFile("//Test");
         private static int driveTimeoutMs = int.Parse(Common.GetValueFromConfigFile("//EggPlantSettings/@driveTimeoutMs"));
@@ -49,6 +49,8 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             driver = new EggplantDriver(driveTimeoutMs);
             Common.DeleteResultsDirectory(suitePath);
+            batchFilePath =  Common.CreateBatchFile();
+
         }
 
         /// <summary>
