@@ -24,17 +24,17 @@ Nightshade is a test runner written in C#.  It's built to execute and validate s
 - Export the report as HTML by clicking Report -> View As -> HTML.  
 
 ##Driver Installation:
--       Download and Install Motorola Drivers from https://motorola-global-portal.custhelp.com/app/answers/detail/a_id/88481
--       Go to Device Manager
--       Right-Click on unknown Android device
--       Update Driver Software
--       Choose Browse my computer for driver software
--       Choose Let me pick from a list of device drivers on my computer
--       Choose ADB Interface
--       Select Motorola and then Choose Mot Composite ADB Interface
--       Take Custom ADB Files for Shelter and replace in eggPlant / eggPlant.app / Resources folder
--   Change VMLite Android App controller ADB location to new eggplant ADB file
--   Start VMLite Android App Controller / VMLite VNC Server
+- Download and Install Motorola Drivers from https://motorola-global-portal.custhelp.com/app/answers/detail/a_id/88481
+- Go to Device Manager
+- Right-Click on unknown Android device
+- Update Driver Software
+- Choose Browse my computer for driver software
+- Choose Let me pick from a list of device drivers on my computer
+- Choose ADB Interface
+- Select Motorola and then Choose Mot Composite ADB Interface
+- Take Custom ADB Files for Shelter and replace in eggPlant / eggPlant.app / Resources folder
+- Change VMLite Android App controller ADB location to new eggplant ADB file
+- Start VMLite Android App Controller / VMLite VNC Server
 
 
 ## Config File : 
