@@ -9,7 +9,7 @@ Nightshade is a test runner written in C#.  It's built to execute and validate s
 - Download and install GallioBundle-3.4.xx.msi from https://code.google.com/p/mb-unit/downloads/list
 - Download and install TestPlant's Eggplant.  http://www.testplant.com/support/downloads/current/ 
 - Download and Install .Net 4.0 if it's not already installed.
-- Connect the device(s) via USB to your computer.
+- Connect the device(s) via USB to your computer, and install the drivers as detailed in the section below.  
 - Verify the device has VMLite VNC Server for Android installed.  If necessary, download and install from google play.  
 - Install the Android controller to your PC : http://www.vmlite.com/vaac/.  Start the "VMLite Android App Controller" program, and click USB Connect to start the VMLite VNC Server on the device.  Verify the app says the server is running.
 - On the PC, Install Github GUI.  Go to http://www.github.com/ and Click "download github for windows".
@@ -22,6 +22,20 @@ Nightshade is a test runner written in C#.  It's built to execute and validate s
 - Click "Start" in Gallio Icarus.  A command prompt will be launched to start eggplant drive, and tests should start to get executed against the devices.  Once a test is finished, the GUI should update to show the pass/fail state of each test.  Additionally, a log of all commands should display in the runtime log.  
 - If a test fails, it should include a screenshot and reason why.  
 - Export the report as HTML by clicking Report -> View As -> HTML.  
+
+##Driver Installation:
+-       Download and Install Motorola Drivers from https://motorola-global-portal.custhelp.com/app/answers/detail/a_id/88481
+-       Go to Device Manager
+-       Right-Click on unknown Android device
+-       Update Driver Software
+-       Choose Browse my computer for driver software
+-       Choose Let me pick from a list of device drivers on my computer
+-       Choose ADB Interface
+-       Select Motorola and then Choose Mot Composite ADB Interface
+-       Take Custom ADB Files for Shelter and replace in eggPlant / eggPlant.app / Resources folder
+-   Change VMLite Android App controller ADB location to new eggplant ADB file
+-   Start VMLite Android App Controller / VMLite VNC Server
+
 
 ## Config File : 
 Included in the project will be a file called TestConfig.xml.  This is a custom-built xml config file used by Nightshade.  This file is automatically copied to the bin folder upon compiling.  Please note that Gallio uses the file in the bin folder, not the one with the code.
