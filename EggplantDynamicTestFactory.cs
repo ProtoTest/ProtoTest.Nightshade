@@ -105,7 +105,6 @@ namespace ProtoTest.TestRunner.Nightshade
         /// </summary>
         public static void RestartDrive()
         {
-            driver.EndSuiteSession();
             driver.StopEggPlantDrive();
             driver.StartEggPlantDrive(batchFilePath, waitForDriveMs);
             driver.StartSuiteSession(suitePath);

@@ -49,7 +49,7 @@ namespace ProtoTest.TestRunner.Nightshade
             }
             catch (Exception e)
             {
-                Assert.Fail("Exception Caught Starting EggPLant Drive: " + e.Message);
+                Assert.TerminateSilently(Gallio.Model.TestOutcome.Failed, "Exception Caught Starting EggPLant Drive: " + e.Message);
                 return null;
             }
         }
@@ -68,7 +68,7 @@ namespace ProtoTest.TestRunner.Nightshade
             }
             catch (Exception e)
             {
-                Assert.Fail("Exception caught stopping eggplant drive " + e.Message);
+                Assert.TerminateSilently(Gallio.Model.TestOutcome.Failed, "Exception caught stopping eggplant drive " + e.Message);
             }
 
         }
@@ -100,7 +100,7 @@ namespace ProtoTest.TestRunner.Nightshade
             }
             catch (Exception e)
             {
-                Assert.Fail("Error caught connecting to device.  Check the internet connection and try connecting via Eggplant GUI : " + host + " : " + e.Message);
+                Assert.TerminateSilently(Gallio.Model.TestOutcome.Failed, "Error caught connecting to device.  Check the internet connection and try connecting via Eggplant GUI : " + host + " : " + e.Message);
             }
         }
 
@@ -126,7 +126,7 @@ namespace ProtoTest.TestRunner.Nightshade
             }
             catch (Exception e)
             {
-                Assert.Fail("Error caught executing command " + command + " : " + e.Message);
+                Assert.TerminateSilently(Gallio.Model.TestOutcome.Failed,"Error caught executing command " + command + " : " + e.Message);
             }
         }
 
@@ -142,7 +142,7 @@ namespace ProtoTest.TestRunner.Nightshade
             }
             catch (Exception e)
             {
-                //Assert.Fail("Exception Caught Ending EggPlant Session for suite : " + suitePath + e.Message);
+                Assert.TerminateSilently(Gallio.Model.TestOutcome.Failed, "Exception Caught Ending EggPlant Session for suite : " + suitePath + e.Message);
             }
         }
 
@@ -160,7 +160,7 @@ namespace ProtoTest.TestRunner.Nightshade
             }
             catch (Exception e)
             {
-                Assert.Fail("Exception Caught Starting EggPLant Session for suite : " + suitePath + " Check the log to see if drive started correctly : " + e.Message);
+                Assert.TerminateSilently(Gallio.Model.TestOutcome.Failed, "Exception Caught Starting EggPLant Session for suite : " + suitePath + " Check the log to see if drive started correctly : " + e.Message);
             }
 
         }

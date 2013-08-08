@@ -45,7 +45,7 @@ namespace ProtoTest.TestRunner.Nightshade
         public static Process ExecuteBatchFile(string filePath)
         {
             if (!File.Exists(filePath))
-                Assert.Fail("Could not find batch file : " + filePath);
+                Assert.TerminateSilently(Gallio.Model.TestOutcome.Failed, "Could not find batch file to execute : " + filePath);
             return System.Diagnostics.Process.Start(filePath);
         }
 

@@ -14,3 +14,4 @@ C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\NHamcrest.pdb
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\Gallio.XmlSerializers.dll
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.dll
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.pdb
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.csprojResolveAssemblyReference.cache
