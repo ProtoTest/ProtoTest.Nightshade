@@ -47,6 +47,7 @@ namespace ProtoTest.TestRunner.Nightshade
         [FixtureInitializer]
         public void Initialize()
         {
+            Gallio.Framework.Pattern.TestAssemblyExecutionParameters.DefaultTestCaseTimeout = null;
             driver = new EggplantDriver(driveTimeoutMs);
             Common.DeleteResultsDirectory(suitePath);
             batchFilePath =  Common.CreateBatchFile();
