@@ -261,6 +261,11 @@ namespace ProtoTest.TestRunner.Nightshade
             ExecuteCommand("WaitFor", element);
         }
 
+        public void WaitFor(string element, string timeoutSec)
+        {
+            ExecuteCommand("WaitFor " + timeoutSec +",", element);
+        }
+
         public void RightClick(string element)
         {
             ExecuteCommand("RightClick", element);
