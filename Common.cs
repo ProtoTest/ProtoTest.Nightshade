@@ -169,6 +169,11 @@ namespace ProtoTest.TestRunner.Nightshade
             return filePath;
         }
 
+        public static string GetCodeDirectory()
+        {
+            return Directory.GetCurrentDirectory().Replace(@"\bin\Debug", "").Replace(@"\bin\Release", "");
+        }
+
         
     }
 }

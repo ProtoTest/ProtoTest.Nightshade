@@ -30,10 +30,10 @@ namespace ProtoTest.TestRunner.Nightshade
         private static string batchFilePath = Directory.GetCurrentDirectory() + "\\StartDrive.bat";
         private static string suitePath = Common.GetValueFromConfigFile("//Suite/@path");
         private static XmlNodeList tests = Common.GetNodesFromConfigFile("//Test");
-        private static int driveTimeoutMs = int.Parse(Common.GetValueFromConfigFile("//EggPlantSettings/@driveTimeoutMs"));
-        private static int waitForDriveMs = int.Parse(Common.GetValueFromConfigFile("//EggPlantSettings/@waitForDriveMs"));
+        private static int driveTimeoutMs = int.Parse(Common.GetValueFromConfigFile("//EggPlantSettings/@DriveTimeoutMs"));
+        private static int waitForDriveMs = int.Parse(Common.GetValueFromConfigFile("//EggPlantSettings/@WaitForDriveMs"));
         private static Process cmdProcess;
-        private static EggplantDriver driver;
+        public static EggplantDriver Driver;
         private static string scriptName;
         private static string host;
         private static int timeout = 0;
@@ -42,13 +42,13 @@ namespace ProtoTest.TestRunner.Nightshade
         private static bool testFailed = false;
 
         /// <summary>
-        /// This is run once, to instantiate the driver and delete the results directory
+        /// This is run once, to instantiate the Driver and delete the results directory
         /// </summary>
         [FixtureInitializer]
         public void Initialize()
         {
             Gallio.Framework.Pattern.TestAssemblyExecutionParameters.DefaultTestCaseTimeout = null;
-            driver = new EggplantDriver(driveTimeoutMs);
+            Driver = new EggplantDriver(driveTimeoutMs);
             Common.DeleteResultsDirectory(suitePath);
             batchFilePath =  Common.CreateBatchFile();
 
@@ -73,7 +73,7 @@ namespace ProtoTest.TestRunner.Nightshade
         [FixtureTearDown]
         public void TearDown()
         {
-            driver.StopEggPlantDrive();
+            Driver.StopEggPlantDrive();
         }
 
         /// <summary>
@@ -106,9 +106,9 @@ namespace ProtoTest.TestRunner.Nightshade
         /// </summary>
         public static void RestartDrive()
         {
-            driver.StopEggPlantDrive();
-            driver.StartEggPlantDrive(batchFilePath, waitForDriveMs);
-            driver.StartSuiteSession(suitePath);
+            Driver.StopEggPlantDrive();
+            Driver.StartEggPlantDrive(batchFilePath, waitForDriveMs);
+            Driver.StartSuiteSession(suitePath);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace ProtoTest.TestRunner.Nightshade
                             timeout = int.Parse(Common.GetValueFromNode("@timeout", script));
                             string name = scriptName + " : Iteration #" + (i + 1).ToString();
 
-                            EggplantScript eScript = new EggplantScript(driver, suitePath, scriptName, host, timeout);
+                            EggplantScript eScript = new EggplantScript(Driver, suitePath, scriptName, host, timeout);
                             testOutcome = eScript.ExecuteScriptAndGetOutcome(name);
 
                             if (testOutcome != TestOutcome.Passed)
@@ -166,7 +166,7 @@ namespace ProtoTest.TestRunner.Nightshade
 
                                     string name = scriptName + " : Iteration #" + (i + 1).ToString() + " : Retry : " + (j + 1).ToString();
                                     
-                                    EggplantScript eScript = new EggplantScript(driver, suitePath, scriptName, host, timeout);
+                                    EggplantScript eScript = new EggplantScript(Driver, suitePath, scriptName, host, timeout);
                                     testOutcome = eScript.ExecuteScriptAndGetOutcome(name);
                                     
                                     if (testOutcome != TestOutcome.Passed)

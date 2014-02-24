@@ -26,12 +26,12 @@ namespace ProtoTest.TestRunner.Nightshade
         public int timeoutMin;
         public string description;
         public string scriptPath;
-        private EggplantDriver driver;
+        private EggplantDriver Driver;
 
-        public EggplantScript(EggplantDriver driver, string suitePath, string scriptName, string host, int timeoutMin)
+        public EggplantScript(EggplantDriver Driver, string suitePath, string scriptName, string host, int timeoutMin)
         {
 
-            this.driver = driver;
+            this.Driver = Driver;
             this.suitePath = suitePath;
             this.scriptName = scriptName;
             this.host = host;
@@ -60,8 +60,8 @@ namespace ProtoTest.TestRunner.Nightshade
            
             Gallio.Common.Action executeTest = new Gallio.Common.Action(delegate
             {
-                driver.Connect(host);
-                driver.ExecuteScript(scriptName,description);
+                Driver.Connect(host);
+                Driver.ExecuteScript(scriptName,description);
                 VerifySuccess();
                 AttachTestFiles();
             });
@@ -74,8 +74,8 @@ namespace ProtoTest.TestRunner.Nightshade
         /// </summary>
         private void AttachTestFiles()
         {
-            TestLog.Attach(new TextAttachment("LogFile.txt", "text", GetLogFile()));
-            TestLog.Attach(new TextAttachment("LogFile.xml", "text", GetLogXmlFile()));
+            TestLog.Attach(new TextAttachment("LogFile.txt", "locator", GetLogFile()));
+            TestLog.Attach(new TextAttachment("LogFile.xml", "locator", GetLogXmlFile()));
         }
 
         /// <summary>

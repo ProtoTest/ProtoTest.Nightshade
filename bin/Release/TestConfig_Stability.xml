@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<EggPlantSettings waitForDriveMs="20000" driveTimeoutMs="600000">
+<EggPlantSettings WaitForDriveMs="20000" driveTimeoutMs="600000">
   <RunScript path ="C:\Program Files (x86)\eggPlant\runscript.bat"/>
   <Suite startDrive="true" repeat="2" path="C:\Users\Brian\My Documents\GitHub\ShelterSuite\ShelterSuite.suite">
     <Test name="Test 1" restartDrive="false" repeat="1" retry="0" >

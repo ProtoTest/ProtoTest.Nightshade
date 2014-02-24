@@ -15,3 +15,4 @@ C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\Gallio.XmlSeria
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.dll
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.pdb
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.csprojResolveAssemblyReference.cache
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\ProtoTest.Nightshade.dll.config
