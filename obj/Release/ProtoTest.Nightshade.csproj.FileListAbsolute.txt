@@ -16,3 +16,5 @@ C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Night
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.pdb
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.csprojResolveAssemblyReference.cache
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\ProtoTest.Nightshade.dll.config
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\WebDriver.dll
+C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\WebDriver.xml

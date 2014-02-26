@@ -1,24 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Threading;
 using ProtoTest.TestRunner.Nightshade;
 
 namespace ProtoTest.Nightshade
 {
     public class EggplantElement
     {
-        public static EggplantDriver Driver
-        {
-            get { return EggplantTestBase.Driver; }
-            set { EggplantTestBase.Driver = value; }
-        }
-
         public string locator;
+
+        public EggplantElement(By by)
+        {
+            locator = by.ToString();
+        }
 
         public EggplantElement(string locator)
         {
-            this.locator = locator;
+            this.locator = string.Format("{0}{1}{2}", '"', locator, '"');
+        }
+
+        public static EggplantDriver Driver
+        {
+            get
+            {
+                Thread.Sleep(Config.DelayTimeMs); 
+                return EggplantTestBase.Driver; }
+            set { EggplantTestBase.Driver = value; }
         }
 
         public EggplantElement Click()
@@ -29,7 +34,8 @@ namespace ProtoTest.Nightshade
 
         public EggplantElement Type(string text)
         {
-            Driver.Type(locator,text);
+            Click();
+            Driver.Type(text);
             return this;
         }
 
@@ -39,10 +45,8 @@ namespace ProtoTest.Nightshade
             return this;
         }
 
-        public EggplantElement WaitForNotPresent()
+        public void WaitForNotPresent()
         {
-          //  Driver.WaitFor(locator);
-            return this;
         }
     }
 }

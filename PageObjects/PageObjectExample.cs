@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace ProtoTest.Nightshade.PageObjects
+﻿namespace ProtoTest.Nightshade.PageObjects
 {
     public class PageObjectExample
     {

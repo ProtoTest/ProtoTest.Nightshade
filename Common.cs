@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Xml;
+using Gallio.Common.Media;
 using Gallio.Framework;
-using System.Diagnostics;
 using Gallio.Model;
 using MbUnit.Framework;
 
 namespace ProtoTest.TestRunner.Nightshade
 {
     /// <summary>
-    /// Contains various random shared methods
+    ///     Contains various random shared methods
     /// </summary>
     public class Common
     {
-        private static string configFilePath = Directory.GetCurrentDirectory() + "\\TestConfig.xml";
+        private static readonly string configFilePath = Directory.GetCurrentDirectory() + "\\TestConfig.xml";
 
         /// <summary>
-        /// Kills a process by name
+        ///     Kills a process by name
         /// </summary>
         /// <param name="name"></param>
         public static void KillProcess(string name)
@@ -38,61 +35,61 @@ namespace ProtoTest.TestRunner.Nightshade
         }
 
         /// <summary>
-        /// Executes a batch file at a specific path;
+        ///     Executes a batch file at a specific path;
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
         public static Process ExecuteBatchFile(string filePath)
         {
             if (!File.Exists(filePath))
-                Assert.TerminateSilently(Gallio.Model.TestOutcome.Failed, "Could not find batch file to execute : " + filePath);
-            return System.Diagnostics.Process.Start(filePath);
+                Assert.TerminateSilently(TestOutcome.Failed, "Could not find batch file to execute : " + filePath);
+            return Process.Start(filePath);
         }
 
         /// <summary>
-        /// Gets a value from the config file.
+        ///     Gets a value from the config file.
         /// </summary>
         /// <param name="xpath">
-        /// Pass an xpath expression
+        ///     Pass an xpath expression
         /// </param>
         /// <returns>
-        /// Returns the value string
+        ///     Returns the value string
         /// </returns>
         public static string GetValueFromConfigFile(string xpath)
         {
-            XmlDocument configFile = new XmlDocument();
+            var configFile = new XmlDocument();
             if (!File.Exists(configFilePath))
             {
                 throw new FileNotFoundException("Could not find xml file at : " + configFilePath);
             }
             configFile.Load(configFilePath);
             if (configFile.SelectNodes(xpath).Count == 0)
-                throw new KeyNotFoundException("Could not find an element matching xpath : " + xpath + " in file " + configFilePath);
+                throw new KeyNotFoundException("Could not find an element matching xpath : " + xpath + " in file " +
+                                               configFilePath);
             return configFile.SelectSingleNode(xpath).Value;
-
         }
 
         /// <summary>
-        /// Looks in the config file and returns an XmlNodeList containing all nodes matching the xpath expression.
+        ///     Looks in the config file and returns an XmlNodeList containing all nodes matching the xpath expression.
         /// </summary>
         /// <param name="xpath"></param>
         /// <returns></returns>
         public static XmlNodeList GetNodesFromConfigFile(string xpath)
         {
-            XmlDocument configFile = new XmlDocument();
+            var configFile = new XmlDocument();
             if (!File.Exists(configFilePath))
             {
                 throw new FileNotFoundException("Could not find xml file at : " + configFilePath);
             }
             configFile.Load(configFilePath);
             if (configFile.SelectNodes(xpath).Count == 0)
-                throw new KeyNotFoundException("Could not find an element matching xpath : " + xpath + " in file " + configFilePath);
+                throw new KeyNotFoundException("Could not find an element matching xpath : " + xpath + " in file " +
+                                               configFilePath);
             return configFile.SelectNodes(xpath);
-
         }
 
         /// <summary>
-        /// Pass an xpath expression and xmlnode, and get the value
+        ///     Pass an xpath expression and xmlnode, and get the value
         /// </summary>
         /// <param name="value"></param>
         /// <param name="node"></param>
@@ -101,13 +98,14 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             if (node.SelectNodes(value).Count == 0)
             {
-                throw new KeyNotFoundException("Could not find an element matching xpath : " + value + " in file " + configFilePath);
+                throw new KeyNotFoundException("Could not find an element matching xpath : " + value + " in file " +
+                                               configFilePath);
             }
             return node.SelectSingleNode(value).Value;
         }
 
         /// <summary>
-        /// Pass an xpath expression and xmlnode, and get the value
+        ///     Pass an xpath expression and xmlnode, and get the value
         /// </summary>
         /// <param name="value"></param>
         /// <param name="node"></param>
@@ -122,7 +120,7 @@ namespace ProtoTest.TestRunner.Nightshade
         }
 
         /// <summary>
-        /// Deletes all files in the results directory for the suitePath parameter
+        ///     Deletes all files in the results directory for the suitePath parameter
         /// </summary>
         /// <param name="suitePath"></param>
         public static void DeleteResultsDirectory(string suitePath)
@@ -135,23 +133,26 @@ namespace ProtoTest.TestRunner.Nightshade
         }
 
         /// <summary>
-        /// Resizes an image and returns the new image
+        ///     Resizes an image and returns the new image
         /// </summary>
         /// <param name="image"></param>
         /// <param name="scale"></param>
         /// <returns></returns>
         public static Image ScaleImage(Image image, double scale = .5)
         {
-            var newWidth = (int)(image.Width * scale);
-            var newHeight = (int)(image.Height * scale);
+            var newWidth = (int) (image.Width*scale);
+            var newHeight = (int) (image.Height*scale);
 
             var newImage = new Bitmap(newWidth, newHeight);
             Graphics.FromImage(newImage).DrawImage(image, 0, 0, newWidth, newHeight);
             return newImage;
         }
 
+       
+
         /// <summary>
-        /// This function deletes the batch file if it already exists and recreates it with the runscript path from the config file.
+        ///     This function deletes the batch file if it already exists and recreates it with the runscript path from the config
+        ///     file.
         /// </summary>
         /// <returns></returns>
         public static string CreateBatchFile()
@@ -161,11 +162,11 @@ namespace ProtoTest.TestRunner.Nightshade
             {
                 File.Delete(filePath);
             }
-            string runScriptPath = "\"" + Common.GetValueFromConfigFile("//RunScript/@path") + "\"";
+            string runScriptPath = "\"" + GetValueFromConfigFile("//RunScript/@path") + "\"";
             string startDriveCommand = runScriptPath + " -driveport 5400";
-            string[] lines = new string[1];
+            var lines = new string[1];
             lines[0] = startDriveCommand;
-            System.IO.File.WriteAllLines(filePath, lines);
+            File.WriteAllLines(filePath, lines);
             return filePath;
         }
 
@@ -173,7 +174,5 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             return Directory.GetCurrentDirectory().Replace(@"\bin\Debug", "").Replace(@"\bin\Release", "");
         }
-
-        
     }
 }

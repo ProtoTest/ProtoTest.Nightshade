@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Gallio.Common.Reflection;
 using Gallio.Framework;
 using Gallio.Framework.Pattern;
@@ -13,29 +10,29 @@ namespace ProtoTest.Nightshade
     namespace Tests.Common
     {
         /// <summary>
-        /// Decorates a test method and causes it to be re-run following failure until we get a pass.
+        ///     Decorates a test method and causes it to be re-run following failure until we get a pass.
         /// </summary>
         /// <remarks>
-        /// <para>
-        /// Each repetition of the test method will occur within its own individually labeled
-        /// test step so that it can be identified in the test report.
-        /// </para>
-        /// <para>
-        /// The initialize, setup, teardown and dispose methods will are invoked around each
-        /// repetition of the test.
-        /// </para>
+        ///     <para>
+        ///         Each repetition of the test method will occur within its own individually labeled
+        ///         test step so that it can be identified in the test report.
+        ///     </para>
+        ///     <para>
+        ///         The initialize, setup, teardown and dispose methods will are invoked around each
+        ///         repetition of the test.
+        ///     </para>
         /// </remarks>
-        /// <seealso cref="RepeatAttribute"/>
+        /// <seealso cref="RepeatAttribute" />
         [AttributeUsage(PatternAttributeTargets.Test, AllowMultiple = true, Inherited = true)]
         public class RepeatOnFailureAttribute : TestDecoratorPatternAttribute
         {
             private readonly int _maxNumberOfAttempts;
 
             /// <summary>
-            /// Will re-run the test method each time we get a failure for a limited number of attempts.
+            ///     Will re-run the test method each time we get a failure for a limited number of attempts.
             /// </summary>
             /// <example>
-            /// <code><![CDATA[
+            ///     <code><![CDATA[
             /// [Test]
             /// [RepeatOnFailure(3)]
             /// public void Test()
@@ -47,12 +44,15 @@ namespace ProtoTest.Nightshade
             /// ]]></code>
             /// </example>
             /// <param name="maxNumberOfAttempts">The number of times to repeat the test while searching for a pass</param>
-            /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="maxNumberOfAttempts"/>
-            /// is less than 1.</exception>
+            /// <exception cref="ArgumentOutOfRangeException">
+            ///     Thrown if <paramref name="maxNumberOfAttempts" />
+            ///     is less than 1.
+            /// </exception>
             public RepeatOnFailureAttribute(int maxNumberOfAttempts)
             {
                 if (maxNumberOfAttempts < 1)
-                    throw new ArgumentOutOfRangeException("maxNumberOfAttempts", @"The maximum number of attempts must be at least 1.");
+                    throw new ArgumentOutOfRangeException("maxNumberOfAttempts",
+                        @"The maximum number of attempts must be at least 1.");
 
                 _maxNumberOfAttempts = maxNumberOfAttempts;
             }
@@ -60,38 +60,40 @@ namespace ProtoTest.Nightshade
             /// <inheritdoc />
             protected override void DecorateTest(IPatternScope scope, ICodeElementInfo codeElement)
             {
-                scope.TestBuilder.TestInstanceActions.RunTestInstanceBodyChain.Around(delegate(PatternTestInstanceState state, Gallio.Common.Func<PatternTestInstanceState, TestOutcome> inner)
-                {
-                    TestOutcome outcome = TestOutcome.Passed;
-                    int failureCount = 0;
-                    // we will try up to 'max' times to get a pass, if we do, then break out and don't run the test anymore
-                    for (int i = 0; i < _maxNumberOfAttempts; i++)
+                scope.TestBuilder.TestInstanceActions.RunTestInstanceBodyChain.Around(
+                    delegate(PatternTestInstanceState state,
+                        Gallio.Common.Func<PatternTestInstanceState, TestOutcome> inner)
                     {
-                        string name = String.Format("Repetition #{0}", i + 1);
-                        TestContext context = TestStep.RunStep(name, delegate
+                        TestOutcome outcome = TestOutcome.Passed;
+                        int failureCount = 0;
+                        // we will try up to 'max' times to get a pass, if we do, then break out and don't run the test anymore
+                        for (int i = 0; i < _maxNumberOfAttempts; i++)
                         {
-                            TestOutcome innerOutcome = inner(state);
-                            // if we get a fail, and we have used up the number of attempts allowed to get a pass, throw an error
-                            if (innerOutcome.Status != TestStatus.Passed)
+                            string name = String.Format("Repetition #{0}", i + 1);
+                            TestContext context = TestStep.RunStep(name, delegate
                             {
-                                throw new SilentTestException(innerOutcome);
-                            }
-                        }, null, false, codeElement);
+                                TestOutcome innerOutcome = inner(state);
+                                // if we get a fail, and we have used up the number of attempts allowed to get a pass, throw an error
+                                if (innerOutcome.Status != TestStatus.Passed)
+                                {
+                                    throw new SilentTestException(innerOutcome);
+                                }
+                            }, null, false, codeElement);
 
-                        outcome = context.Outcome;
-                        // escape the loop if the test has passed, otherwise increment the failure count
-                        if (context.Outcome.Status == TestStatus.Passed)
-                            break;
-                        failureCount++;
-                    }
+                            outcome = context.Outcome;
+                            // escape the loop if the test has passed, otherwise increment the failure count
+                            if (context.Outcome.Status == TestStatus.Passed)
+                                break;
+                            failureCount++;
+                        }
 
-                    TestLog.WriteLine(String.Format(
+                        TestLog.WriteLine(String.Format(
                             failureCount == _maxNumberOfAttempts
                                 ? "Tried {0} times to get a pass test result but didn't get it"
                                 : "The test passed on attempt {1} out of {0}", _maxNumberOfAttempts, failureCount + 1));
 
-                    return outcome;
-                });
+                        return outcome;
+                    });
             }
         }
     }
