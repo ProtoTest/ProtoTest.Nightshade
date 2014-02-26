@@ -124,10 +124,11 @@ namespace ProtoTest.TestRunner.Nightshade
                 {
                     msg = e.Message;
                 }
-                Assert.TerminateSilently(TestOutcome.Failed,
+                
+            }
+            Assert.TerminateSilently(TestOutcome.Failed,
                        "Error caught connecting to device.  Check the internet connection and try connecting via Eggplant GUI : " +
                        host + " : " + msg);
-            }
             
         }
 

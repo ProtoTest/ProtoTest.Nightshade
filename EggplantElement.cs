@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Drawing;
+using System.Threading;
 using ProtoTest.TestRunner.Nightshade;
 
 namespace ProtoTest.Nightshade
@@ -10,11 +11,6 @@ namespace ProtoTest.Nightshade
         public EggplantElement(By by)
         {
             locator = by.ToString();
-        }
-
-        public EggplantElement(string locator)
-        {
-            this.locator = string.Format("{0}{1}{2}", '"', locator, '"');
         }
 
         public static EggplantDriver Driver

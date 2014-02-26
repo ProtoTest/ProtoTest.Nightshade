@@ -15,33 +15,34 @@ namespace ProtoTest.Nightshade
             public void TestDriver()
             {
                 Driver.Connect(Config.Hosts[0]);
-                EggplantElement element = new EggplantElement(By.Text("Phone"));
-                EggplantElement three = new EggplantElement(By.Text("3"));
-                EggplantElement four = new EggplantElement(By.Text("4"));
-                EggplantElement five = new EggplantElement(By.Text("5"));
-                EggplantElement six = new EggplantElement(By.Text("6"));
-                EggplantElement seven = new EggplantElement(By.Text("7"));
-                element.Click();
-                three.Click();
-                four.Click();
-               
-                six.Click();
-                seven.Click();
-                Driver.LogScreenshot();
+                EggplantElement PhoneButton = new EggplantElement(By.Text("Phone"));
+                EggplantElement ExitButton = new EggplantElement(By.Image("MC659B/System/StartMenu/StartButton"));
+               // PhoneButton.Click();
+                ExitButton.Click();
+            
 
+            }
+
+
+
+            [Test]
+            public void TestElementSearchRectangle()
+            {
+                EggplantElement element = new EggplantElement(By.Image("MC659B/System/StartMenu/ExitButton").InRectangle(new SearchRectangle(new Point(12,13),new Point(13,15))));
+                element.Click();
             }
 
             [Test]
             public void TestElementByPath()
             {
-                EggplantElement element = new EggplantElement("imageName");
+                EggplantElement element = new EggplantElement(By.Image("MC659B/System/StartMenu/ExitButton"));
                 element.Click();
             }
 
             [Test]
             public void TestElementByText()
             {
-                EggplantElement element = new EggplantElement("(Text:\"Text Of Element\")");
+                EggplantElement element = new EggplantElement(By.Image("(Text:\"Text Of Element\")"));
                 element.Click();
             }
 

@@ -1,11 +1,12 @@
 ﻿using System.Drawing;
+using Gallio.Runtime.Loader;
 
 namespace ProtoTest.Nightshade
 {
     public class By
     {
         
-        private readonly string locator;
+        private string locator;
 
         public By(string locator)
         {
@@ -17,17 +18,25 @@ namespace ProtoTest.Nightshade
             return locator;
         }
 
+        public By InRectangle(SearchRectangle rectangle)
+        {
+            this.locator = this.locator.TrimEnd(')');
+            this.locator += string.Format(", SearchRectangle: (({0},{1}),({2},{3})))",rectangle.upperLeft.X,rectangle.upperLeft.Y,rectangle.lowerRight.X,rectangle.lowerRight.Y);
+            return this;
+        }
+
+        public By BetweenImages(EggplantElement topLeft, EggplantElement bottomRight)
+        {
+            this.locator = this.locator.TrimEnd(')');
+            this.locator += string.Format(", SearchRectangle: ((\"{0}\"),(\"{1}\")))",topLeft.locator,bottomRight.locator);
+            return this;
+        }
+
         public static By Image(string path)
         {
             return new By(path);
         }
 
-        public static By Image(string path, Point topLeft, Point bottomRight)
-        {
-            string endstring = string.Format("(image: \"{0}\"", path);
-            endstring += string.Format(", SearchRectangle:(({0},{1}),({2},{3})))",topLeft.X,topLeft.Y,bottomRight.X,bottomRight.Y);
-            return new By(endstring);
-        }
 
         public static By Image(string path, string options=null)
         {
