@@ -1,0 +1,8 @@
+//Motorola Shelter Stability Test 05 -- Make a 3G voice call from the call history list
+//Requires running of Script Series 01 or 02 first to put a call in the history list
+//Component of Script Series 05
+//Completed 6-10-2013
+
+//Subroutine A1 -- Shelter Device A - Setup
+run ClassNavigate.ResetState
+run ClassConfigure.MuteNotifications

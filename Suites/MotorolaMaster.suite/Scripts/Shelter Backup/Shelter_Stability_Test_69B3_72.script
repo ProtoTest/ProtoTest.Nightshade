@@ -1,0 +1,24 @@
+//Motorola Shelter Stability Test 69 -- Data Stability Uplink - BT (Bluetooth)
+//Component of Script Series 69
+//Completed 6-26-2013
+
+//Subroutine B3 -- Shelter Device B - Use Bluetooth connection to Shelter Device A and test internet access
+Click "Device/Apps/Settings/MoreSettingsIcon"
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/Bluetooth/BluetoothInternetAccess")
+Click "Device/System/Backicon"
+wait 1 second
+Click "Device/System/HomeButton"
+wait 1 second
+Click "Device/Apps/Browser/BrowserIcon"
+run ClassConfigure.CloseAllBrowserTabs
+run ClassConfigure.SetBrowserHomepageToDefault
+run ClassUtilities.ConfirmTextOnScreen("Sign in")
+wait 3 seconds
+Log "Accessing Wikipedia."
+run ClassNavigate.GoToBrowserAddress("wikipedia.org")
+wait 2 seconds
+run ClassUtilities.ConfirmTextOnScreen("The Free Encyclopedia")
+wait 3 seconds
+run ClassConfigure.CloseAllBrowserTabs
+Click "Device/System/HomeButton"
+wait 3 seconds

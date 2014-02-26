@@ -1,0 +1,255 @@
+//Handlers from the settings app
+//Ordered alphabetically
+
+(*to OpenMenu name
+	repeat until ImageFound(Text:name) is "true"
+		run ClassNavigate.SwipeDown
+	end repeat
+	Click (Text:name)
+end OpenMenu*)
+
+to ConnectToDefaultHotspot
+	Log "Connecting to default Mobile Hotspot."
+	run ClassNavigate.SettingsOption("Wi-Fi")
+	Log "Scanning for default Mobile Hotspot."
+	universal e
+	set e = 0
+	universal f
+	set f = 0
+	//Main loop that will return to the top of the Wi-Fi connections menu and begin scanning for default Mobile Hotspot
+	//Change below E value to set number of iterations before loop logs failure
+	repeat while e < 3
+		ScrollWheelUp 3
+		wait 1 second
+		add 1 to e
+		set f = 0
+		wait 1 second
+		//Sub-loop 1 - Scans for the requested Mobile Hotspot
+		//Change below F value to set number of iterations before loop logs failure
+		repeat while f < 3
+			add 1 to f
+			Log "Searching for (" &universal defaulthotspotssid& ") Hotspot SSID."
+			if ImageFound(3, Text:universal defaulthotspotssid, CaseSensitive: true) is "true"
+				exit repeat
+			end if
+			ScrollWheelDown 1
+			wait 1 second
+			exit repeat
+		end repeat
+		wait 1 second
+		//Main loop - Mobile Hotspot found path
+		if ImageFound(3, Text:universal defaulthotspotssid, CaseSensitive: true) is "true"
+			exit repeat
+		end if
+		wait 1 second
+		//Main loop - Mobile Hotspot not found path
+		if e = 3
+			LogError "Could not find Mobile Hotspot (" &universal defaulthotspotssid& ") after " &e& " attempts."
+			exit all
+		end if
+	end repeat
+	//End of main loop - enters requested Mobile Hotspot
+	Click (Text:universal defaulthotspotssid, CaseSensitive: true)
+	Log "Mobile Hotspot (" &universal defaulthotspotssid& ") found after " &f& " attempts."
+	TypeText universal defaulthotspotpass
+	Click (Text:"Connect")
+	WaitFor 60, Text:"Connected", SearchRectangle:((10,100),(470,200))
+	Click "Device/System/Backicon"
+	Log "Connected to default Mobile Hotspot."
+	set e = 0
+	set f = 0
+	wait 1 second
+end ConnectToDefaultHotspot
+
+to SetBluetooth value
+	ScrollWheelUp 5
+	Log "Setting Bluetooth connection to desired state."
+	if value = "On"
+		if(ImageFound("Device/Apps/Settings/BluetoothOn")) is "true"
+			run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/BluetoothOn")
+			wait 1 second
+			run ClassUtilities.ConfirmImageOnScreen("Device/System/Taskbar/BluetoothActive")
+			Log "Bluetooth is already active."
+		else
+			Click("Device/Apps/Settings/BluetoothOff")
+			wait 1 second
+			run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/BluetoothOn")
+			run ClassUtilities.ConfirmImageOnScreen("Device/System/Taskbar/BluetoothActive")
+			Log "Bluetooth is now active."
+		end if
+	end if
+	if value = "Off"
+		if(ImageFound("Device/Apps/Settings/BluetoothOff")) is "true"
+			run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/BluetoothOff")
+			wait 1 second
+			run ClassUtilities.ConfirmImageNotOnScreen("Device/System/Taskbar/BluetoothActive")
+			Log "Bluetooth is already de-activated."
+		else
+			Click("Device/Apps/Settings/BluetoothOn")
+			wait 1 second
+			run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/BluetoothOff")
+			run ClassUtilities.ConfirmImageNotOnScreen("Device/System/Taskbar/BluetoothActive")
+			Log "Bluetooth is now de-activated."
+		end if	
+	end if
+end SetBluetooth
+
+to SetMobileHotspot value
+	run ClassScriptConfig.SetMobileHotspotData
+	ScrollWheelUp 5
+	Click (Text:"More")
+	run ClassUtilities.ConfirmTextOnScreen("Wireless")
+	run ClassUtilities.ConfirmTextOnScreen("networks")
+	wait 1 second
+	Click (Text:"portable hotspot")
+	wait 1 second
+	run ClassUtilities.ConfirmTextOnScreen("Set up Wi-Fi hotspot")
+	if (ImageFound(Text:universal defaulthotspotssid)) is "true"
+		Log "Hotspot has been previously set up.  SSID: (" &defaulthotspotssid& ")."
+	end if
+	Log "Setting Mobile Hotspot to desired state: " &value& "."
+	if value = "On"
+		if(ImageFound("Device/Apps/Settings/MobileHotspot/MobileHotspotOn")) is "true"
+			run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/MobileHotspot/MobileHotspotOn")
+			wait 1 second
+			run ClassUtilities.ConfirmImageOnScreen("Device/System/Taskbar/MobileHotspotActive")
+			Log "Mobile Hotspot is already active."
+		else
+			Click("Device/Apps/Settings/MobileHotspot/MobileHotspotOff")
+			WaitFor 15, "Device/Apps/Settings/MobileHotspot/MobileHotspotOn"
+			run ClassUtilities.ConfirmImageOnScreen("Device/System/Taskbar/MobileHotspotActive")
+			Log "Mobile Hotspot is now active."
+		end if
+	end if
+	if value = "Off"
+		if(ImageFound("Device/Apps/Settings/MobileHotspot/MobileHotspotOff")) is "true"
+			run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/MobileHotspot/MobileHotspotOff")
+			wait 1 second
+			run ClassUtilities.ConfirmImageNotOnScreen("Device/System/Taskbar/MobileHotspotActive")
+			Log "Mobile Hotspot is already de-activated."
+		else
+			Click("Device/Apps/Settings/MobileHotspot/MobileHotspotOn")
+			WaitFor 15, "Device/Apps/Settings/MobileHotspot/MobileHotspotOff"
+			run ClassUtilities.ConfirmImageNotOnScreen("Device/System/Taskbar/MobileHotspotActive")
+			Log "Mobile Hotspot is now de-activated."
+		end if	
+	end if
+	Click "Device/System/Backicon"
+	wait 1 second
+	Click "Device/System/Backicon"
+end SetMobileHotspot
+
+to SetNetworkData value
+	ScrollWheelUp 5
+	wait 1 second
+	Log "Entering setting menu option (More...)"
+	Click (Text:"More")
+	wait 1 second
+	Log "Entering (Mobile networks)"
+	Click (Text:"Mobile networks")
+	Log "Setting Network Data to desired state."
+	if (ImageFound(Text:"Data enabled", SearchRectangle:((10,100),(470,210)))) is "false"
+		LogError "Mobile network data setting was not detected in default location."
+	end if
+	//Network Data taskbar icon is overridden by Wifi icon if Wifi is active
+	if value = "On"
+		if(ImageFound(ImageName:"Device/Apps/Settings/CheckboxSelected", SearchRectangle:((10,100),(470,210)))) is "true"
+			run ClassUtilities.ConfirmImageOnScreen(ImageName:"Device/Apps/Settings/CheckboxSelected", SearchRectangle:((10,100),(470,210)))
+			wait 1 second
+			//run ClassUtilities.ConfirmImageOnScreen("Device/System/Taskbar/NetworkDataConnected")
+			Log "Network data setting is already active."
+		else
+			Click(Text:"Data enabled", SearchRectangle:((10,100),(470,210)))
+			wait 1 second
+			run ClassUtilities.ConfirmImageOnScreen(ImageName:"Device/Apps/Settings/CheckboxSelected", SearchRectangle:((10,100),(470,210)))
+			//run ClassUtilities.ConfirmImageOnScreen("Device/System/Taskbar/NetworkDataConnected")
+			Log "Network data setting is now active."
+		end if
+	end if
+	if value = "Off"
+		if(ImageFound(ImageName:"Device/Apps/Settings/CheckboxSelected", SearchRectangle:((10,100),(470,210)))) is "false"
+			run ClassUtilities.ConfirmImageNotOnScreen(ImageName:"Device/Apps/Settings/CheckboxSelected", SearchRectangle:((10,100),(470,210)))
+			wait 1 second
+			//run ClassUtilities.ConfirmImageNotOnScreen("Device/System/Taskbar/NetworkDataConnected")
+			Log "Network data setting is already de-activated."
+		else
+			Click(Text:"Data enabled", SearchRectangle:((10,100),(470,210)))
+			wait 1 second
+			run ClassUtilities.ConfirmImageNotOnScreen(ImageName:"Device/Apps/Settings/CheckboxSelected", SearchRectangle:((10,100),(470,210)))
+			//run ClassUtilities.ConfirmImageNotOnScreen("Device/System/Taskbar/NetworkDataConnected")
+			Log "Network data setting is now de-activated."
+		end if	
+	end if
+	Click "Device/System/Backicon"
+	wait 1 second
+	Click "Device/System/Backicon"
+end SetNetworkData
+
+to SetUpMobileHotspot
+	run ClassScriptConfig.SetMobileHotspotData
+	ScrollWheelUp 5
+	Click (Text:"More")
+	run ClassUtilities.ConfirmTextOnScreen("Wireless")
+	run ClassUtilities.ConfirmTextOnScreen("networks")
+	wait 1 second
+	Click (Text:"portable hotspot")
+	wait 1 second
+	Click (Text:"Set up Wi-Fi hotspot")
+	wait 1 second
+	Click "Device/Apps/Settings/MobileHotspot/SSIDLocation"
+	wait 1 second
+	repeat 25 times
+		TypeText backspace
+	end repeat
+	wait 1 second
+	TypeText universal defaulthotspotssid
+	wait 1 second
+	Click "Device/System/Backicon"
+	run ClassUtilities.ConfirmTextOnScreen(universal defaulthotspotssid)
+	DoubleClick "Device/Apps/Settings/MobileHotspot/PasswordLocation"
+	wait 1 second
+	TypeText backspace
+	wait 1 second
+	TypeText universal defaulthotspotpass
+	wait 1 second
+	Click "Device/System/Backicon"
+	//Click (Text:"Show password")
+	//run ClassUtilities.ConfirmTextOnScreen(universal defaulthotspotpass)
+	Click (Text:"Save")
+	wait 1 second
+	run ClassUtilities.ConfirmTextOnScreen(universal defaulthotspotssid)
+	Click "Device/System/Backicon"
+	wait 1 second
+	Click "Device/System/Backicon"
+end SetUpMobileHotspot
+
+to SetWifi value
+	ScrollWheelUp 5
+	Log "Setting Wifi to desired state."
+	if value = "On"
+		if(ImageFound("Device/Apps/Settings/WiFiOn")) is "true"
+			run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/WiFiOn")
+			wait 1 second
+			Log "Wifi setting is already active."
+		else
+			Click("Device/Apps/Settings/WiFiOff")
+			wait 3 seconds
+			run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/WiFiOn")
+			Log "Wifi setting is now active."
+		end if
+	end if
+	if value = "Off"
+		if(ImageFound("Device/Apps/Settings/WiFiOff")) is "true"
+			run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/WiFiOff")
+			wait 1 second
+			run ClassUtilities.ConfirmImageNotOnScreen("Device/System/Taskbar/WifiConnected")
+			Log "Wifi setting is already de-activated."
+		else
+			Click("Device/Apps/Settings/WiFiOn")
+			wait 1 second
+			run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/WiFiOff")
+			run ClassUtilities.ConfirmImageNotOnScreen("Device/System/Taskbar/WifiConnected")			
+			Log "Wifi setting is now de-activated."
+		end if	
+	end if
+end SetWifi

@@ -1,0 +1,19 @@
+//Motorola Shelter Stability Test 05 -- Make a 3G voice call from the call history list
+//Component of Script Series 05
+//Completed 6-10-2013
+
+//Subroutine A3 -- Shelter Device A - Teardown
+Click "Device/System/Backicon"
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Telephone/HistoryIcon")
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Telephone/PhoneIcon")
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Telephone/ContactsIcon")
+Click "Device/Apps/Telephone/HistoryIcon"
+run ClassUtilities.ConfirmTextInArea(universal firstnamedeviceb),("10,100"),("450,225")
+run ClassUtilities.ConfirmImageOnScreen(ImageName:"Device/Apps/Telephone/0MinsAgo",   SearchRectangle:((10,100),(450,225)))
+Log "Phone call data confirmed."
+Click "Device/System/HomeButton"
+
+//Teardown
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+run ClassConfigure.UnMuteNotifications
+wait 5 seconds

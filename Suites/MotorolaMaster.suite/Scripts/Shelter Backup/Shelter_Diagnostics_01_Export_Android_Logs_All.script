@@ -1,0 +1,19 @@
+//Motorola Shelter Diagnostics 01 -- Export Android Logs (All)
+//Completed 6-27-2013
+
+//Setup
+run ClassNavigate.ResetState
+
+//Diagnostics 01 - Export Android Logs (All)
+run ClassNavigate.OpenApp(MLog)
+run ClassUtilities.ConfirmTextOnScreen("MLog Manager")
+Click (Text:"ANDROID")
+run ClassUtilities.ConfirmTextOnScreen("Export Android logs into")
+run ClassUtilities.OutputLogSaveLocation
+Log "Exporting all Android Logs."
+Click (Text:"Export All Logs")
+WaitFor 30, Text:"Export All Logs", CaseSensitive: true, SearchRectangle:((10,650),(470,800))
+
+//Teardown
+run ClassNavigate.ResetState
+wait 5 seconds

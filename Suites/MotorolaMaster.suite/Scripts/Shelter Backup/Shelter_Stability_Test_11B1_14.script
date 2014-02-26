@@ -1,0 +1,9 @@
+//Motorola Shelter Stability Test 11 -- Send a MMS with a 1MB audio attachment or largest size supported by the device
+//Motorola Shelter Stability Test 14 --  Open a MMS with a 1MB audio attachment or largest size supported by the device
+//Component of Script Series 11
+//Completed 6-12-2013
+
+//Subroutine B1 -- Shelter Device B - Setup
+run ClassNavigate.ResetState
+run ClassConfigure.MuteNotifications
+run ClassConfigure.ResetMessagingApp

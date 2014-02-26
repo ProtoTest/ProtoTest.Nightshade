@@ -1,0 +1,9 @@
+//Motorola Shelter Stability Test 58 -- Make a phone call
+//Motorola Shelter Stability Test 59 -- Switch from the telephony app to another app
+//Motorola Shelter Stability Test 60 -- End the phone call
+//Component of Script Series 58
+//Completed 6-10-2013
+
+//Subroutine B3 -- Shelter Device B - Teardown and Reset
+run ClassNavigate.ResetState
+run ClassConfigure.UnMuteNotifications

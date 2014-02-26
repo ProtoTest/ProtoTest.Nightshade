@@ -1,0 +1,35 @@
+//Motorola Shelter Stability Test 57 -- Open and Set a Theme
+//Completed 5-30-2013
+//Current for build 1.25
+
+//Setup
+run ClassNavigate.ResetState
+
+//Test 57 - Open and Set a Theme
+Log "Changing device background to test image."
+run ClassNavigate.OpenApp(Settings)
+run ClassNavigate.SettingsOption(Display)
+Click (Text:"Wallpaper")
+Click (Text:"Gallery")
+Click (Text:"Test")
+Click (240,360)
+wait 2 seconds
+Click (450,75)
+Click "Device/System/HomeButton"
+run ClassUtilities.ConfirmImageOnScreen("Device/Backgrounds/MotorolaSymbol")
+Log "Changing device background to default image."
+run ClassNavigate.OpenApp(Settings)
+run ClassNavigate.SettingsOption(Display)
+Click (Text:"Wallpaper")
+Click (Text:"Gallery")
+Click (Text:"Test")
+Click (240,540)
+wait 2 seconds
+Click (450,75)
+Click "Device/System/HomeButton"
+run ClassUtilities.ConfirmImageNotOnScreen("Device/Backgrounds/MotorolaSymbol")
+
+//Teardown
+Click "Device/System/HomeButton"
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+wait 5 seconds

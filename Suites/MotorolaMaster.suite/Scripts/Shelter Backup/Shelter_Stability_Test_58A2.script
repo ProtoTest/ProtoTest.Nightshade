@@ -1,0 +1,15 @@
+//Motorola Shelter Stability Test 58 -- Make a phone call
+//Component of Script Series 58
+//Completed 6-10-2013
+
+run ClassScriptConfig.SetContactDataforDeviceA
+run ClassScriptConfig.SetContactDataforDeviceB
+
+//Subroutine A2 -- Shelter Device A - Dial Shelter Device B
+Click "Device/AppIcons/TelephoneApp"
+Click (ImageName:"Device/Apps/Telephone/PhoneIcon", SearchRectangle:((10,25),(470,125)))
+Log "Manually dialing assigned phone number."
+run ClassNavigate.DialPhoneNumber(universal phonenumberdeviceb)
+Click "Device/Apps/Telephone/StartCall"
+run ClassUtilities.ConfirmTextOnScreen("DIALING")
+run ClassUtilities.ConfirmTextOnScreen(universal firstnamedeviceb)

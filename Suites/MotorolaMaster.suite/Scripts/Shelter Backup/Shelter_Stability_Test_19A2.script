@@ -1,0 +1,41 @@
+//Motorola Shelter Stability Test 19 -- Send an email with an attachment
+//Component of Script Series 19
+//Completed 6-13-2013
+
+//Subroutine A2 -- Shelter Device A - Send an email with an attachment to Shelter Device B
+run ClassNavigate.OpenApp(Email)
+run ClassConfigure.ResetEmail
+Log "Composing new email."
+Click "Device/Apps/Email/ComposeEmail"
+wait 1 second
+TypeText universal firstnamedeviceb
+wait 1 second
+Click (Text:universal fullnamedeviceb)
+wait 1 second
+run ClassUtilities.ConfirmTextInArea(universal fullnamedeviceb),("10,175"),("450,275")
+Click (Text:"Subject")
+run ClassUtilities.GenerateRandomNumber
+TypeText "Test email with attachment " &universal RandomNumber& "."
+run ClassUtilities.ConfirmTextInArea("Test email with attachment"),("10,250"),("450,350")
+Click (Text:"Compose email")
+run ClassUtilities.GenerateRandomNumber
+TypeText "Mr. " &universal firstnamedevicea& " says: " &universal RandomNumber& "."
+run ClassUtilities.ConfirmTextInArea(universal RandomNumber),("10,350"),("450,450")
+Log "Adding attachment."
+Click "Device/Apps/Email/AttachmentButton"
+Click (Text:"Pictures")
+Click "Device/Apps/Messaging/ImageAttachmentSample1a"
+wait 1 second
+Click "Device/Apps/Messaging/ImageAttachmentSample1a"
+run ClassUtilities.ConfirmTextInArea("Image Attachment"),("5,325"),("470,400")
+run ClassUtilities.ConfirmTextInArea("jpg"),("5,325"),("470,400")
+Log "Sending email."
+Click "Device/Apps/Email/SendEmail"
+wait 1 second
+run ClassUtilities.ConfirmTextInArea("Inbox"),("10,25"),("470,125")
+Click "Device/System/HomeButton"
+
+//Teardown
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+run ClassConfigure.UnMuteNotifications
+wait 5 seconds

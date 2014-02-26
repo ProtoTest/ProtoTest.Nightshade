@@ -1,0 +1,8 @@
+//Motorola Shelter Stability Test 05 -- Make a 3G voice call from the call history list
+//Component of Script Series 05
+//Completed 6-10-2013
+
+//Subroutine B3 -- Shelter Device B - Teardown and Reset
+run ClassNavigate.ResetState
+run ClassConfigure.MuteNotifications
+wait 5 seconds

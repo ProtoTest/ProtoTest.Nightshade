@@ -1,0 +1,55 @@
+//Motorola Shelter Stability Test 38 -- Set an alarm
+//Motorola Shelter Stability Test 40 -- Delete an alarm
+//Tests are grouped together due to dependencies in functionality
+//Completed 5-22-2013
+//Current for build 1.25
+
+//Setup
+//Confirms 2 default off alarms are present
+run ClassNavigate.ResetState
+run ClassConfigure.ResetAlarms
+
+//Test 38 - Set an alarm
+Log "Creating new alarm."
+run ClassNavigate.OpenApp(Clock)
+wait 1 second
+Click "Device/Apps/Clock/AlarmIcon"
+wait 1 second
+Click "Device/Apps/Clock/AddAlarm"
+Click (Text:"Turn alarm on")
+Click (Text:"DONE")
+wait 1 second
+run ClassUtilities.ConfirmImageOnScreen("Device/System/Taskbar/AlarmActive")
+run ClassUtilities.ConfirmImageOnScreen(ImageName:"Device/Apps/Settings/CheckboxSelected",   SearchRectangle:((5,100),(475,210)))
+run ClassUtilities.ConfirmImageNotOnScreen(ImageName:"Device/Apps/Settings/CheckboxSelected",   SearchRectangle:((5,210),(475,320)))
+run ClassUtilities.ConfirmImageNotOnScreen(ImageName:"Device/Apps/Settings/CheckboxUnselected",   SearchRectangle:((5,210),(475,320)))
+wait 1 second
+Log "Alarm created."
+Click (Text:"Alarms", SearchRectangle:((10,25),(470,125)))
+run ClassUtilities.ConfirmTextInArea("Alarm set"),("10,450"),("450,550")
+Click "Device/Apps/Clock/AlarmIcon"
+
+//Test 40 - Delete an alarm
+Log "Deleting alarm."
+Click "Device/Apps/Settings/CheckboxSelectedClickRight"
+Click "Device/AppIcons/TrashcanIcon"
+run ClassUtilities.ConfirmTextOnScreen("Delete this alarm?")
+Click(Text:"OK")
+wait 1 second
+run ClassUtilities.ConfirmImageNotOnScreen("Device/System/Taskbar/AlarmActive")
+run ClassUtilities.ConfirmImageNotOnScreen("Device/Apps/Settings/CheckboxSelected")
+run ClassUtilities.ConfirmImageNotOnScreen("Device/Apps/Settings/CheckboxUnselected")
+Click "Device/System/HomeButton"
+
+//Teardown
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+wait 5 seconds
+
+
+
+
+
+
+
+
+

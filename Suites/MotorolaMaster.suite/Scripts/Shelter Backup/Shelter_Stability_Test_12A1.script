@@ -1,0 +1,8 @@
+//Motorola Shelter Stability Test 12 -- Send a MMS with a 1MB video attachment or largest size supported by the device
+//Component of Script Series 12
+//Completed 6-12-2013
+
+//Subroutine A1 -- Shelter Device A - Setup
+run ClassNavigate.ResetState
+run ClassConfigure.MuteNotifications
+run ClassConfigure.ResetMessagingApp

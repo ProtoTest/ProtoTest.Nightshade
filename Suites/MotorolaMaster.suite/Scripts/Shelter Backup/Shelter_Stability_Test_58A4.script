@@ -1,0 +1,7 @@
+//Motorola Shelter Stability Test 58 -- Make a phone call
+//Component of Script Series 58
+//Completed 6-10-2013
+
+//Subroutine A4 -- Shelter Device A - Teardown and Reset
+run ClassNavigate.ResetState
+run ClassConfigure.UnMuteNotifications

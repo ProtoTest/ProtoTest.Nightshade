@@ -1,0 +1,19 @@
+//Motorola Shelter Stability Test 69 -- Data Stability Uplink - BT (Bluetooth)
+//Component of Script Series 69
+//Completed 6-26-2013
+
+//Subroutine A4 -- Shelter Device A - Reset to default state
+run ClassNavigate.ResetState
+run ClassNavigate.OpenApp(Settings)
+run ClassSettings.SetNetworkData(On)
+run ClassSettings.SetWifi(On)
+Click (Text:"Bluetooth")
+run ClassConfigure.DeleteBluetoothPairs
+wait 1 second
+Click "Device/System/Backicon"
+run ClassSettings.SetBluetooth(Off)
+Click "Device/System/HomeButton"
+
+//Teardown
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+wait 5 seconds

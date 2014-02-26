@@ -1,0 +1,18 @@
+{
+    CaptureDate = <*D2013-05-21 21:36:09 +0000>;
+    CaptureHost = "Motorola Shelter VNC";
+    CaptureScreenSize = (
+	<*I480>,
+	<*I848>
+    );
+    HasAlpha = <*BY>;
+    HonorAlpha = <*BY>;
+    HotSpotX = <*I12>;
+    HotSpotY = <*I17>;
+    ImageDescription = <>;
+    LastKnownLocationX = <*I0>;
+    LastKnownLocationY = <*I0>;
+    OriginalLocationX = <*I426>;
+    OriginalLocationY = <*I56>;
+    Pulsing = <*BN>;
+}

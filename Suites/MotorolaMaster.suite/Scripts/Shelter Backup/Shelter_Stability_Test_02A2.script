@@ -1,0 +1,14 @@
+//Motorola Shelter Stability Test 02 -- Make a 3G voice call from the phone book
+//Component of Script Series 02
+//Completed 6-10-2013
+
+run ClassScriptConfig.SetContactDataforDeviceA
+run ClassScriptConfig.SetContactDataforDeviceB
+
+//Subroutine A2 -- Shelter Device A - Dial Shelter Device B from phone book
+Log "Opening Telephone App."
+Click "Device/AppIcons/TelephoneApp"
+Click "Device/Apps/Telephone/ContactsIcon"
+Click (Text:universal firstnamedeviceb)
+Log "Calling contact."
+run ClassUtilities.ConfirmTextOnScreen("DIALING")

@@ -1,0 +1,15 @@
+//Motorola Shelter Device A Setup Scripts -- preparation before executing Shelter Stability Tests
+//Execute after manual device setp as detailed in "Shelter_Document_Instructions"
+
+//When on Device A, clears contacts list and adds Synch Shelter Device B
+run ClassNavigate.ResetState
+run ClassConfigure.ClearContacts
+run ClassConfigure.AddContactDeviceB
+run ClassNavigate.OpenApp(Settings)
+run ClassSettings.SetNetworkData(On)
+run ClassSettings.SetMobileHotspot(Off)
+run ClassSettings.SetWifi(On)
+run ClassConfigure.ResetWifiToDefault
+Click "Device/System/HomeButton"
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+wait 5 seconds

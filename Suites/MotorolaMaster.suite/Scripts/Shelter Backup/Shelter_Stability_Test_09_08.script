@@ -1,0 +1,43 @@
+//Motorola Shelter Stability Test 09 -- Add a contact to the phone book
+//Motorola Shelter Stability Test 08 -- Delete a contact from the phone book
+//Tests are grouped together due to dependencies in functionality
+//Requires exchange account previously set up
+//Completed 5-22-2013
+//Current for build 1.25
+
+//Setup
+run ClassNavigate.ResetState
+run ClassConfigure.ResetContacts
+
+//Test 09 - Add a contact to the phone book
+run ClassNavigate.OpenApp(People)
+Click "Device/Apps/People/Contacts"
+Log "Adding contact."
+Click "Device/Apps/People/AddContact"
+run ClassUtilities.IfTextOnScreen("Your new contact"),("OK") //Popup may appear
+Click (Text:"First Name")
+wait 1 second
+TypeText universal firsttestname
+Click (Text:"Last Name")
+wait 1 second
+TypeText universal lasttestname
+Click (Text:"organization")
+wait 1 second
+TypeText universal testorganization
+wait 1 second
+Click "Device/Apps/People/DoneCheckmark"
+run ClassUtilities.ConfirmTextOnScreen(universal fulltestname)
+Log "Contact added."
+Click (Text:universal fulltestname)
+run ClassUtilities.ConfirmTextOnScreen(universal fulltestname)
+
+//Test 08 - Delete a contact from the phone book
+run ClassConfigure.DeleteContact(universal fulltestname)
+run ClassUtilities.ConfirmTextNotOnScreen(universal fulltestname)
+Click "Device/System/HomeButton"
+
+//Teardown
+run ClassConfigure.ResetContacts
+Click "Device/System/HomeButton"
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+wait 5 seconds

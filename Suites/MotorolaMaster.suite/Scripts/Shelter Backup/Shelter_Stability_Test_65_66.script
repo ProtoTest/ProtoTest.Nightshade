@@ -1,0 +1,54 @@
+//Motorola Shelter Stability Test 65 -- Turn the WiFi radio off and on
+//Motorola Shelter Stability Test 66 -- Connect/Disconnect to a WiFi network
+//Tests are grouped together due to dependencies in functionality
+//Completed 6-25-2013
+
+//Setup
+run ClassNavigate.ResetState
+run ClassScriptConfig.AccessDefaultWifiSettings
+
+//Test 65 - Turn the WiFi radio off
+//Test 66 - Disconnect from a WiFi network
+run ClassNavigate.OpenApp(Settings)
+run ClassSettings.SetNetworkData(Off)
+run ClassSettings.SetWifi(On)
+run ClassConfigure.ResetWifiToDefault
+run ClassNavigate.SettingsOption("Wi-Fi")
+run ClassConfigure.ForgetAllWifiConnections
+run ClassUtilities.ConfirmTextNotOnScreen("Connected")
+Click "Device/System/Backicon"
+run ClassSettings.SetWifi(Off)
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/WiFiOff")
+run ClassUtilities.ConfirmImageNotOnScreen("Device/System/Taskbar/WifiConnected")
+wait 1 second
+Click "Device/System/HomeButton"
+wait 1 second
+Click "Device/Apps/Browser/BrowserIcon"
+wait 3 seconds
+run ClassNavigate.GoToBrowserAddress("google.com")
+wait 1 second
+run ClassUtilities.ConfirmTextOnScreen("Webpage not available")
+
+//Test 65 - Turn the WiFi radio on
+//Test 66 - Connect to a WiFi network
+Click "Device/System/HomeButton"
+run ClassNavigate.OpenApp(Settings)
+run ClassSettings.SetNetworkData(Off)
+run ClassSettings.SetWifi(On)
+run ClassConfigure.ResetWifiToDefault
+run ClassUtilities.ConfirmImageOnScreen("Device/System/Taskbar/WifiConnected")
+Click "Device/System/HomeButton"
+wait 1 second
+Click "Device/Apps/Browser/BrowserIcon"
+run ClassConfigure.CloseAllBrowserTabs
+run ClassConfigure.SetBrowserHomepageToDefault
+run ClassUtilities.ConfirmTextInArea("Sign in"),("10,25"),("470,200")
+Click "Device/System/HomeButton"
+wait 1 second
+run ClassNavigate.OpenApp(Settings)
+run ClassSettings.SetNetworkData(On)
+
+//Teardown
+Click "Device/System/HomeButton"
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+wait 5 seconds

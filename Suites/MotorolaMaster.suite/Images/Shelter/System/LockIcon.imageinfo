@@ -1,0 +1,20 @@
+{
+    CaptureDate = <*D2013-05-17 19:47:18 +0000>;
+    CaptureHost = "Moto Shelter";
+    CaptureScreenSize = (
+	<*I480>,
+	<*I848>
+    );
+    HasAlpha = <*BY>;
+    HonorAlpha = <*BY>;
+    HotSpotX = <*I15>;
+    HotSpotY = <*I23>;
+    ImageDescription = <7b5c7274 66315c61 6e73695c 616e7369 63706731 3235325c 636f636f 61727466 3130327b 5c666f6e 7474626c 5c66305c 666e696c 20546168 6f6d613b 7d0a5c70 6172645c 74783536 305c7478 31313230 5c747831 3638305c 74783232 34305c74 78323830 305c7478 33333630 5c747833 3932305c 74783434 38305c74 78353034 305c7478 35363030 5c747836 3136305c 74783637 32305c71 6c5c6630 5c667332 34204465 76696365 206d6169 6e20756e 6c6f636b 2069636f 6e2e7d>;
+    ImageTolerance = <*I50>;
+    LastKnownLocationX = <*I0>;
+    LastKnownLocationY = <*I0>;
+    MaxIgnoredPixels = <*I5>;
+    OriginalLocationX = <*I226>;
+    OriginalLocationY = <*I607>;
+    Pulsing = <*BN>;
+}

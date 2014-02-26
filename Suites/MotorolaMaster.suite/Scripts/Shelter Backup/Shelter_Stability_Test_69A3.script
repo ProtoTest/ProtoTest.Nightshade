@@ -1,0 +1,19 @@
+//Motorola Shelter Stability Test 69 -- Data Stability Uplink - BT (Bluetooth)
+//Component of Script Series 69
+//Completed 6-26-2013
+
+//Subroutine A3 -- Shelter Device A - Confirm Bluetooth connection to Shelter Device B
+Click "Device/Apps/Settings/Bluetooth/PairButton"
+wait 5 seconds
+run ClassUtilities.ConfirmTextOnScreen("PAIRED DEVICES")
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/Bluetooth/DeviceTC55")
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/MoreSettingsIcon")
+Click "Device/Apps/Settings/MoreSettingsIcon"
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/Bluetooth/BluetoothInternetAccess")
+Click "Device/System/Backicon"
+wait 1 second
+Click "Device/System/HomeButton"
+wait 1 second
+run ClassUtilities.ConfirmImageOnScreen("Device/System/Taskbar/BluetoothActive")
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+wait 5 seconds

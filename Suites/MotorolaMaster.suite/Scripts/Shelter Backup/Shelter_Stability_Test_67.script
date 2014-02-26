@@ -1,0 +1,31 @@
+//Motorola Shelter Stability Test 67 -- Turn NFC Off and On
+//Completed 6-05-2013
+//Current for build 1.25
+
+//Setup
+run ClassNavigate.ResetState
+
+//Test 67 - Turn NFC Off and On
+run ClassNavigate.OpenApp(Settings)
+run ClassNavigate.SettingsOption(More)
+run ClassUtilities.IfImageOnScreen(ImageName:"Device/Apps/Settings/CheckboxSelected",   SearchRectangle:((10,400),(470,525))),(Text:("NFC"))
+run ClassUtilities.ConfirmTextOnScreen("NFC is turned off")
+Log "Activating NFC."
+Click (Text:"NFC")
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Settings/CheckboxSelected")
+run ClassUtilities.ConfirmTextOnScreen("Ready to transmit app content via NFC")
+Click "Device/System/HomeButton"
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+run ClassNavigate.OpenApp(Settings)
+Click (Text:"More")
+run ClassUtilities.ConfirmImageOnScreen(ImageName:"Device/Apps/Settings/CheckboxSelected",   SearchRectangle:((10,400),(470,525)))
+run ClassUtilities.ConfirmTextOnScreen("Ready to transmit app content via NFC")
+Click (Text:"NFC")
+run ClassUtilities.ConfirmImageNotOnScreen(ImageName:"Device/Apps/Settings/CheckboxSelected",   SearchRectangle:((10,400),(470,525)))
+run ClassUtilities.ConfirmTextOnScreen("NFC is turned off")
+Log "NFC de-activated."
+Click "Device/System/HomeButton"
+
+//Teardown
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+wait 5 seconds

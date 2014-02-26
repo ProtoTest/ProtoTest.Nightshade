@@ -1,0 +1,45 @@
+//Shelter Support Document - Instructions
+
+//Manual Setup Steps:
+//Reset device to factory defaults
+//In Settings - Developers Tools, select "Stay Awake" option
+//In Settings - Accessibility, set auto-rotate Setting to "on"
+//Within Settings - Security, allow for Unknown sources
+//Transfer Setup folder "Test Wallpapers "into DCIM folder on device
+//Set image file "Stability Scripts Wallpaper 1" to be device background
+//Transfer audio file "Audio Sample 1" to Music folder within device  (183 kb filze size)
+//Transfer audio file "Audio Attachment 597" to Music folder within device  (597 kb filze size)
+//Transfer audio file "Image Attachment" to Music folder within device  (1000 kb filze size)
+//Transfer audio file "Video Attachment 594" to Music folder within device  (594 kb filze size)
+//Setup Corporate exchange-email account for email and calendar functionality (name: ShelterA DeviceA, Default Account)
+//E.g. Exchange:
+//username - shelter-test1@outlook.com
+//server - m.hotmail.com
+//password - Motorola1
+//check "send email from this account by default"
+//after set up, go into account settings and configure name (e.g. ShelterA DeviceA)
+//Upload "DroidFish" App from Setup Files folder to web, then download device
+//Download NVitemRWTool app from Motorola and configure to allow access to 2G settings
+//Tests are designed to run with VMLite VNC Server.  If this app is altered, update test 62
+//MLog Manager Settings - Turn on Persisting Mode and Exporting Logs Upon Boot
+
+//Script Design - Synch Scripts:
+//Some stability tests are so elaborate and interconnected that they require switching from Device A in a known state to Device B, then executing a script
+//E.g. Bluetooth connection pairing
+//Scripts must be executed in order of A1, B1, A2, B2
+//Shelter_Stability_Test_69A1
+//Shelter_Stability_Test_69B1_72
+//Shelter_Stability_Test_69A2
+//Shelter_Stability_Test_69B2_72
+//Shelter_Stability_Test_69A3
+//Shelter_Stability_Test_69B3_72
+//Shelter_Stability_Test_69A4
+//Shelter_Stability_Test_69B4_72
+//Note: 69 is the main test in the Stability Tests Document that covers test functionality
+//Note: _72 indicates that test 72 is covered in this script as well
+
+//Device Notes:
+//Shelter Device Max File Sizes for MMS:
+//Video: 600 kb
+//Audio: 600 kb
+//Image: Unknown (1000 kb used for sample)

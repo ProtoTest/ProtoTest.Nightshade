@@ -1,0 +1,17 @@
+{
+    CaptureDate = <*D2013-05-17 17:01:07 +0000>;
+    CaptureHost = "Moto Shelter";
+    CaptureScreenSize = (
+	<*I480>,
+	<*I848>
+    );
+    HasAlpha = <*BY>;
+    HonorAlpha = <*BY>;
+    HotSpotX = <*I26>;
+    HotSpotY = <*I28>;
+    LastKnownLocationX = <*I0>;
+    LastKnownLocationY = <*I0>;
+    OriginalLocationX = <*I389>;
+    OriginalLocationY = <*I669>;
+    Pulsing = <*BN>;
+}

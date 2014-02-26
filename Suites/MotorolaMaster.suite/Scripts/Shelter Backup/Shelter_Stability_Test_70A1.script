@@ -1,0 +1,19 @@
+//Motorola Shelter Stability Test 70 -- Data Stability Uplink - Mobile Hotspot
+//Component of Script Series 70
+//Completed 6-26-2013
+
+//Setup
+run ClassNavigate.ResetState
+run ClassScriptConfig.SetMobileHotspotData
+run ClassScriptConfig.AccessDefaultWifiSettings
+
+//Subroutine A1 -- Shelter Device A - Turn on Mobile Hotspot connection
+run ClassNavigate.OpenApp(Settings)
+run ClassSettings.SetNetworkData(On)
+run ClassSettings.SetWifi(On)
+run ClassSettings.SetUpMobileHotspot
+run ClassSettings.SetMobileHotspot(On)
+run ClassUtilities.ConfirmImageOnScreen("Device/System/Taskbar/MobileHotspotActive")
+Click "Device/System/HomeButton"
+wait 1 second
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")

@@ -1,0 +1,18 @@
+//Motorola Shelter Stability Test 44 -- Record a 30s video
+//Motorola Shelter Stability Test 45 -- Play back a 30s video
+//Motorola Shelter Stability Test 46 -- Delete a video
+//Tests are grouped together due to dependencies in functionality
+//In Progress - Shelter Device's Camera closes VNC connection
+
+//Setup
+run ClassNavigate.ResetState
+
+//Motorola Shelter Stability Test 44 - Record a 30s video
+//run ClassNavigate.OpenApp(Camera)
+//LogError "Test will intentionally fail until device error is resolved."
+
+
+//Teardown
+Click "Device/System/HomeButton"
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+wait 5 seconds

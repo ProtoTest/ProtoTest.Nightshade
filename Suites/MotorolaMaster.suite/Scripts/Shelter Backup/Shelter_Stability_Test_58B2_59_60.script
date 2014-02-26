@@ -1,0 +1,45 @@
+//Motorola Shelter Stability Test 58 -- Make a phone call
+//Motorola Shelter Stability Test 59 -- Switch from the telephony app to another app
+//Motorola Shelter Stability Test 60 -- End the phone call
+//Component of Script Series 58
+//Completed 6-10-2013
+
+//Subroutine B2 -- Shelter Device B - Receive Incoming Call from Shelter Device A
+run ClassUtilities.ConfirmTextOnScreen("INCOMING CALL")
+run ClassUtilities.ConfirmTextOnScreen(universal firstnamedevicea)
+run ClassUtilities.ConfirmTextOnScreen("MOBILE")
+run ClassNavigate.AnswerCall
+run ClassUtilities.ConfirmTextOnScreen(universal firstnamedevicea)
+run ClassUtilities.ConfirmTextOnScreen(universal lastnamedevicea)
+run ClassUtilities.ConfirmTextOnScreen("MOBILE")
+
+//Motorola Shelter Stability Test 59 - Switch from the telephony app to another app
+Log "Switching from Phone App to another app."
+Click "Device/System/HomeButton"
+run ClassUtilities.ConfirmImageOnScreen("Device/System/Taskbar/PhoneAppInBackground")
+run ClassNavigate.OpenTaskbar
+wait 1 second
+Click (Text:"VNC Server",  SearchRectangle:((50,50),(475,800)))
+run ClassUtilities.ConfirmTextOnScreen("Server is running")
+Click "Device/System/HomeButton"
+run ClassUtilities.ConfirmImageOnScreen("Device/System/Taskbar/PhoneAppInBackground")
+Click "Device/AppIcons/TelephoneApp"
+run ClassUtilities.ConfirmImageOnScreen("Device/System/Taskbar/PhoneAppInBackground")
+Click (Text:"Return to call")
+
+//Motorola Shelter Stability Test 60 - End the phone call
+Log "Terminating phone call."
+Click "Device/Apps/Telephone/EndCall"
+run ClassUtilities.ConfirmImageNotOnScreen("Device/Apps/Telephone/EndCall")
+wait 3 seconds
+Click "Device/AppIcons/TelephoneApp"
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Telephone/HistoryIcon")
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Telephone/PhoneIcon")
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Telephone/ContactsIcon")
+Click "Device/Apps/Telephone/HistoryIcon"
+run ClassUtilities.ConfirmTextInArea(universal firstnamedevicea),("10,100"),("450,225")
+run ClassUtilities.ConfirmImageOnScreen(ImageName:"Device/Apps/Telephone/0MinsAgo",   SearchRectangle:((10,100),(450,225)))
+Log "Phone call data confirmed."
+run ClassUtilities.ConfirmImageNotOnScreen("Device/System/Taskbar/PhoneAppInBackground")
+Click "Device/System/HomeButton"
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")

@@ -1,0 +1,50 @@
+//Motorola Shelter Stability Test 37 -- Add an appointment in the Calendar
+//Motorola Shelter Stability Test 39 -- Delete an appointment in the Calendar
+//Tests are grouped together due to dependencies in functionality
+//Requires exchange account previously set up
+//Completed 5-22-2013
+//Current for build 1.25
+
+//Setup
+run ClassNavigate.ResetState
+run ClassConfigure.ResetCalendar(Test)
+
+//Test 37 - Add an appointment in the Calendar
+run ClassNavigate.OpenApp(Calendar)
+run ClassUtilities.ConfirmTextInArea("SUN"),("5,110"),("475,140")
+run ClassUtilities.ConfirmTextInArea("WED"),("5,110"),("475,140")
+run ClassUtilities.ConfirmTextInArea("SAT"),("5,110"),("475,140")
+Log "Calendar open.  Adding test event..."
+Click "Device/Apps/Calendar/EmptyCalendarSlot"
+Click "Device/Apps/Calendar/EventSelected"
+Click (Text:"Event Name")
+wait 1 second
+TypeText "Test Event 1"
+wait 1 second
+Click (Text:"Location")
+wait 1 second
+TypeText "Office"
+wait 2 second
+Click "Device/Apps/Calendar/DoneCheckmark"
+wait 2 second
+run ClassUtilities.ConfirmTextInArea("Test"),("35,140"),("475,800")
+run ClassUtilities.ConfirmTextInArea("Event"),("35,140"),("475,800")
+run ClassUtilities.ConfirmTextInArea("Office"),("35,140"),("475,800")
+Log "Test event added."
+
+//Test 39 - Delete an appointment in the Calendar
+Log "Deleting test event."
+Click (Text:"Event", SearchRectangle:((35,140),(475,800)))
+Click "Device/AppIcons/TrashcanIcon"
+run ClassUtilities.ConfirmTextOnScreen("Delete this event?")
+Click (Text:"OK")
+wait 2 seconds
+run ClassUtilities.ConfirmTextNotOnScreen("Test")
+Log "Test event deleted."
+Click "Device/System/HomeButton"
+
+//Teardown
+run ClassConfigure.ResetCalendar(Test)
+Click "Device/System/HomeButton"
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+wait 5 seconds

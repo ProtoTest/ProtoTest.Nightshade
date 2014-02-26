@@ -1,0 +1,169 @@
+// This is a collection of miscellaneous utility functions that can help extend or replace the default methods inside eggPlant.  
+//Ordered alphabetically
+
+to AuthenticateBluetoothPasskeys
+	if universal passkey1 = universal passkey2
+		wait 1 second
+		Log "Bluetooth Passkey1 = " &universal passkey1& "."
+		Log "Bluetooth Passkey2 = " &universal passkey2& "."
+		Log "Bluetooth Passkeys confirmed."
+	else
+		wait 1 second
+		LogError "Bluetooth Passkey1 = " &universal passkey1& "."
+		LogError "Bluetooth Passkey2 = " &universal passkey2& "."
+		LogError "Bluetooth Passkeys are not identical."
+	end if
+end AuthenticateBluetoothPasskeys
+
+to ConfirmImageNotOnScreen image
+	if ImageFound(image) then
+		LogError "Image (" &image& ") erroneously present."
+		exit all
+	end if
+end ConfirmImageNotOnScreen
+
+to ConfirmImageOnScreen image
+	if not ImageFound(image) then
+		LogError "Image (" &image& ") was not found."
+		exit all
+	end if
+end ConfirmImageOnScreen
+
+to ConfirmTextInArea string,topcorner,botcorner
+	if not ImageFound(Text:string,SearchRectangle:((topcorner),(botcorner)), CaseSensitive: true) then
+		LogError "Text (" &string& ") was not found."
+		exit all
+	end if
+end ConfirmTextInArea
+
+to ConfirmTextNotInArea string,topcorner,botcorner
+	if ImageFound(Text:string,SearchRectangle:((topcorner),(botcorner)), CaseSensitive: true) then
+		LogError "Text (" &string& ") erroneously present."
+		exit all
+	end if
+end ConfirmTextNotInArea
+
+to ConfirmTextNotOnScreen string
+	if ImageFound(Text:string, CaseSensitive: true) then
+		LogError "Text (" &string& ") erroneously present."
+		exit all
+	end if
+end ConfirmTextNotOnScreen
+
+to ConfirmTextOnScreen string
+	if not ImageFound(Text:string, CaseSensitive: true) then
+		LogError "Text (" &string& ") was not found."
+		exit all
+	end if
+end ConfirmTextOnScreen
+
+to GenerateRandomNumber
+	universal n
+	universal RandomNumber
+	set n to 6
+	set RandomNumber = random(10^n)
+	Log "Random number generated: " &RandomNumber& "."
+end GenerateRandomNumber
+
+to IfImageOnScreen string,action
+	if ImageFound(string) then
+		Log "Image (" &string& ") detected."
+		Log "Clicking on (" &action& ") element."
+		Click(action)
+	end if
+	wait 3 seconds
+end IfImageOnScreen
+
+to IfTextOnScreen string,action
+	if ImageFound(Text:string, CaseSensitive: true) then
+		Log "Text (" &string& ") detected."
+		Log "Clicking on (" &action& ") element."
+		Click(Text:action, CaseSensitive: true)
+	end if
+	wait 3 seconds
+end IfTextOnScreen
+
+to TextMessageIncomingStatusCheck
+	run ClassScriptConfig.SetTextMessageIncomingLoopIterations
+	repeat
+		wait 1 second
+		subtract 1 from universal TextMessageIncomingLoopNum
+		Log "Incoming Text Message status check countdown: " &universal TextMessageIncomingLoopNum& "."
+		if ImageFound(3, ImageName:"Device/Apps/Messaging/MessageStatusDownloading", SearchRectangle:((10,575),(479,800))) is "false"
+			exit repeat
+		end if
+		Log "Status (Downloading) detected."
+		if universal TextMessageIncomingLoopNum = 0
+			LogError "Incoming Text Message Status stuck on (Downloading...)."
+			exit all
+		end if
+	end repeat
+	Log "Incoming Text Message has been downloaded."
+end TextMessageIncomingStatusCheck
+
+to MMSOutgoingStatusCheck
+	run ClassScriptConfig.SetTextMessageOutgoingLoopIterations
+	repeat
+		wait 1 second
+		subtract 1 from universal TextMessageOutgoingLoopNum
+		Log "Outgoing Text Message status check countdown: " &universal TextMessageOutgoingLoopNum& "."
+		if ImageFound(3, ImageName:"Device/Apps/Messaging/MessageStatusSending", SearchRectangle:((10,400),(470,800))) is "false"
+			exit repeat
+		end if
+		Log "Status (Sending) detected."
+		if universal TextMessageOutgoingLoopNum = 0
+			LogError "Outgoing Text Message Status stuck on (Sending...)."
+			exit all
+		end if
+	end repeat
+	Log "Outgoing Text Message has been sent."
+end MMSOutgoingStatusCheck
+
+to SMSOutgoingStatusCheck
+	run ClassScriptConfig.SetTextMessageOutgoingLoopIterations
+	repeat
+		wait 1 second
+		subtract 1 from universal TextMessageOutgoingLoopNum
+		Log "Outgoing Text Message status check countdown: " &universal TextMessageOutgoingLoopNum& "."
+		if ImageFound(3, ImageName:"Device/Apps/Messaging/MessageStatusSending", SearchRectangle:((10,600),(470,800))) is "false"
+			exit repeat
+		end if
+		Log "Status (Sending) detected."
+		if universal TextMessageOutgoingLoopNum = 0
+			LogError "Outgoing Text Message Status stuck on (Sending...)."
+			exit all
+		end if
+	end repeat
+	Log "Outgoing Text Message has been sent."
+end SMSOutgoingStatusCheck
+
+to ScanBluetoothPasskey1
+	Log "Scanning for Bluetooth Passkey1."
+	universal passkey1
+	set passkey1 to ReadText("Device/Apps/Settings/Bluetooth/PasskeyLocation")
+	put passkey1 into passkey1
+	Log "Passkey " &passkey1& " detected."
+end ScanBluetoothPasskey1
+
+to ScanBluetoothPasskey2
+	Log "Scanning for Bluetooth Passkey2."
+	universal passkey2
+	set passkey2 to ReadText("Device/Apps/Settings/Bluetooth/PasskeyLocation")
+	put passkey2 into passkey2
+	Log "Passkey " &passkey2& " detected."
+end ScanBluetoothPasskey2
+
+to OutputLogSaveLocation
+	set savelocation1 to ReadText("Device/Apps/MLog/AndroidSaveLocation1")
+	set savelocation2 to ReadText("Device/Apps/MLog/AndroidSaveLocation2")
+	set savelocationfull to savelocation1&savelocation2
+	Log "Log save location determined:" &savelocationfull& "."
+end OutputLogSaveLocation
+
+to WaitForImageInArea time,string,topcorner,botcorner
+	WaitFor time, (ImageName:string,SearchRectangle:((topcorner),(botcorner)))
+end WaitForImageInArea
+
+to WaitForTextInArea time,string,topcorner,botcorner
+	WaitFor time, ((Text:string,SearchRectangle:((topcorner),(botcorner))))
+end WaitForTextInArea

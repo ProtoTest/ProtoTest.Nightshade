@@ -1,0 +1,8 @@
+//Motorola Shelter Stability Test 18 -- Send an email with no attachment
+//Motorola Shelter Stability Test 20 -- Open an email
+//Component of Script Series 18
+//Completed 6-12-2013
+
+//Subroutine B1 -- Shelter Device B - Setup
+run ClassNavigate.ResetState
+run ClassConfigure.MuteNotifications

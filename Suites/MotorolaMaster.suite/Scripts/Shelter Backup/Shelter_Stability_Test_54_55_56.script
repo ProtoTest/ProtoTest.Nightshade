@@ -1,0 +1,37 @@
+//Motorola Shelter Stability Test 54 -- Open Music Player
+//Motorola Shelter Stability Test 55 -- Play music file
+//Motorola Shelter Stability Test 54 -- Close Music Player
+//Tests are grouped together due to dependencies in functionality
+//Completed 5-20-2013
+//Current for build 1.25
+
+//Setup
+run ClassNavigate.ResetState
+run ClassConfigure.MuteMedia
+
+//Test 54 - Open Music Player
+run ClassNavigate.OpenApp(Music)
+
+//Test 55 - Play Music File
+Log "Playing test audio file."
+Click "Device/Apps/Music/SongsIcon"
+Click (Text:"Audio Sample 1")
+run ClassUtilities.ConfirmTextOnScreen("Audio Sample 1")
+Click "Device/Apps/Music/PreviousSongButton"
+wait 5 seconds
+Click "Device/Apps/Music/PauseButton"
+run ClassUtilities.ConfirmTextOnScreen("Audio Sample 1")
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Music/ProgressBar25")
+Click "Device/System/Backicon"
+
+//Test 56 - Exit Music Player
+Log "Exiting music player."
+//Script returns to the home screen.  The OS will close the app on its own.  Force closing can be added.
+Click "Device/System/HomeButton"
+
+//Teardown
+run ClassConfigure.UnMuteMedia
+Click "Device/System/HomeButton"
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+wait 5 seconds
+

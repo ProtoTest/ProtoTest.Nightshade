@@ -1,0 +1,17 @@
+{
+    CaptureDate = <*D2013-07-10 17:02:03 +0000>;
+    CaptureHost = "Motorola Shelter A";
+    CaptureScreenSize = (
+	<*I480>,
+	<*I848>
+    );
+    HasAlpha = <*BY>;
+    HonorAlpha = <*BY>;
+    HotSpotX = <*I54>;
+    HotSpotY = <*I13>;
+    LastKnownLocationX = <*I0>;
+    LastKnownLocationY = <*I0>;
+    OriginalLocationX = <*I29>;
+    OriginalLocationY = <*I746>;
+    Pulsing = <*BN>;
+}

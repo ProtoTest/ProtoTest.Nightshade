@@ -1,0 +1,61 @@
+//Motorola Shelter Stability Test 11 -- Send a MMS with a 1MB audio attachment or largest size supported by the device
+//Component of Script Series 11
+//Completed 6-12-2013
+
+run ClassScriptConfig.SetContactDataforDeviceA
+run ClassScriptConfig.SetContactDataforDeviceB
+
+//Subroutine A2 -- Shelter Device A - Send 1MB Audio MMS to Shelter Device B
+//German language is used to identify this tested functionality
+Click "Device/AppIcons/MessagingApp"
+Click "Device/Apps/Messaging/NewMessageIcon"
+wait 1 second
+run ClassUtilities.ConfirmTextOnScreen("New message")
+Log "Creating new text message."
+Click (Text:"To")
+wait 1 second
+TypeText universal firstnamedeviceb
+wait 1 second
+Click (Text:universal fullnamedeviceb)
+run ClassUtilities.ConfirmTextInArea(universal fullnamedeviceb),("10,100"),("450,200")
+run ClassConfigure.ResetMessaging
+Click "Device/Apps/Messaging/TextFieldEmpty"
+wait 1 second
+Log "Adding text."
+TypeText "Victor jagt zwolf Boxkampfer quer uber den grossen Sylter Deich. "
+wait 3 seconds
+run ClassUtilities.ConfirmTextInArea("Victor"),("10,315"),("470,425")
+run ClassUtilities.ConfirmTextInArea("uber den"),("10,315"),("470,425")
+Log "Adding attachment."
+Click "Device/Apps/Messaging/AttachmentIcon"
+Click "Device/Apps/Messaging/AudioAttachment"
+Click (Text:"music track")
+Click (Text:"Audio Attachment")
+Click (Text:"OK", SearchRectangle:((10,700),(200,800)))
+run ClassUtilities.ConfirmTextInArea("Audio Attachment"),("25,550"),("325,650")
+run ClassUtilities.ConfirmTextInArea("Music"),("25,550"),("325,650")
+run ClassUtilities.ConfirmTextInArea("MMS"),("375,700"),("470,765")
+run ClassUtilities.ConfirmTextInArea("Victor"),("10,700"),("470,800")
+run ClassUtilities.ConfirmTextInArea("uber den"),("10,700"),("470,800")
+Log "Sending message."
+Click "Device/Apps/Messaging/SendMessage"
+wait 20 seconds
+Click "Device/System/BackIcon"
+wait 1 second
+Click (Text:universal fullnamedeviceb, SearchRectangle:((50,100),(430,600)))
+ScrollWheelDown 3
+run ClassUtilities.MMSOutgoingStatusCheck
+run ClassUtilities.ConfirmTextInArea("Audio Attachment"),("1,500"),("470,750")
+run ClassUtilities.ConfirmTextInArea("Victor jagt zwolf Boxkampfer"),("1,500"),("470,750")
+run ClassUtilities.ConfirmTextInArea("quer uber den grossen"),("1,500"),("470,750")
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Messaging/TextFieldEmpty")
+Log "Text message sent."
+Click "Device/System/BackIcon"
+wait 1 second
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Messaging/MessagingAppHeader")
+Click "Device/System/HomeButton"
+
+//Teardown
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+run ClassConfigure.UnMuteNotifications
+wait 5 seconds

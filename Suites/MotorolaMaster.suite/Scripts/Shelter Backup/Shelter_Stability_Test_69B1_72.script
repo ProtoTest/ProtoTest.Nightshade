@@ -1,0 +1,23 @@
+//Motorola Shelter Stability Test 69 -- Data Stability Uplink - BT (Bluetooth)
+//Motorola Shelter Stability Test 72 -- Data Stability Downlink - BT (Bluetooth)
+//Component of Script Series 69
+//Completed 6-26-2013
+
+//Setup
+run ClassNavigate.ResetState
+
+//Subroutine B1 -- Shelter Device B - Turn on Bluetooth connection and prepare to pair with Shelter Device A
+run ClassNavigate.OpenApp(Settings)
+run ClassSettings.SetNetworkData(Off)
+run ClassSettings.SetWifi(Off)
+run ClassSettings.SetBluetooth(On)
+Click (Text:"Bluetooth")
+run ClassConfigure.DeleteBluetoothPairs
+wait 1 second
+run ClassUtilities.ConfirmTextOnScreen("Bluetooth")
+run ClassUtilities.ConfirmTextOnScreen("ON")
+WaitFor 60, Text:"SEARCH FOR DEVICES"
+wait 1 second
+Click (Text:"Not visible")
+run ClassUtilities.ConfirmTextOnScreen("Visible to all")
+

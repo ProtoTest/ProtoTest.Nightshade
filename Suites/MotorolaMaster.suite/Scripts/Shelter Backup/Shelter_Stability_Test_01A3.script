@@ -1,0 +1,24 @@
+//Motorola Shelter Stability Test 01 -- Make a 2G voice call from the phone book
+//Component of Script Series 01
+//Completed 6-07-2013
+//Be sure to use NVitemRWTool app from Motorola to allow access to 2G settings
+
+//Subroutine A3 -- Shelter Device A - Set mobile networks to default
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Telephone/HistoryIcon")
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Telephone/PhoneIcon")
+run ClassUtilities.ConfirmImageOnScreen("Device/Apps/Telephone/ContactsIcon")
+Click "Device/Apps/Telephone/HistoryIcon"
+run ClassUtilities.ConfirmTextInArea(universal firstnamedeviceb),("10,100"),("450,225")
+run ClassUtilities.ConfirmImageOnScreen(ImageName:"Device/Apps/Telephone/0MinsAgo",   SearchRectangle:((10,100),(450,225)))
+Log "Phone call data confirmed."
+Click "Device/System/HomeButton"
+run ClassNavigate.OpenApp(Settings)
+run ClassNavigate.SettingsOption(More)
+Click (Text:"Mobile networks")
+run ClassConfigure.Set2Gnetwork(Off)
+Click "Device/System/HomeButton"
+
+//Teardown
+run ClassUtilities.ConfirmImageOnScreen("Device/System/AppsIcon")
+run ClassConfigure.UnMuteNotifications
+wait 5 seconds
