@@ -16,6 +16,7 @@ namespace ProtoTest.Nightshade
         public static string SuitePath = GetConfigValue("SuitePath", Common.GetCodeDirectory() + @"\Nightshade.suite");
         public static string BaseImageDir = Common.GetCodeDirectory();
         public static int DelayTimeMs = int.Parse(GetConfigValue("DelayTimeMs", "200"));
+
         public static List<string> Hosts
         {
             //looks in app.config for Host1, Host2....Host5.  

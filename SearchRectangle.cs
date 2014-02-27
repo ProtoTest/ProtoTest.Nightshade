@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace ProtoTest.Nightshade
 {
@@ -9,6 +10,41 @@ namespace ProtoTest.Nightshade
         public Point lowerRight;
         public int width;
         public int height;
+        private static SearchRectangle _fullScreen;
+
+        public static SearchRectangle FullScreen 
+        {
+            get { return _fullScreen ?? (_fullScreen = EggplantTestBase.Driver.GetScreenRectangle()); }
+            set { _fullScreen = value; }
+        }
+
+        public static SearchRectangle TopHalf
+        {
+            get { return new SearchRectangle(new Point(0,0),new Point(FullScreen.width,FullScreen.height/2)); }
+        }
+
+        public static SearchRectangle BottomHalf
+        {
+            get { return new SearchRectangle(new Point(0, FullScreen.height/2), new Point(FullScreen.width, FullScreen.height)); }
+        }
+
+        public static SearchRectangle MiddleHalf
+        {
+            get { return new SearchRectangle(new Point(0, (int)Math.Floor(FullScreen.height * .25)), new Point(FullScreen.width, (int)Math.Floor(FullScreen.height * .75))); }
+        }
+
+        public static SearchRectangle TopQuarter
+        {
+            get { return new SearchRectangle(new Point(0, 0), new Point(FullScreen.width, FullScreen.height / 4)); }
+        }
+
+        public static SearchRectangle BottomQuarter
+        {
+            get
+            {
+                return new SearchRectangle(new Point(0,(int) Math.Floor(FullScreen.height*.75) ), new Point(FullScreen.width, FullScreen.height));
+            }
+        }
 
         public SearchRectangle(Rectangle rectangle)
         {
@@ -21,8 +57,8 @@ namespace ProtoTest.Nightshade
 
         public SearchRectangle(Point upperLeft, Point lowerRight)
         {
-            this.width = upperLeft.X - lowerRight.X;
-            this.height = upperLeft.Y - lowerRight.Y;
+            this.width = Math.Abs(upperLeft.X - lowerRight.X);
+            this.height = Math.Abs(upperLeft.Y - lowerRight.Y);
             this.searchRectangle = new Rectangle(upperLeft,new Size(width, height));
             this.lowerRight = new Point(upperLeft.X + width, upperLeft.Y + height);
             this.searchRectangle = new Rectangle(upperLeft,new Size(width,height));

@@ -32,12 +32,6 @@ namespace ProtoTest.Nightshade
             return this;
         }
 
-        public static By Image(string path)
-        {
-            return new By(path);
-        }
-
-
         public static By Image(string path, string options=null)
         {
             string endstring = string.Format("(image: \"{0}\"", path);

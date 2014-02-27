@@ -22,6 +22,15 @@ namespace ProtoTest.Nightshade
             Driver.Execute("set the ImageSearchTime to " + Config.ElementSearchTime);
         }
 
+        public void ConnectToHost1()
+        {
+            Driver.Connect(Config.Hosts[0]);
+        }
+        public void ConnectToHost2()
+        {
+            Driver.Connect(Config.Hosts[1]);
+        }
+
         [FixtureSetUp]
         public void FixtureSetup()
         {

@@ -23,12 +23,28 @@ namespace ProtoTest.Nightshade
 
             }
 
+            [Test]
+            public void TestScreenRectangle()
+            {
+                ConnectToHost1();
+                var rect = Driver.GetScreenRectangle();
+                DiagnosticLog.WriteLine("The rect is : " + rect.width + " x " + rect.height);
+            }
 
+
+            [Test]
+            public void TestConnectionInfo()
+            {
+                ConnectToHost1();
+                var info = Driver.GetConnectionInfo();
+                DiagnosticLog.WriteLine(info);
+            }
 
             [Test]
             public void TestElementSearchRectangle()
             {
-                EggplantElement element = new EggplantElement(By.Image("MC659B/System/StartMenu/ExitButton").InRectangle(new SearchRectangle(new Point(12,13),new Point(13,15))));
+                ConnectToHost1();
+                EggplantElement element = new EggplantElement(By.Image("MC659B/System/StartMenu/ExitButton").InRectangle(SearchRectangle.BottomQuarter));
                 element.Click();
             }
 

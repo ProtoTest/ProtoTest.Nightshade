@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -116,7 +117,7 @@ namespace ProtoTest.TestRunner.Nightshade
             {
                 try
                 {
-                    DiagnosticLog.WriteLine(i + ": Trying to connect to device : " + host);
+                    DiagnosticLog.WriteLine("Trying to connect to device (" + i + ") : " + host);
                     driveService.Execute("Connect (name:\"" + host + "\")");
                     return;
                 }
@@ -162,11 +163,12 @@ namespace ProtoTest.TestRunner.Nightshade
         ///     Executes any SenseTalk command.  Full list of commands available in eggplant drive documentation.
         /// </summary>
         /// <param name="command"></param>
-        public object Execute(string command)
+        public XmlRpcStruct Execute(string command)
         {
             try
             {
                 DiagnosticLog.WriteLine("Executing command : " + command);
+                //return new object();
                 return driveService.Execute(command);
             }
             catch (Exception e)
@@ -176,6 +178,26 @@ namespace ProtoTest.TestRunner.Nightshade
                 return null;
             }
         }
+
+        /// <summary>
+        ///     Executes any SenseTalk command.  Full list of commands available in eggplant drive documentation.
+        /// </summary>
+        /// <param name="command"></param>
+        public string ExecuteAndGetOutput(string command)
+        {
+            try
+            {
+                var rpc = Execute(command);
+                return (string) rpc["Output"];
+            }
+            catch (Exception e)
+            {
+                Assert.TerminateSilently(TestOutcome.Failed,
+                    "Error caught getting output " + command + " : " + e.Message);
+                return null;
+            }
+        }
+
 
 
         /// <summary>
@@ -325,6 +347,21 @@ namespace ProtoTest.TestRunner.Nightshade
         public string ReadText(string element)
         {
             return (string) ExecuteCommand("ReadText ((\"{0}\"))", element);
+        }
+
+        public SearchRectangle GetScreenRectangle()
+        {
+            var output = ExecuteAndGetOutput("put RemoteScreenRectangle()");
+            output = output.TrimStart('(').TrimEnd("\r\n".ToCharArray()).TrimEnd(')');
+            var toks = output.Split(',');
+            Point lowerRight = new Point(int.Parse(toks[2]), int.Parse(toks[3]));
+            Point upperLeft = new Point(0,0);
+            return new SearchRectangle(upperLeft, lowerRight);
+        }
+
+        public string GetConnectionInfo()
+        {
+            return ExecuteAndGetOutput("put ConnectionInfo()");
         }
     }
 }
