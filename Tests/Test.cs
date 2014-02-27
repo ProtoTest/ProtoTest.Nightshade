@@ -14,13 +14,9 @@ namespace ProtoTest.Nightshade
             [Test]
             public void TestDriver()
             {
-                Driver.Connect(Config.Hosts[0]);
-                EggplantElement PhoneButton = new EggplantElement(By.Text("Phone"));
+                ConnectToHost1();
                 EggplantElement ExitButton = new EggplantElement(By.Image("MC659B/System/StartMenu/StartButton"));
-               // PhoneButton.Click();
                 ExitButton.Click();
-            
-
             }
 
             [Test]
@@ -30,7 +26,13 @@ namespace ProtoTest.Nightshade
                 var rect = Driver.GetScreenRectangle();
                 DiagnosticLog.WriteLine("The rect is : " + rect.width + " x " + rect.height);
             }
+            [Test]
+            public void TestHighlightRectangle()
+            {
+                ConnectToHost1();
+                Driver.HighlightRectangle(SearchRectangle.TopQuarter);
 
+            }
 
             [Test]
             public void TestConnectionInfo()
@@ -44,7 +46,10 @@ namespace ProtoTest.Nightshade
             public void TestElementSearchRectangle()
             {
                 ConnectToHost1();
+
+                EggplantElement Home = new EggplantElement(By.Text("Home").InRectangle(SearchRectangle.TopQuarter));
                 EggplantElement element = new EggplantElement(By.Image("MC659B/System/StartMenu/ExitButton").InRectangle(SearchRectangle.BottomQuarter));
+                Home.Click();
                 element.Click();
             }
 

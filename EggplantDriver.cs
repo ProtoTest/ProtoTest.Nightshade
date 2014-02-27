@@ -9,6 +9,7 @@ using CookComputing.XmlRpc;
 using Gallio.Framework;
 using Gallio.Model;
 using MbUnit.Framework;
+using OpenQA.Selenium.Remote;
 using ProtoTest.Nightshade;
 
 namespace ProtoTest.TestRunner.Nightshade
@@ -118,7 +119,8 @@ namespace ProtoTest.TestRunner.Nightshade
                 try
                 {
                     DiagnosticLog.WriteLine("Trying to connect to device (" + i + ") : " + host);
-                    driveService.Execute("Connect (name:\"" + host + "\")");
+                    Execute("Connect (ServerID:\"10.10.1.167\", Visible:\"True\")");
+                    DiagnosticLog.WriteLine("Connection established to device : " + GetConnectionInfo());
                     return;
                 }
                 catch (Exception e)
@@ -188,7 +190,8 @@ namespace ProtoTest.TestRunner.Nightshade
             try
             {
                 var rpc = Execute(command);
-                return (string) rpc["Output"];
+                var output = (string) rpc["Output"];
+                return output.TrimEnd("\r\n".ToCharArray());
             }
             catch (Exception e)
             {
@@ -330,7 +333,7 @@ namespace ProtoTest.TestRunner.Nightshade
 
         public Image GetScreenshot()
         {
-            string filePath = Directory.GetCurrentDirectory() + "Screenshot.png";
+            string filePath = Directory.GetCurrentDirectory() + "\\Screenshot.png";
             ExecuteCommand("CaptureScreen", string.Format("(Name: \"{0}\")", filePath));
             if (File.Exists(filePath))
             {
@@ -346,7 +349,7 @@ namespace ProtoTest.TestRunner.Nightshade
 
         public string ReadText(string element)
         {
-            return (string) ExecuteCommand("ReadText ((\"{0}\"))", element);
+            return ExecuteAndGetOutput(string.Format("ReadText ((\"{0}\"))", element));
         }
 
         public SearchRectangle GetScreenRectangle()
@@ -362,6 +365,13 @@ namespace ProtoTest.TestRunner.Nightshade
         public string GetConnectionInfo()
         {
             return ExecuteAndGetOutput("put ConnectionInfo()");
+        }
+
+        public void HighlightRectangle(SearchRectangle rectangle)
+        {
+                Execute(string.Format("HighlightRectangle ({0},{1},{2},{3}), (Color: Red, Duration: 30 seconds)", rectangle.upperLeft.X,
+                    rectangle.upperLeft.Y, rectangle.lowerRight.X, rectangle.lowerRight.Y));
+            EggplantTestBase.Driver.LogScreenshot();
         }
     }
 }

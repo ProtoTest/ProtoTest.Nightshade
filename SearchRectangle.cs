@@ -42,7 +42,8 @@ namespace ProtoTest.Nightshade
         {
             get
             {
-                return new SearchRectangle(new Point(0,(int) Math.Floor(FullScreen.height*.75) ), new Point(FullScreen.width, FullScreen.height));
+                int value = (int) Math.Floor(FullScreen.height*.75);
+                return new SearchRectangle(new Point(0, value), new Point(FullScreen.width, FullScreen.height));
             }
         }
 

@@ -1,9 +1,19 @@
-﻿namespace ProtoTest.Nightshade.PageObjects
+﻿using System.IO;
+
+namespace ProtoTest.Nightshade.PageObjects
 {
     public class PageObjectExample
     {
         public EggplantElement firsTElement = new EggplantElement(By.Image("path/to/element"));
-        public EggplantElement secondElement = new EggplantElement(By.Text("Text Of Element"));
+        public EggplantElement secondElement = new EggplantElement(By.Image("path/to/element"));
+
+        public enum elementStates
+        {
+            Battery,
+            Charging,
+            NotCharging,
+            LowBattery
+        };
 
         public PageObjectExample DoSomething()
         {
