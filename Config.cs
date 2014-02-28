@@ -9,13 +9,16 @@ namespace ProtoTest.Nightshade
 {
     public static class Config
     {
-        public static int ElementSearchTime = int.Parse(GetConfigValue("ElementSearchTime", "10"));
+        public static int ElementWaitSec = int.Parse(GetConfigValue("ElementWaitTime", "5"));
+        public static int ElementSearchTime = int.Parse(GetConfigValue("ElementSearchTime", "1"));
         public static string BatchFilePath = Directory.GetCurrentDirectory() + "\\StartDrive.bat";
         public static int DriveTimeoutSec = int.Parse(GetConfigValue("DriveTimeoutSec", "60"));
         public static int WaitForDriveMs = int.Parse(GetConfigValue("WaitForDriveMs", "20000"));
         public static string SuitePath = GetConfigValue("SuitePath", Common.GetCodeDirectory() + @"\Nightshade.suite");
         public static int DelayTimeMs = int.Parse(GetConfigValue("DelayTimeMs", "200"));
         public static int DevicePort = int.Parse(GetConfigValue("DevicePort", "5901"));
+        public static bool AutoCaptureScreen = IsTruthy(GetConfigValue("AutoCaptureScreen", "True"));
+        public static bool RecordVideo = IsTruthy(GetConfigValue("RecordVideo", "False"));
 
         public static List<string> Hosts
         {
@@ -51,6 +54,26 @@ namespace ProtoTest.Nightshade
             }
 
             return setting;
+        }
+        /// <summary>
+        /// Converts from string to boolean 
+        /// </summary>
+        /// <param name="truth"></param>
+        /// <returns></returns>
+        public static bool IsTruthy(string truth)
+        {
+            switch (truth)
+            {
+                case "1":
+                case "true":
+                case "True":
+                    return true;
+                case "0":
+                case "false":
+                case "False":
+                default:
+                    return false;
+            }
         }
 
         /// <summary>

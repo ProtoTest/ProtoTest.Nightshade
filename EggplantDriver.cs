@@ -47,6 +47,7 @@ namespace ProtoTest.TestRunner.Nightshade
             {
                 DiagnosticLog.WriteLine("Starting Eggplant Drive using batch file : " + batchPath);
                 Process cmdProcess = Common.ExecuteBatchFile(batchPath);
+                driveRunning = true; 
                 return cmdProcess;
             }
             catch (Exception e)
@@ -58,7 +59,7 @@ namespace ProtoTest.TestRunner.Nightshade
 
         public void WaitForDriveToLoad(int waitForDriveMs)
         {
-            for (int i = 1000; i < waitForDriveMs; i = i + 1000)
+            for (int i = 0; i < waitForDriveMs; i = i + 1000)
             {
                 try
                 {
@@ -68,8 +69,8 @@ namespace ProtoTest.TestRunner.Nightshade
                 }
                 catch (Exception e)
                 {
-                    // DiagnosticLog.WriteLine("Waiting for drive : " + i + " " +  e.Message);
-                    Thread.Sleep(1000);
+                     //DiagnosticLog.WriteLine("Waiting for drive : " + i + " " +  e.Message);
+                   // Thread.Sleep(1000);
                 }
             }
             Assert.TerminateSilently(TestOutcome.Failed,
@@ -113,26 +114,23 @@ namespace ProtoTest.TestRunner.Nightshade
         /// <param name="host"></param>
         public void Connect(string host)
         {
-            var msg = "";
             for (var i = 1; i <= 5; i++)
             {
                 try
                 {
                     DiagnosticLog.WriteLine("Trying to connect to device (" + i + ") : " + host);
-                    Execute("Connect (ServerID:\"10.10.1.167\", Visible:\"True\")");
+                    Execute(string.Format("Connect (ServerID:\"{0}\", PortNum:\"{1}\")",host,Config.DevicePort));
                     DiagnosticLog.WriteLine("Connection established to device : " + GetConnectionInfo());
                     return;
                 }
                 catch (Exception e)
                 {
-                    msg = e.Message;
+                    DiagnosticLog.WriteLine("Could not connect, retrying : " + e.Message);
                 }
                 
             }
             Assert.TerminateSilently(TestOutcome.Failed,
-                       "Error caught connecting to device.  Check the internet connection and try connecting via Eggplant GUI : " +
-                       host + " : " + msg);
-            
+                "Error caught connecting to device.  Check the internet connection and try connecting via Eggplant GUI : " + host);
         }
 
         /// <summary>
@@ -169,7 +167,7 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             try
             {
-                DiagnosticLog.WriteLine("Executing command : " + command);
+                DiagnosticLog.WriteLine(string.Format("({0}): Executing command: {1}",DateTime.Now.ToString("H:mm:ss:FFF"),command));
                 //return new object();
                 return driveService.Execute(command);
             }
@@ -288,7 +286,7 @@ namespace ProtoTest.TestRunner.Nightshade
 
         public void WaitFor(string element)
         {
-            ExecuteCommand("WaitFor", element);
+            ExecuteCommand("WaitFor " + Config.ElementWaitSec + ",", element);
         }
 
         public void WaitFor(string element, string timeoutSec)
@@ -303,7 +301,8 @@ namespace ProtoTest.TestRunner.Nightshade
 
         public bool IsPresent(string element)
         {
-            return (bool)ExecuteCommand("ImageFound", element);
+            var output = ExecuteAndGetOutput(string.Format("put ImageFound {0}", element));
+            return output.Contains("True");
         }
 
         public void Type(string text)
@@ -333,13 +332,22 @@ namespace ProtoTest.TestRunner.Nightshade
 
         public Image GetScreenshot()
         {
-            string filePath = Directory.GetCurrentDirectory() + "\\Screenshot.png";
-            ExecuteCommand("CaptureScreen", string.Format("(Name: \"{0}\")", filePath));
-            if (File.Exists(filePath))
+            string filePath = string.Format("{0}\\Screenshots\\{1}.png", Directory.GetCurrentDirectory(), DateTime.Now.ToString("FFFF"));
+            try
             {
-                return Image.FromFile(filePath);
+                ExecuteCommand("CaptureScreen", string.Format("(Name: \"{0}\")", filePath));
+                using (Image image = Image.FromFile(filePath))
+                {
+                    return image;    
+                }
+                
+
             }
-            return Capture.Screenshot();
+            catch (Exception e)
+            {
+                DiagnosticLog.WriteLine("Error capturing image : " + e.Message);              
+            }
+            return null;
         }
 
         public void LogScreenshot()
@@ -367,11 +375,22 @@ namespace ProtoTest.TestRunner.Nightshade
             return ExecuteAndGetOutput("put ConnectionInfo()");
         }
 
-        public void HighlightRectangle(SearchRectangle rectangle)
+        public string GetOptions()
         {
-                Execute(string.Format("HighlightRectangle ({0},{1},{2},{3}), (Color: Red, Duration: 30 seconds)", rectangle.upperLeft.X,
-                    rectangle.upperLeft.Y, rectangle.lowerRight.X, rectangle.lowerRight.Y));
-            EggplantTestBase.Driver.LogScreenshot();
+            var output = ExecuteAndGetOutput("put getOptions()");
+            return output;
+        }
+
+        public string GetOption(string option)
+        {
+            var output = ExecuteAndGetOutput(string.Format("put getOption({0})",option));
+            return output;
+        }
+
+        public string SetOption(string option,string value)
+        {
+            var output = ExecuteAndGetOutput(string.Format("set the {0} to {1}",option,value));
+            return output;
         }
     }
 }

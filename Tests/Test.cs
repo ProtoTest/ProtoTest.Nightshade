@@ -11,12 +11,20 @@ namespace ProtoTest.Nightshade
 {
     public class Test : EggplantTestBase
         {
+
             [Test]
             public void TestDriver()
             {
-                ConnectToHost1();
-                EggplantElement ExitButton = new EggplantElement(By.Image("MC659B/System/StartMenu/StartButton"));
-                ExitButton.Click();
+                EggplantElement StartButton = new EggplantElement(By.Image("MC659B/System/StartMenu/StartButton").InRectangle(SearchRectangle.BottomQuarter));
+                EggplantElement ContactsButton = new EggplantElement(By.Text("Contacts").InRectangle(SearchRectangle.MiddleHalf));
+                EggplantElement CloseButton = new EggplantElement(By.Image("MC659B/System/StartMenu/ExitButton").InRectangle(SearchRectangle.BottomQuarter));
+                if(!ContactsButton.IsPresent())
+                    StartButton.Click();
+                ContactsButton.WaitForNotPresent().Click();
+                CloseButton.Click();
+                StartButton.Click();
+                CloseButton.Click();
+
             }
 
             [Test]
@@ -27,11 +35,11 @@ namespace ProtoTest.Nightshade
                 DiagnosticLog.WriteLine("The rect is : " + rect.width + " x " + rect.height);
             }
             [Test]
-            public void TestHighlightRectangle()
+            public void TestGetOptions()
             {
                 ConnectToHost1();
-                Driver.HighlightRectangle(SearchRectangle.TopQuarter);
-
+                DiagnosticLog.WriteLine(Driver.GetOptions());
+                DiagnosticLog.WriteLine(Driver.GetOption("ImageSearchTime"));
             }
 
             [Test]

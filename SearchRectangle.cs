@@ -30,7 +30,10 @@ namespace ProtoTest.Nightshade
 
         public static SearchRectangle MiddleHalf
         {
-            get { return new SearchRectangle(new Point(0, (int)Math.Floor(FullScreen.height * .25)), new Point(FullScreen.width, (int)Math.Floor(FullScreen.height * .75))); }
+            get
+            {
+                var value = (int) Math.Floor(FullScreen.height*.25);
+                return new SearchRectangle(new Point(0, value), new Point(FullScreen.width, (int)Math.Floor(FullScreen.height * .75))); }
         }
 
         public static SearchRectangle TopQuarter
@@ -50,6 +53,7 @@ namespace ProtoTest.Nightshade
         public SearchRectangle(Rectangle rectangle)
         {
             this.searchRectangle = rectangle;
+
             this.upperLeft = rectangle.Location;
             this.width = upperLeft.X - lowerRight.X;
             this.height = upperLeft.Y - lowerRight.Y;
@@ -58,13 +62,12 @@ namespace ProtoTest.Nightshade
 
         public SearchRectangle(Point upperLeft, Point lowerRight)
         {
+            this.upperLeft = upperLeft;
+            this.lowerRight = lowerRight;
             this.width = Math.Abs(upperLeft.X - lowerRight.X);
             this.height = Math.Abs(upperLeft.Y - lowerRight.Y);
-            this.searchRectangle = new Rectangle(upperLeft,new Size(width, height));
-            this.lowerRight = new Point(upperLeft.X + width, upperLeft.Y + height);
-            this.searchRectangle = new Rectangle(upperLeft,new Size(width,height));
+            this.searchRectangle = new Rectangle(upperLeft, new Size(width, height));
         }
-
         
     }
 }

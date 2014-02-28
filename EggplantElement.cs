@@ -1,5 +1,8 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Threading;
+using Gallio.Model;
+using MbUnit.Framework;
 using ProtoTest.TestRunner.Nightshade;
 
 namespace ProtoTest.Nightshade
@@ -16,10 +19,13 @@ namespace ProtoTest.Nightshade
         public static EggplantDriver Driver
         {
             get
-            {
-                Thread.Sleep(Config.DelayTimeMs); 
-                return EggplantTestBase.Driver; }
+            {return EggplantTestBase.Driver; }
             set { EggplantTestBase.Driver = value; }
+        }
+
+        public bool IsPresent()
+        {
+            return Driver.IsPresent(locator);
         }
 
         public EggplantElement Click()
@@ -37,14 +43,41 @@ namespace ProtoTest.Nightshade
 
         public EggplantElement WaitForPresent()
         {
-            Driver.WaitFor(locator);
-            return this;
+            var now = DateTime.Now;
+            var endTime = DateTime.Now.AddSeconds(Config.ElementWaitSec);
+            while(now<endTime)
+            {
+                if (Driver.IsPresent(locator))
+                {
+                    return this;
+                }
+                else
+                {
+                    now = DateTime.Now;
+                }
+            }
+            throw new Exception(string.Format("Element was not present after {0} seconds", Config.ElementWaitSec));
+
         }
 
 
 
-        public void WaitForNotPresent()
+        public EggplantElement WaitForNotPresent()
         {
+            var timer = Config.ElementSearchTime * 1000;
+            for (var i = 0; i < Config.ElementWaitSec * 1000; i = i + timer)
+            {
+                if (!Driver.IsPresent(locator))
+                {
+                    return this;
+                }
+                else
+                {
+                    Thread.Sleep(1000);
+                }
+            }
+            throw new Exception(string.Format("Element was still present after {0} seconds", Config.ElementWaitSec));
+
         }
     }
 }

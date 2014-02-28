@@ -21,7 +21,7 @@ namespace ProtoTest.Nightshade
         public By InRectangle(SearchRectangle rectangle)
         {
             this.locator = this.locator.TrimEnd(')');
-            this.locator += string.Format(", SearchRectangle: (({0},{1}),({2},{3})))",rectangle.upperLeft.X,rectangle.upperLeft.Y,rectangle.lowerRight.X,rectangle.lowerRight.Y);
+            locator += string.Format(", SearchRectangle: (({0},{1}),({2},{3})))",rectangle.upperLeft.X,rectangle.upperLeft.Y,rectangle.lowerRight.X,rectangle.lowerRight.Y);
             return this;
         }
 

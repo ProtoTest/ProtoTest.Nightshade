@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -13,11 +14,13 @@ namespace ProtoTest.Nightshade
 {
     class BackgroundVideoRecorder
     {
-        public BackgroundWorker bgWorker;
+        public BackgroundWorker writer;
+        public BackgroundWorker reader;
         public Video video;
         public Size screensize;
         public int fps;
         public int frameDelayMs;
+        private Bitmap lastFrame;
         
         public BackgroundVideoRecorder(int fps)
         {
@@ -25,26 +28,65 @@ namespace ProtoTest.Nightshade
             this.frameDelayMs = 1000/fps;
             screensize = EggplantTestBase.Driver.GetScreenshot().Size;
             video = new FlashScreenVideo(new FlashScreenVideoParameters(screensize.Width, screensize.Height, fps));
-           bgWorker = new BackgroundWorker();
-           bgWorker.DoWork += bgWorker_DoWork;
-            bgWorker.WorkerSupportsCancellation = true;
-            bgWorker.RunWorkerAsync();
+           reader = new BackgroundWorker();
+           reader.DoWork += ReaderDoWork;
+            writer = new BackgroundWorker();
+            writer.DoWork += writer_DoWork;
+            reader.WorkerSupportsCancellation = true;
+            writer.WorkerSupportsCancellation = true;
+
         }
 
-        void stop()
+
+
+
+        public void Start()
         {
-            bgWorker.CancelAsync();
+            DiagnosticLog.WriteLine("Starting recording");
+            reader.RunWorkerAsync();
+            writer.RunWorkerAsync();
         }
 
-        void bgWorker_DoWork(object sender, DoWorkEventArgs e)
+        public void Stop()
         {
-            while (!bgWorker.CancellationPending)
+            DiagnosticLog.WriteLine("Video had " + video.FrameCount + " Frames");
+            reader.CancelAsync();
+            writer.CancelAsync();
+        }
+
+        void ReaderDoWork(object sender, DoWorkEventArgs e)
+        {
+            while (!reader.CancellationPending)
             {
-                video.AddFrame(new BitmapVideoFrame(new Bitmap(EggplantTestBase.Driver.GetScreenshot())));
-
+                ReadFrame();
                 Thread.Sleep(frameDelayMs);    
             }
-            
+           
+        }
+
+        void writer_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (!writer.CancellationPending)
+            {
+                WriteFrame();
+                Thread.Sleep(frameDelayMs);
+            }
+        }
+
+        private void ReadFrame()
+        {
+            var newFrame = new Bitmap(EggplantTestBase.Driver.GetScreenshot());
+            if (newFrame != null)
+            {
+                lastFrame = newFrame;
+            }
+        }
+
+        private void WriteFrame()
+        {
+            if (lastFrame != null)
+                video.AddFrame(new BitmapVideoFrame(lastFrame));
+
         }
     }
 }
