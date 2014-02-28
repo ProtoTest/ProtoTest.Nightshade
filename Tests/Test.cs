@@ -20,7 +20,7 @@ namespace ProtoTest.Nightshade
                 EggplantElement CloseButton = new EggplantElement(By.Image("MC659B/System/StartMenu/ExitButton"));
                 if(!ContactsButton.IsPresent())
                     StartButton.Click();
-                ContactsButton.WaitForPresent().Click();
+                ContactsButton.Click();
                 CloseButton.Click();
                 StartButton.Click();
                 CloseButton.Click();

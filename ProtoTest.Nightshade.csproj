@@ -64,7 +64,7 @@
     <Compile Include="EggplantDynamicTestFactory.cs" />
     <Compile Include="EggplantElement.cs" />
     <Compile Include="EggPlantScript.cs" />
-    <Compile Include="EggplantTestbase.cs" />
+    <Compile Include="EggplantTestBase.cs" />
     <Compile Include="IEggplantDriveService.cs" />
     <Compile Include="By.cs" />
     <Compile Include="PageObjects\MC659B\System\NotificationsBar.cs" />
@@ -75,6 +75,7 @@
     <Compile Include="SearchRectangle.cs" />
     <Compile Include="Tests\Experiments.cs" />
     <Compile Include="Tests\Test.cs" />
+    <Compile Include="VerificationErrors.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TestConfig_Stability.xml">

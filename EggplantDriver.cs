@@ -166,7 +166,11 @@ namespace ProtoTest.TestRunner.Nightshade
         /// <param name="command"></param>
         public XmlRpcStruct Execute(string command)
         {
-            DiagnosticLog.WriteLine(string.Format("({0}): Executing command: {1}",DateTime.Now.ToString("H:mm:ss:FFF"),command));
+            if (Config.LogDriveCommands)
+            {
+                EggplantTestBase.Log(string.Format("Executing command: {0}", command));    
+            }
+            
             //return new object();
             return driveService.Execute(command);
         }

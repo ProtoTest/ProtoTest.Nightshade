@@ -1,7 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using Gallio.Framework;
 using Gallio.Framework.Pattern;
+using Gallio.Model;
 using MbUnit.Framework;
 using ProtoTest.TestRunner.Nightshade;
 
@@ -64,9 +66,12 @@ namespace ProtoTest.Nightshade
 
         public static void Log(string message)
         {
+            message = string.Format("({0}): {1}", DateTime.Now.ToString("H:mm:ss:FFF"), message);
             TestLog.WriteLine(message);
             DiagnosticLog.WriteLine(message);
         }
+
+
 
         [FixtureSetUp]
         public void FixtureSetup()
@@ -82,12 +87,33 @@ namespace ProtoTest.Nightshade
            // StartVideoRecording();
         }
 
-        [TearDown]
+        [FixtureTearDown]
         public void FixtureTeardown()
         {
-            Thread.Sleep(1000);
+
             EggPlantDriveProcess.CloseMainWindow();
-            //Driver.StopEggPlantDrive();
+            EggPlantDriveProcess.WaitForExit();
+            Driver.StopEggPlantDrive();
+        }
+
+        [TearDown]
+        public void Teardown()
+        {
+            Thread.Sleep(1000);
+            LogScreenshotOnError();
+            //StopVideoRecording();
+        }
+
+        private void LogScreenshotOnError()
+        {
+            if (TestContext.CurrentContext.Outcome != TestOutcome.Passed)
+            {
+                var screenshot = Driver.GetScreenshot();
+                if (screenshot != null) ;
+                {
+                    TestLog.Failures.EmbedImage(null, screenshot);
+                }
+            }
         }
     }
 }
