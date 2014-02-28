@@ -11,6 +11,7 @@ namespace ProtoTest.Nightshade
 
         private BackgroundVideoRecorder recorder;
         public static EggplantDriver _Driver;
+
         public static EggplantDriver Driver
         {
             get
@@ -21,7 +22,6 @@ namespace ProtoTest.Nightshade
             set { _Driver = value; }
         }
 
- 
         public void SetDefaultSearchTime()
         {
             Driver.Execute("set the ImageSearchTime to " + Config.ElementSearchTime);
@@ -34,6 +34,7 @@ namespace ProtoTest.Nightshade
             Driver.Connect(Config.Hosts[0]);
    
         }
+
         public void ConnectToHost2()
         {
             Driver.Connect(Config.Hosts[1]);
@@ -60,13 +61,11 @@ namespace ProtoTest.Nightshade
             
         }
 
-        public void Log(string message)
+        public static void Log(string message)
         {
             TestLog.WriteLine(message);
             DiagnosticLog.WriteLine(message);
         }
-
-
 
         [FixtureSetUp]
         public void FixtureSetup()

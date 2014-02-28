@@ -1,11 +1,11 @@
 ﻿using System.Drawing;
+using MbUnit.Framework;
 using Gallio.Runtime.Loader;
 
 namespace ProtoTest.Nightshade
 {
-    public class By
+    public class By : EggplantTestBase
     {
-        
         private string locator;
 
         public By(string locator)
@@ -47,6 +47,21 @@ namespace ProtoTest.Nightshade
             return new By(endstring);
         }
 
+        public static By TextAtLocation(string path)
+        {
+            string endstring = EggplantTestBase.Driver.ReadText(path);
+            if(endstring != null)
+            {
+                EggplantTestBase.Log("Text read at target location: (" + endstring + ").");
+            }
+            else
+            {
+                EggplantTestBase.Log("No text present at target location.");
+                Assert.Fail();
+            }
+            return new By(endstring);
+        }
+
         public static By Text(string text, string[] options=null)
         {
             string endstring = string.Format("(text: \"{0}\"", text);
@@ -68,5 +83,6 @@ namespace ProtoTest.Nightshade
             endstring += string.Format(", SearchRectangle:(({0},{1}),({2},{3})))", topLeft.X, topLeft.Y, bottomRight.X, bottomRight.Y);
             return new By(endstring);
         }
+
     }
 }
