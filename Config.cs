@@ -22,7 +22,7 @@ namespace ProtoTest.Nightshade
         public static bool RecordVideo = IsTruthy(GetConfigValue("RecordVideo", "False"));
         public static int ImageSearchCount = int.Parse(Config.GetConfigValue("ImageSearchCount", "1"));
         public static bool LogDriveCommands = IsTruthy(Config.GetConfigValue("LogDriveCommands", "False"));
-
+        public static int VideoFrameRate = int.Parse(Config.GetConfigValue("VideoFrameRate", "20"));
         public static List<string> Hosts
         {
             //looks in app.config for Host1, Host2....Host5.  

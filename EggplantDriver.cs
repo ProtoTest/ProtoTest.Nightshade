@@ -138,12 +138,12 @@ namespace ProtoTest.TestRunner.Nightshade
         ///     Connects to a device, must be run before any steps can be executed.
         /// </summary>
         /// <param name="host"></param>
-        public void Disconnect(string host)
+        public void Disconnect(string host="")
         {
             try
             {
                 DiagnosticLog.WriteLine("Trying to disconnect from device : " + host);
-                driveService.Execute("Disconnect (name:\"" + host + "\")");
+                driveService.Execute("Disconnect " + host);
             }
             catch (Exception e)
             {
@@ -316,23 +316,27 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             ExecuteCommand("ScrollWheelDown", num);
         }
-
-        public Image GetScreenshot()
+        
+        public Image GetScreenshot(string filePath = "")
         {
-            string filePath = string.Format("{0}\\Screenshots\\{1}.png", Directory.GetCurrentDirectory(), DateTime.Now.ToString("FFFF"));
+            if (filePath == "")
+            {
+                 filePath = string.Format("{0}\\Screenshot.png", Directory.GetCurrentDirectory());    
+            }
+            
             try
             {
                 ExecuteCommand("CaptureScreen", string.Format("(Name: \"{0}\")", filePath));
-                using (Image image = Image.FromFile(filePath))
+                Image image = null;
+                using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                 {
-                    return image;    
+                   image = Image.FromStream(fs);
                 }
-                
-
+                return image;
             }
             catch (Exception e)
             {
-                DiagnosticLog.WriteLine("Error capturing image : " + e.Message);              
+                DiagnosticLog.WriteLine("Error capturing image : " + e.Message);
             }
             return null;
         }

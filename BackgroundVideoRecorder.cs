@@ -12,8 +12,9 @@ using ProtoTest.TestRunner.Nightshade;
 
 namespace ProtoTest.Nightshade
 {
-    class BackgroundVideoRecorder
+    class BackgroundVideoRecorder : IDisposable
     {
+        public static string ScreenshotDirectory = Directory.GetCurrentDirectory() + "\\Screenshots";
         public BackgroundWorker writer;
         public BackgroundWorker reader;
         public Video video;
@@ -24,17 +25,19 @@ namespace ProtoTest.Nightshade
         
         public BackgroundVideoRecorder(int fps)
         {
+            ClearScreenshots();
             this.fps = fps;
             this.frameDelayMs = 1000/fps;
-            screensize = EggplantTestBase.Driver.GetScreenshot().Size;
+            var image = EggplantTestBase.Driver.GetScreenshot();
+            screensize = image.Size;
             video = new FlashScreenVideo(new FlashScreenVideoParameters(screensize.Width, screensize.Height, fps));
-           reader = new BackgroundWorker();
-           reader.DoWork += ReaderDoWork;
+            reader = new BackgroundWorker();
+            reader.DoWork += ReaderDoWork;
             writer = new BackgroundWorker();
             writer.DoWork += writer_DoWork;
             reader.WorkerSupportsCancellation = true;
-            writer.WorkerSupportsCancellation = true;
-
+            writer.WorkerSupportsCancellation = true;  
+            
         }
 
 
@@ -42,9 +45,17 @@ namespace ProtoTest.Nightshade
 
         public void Start()
         {
-            DiagnosticLog.WriteLine("Starting recording");
+            ClearScreenshots();
+            EggplantTestBase.Log("Starting recording");
             reader.RunWorkerAsync();
             writer.RunWorkerAsync();
+        }
+
+        private void ClearScreenshots()
+        {
+            if(Directory.Exists(ScreenshotDirectory))
+                Directory.Delete(ScreenshotDirectory,true);
+            Directory.CreateDirectory(ScreenshotDirectory);
         }
 
         public void Stop()
@@ -52,6 +63,8 @@ namespace ProtoTest.Nightshade
             DiagnosticLog.WriteLine("Video had " + video.FrameCount + " Frames");
             reader.CancelAsync();
             writer.CancelAsync();
+            reader.Dispose();
+            writer.Dispose();
         }
 
         void ReaderDoWork(object sender, DoWorkEventArgs e)
@@ -75,18 +88,28 @@ namespace ProtoTest.Nightshade
 
         private void ReadFrame()
         {
-            var newFrame = new Bitmap(EggplantTestBase.Driver.GetScreenshot());
+            var newFrame = new Bitmap(EggplantTestBase.Driver.GetScreenshot(string.Format("{0}\\Screenshot_{1}.png", ScreenshotDirectory, DateTime.Now.ToString("FFFF"))));
             if (newFrame != null)
             {
-                lastFrame = newFrame;
+                   lastFrame = newFrame;
             }
         }
 
         private void WriteFrame()
         {
             if (lastFrame != null)
-                video.AddFrame(new BitmapVideoFrame(lastFrame));
+            {
+                 video.AddFrame(new BitmapVideoFrame(lastFrame));
+            }
+              
 
+        }
+
+        public void Dispose()
+        {
+            lastFrame = null;
+            reader.Dispose();
+            writer.Dispose();
         }
     }
 }

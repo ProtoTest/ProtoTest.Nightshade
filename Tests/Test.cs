@@ -78,13 +78,9 @@ namespace ProtoTest.Nightshade
             [Test]
             public void TestTwoHosts()
             {
-                Driver.Connect(Config.Hosts[0]);
-                Driver.Disconnect(Config.Hosts[0]);
-                Driver.Connect(Config.Hosts[1]);
-                Driver.Click(@"\path\to\image");
-                Driver.Disconnect(Config.Hosts[0]);
-                Driver.Connect(Config.Hosts[1]);
-                Driver.Click(@"\path\to\image");
+                Driver.Disconnect();
+                ConnectToHost2();
+
             }
 
             [Test]

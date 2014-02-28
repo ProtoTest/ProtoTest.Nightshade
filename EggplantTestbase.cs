@@ -48,7 +48,7 @@ namespace ProtoTest.Nightshade
         {
             if (Config.RecordVideo)
             {
-                recorder = new BackgroundVideoRecorder(20);
+                recorder = new BackgroundVideoRecorder(Config.VideoFrameRate);
                 recorder.Start();    
             }
             
@@ -59,6 +59,8 @@ namespace ProtoTest.Nightshade
             if (Config.RecordVideo)
             {
                 recorder.Stop();
+                recorder.Dispose();
+                Thread.Sleep(1000);
                 TestLog.EmbedVideo(TestStep.CurrentStep.FullName + "_Video", recorder.video);    
             }
             
@@ -69,39 +71,6 @@ namespace ProtoTest.Nightshade
             message = string.Format("({0}): {1}", DateTime.Now.ToString("H:mm:ss:FFF"), message);
             TestLog.WriteLine(message);
             DiagnosticLog.WriteLine(message);
-        }
-
-
-
-        [FixtureSetUp]
-        public void FixtureSetup()
-        {
-            Config.BatchFilePath = Common.CreateBatchFile();
-            TestAssemblyExecutionParameters.DefaultTestCaseTimeout = null;
-            Driver = new EggplantDriver(Config.DriveTimeoutSec*1000);
-            Driver.StopEggPlantDrive();
-            EggPlantDriveProcess = Driver.StartEggPlantDrive(Config.BatchFilePath, Config.WaitForDriveMs);
-            Driver.WaitForDriveToLoad(Config.WaitForDriveMs);
-            SetDefaultSearchTime();
-            ConnectToHost1();
-           // StartVideoRecording();
-        }
-
-        [FixtureTearDown]
-        public void FixtureTeardown()
-        {
-
-            EggPlantDriveProcess.CloseMainWindow();
-            EggPlantDriveProcess.WaitForExit();
-            Driver.StopEggPlantDrive();
-        }
-
-        [TearDown]
-        public void Teardown()
-        {
-            Thread.Sleep(1000);
-            LogScreenshotOnError();
-            //StopVideoRecording();
         }
 
         private void LogScreenshotOnError()
@@ -115,5 +84,43 @@ namespace ProtoTest.Nightshade
                 }
             }
         }
+
+        [FixtureSetUp]
+        public void FixtureSetup()
+        {
+            Config.BatchFilePath = Common.CreateBatchFile();
+            TestAssemblyExecutionParameters.DefaultTestCaseTimeout = null;
+            Driver = new EggplantDriver(Config.DriveTimeoutSec*1000);
+            Driver.StopEggPlantDrive();
+            EggPlantDriveProcess = Driver.StartEggPlantDrive(Config.BatchFilePath, Config.WaitForDriveMs);
+            Driver.WaitForDriveToLoad(Config.WaitForDriveMs);
+            SetDefaultSearchTime();
+        }
+
+        [FixtureTearDown]
+        public void FixtureTeardown()
+        {
+
+            EggPlantDriveProcess.CloseMainWindow();
+            EggPlantDriveProcess.WaitForExit();
+            Driver.StopEggPlantDrive();
+        }
+
+        [SetUp]
+        public void SetUp()
+        {
+            ConnectToHost1();
+            StartVideoRecording();   
+        }
+
+        [TearDown]
+        public void Teardown()
+        {
+            Thread.Sleep(1000);
+            LogScreenshotOnError();
+            StopVideoRecording();
+        }
+
+
     }
 }
