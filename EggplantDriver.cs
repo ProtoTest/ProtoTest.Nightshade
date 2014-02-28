@@ -69,7 +69,7 @@ namespace ProtoTest.TestRunner.Nightshade
                 }
                 catch (Exception e)
                 {
-                     //DiagnosticLog.WriteLine("Waiting for drive : " + i + " " +  e.Message);
+                     DiagnosticLog.WriteLine("Waiting for drive : " +  e.Message);
                    // Thread.Sleep(1000);
                 }
             }
@@ -87,6 +87,7 @@ namespace ProtoTest.TestRunner.Nightshade
             {
                 //DiagnosticLog.WriteLine("Trying to stop Eggplant Drive");
                 Common.KillProcess("Eggplant");
+                Common.KillProcess("adb");
                 driveRunning = false;
             }
             catch (Exception e)
@@ -165,18 +166,9 @@ namespace ProtoTest.TestRunner.Nightshade
         /// <param name="command"></param>
         public XmlRpcStruct Execute(string command)
         {
-            try
-            {
-                DiagnosticLog.WriteLine(string.Format("({0}): Executing command: {1}",DateTime.Now.ToString("H:mm:ss:FFF"),command));
-                //return new object();
-                return driveService.Execute(command);
-            }
-            catch (Exception e)
-            {
-                Assert.TerminateSilently(TestOutcome.Failed,
-                    "Error caught executing command " + command + " : " + e.Message);
-                return null;
-            }
+            DiagnosticLog.WriteLine(string.Format("({0}): Executing command: {1}",DateTime.Now.ToString("H:mm:ss:FFF"),command));
+            //return new object();
+            return driveService.Execute(command);
         }
 
         /// <summary>
@@ -185,18 +177,9 @@ namespace ProtoTest.TestRunner.Nightshade
         /// <param name="command"></param>
         public string ExecuteAndGetOutput(string command)
         {
-            try
-            {
-                var rpc = Execute(command);
-                var output = (string) rpc["Output"];
-                return output.TrimEnd("\r\n".ToCharArray());
-            }
-            catch (Exception e)
-            {
-                Assert.TerminateSilently(TestOutcome.Failed,
-                    "Error caught getting output " + command + " : " + e.Message);
-                return null;
-            }
+            var rpc = Execute(command);
+            var output = (string) rpc["Output"];
+            return output.TrimEnd("\r\n".ToCharArray());
         }
 
 

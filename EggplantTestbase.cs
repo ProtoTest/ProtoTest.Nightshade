@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Diagnostics;
+using System.Threading;
 using Gallio.Framework;
 using Gallio.Framework.Pattern;
 using MbUnit.Framework;
@@ -8,7 +9,7 @@ namespace ProtoTest.Nightshade
 {
     public class EggplantTestBase
     {
-
+        private Process EggPlantDriveProcess;
         private BackgroundVideoRecorder recorder;
         public static EggplantDriver _Driver;
         public static EggplantDriver Driver
@@ -25,7 +26,7 @@ namespace ProtoTest.Nightshade
         public void SetDefaultSearchTime()
         {
             Driver.Execute("set the ImageSearchTime to " + Config.ElementSearchTime);
-            Driver.Execute("set the ImageSearchCount to 1");
+            Driver.Execute("set the ImageSearchCount to " + Config.ImageSearchCount);
 
         }
 
@@ -75,7 +76,7 @@ namespace ProtoTest.Nightshade
             TestAssemblyExecutionParameters.DefaultTestCaseTimeout = null;
             Driver = new EggplantDriver(Config.DriveTimeoutSec*1000);
             Driver.StopEggPlantDrive();
-            Driver.StartEggPlantDrive(Config.BatchFilePath, Config.WaitForDriveMs);
+            EggPlantDriveProcess = Driver.StartEggPlantDrive(Config.BatchFilePath, Config.WaitForDriveMs);
             Driver.WaitForDriveToLoad(Config.WaitForDriveMs);
             SetDefaultSearchTime();
             ConnectToHost1();
@@ -86,8 +87,8 @@ namespace ProtoTest.Nightshade
         public void FixtureTeardown()
         {
             Thread.Sleep(1000);
-           // StopVideoRecording();
-            Driver.StopEggPlantDrive();
+            EggPlantDriveProcess.CloseMainWindow();
+            //Driver.StopEggPlantDrive();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace ProtoTest.Nightshade
     public static class Config
     {
         public static int ElementWaitSec = int.Parse(GetConfigValue("ElementWaitTime", "5"));
-        public static int ElementSearchTime = int.Parse(GetConfigValue("ElementSearchTime", "1"));
+        public static int ElementSearchTime = int.Parse(GetConfigValue("ElementSearchTime", "5"));
         public static string BatchFilePath = Directory.GetCurrentDirectory() + "\\StartDrive.bat";
         public static int DriveTimeoutSec = int.Parse(GetConfigValue("DriveTimeoutSec", "60"));
         public static int WaitForDriveMs = int.Parse(GetConfigValue("WaitForDriveMs", "20000"));
@@ -19,7 +19,7 @@ namespace ProtoTest.Nightshade
         public static int DevicePort = int.Parse(GetConfigValue("DevicePort", "5901"));
         public static bool AutoCaptureScreen = IsTruthy(GetConfigValue("AutoCaptureScreen", "True"));
         public static bool RecordVideo = IsTruthy(GetConfigValue("RecordVideo", "False"));
-
+        public static int ImageSearchCount = int.Parse(Config.GetConfigValue("ImageSearchCount", "1"));
         public static List<string> Hosts
         {
             //looks in app.config for Host1, Host2....Host5.  

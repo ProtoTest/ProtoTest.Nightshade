@@ -15,12 +15,12 @@ namespace ProtoTest.Nightshade
             [Test]
             public void TestDriver()
             {
-                EggplantElement StartButton = new EggplantElement(By.Image("MC659B/System/StartMenu/StartButton").InRectangle(SearchRectangle.BottomQuarter));
-                EggplantElement ContactsButton = new EggplantElement(By.Text("Contacts").InRectangle(SearchRectangle.MiddleHalf));
-                EggplantElement CloseButton = new EggplantElement(By.Image("MC659B/System/StartMenu/ExitButton").InRectangle(SearchRectangle.BottomQuarter));
+                EggplantElement StartButton = new EggplantElement(By.Image("MC659B/System/StartMenu/StartButton"));
+                EggplantElement ContactsButton = new EggplantElement(By.Text("Contacts"));
+                EggplantElement CloseButton = new EggplantElement(By.Image("MC659B/System/StartMenu/ExitButton"));
                 if(!ContactsButton.IsPresent())
                     StartButton.Click();
-                ContactsButton.WaitForNotPresent().Click();
+                ContactsButton.WaitForPresent().Click();
                 CloseButton.Click();
                 StartButton.Click();
                 CloseButton.Click();

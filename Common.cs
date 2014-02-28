@@ -42,7 +42,7 @@ namespace ProtoTest.TestRunner.Nightshade
         public static Process ExecuteBatchFile(string filePath)
         {
             if (!File.Exists(filePath))
-                Assert.TerminateSilently(TestOutcome.Failed, "Could not find batch file to execute : " + filePath);
+                throw new FileNotFoundException("Could not find batch file to execute : " + filePath);
             return Process.Start(filePath);
         }
 

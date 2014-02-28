@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Threading;
+using Gallio.Framework;
 using Gallio.Model;
 using MbUnit.Framework;
 using ProtoTest.TestRunner.Nightshade;
@@ -53,6 +54,7 @@ namespace ProtoTest.Nightshade
                 }
                 else
                 {
+                    DiagnosticLog.WriteLine("Waiting for present");
                     now = DateTime.Now;
                 }
             }
@@ -64,8 +66,9 @@ namespace ProtoTest.Nightshade
 
         public EggplantElement WaitForNotPresent()
         {
-            var timer = Config.ElementSearchTime * 1000;
-            for (var i = 0; i < Config.ElementWaitSec * 1000; i = i + timer)
+            var now = DateTime.Now;
+            var endTime = DateTime.Now.AddSeconds(Config.ElementWaitSec);
+            while (now < endTime)
             {
                 if (!Driver.IsPresent(locator))
                 {
@@ -73,7 +76,8 @@ namespace ProtoTest.Nightshade
                 }
                 else
                 {
-                    Thread.Sleep(1000);
+                    DiagnosticLog.WriteLine("Waiting for not present");
+                    now = DateTime.Now;
                 }
             }
             throw new Exception(string.Format("Element was still present after {0} seconds", Config.ElementWaitSec));
