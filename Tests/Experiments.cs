@@ -15,7 +15,7 @@ namespace ProtoTest.Nightshade.Tests
         public void TestNotificationBar()
         {
             ConnectToHost2();
-            var Test = new PageObjects.MC659B.System.NotificationsBar();
+            var Test = new PageObjects.DeviceAssets.System.NotificationsBar();
             Test.VerifyElements();
         }
     }

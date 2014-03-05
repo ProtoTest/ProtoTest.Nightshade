@@ -10,6 +10,7 @@ namespace ProtoTest.Nightshade
 {
     public static class Config
     {
+        public static string DeviceType = GetConfigValue("DeviceType", "null");
         public static int ElementWaitSec = int.Parse(GetConfigValue("ElementWaitTime", "5"));
         public static int ElementSearchTime = int.Parse(GetConfigValue("ElementSearchTime", "1"));
         public static string BatchFilePath = Directory.GetCurrentDirectory() + "\\StartDrive.bat";

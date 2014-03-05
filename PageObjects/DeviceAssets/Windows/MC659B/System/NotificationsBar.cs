@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ProtoTest.Nightshade.PageObjects.MC659B.System
+namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 {
     public class NotificationsBar : EggplantTestBase
     {
