@@ -5,8 +5,9 @@ using Gallio.Framework;
 using Gallio.Framework.Pattern;
 using Gallio.Model;
 using MbUnit.Framework;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
+using ProtoTest.Nightshade.PageObjects.Steps.System;
 using ProtoTest.TestRunner.Nightshade;
-using ProtoTest.Nightshade.PageObjects.Interfaces;
 
 namespace ProtoTest.Nightshade
 {
@@ -24,49 +25,6 @@ namespace ProtoTest.Nightshade
                 return _Driver;
             }
             set { _Driver = value; }
-        }
-
-        public static T OpenPage<T>()
-        {
-            return (T)Activator.CreateInstance(typeof(T));
-        }
-
-        public static IHomePage OpenHomePage()
-        {
-            if (Config.DeviceType == "null")
-            {
-                throw new Exception("You must have a device type.");
-            }
-            else if (Config.DeviceType.Contains("Windows"))
-            {
-                if(Config.DeviceType.Contains("MC659B"))
-                {
-                    return new WindowsMC659BHomePage();
-                }
-                //else if()
-                else
-                {
-                    throw new Exception("Unknown windows device.  Check type formatting or add new device assets.");
-                }
-                
-            }
-            else if (Config.DeviceType.Contains("Android"))
-            {
-                if(Config.DeviceType.Contains("Shelter"))
-                {
-                    return new AndroidShelterHomePage();
-                }
-                //else if()
-                else
-                {
-                    throw new Exception("Unknown android device.  Check type formatting or add new device assets.");
-                }
-            }
-            //else if()
-            else
-            {
-                throw new Exception("Unknown device type.  Check type formatting or add new device assets.");
-            }
         }
 
         public void SetDefaultSearchTime()

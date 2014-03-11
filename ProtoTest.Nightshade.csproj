@@ -62,8 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackgroundVideoRecorder.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\HomeDesktop.cs" />
-    <Compile Include="PageObjects\Interfaces\IMenuNav.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_CalendarApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_AlarmsApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_TasksApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\Windows_MC659B_HomeDesktop.cs" />
+    <Compile Include="PageObjects\Steps\Apps\IAlarmsApp.cs" />
+    <Compile Include="PageObjects\Steps\Menu\IMenuNav.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="EggplantDriver.cs" />
@@ -73,19 +77,21 @@
     <Compile Include="EggplantTestBase.cs" />
     <Compile Include="IEggplantDriveService.cs" />
     <Compile Include="By.cs" />
-    <Compile Include="PageObjects\Interfaces\IHomePage.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Menu\StartMenu.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\NotificationsBar.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Menu\Windows_MC659B_StartMenu.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\Windows_MC659B_NotificationsBar.cs" />
     <Compile Include="PageObjects\PageObjectExample.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\StartBar.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\Windows_MC659B_StartBar.cs" />
+    <Compile Include="PageObjects\Steps\System\IHomeScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepeatOnFailureAttribute.cs" />
     <Compile Include="SearchOption.cs" />
     <Compile Include="SearchRectangle.cs" />
-    <Compile Include="Tests\Experiments.cs" />
+    <Compile Include="Command.cs" />
     <Compile Include="Tests\Test.cs" />
     <Compile Include="Tests\Windows\MC659B\TestsATT15595.cs" />
+    <Compile Include="Enhancements\Windows\MC659B\Utilities.cs" />
     <Compile Include="VerificationErrors.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Menu\Windows_MC659B_MenuNav.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TestConfig_Stability.xml">

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 {
-    public class NotificationsBar : EggplantTestBase
+    public class Windows_MC659B_NotificationsBar : EggplantTestBase
     {
         //EggplantElement ClockTime = new EggplantElement(By.TextAtLocation("MC659B/System/NotificationsBar/Clock/Time"));
         EggplantElement Battery = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Battery"));
@@ -20,7 +20,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             WifiConnected4
         }
 
-        public NotificationsBar VerifyElements()
+        public Windows_MC659B_NotificationsBar VerifyElements()
         {
             Log("Verifying Notification Bar elements.");
             Battery.VerifyPresent();

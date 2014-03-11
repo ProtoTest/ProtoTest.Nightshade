@@ -1,0 +1,18 @@
+{
+    CaptureDate = <*D2014-03-05 18:19:27 +0000>;
+    CaptureHost = "Motorola MC659B DeviceA";
+    CaptureScreenSize = (
+	<*I480>,
+	<*I640>
+    );
+    HasAlpha = <*BY>;
+    HonorAlpha = <*BY>;
+    HotSpotX = <*R121>;
+    HotSpotY = <*R15>;
+    LastKnownLocationX = <*I0>;
+    LastKnownLocationY = <*I0>;
+    OriginalLocationX = <*I149>;
+    OriginalLocationY = <*I101>;
+    Pulsing = <*BN>;
+    Scale = <*R1>;
+}

@@ -43,6 +43,14 @@ namespace ProtoTest.Nightshade
             return Driver.IsPresent(locator);
         }
 
+        public EggplantElement LogText()
+        {
+            WaitForPresent();
+            var elementText = int.Parse(Driver.ReadText(locator));
+            EggplantTestBase.Log("Text at target location is (" + elementText +").");
+            return this;
+        }
+
         public EggplantElement Click()
         {
             WaitForPresent();

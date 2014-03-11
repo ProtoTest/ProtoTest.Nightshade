@@ -9,10 +9,12 @@
     HonorAlpha = <*BY>;
     HotSpotX = <*R35>;
     HotSpotY = <*R14>;
+    ImageDescription = <>;
     LastKnownLocationX = <*I0>;
     LastKnownLocationY = <*I0>;
     OriginalLocationX = <*I404>;
     OriginalLocationY = <*I3>;
     Pulsing = <*BN>;
     Scale = <*R1>;
+    SearchAlgorithm = TextSmoothSquare;
 }
