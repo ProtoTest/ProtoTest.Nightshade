@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu;
+﻿using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 {
@@ -11,6 +7,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public EggplantElement StartButton = new EggplantElement(By.Image("MC659B/System/StartBar/StartButton"));
         public EggplantElement ExitButton = new EggplantElement(By.Image("MC659B/System/StartBar/ExitButton"));
         public EggplantElement OKButton = new EggplantElement(By.Image("MC659B/System/StartBar/OKButton"));
+        public EggplantElement MenuButton = new EggplantElement(By.Image("MC659B/System/StartBar/MenuButton"));
+        public EggplantElement TaskEditButton = new EggplantElement(By.Image("MC659B/System/StartBar/TaskEditButton"));
 
         public Windows_MC659B_StartBar VerifyElements()
         {

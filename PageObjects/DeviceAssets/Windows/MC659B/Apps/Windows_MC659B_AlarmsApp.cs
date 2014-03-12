@@ -1,6 +1,5 @@
 ﻿using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
-using ProtoTest.Nightshade.PageObjects.Steps.System;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 {
@@ -21,7 +20,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             return this;
         }
 
-        public IAlarmsApp SetupAlarmsApp()
+        public IAlarmsApp SetUpAlarmsApp()
         {
             EggplantTestBase.Log("Confirming Alarms app is configured correctly.");
             while (AlarmCheckboxOn.IsPresent())
@@ -68,6 +67,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             EggplantTestBase.Log("Exiting alarms app.");
             var startBar = new Windows_MC659B_StartBar();
             startBar.ExitButton.Click();
+            Command.SetUpTest().ConfirmHomeScreen();
             return this;
         }
     }

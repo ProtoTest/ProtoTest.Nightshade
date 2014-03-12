@@ -1,5 +1,4 @@
-﻿using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu;
-using ProtoTest.Nightshade.PageObjects.Steps.System;
+﻿using ProtoTest.Nightshade.PageObjects.Steps.System;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 {

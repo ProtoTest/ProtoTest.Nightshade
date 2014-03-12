@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
+﻿
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
 {

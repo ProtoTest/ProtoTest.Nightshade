@@ -25,14 +25,24 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
             return new Windows_MC659B_HomeDesktop();
         }
 
-        public IMenuNav GoToCalendarApp()
+        public ICalendarApp GoToCalendarApp()
         {
-            return this;
+            var startBar = new Windows_MC659B_StartBar();
+            startBar.EnterStartMenu();
+            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var startMenu = new Windows_MC659B_StartMenu();
+            utilities.SearchMenuFor(startMenu.CalendarApp);
+            return new Windows_MC659B_CalendarApp();
         }
 
-        public IMenuNav GoToTasksApp()
+        public ITasksApp GoToTasksApp()
         {
-            return this;
+            var startBar = new Windows_MC659B_StartBar();
+            startBar.EnterStartMenu();
+            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var startMenu = new Windows_MC659B_StartMenu();
+            utilities.SearchMenuFor(startMenu.TasksApp);
+            return new Windows_MC659B_TasksApp();
         }
     }
 }

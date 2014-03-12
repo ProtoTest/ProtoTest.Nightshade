@@ -18,7 +18,6 @@ C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Night
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\ProtoTest.Nightshade.dll.config
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\WebDriver.dll
 C:\Users\Brian\Documents\GitHub\ProtoTest.Nightshade\bin\Release\WebDriver.xml
-C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.csprojResolveAssemblyReference.cache
 C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\bin\Release\TestConfig_Stability.xml
 C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\bin\Release\TestConfig.xml
 C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\bin\Release\ProtoTest.Nightshade.dll.config
@@ -33,5 +32,6 @@ C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\bin\Release\WebDri
 C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\bin\Release\NHamcrest.dll
 C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\bin\Release\WebDriver.xml
 C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\bin\Release\NHamcrest.pdb
+C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.csprojResolveAssemblyReference.cache
 C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.dll
 C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.pdb

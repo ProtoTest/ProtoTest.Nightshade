@@ -7,8 +7,8 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.Menu
     {
         IAlarmsApp GoToAlarmsApp();
         IHomeScreen ConfirmAlarm1();
-        IMenuNav GoToCalendarApp();
-        IMenuNav GoToTasksApp();
+        ICalendarApp GoToCalendarApp();
+        ITasksApp GoToTasksApp();
     }
   
 }
