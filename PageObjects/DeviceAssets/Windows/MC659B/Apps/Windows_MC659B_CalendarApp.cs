@@ -53,7 +53,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             return this;
         }
 
-        public ICalendarApp SetCalendarAppointments()
+        public ICalendarApp SetCalendarAppointments(int iterationsMax)
         {
             var startBar = new Windows_MC659B_StartBar();
             
@@ -67,7 +67,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             CalendarAppointment.VerifyPresent();
             EggplantTestBase.Log("Appointment #1 set.");
             
-            int iterationsMax = Config.CalendarAppointmentsIterations;
+            //int iterationsMax = Config.CalendarAppointmentsIterations;
             for (int currentIteration = 2; currentIteration <= iterationsMax; currentIteration++)
             {
                 EggplantTestBase.Log("Setting appointment #" + currentIteration + ".");

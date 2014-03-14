@@ -6,7 +6,7 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.Apps
     {
         ICalendarApp VerifyElements();
         ICalendarApp SetUpCalendarApp();
-        ICalendarApp SetCalendarAppointments();
+        ICalendarApp SetCalendarAppointments(int iterationsMax);
         ICalendarApp DeleteCalendarAppointments();
         ICalendarApp ExitApp();
     }

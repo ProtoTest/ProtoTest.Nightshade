@@ -120,7 +120,7 @@ namespace ProtoTest.TestRunner.Nightshade
                 try
                 {
                     DiagnosticLog.WriteLine("Trying to connect to device (" + i + ") : " + host);
-                    Execute(string.Format("Connect (ServerID:\"{0}\", PortNum:\"{1}\")",host,Config.DevicePort));
+                    Execute(string.Format("Connect (ServerID:\"{0}\")",host));
                     DiagnosticLog.WriteLine("Connection established to device : " + GetConnectionInfo());
                     return;
                 }
@@ -264,7 +264,7 @@ namespace ProtoTest.TestRunner.Nightshade
             Drag(fromElement);
             Drop(toElement);
         }
-
+        
         public void Wait(int ms)
         {
             DiagnosticLog.WriteLine(string.Format("Waiting {0} ms", ms));
@@ -316,7 +316,36 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             ExecuteCommand("ScrollWheelDown", num);
         }
-        
+
+        public void SwipeDown()
+        {
+            SearchRectangle.FullScreenPercentagesToPoints(95, 5);
+            string xPoint1 = SearchRectangle.xPoint;
+            string yPoint1 = SearchRectangle.yPoint;
+            SearchRectangle.FullScreenPercentagesToPoints(95, 55);
+            string xPoint2 = SearchRectangle.xPoint;
+            string yPoint2 = SearchRectangle.yPoint;
+            
+            EggplantTestBase.Log("Swiping down from (" + xPoint1 + "," + yPoint1 + ")(95% X, 5% Y) to (" + xPoint2 + "," + yPoint2 + ")(95% X, 55% Y).");
+            ExecuteCommand("Drag", xPoint1 + ",", yPoint1);
+            ExecuteCommand("Drop", xPoint2 + ",", yPoint2);
+        }
+
+        public void SwipeUp()
+        {
+            EggplantTestBase.Log("Swiping down.");
+            SearchRectangle.FullScreenPercentagesToPoints(95, 55);
+            string xPoint1 = SearchRectangle.xPoint;
+            string yPoint1 = SearchRectangle.yPoint;
+            SearchRectangle.FullScreenPercentagesToPoints(95, 5);
+            string xPoint2 = SearchRectangle.xPoint;
+            string yPoint2 = SearchRectangle.yPoint;
+            
+            EggplantTestBase.Log("Swiping down from (" + xPoint1 + "," + yPoint1 + ")(95% X, 55% Y) to (" + xPoint2 + "," + yPoint2 + ")(95% X, 5% Y).");
+            ExecuteCommand("Drag", xPoint1, yPoint1);
+            ExecuteCommand("Drop", xPoint2, yPoint2);
+        }
+
         public Image GetScreenshot(string filePath = "")
         {
             if (filePath == "")

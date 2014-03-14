@@ -24,11 +24,12 @@ namespace ProtoTest.Nightshade.Enhacements.Windows.MC659B
             {
                 EggplantTestBase.Log("Scrolling through menu for " + element + ". Attempt #" + i + ".");
                     
-                for (int j = 0; j < 10; ++j)
+                for (int j = 0; j < 10; j++)
                 {
                     EggplantTestBase.Log("Searching for " + element + ".  Iteration #" + j + ".");
-                    eggplantDriver.ScrollDown("10");
-                        
+                    //eggplantDriver.ScrollDown("10");
+                    eggplantDriver.SwipeDown();
+    
                     if (element.IsPresent())
                     {
                         EggplantTestBase.Log(element + " detected.");
@@ -37,11 +38,14 @@ namespace ProtoTest.Nightshade.Enhacements.Windows.MC659B
                 }
 
                 EggplantTestBase.Log("Returning to top of menu for another attempt.");
-                eggplantDriver.ScrollUp("100");
-
+                //eggplantDriver.ScrollUp("100");
+                for(int k = 0; k < 10; k++)
+                {
+                    eggplantDriver.SwipeUp();
+                }
             }
-            EggplantTestBase.Log("Element not detected within menu after " + totalAttempts + " attempts.");
-            throw new Exception("gbuierkjnerke");
+            
+            throw new Exception("Element not detected within menu after " + totalAttempts + " attempts.");
             
         }
     }

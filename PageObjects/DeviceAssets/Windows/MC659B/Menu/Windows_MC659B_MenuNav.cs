@@ -16,6 +16,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
             var utilities = new Enhacements.Windows.MC659B.Utilities();
             var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.AlarmsApp);
+            startMenu.AlarmsApp.Click();
             return new Windows_MC659B_AlarmsApp();
         }
 
@@ -32,6 +33,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
             var utilities = new Enhacements.Windows.MC659B.Utilities();
             var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.CalendarApp);
+            startMenu.CalendarApp.Click();
             return new Windows_MC659B_CalendarApp();
         }
 
@@ -42,6 +44,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
             var utilities = new Enhacements.Windows.MC659B.Utilities();
             var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.TasksApp);
+            startMenu.TasksApp.Click();
             return new Windows_MC659B_TasksApp();
         }
     }

@@ -116,7 +116,7 @@ namespace ProtoTest.Nightshade
             }
             else
             {
-                EggplantTestBase.Log(string.Format("Verification Passed : Element {0} is present", locator));
+                EggplantTestBase.Log(string.Format("Verification Passed : Element {0} is present.", locator));
             }
             return this;
         }
