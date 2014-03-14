@@ -119,8 +119,10 @@ namespace ProtoTest.TestRunner.Nightshade
             {
                 try
                 {
+
+
                     DiagnosticLog.WriteLine("Trying to connect to device (" + i + ") : " + host);
-                    Execute(string.Format("Connect (ServerID:\"{0}\")",host));
+                    Execute(string.Format("Connect (ServerID:\"{0}\")", host));
                     DiagnosticLog.WriteLine("Connection established to device : " + GetConnectionInfo());
                     return;
                 }
@@ -168,7 +170,7 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             if (Config.LogDriveCommands)
             {
-                EggplantTestBase.Log(string.Format("Executing command: {0}", command));    
+                EggplantTestBase.Log(string.Format("Executing command: {0}", command));
             }
             
             //return new object();
@@ -249,6 +251,26 @@ namespace ProtoTest.TestRunner.Nightshade
             ExecuteCommand("Click", element);
         }
 
+        public void Tap(string element)
+        {
+            ExecuteCommand("Tap", element);
+        }
+
+        public void DoubleTap(string element)
+        {
+            ExecuteCommand("DoubleTap", element);
+        }
+
+        public void Press(string element)
+        {
+            ExecuteCommand("Press", element);
+        }
+
+        public void Release(string element)
+        {
+            ExecuteCommand("Release", element);
+        }
+
         public void Drag(string element)
         {
             ExecuteCommand("Drag", element);
@@ -307,43 +329,42 @@ namespace ProtoTest.TestRunner.Nightshade
             ExecuteCommand("TypeText", commands);
         }
 
-        public void ScrollUp(string num)
+        public void ScrollWheelUp(string num)
         {
             ExecuteCommand("ScrollWheelUp", num);
         }
 
-        public void ScrollDown(string num)
+        public void ScrollWheelDown(string num)
         {
             ExecuteCommand("ScrollWheelDown", num);
         }
 
-        public void SwipeDown()
+        public void SwipeDown(Point origin = default(Point))
         {
-            SearchRectangle.FullScreenPercentagesToPoints(95, 5);
-            string xPoint1 = SearchRectangle.xPoint;
-            string yPoint1 = SearchRectangle.yPoint;
-            SearchRectangle.FullScreenPercentagesToPoints(95, 55);
-            string xPoint2 = SearchRectangle.xPoint;
-            string yPoint2 = SearchRectangle.yPoint;
-            
-            EggplantTestBase.Log("Swiping down from (" + xPoint1 + "," + yPoint1 + ")(95% X, 5% Y) to (" + xPoint2 + "," + yPoint2 + ")(95% X, 55% Y).");
-            ExecuteCommand("Drag", xPoint1 + ",", yPoint1);
-            ExecuteCommand("Drop", xPoint2 + ",", yPoint2);
+            if(origin == default(Point))
+                origin = new Point(SearchRectangle.FullScreen.width/2, SearchRectangle.FullScreen.width/2);
+            ExecuteCommand("SwipeDown", "(" + origin.X + "," + origin.Y + ")");
         }
 
-        public void SwipeUp()
+        public void SwipeUp(Point origin = default(Point))
         {
-            EggplantTestBase.Log("Swiping down.");
-            SearchRectangle.FullScreenPercentagesToPoints(95, 55);
-            string xPoint1 = SearchRectangle.xPoint;
-            string yPoint1 = SearchRectangle.yPoint;
-            SearchRectangle.FullScreenPercentagesToPoints(95, 5);
-            string xPoint2 = SearchRectangle.xPoint;
-            string yPoint2 = SearchRectangle.yPoint;
-            
-            EggplantTestBase.Log("Swiping down from (" + xPoint1 + "," + yPoint1 + ")(95% X, 55% Y) to (" + xPoint2 + "," + yPoint2 + ")(95% X, 5% Y).");
-            ExecuteCommand("Drag", xPoint1, yPoint1);
-            ExecuteCommand("Drop", xPoint2, yPoint2);
+            if (origin == default(Point))
+                origin = new Point(SearchRectangle.FullScreen.width / 2, SearchRectangle.FullScreen.width / 2);
+            ExecuteCommand("SwipeUp", "(" + origin.X + "," + origin.Y + ")");
+        }
+
+        public void SwipeLeft(Point origin = default(Point))
+        {
+            if (origin == default(Point))
+                origin = new Point(SearchRectangle.FullScreen.width / 2, SearchRectangle.FullScreen.width / 2);
+            ExecuteCommand("SwipeLeft", "(" + origin.X + "," + origin.Y + ")");
+        }
+
+        public void SwipeRight(Point origin = default(Point))
+        {
+            if (origin == default(Point))
+                origin = new Point(SearchRectangle.FullScreen.width / 2, SearchRectangle.FullScreen.width / 2);
+            ExecuteCommand("SwipeRight", "(" + origin.X + "," + origin.Y + ")");
         }
 
         public Image GetScreenshot(string filePath = "")
