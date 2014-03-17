@@ -342,28 +342,28 @@ namespace ProtoTest.TestRunner.Nightshade
         public void SwipeDown(Point origin = default(Point))
         {
             if(origin == default(Point))
-                origin = new Point(SearchRectangle.FullScreen.width/2, SearchRectangle.FullScreen.width/2);
+                origin = new Point(SearchRectangle.FullScreen.width / 2, SearchRectangle.FullScreen.height / 2);
             ExecuteCommand("SwipeDown", "(" + origin.X + "," + origin.Y + ")");
         }
 
         public void SwipeUp(Point origin = default(Point))
         {
             if (origin == default(Point))
-                origin = new Point(SearchRectangle.FullScreen.width / 2, SearchRectangle.FullScreen.width / 2);
+                origin = new Point(SearchRectangle.FullScreen.width / 2, SearchRectangle.FullScreen.height / 2);
             ExecuteCommand("SwipeUp", "(" + origin.X + "," + origin.Y + ")");
         }
 
         public void SwipeLeft(Point origin = default(Point))
         {
             if (origin == default(Point))
-                origin = new Point(SearchRectangle.FullScreen.width / 2, SearchRectangle.FullScreen.width / 2);
+                origin = new Point(SearchRectangle.FullScreen.width / 2, SearchRectangle.FullScreen.height / 2);
             ExecuteCommand("SwipeLeft", "(" + origin.X + "," + origin.Y + ")");
         }
 
         public void SwipeRight(Point origin = default(Point))
         {
             if (origin == default(Point))
-                origin = new Point(SearchRectangle.FullScreen.width / 2, SearchRectangle.FullScreen.width / 2);
+                origin = new Point(SearchRectangle.FullScreen.width / 2, SearchRectangle.FullScreen.height / 2);
             ExecuteCommand("SwipeRight", "(" + origin.X + "," + origin.Y + ")");
         }
 

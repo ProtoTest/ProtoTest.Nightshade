@@ -32,6 +32,6 @@ C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\bin\Release\WebDri
 C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\bin\Release\NHamcrest.dll
 C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\bin\Release\WebDriver.xml
 C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\bin\Release\NHamcrest.pdb
-C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.csprojResolveAssemblyReference.cache
 C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.dll
 C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.pdb
+C:\Users\Roland Burrows\Documents\GitHub\ProtoTest.Nightshade\obj\Release\ProtoTest.Nightshade.csprojResolveAssemblyReference.cache

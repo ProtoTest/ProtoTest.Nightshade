@@ -22,12 +22,32 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             return this;
         }
 
-        public IHomeScreen EnterStartMenu()
+        public IHomeScreen ConfirmAlarm1On()
         {
-            startBar.EnterStartMenu();
-            return this;
+            Command.OnHomeScreenScreen()
+                .OpenNotificationsBar()
+                .SelectAlarmsMenuOption()
+                .VerifyAlarm1On()
+                .ClickOnMenuOKButton();
+            return new Windows_MC659B_HomeDesktop();
         }
 
+        public IHomeScreen ConfirmAlarm1Off()
+        {
+            Command.OnHomeScreenScreen()
+                .OpenNotificationsBar()
+                .SelectAlarmsMenuOption()
+                .VerifyAlarm1Off()
+                .ClickOnMenuOKButton();
+            return new Windows_MC659B_HomeDesktop();
+        }
+
+        public INotificationsBar OpenNotificationsBar()
+        {
+            var bar = new Windows_MC659B_NotificationsBar();
+            bar.OpenRunningProgramsMenu();
+            return new Windows_MC659B_NotificationsBar();
+        }
 
     }
 }

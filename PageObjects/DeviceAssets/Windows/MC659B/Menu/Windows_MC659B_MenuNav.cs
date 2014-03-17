@@ -8,6 +8,20 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
 {
     class Windows_MC659B_MenuNav : IMenuNav
     {
+        public INetworkSettings SetCellularConnectionToTwoG()
+        {
+            var settings = new Windows_MC659B_NetworkSettings();
+            settings.SetCellularNetworkToTwoG();
+            return new Windows_MC659B_NetworkSettings();
+        }
+
+        public INetworkSettings SetCellularConnectionToThreeG()
+        {
+            var settings = new Windows_MC659B_NetworkSettings();
+            settings.SetCellularNetworkToThreeG();
+            return new Windows_MC659B_NetworkSettings();
+        }
+        
 
         public IAlarmsApp GoToAlarmsApp()
         {
@@ -20,10 +34,15 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
             return new Windows_MC659B_AlarmsApp();
         }
 
-        public IHomeScreen ConfirmAlarm1()
+        public IBrowserApp GoToBrowserApp()
         {
-            Command.Execute().GoToAlarmsApp().ConfirmAlarm1().ExitApp();
-            return new Windows_MC659B_HomeDesktop();
+            var startBar = new Windows_MC659B_StartBar();
+            startBar.EnterStartMenu();
+            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var startMenu = new Windows_MC659B_StartMenu();
+            utilities.SearchMenuFor(startMenu.BrowserApp);
+            startMenu.BrowserApp.Click();
+            return new Windows_MC659B_BrowserApp();
         }
 
         public ICalendarApp GoToCalendarApp()
@@ -35,6 +54,17 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
             utilities.SearchMenuFor(startMenu.CalendarApp);
             startMenu.CalendarApp.Click();
             return new Windows_MC659B_CalendarApp();
+        }
+
+        public IPicturesAndVideoApp GoToPicturesAndVideoApp()
+        {
+            var startBar = new Windows_MC659B_StartBar();
+            startBar.EnterStartMenu();
+            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var startMenu = new Windows_MC659B_StartMenu();
+            utilities.SearchMenuFor(startMenu.PicturesAndVideoApp);
+            startMenu.PicturesAndVideoApp.Click();
+            return new Windows_MC659B_PicturesAndVideoApp();
         }
 
         public ITasksApp GoToTasksApp()

@@ -10,7 +10,7 @@ namespace ProtoTest.Nightshade
     public static class Command
     {
 
-        public static IHomeScreen SetUpTest()
+        public static IHomeScreen OnHomeScreenScreen()
         {
             if (Config.DeviceType == "null")
             {
@@ -47,7 +47,7 @@ namespace ProtoTest.Nightshade
             
         }
         
-        public static IMenuNav Execute()
+        public static IMenuNav NavigateTheMenu()
         {
             if (Config.DeviceType.Contains("Windows"))
             {

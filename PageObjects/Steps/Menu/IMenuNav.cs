@@ -5,9 +5,13 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.Menu
 {
     public interface IMenuNav
     {
+        INetworkSettings SetCellularConnectionToTwoG();
+        INetworkSettings SetCellularConnectionToThreeG();
+
         IAlarmsApp GoToAlarmsApp();
-        IHomeScreen ConfirmAlarm1();
+        IBrowserApp GoToBrowserApp();
         ICalendarApp GoToCalendarApp();
+        IPicturesAndVideoApp GoToPicturesAndVideoApp();
         ITasksApp GoToTasksApp();
     }
   

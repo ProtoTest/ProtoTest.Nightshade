@@ -9,17 +9,23 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Camera Video - Tests 5.1.8.1, 5.1.8.2, and 5.1.8.3")]
         [Category("Single Device")]
+        [Repeat(1)]
         public void TestCameraVideo()
         {
-
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.NavigateTheMenu().GoToPicturesAndVideoApp().VerifyElements().RecordAVideo().OpenRecordedVideo().DeleteRecordedVideo().ExitApp();
         }
 
         [Test]
         [Description("Camera Pictures - Tests 5.1.8.4, 5.1.8.5, and 5.1.8.6")]
         [Category("Single Device")]
+        [Repeat(20)]
         public void TestCameraPictures()
         {
-
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.NavigateTheMenu().GoToPicturesAndVideoApp().VerifyElements().TakePicture().OpenTakenPicture().DeleteTakenPicture().ExitApp();
         }
 
         [Test]

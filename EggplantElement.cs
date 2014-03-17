@@ -96,6 +96,7 @@ namespace ProtoTest.Nightshade
             {
                 if (!Driver.IsPresent(locator))
                 {
+                    EggplantTestBase.Log("Element no longer present.");
                     return this;
                 }
                 else
@@ -105,6 +106,27 @@ namespace ProtoTest.Nightshade
                 }
             }
             throw new Exception(string.Format("WaitForNotPresent Failed : Element was still present after {0} seconds", Config.ElementWaitSec));
+        }
+
+        public EggplantElement WaitForNotPresentForTime(int secs)
+        {
+            EggplantTestBase.Log(string.Format("Waiting for element {0} to not be present for " +secs+ " seconds.", locator));
+            var now = DateTime.Now;
+            var endTime = DateTime.Now.AddSeconds(secs);
+            while (now < endTime)
+            {
+                if (!Driver.IsPresent(locator))
+                {
+                    EggplantTestBase.Log("Element no longer present.");
+                    return this;
+                }
+                else
+                {
+                    Thread.Sleep(500);
+                    now = DateTime.Now;
+                }
+            }
+            throw new Exception(string.Format("WaitForNotPresent Failed : Element was still present after {0} seconds", secs));
         }
 
         public EggplantElement VerifyPresent()

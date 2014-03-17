@@ -14,7 +14,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IAlarmsApp VerifyElements()
         {
-            EggplantTestBase.Log("Entering Alarm app.");
+            EggplantTestBase.Log("Verifying Alarm app elements.");
             AlarmsAppHeader.VerifyPresent();
             AlarmsSectionHeader.VerifyPresent();
             return this;
@@ -67,7 +67,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             EggplantTestBase.Log("Exiting alarms app.");
             var startBar = new Windows_MC659B_StartBar();
             startBar.ExitButton.Click();
-            Command.SetUpTest().ConfirmHomeScreen();
+            Command.OnHomeScreenScreen().ConfirmHomeScreen();
             return this;
         }
     }
