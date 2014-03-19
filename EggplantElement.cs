@@ -67,15 +67,22 @@ namespace ProtoTest.Nightshade
             return this;
         }
 
+        // Hard verification failures - Test will halt
         public EggplantElement WaitForPresent()
+        {
+            return WaitForPresent(Config.ElementWaitSec);
+        }
+
+        public EggplantElement WaitForPresent(int secs)
         {
             EggplantTestBase.Log(string.Format("Waiting for element {0} to be present.",locator));
             var now = DateTime.Now;
-            var endTime = DateTime.Now.AddSeconds(Config.ElementWaitSec);
+            var endTime = DateTime.Now.AddSeconds(secs);
             while(now<endTime)
             {
                 if (Driver.IsPresent(locator))
                 {
+                    EggplantTestBase.Log(string.Format("Verification Passed : Element {0} is present.", locator));
                     return this;
                 }
                 else
@@ -89,26 +96,10 @@ namespace ProtoTest.Nightshade
 
         public EggplantElement WaitForNotPresent()
         {
-            EggplantTestBase.Log(string.Format("Waiting for element {0} to not be present.", locator));
-            var now = DateTime.Now;
-            var endTime = DateTime.Now.AddSeconds(Config.ElementWaitSec);
-            while (now < endTime)
-            {
-                if (!Driver.IsPresent(locator))
-                {
-                    EggplantTestBase.Log("Element no longer present.");
-                    return this;
-                }
-                else
-                {
-                    Thread.Sleep(500);
-                    now = DateTime.Now;
-                }
-            }
-            throw new Exception(string.Format("WaitForNotPresent Failed : Element was still present after {0} seconds", Config.ElementWaitSec));
+            return WaitForNotPresent(Config.ElementWaitSec);
         }
 
-        public EggplantElement WaitForNotPresentForTime(int secs)
+        public EggplantElement WaitForNotPresent(int secs)
         {
             EggplantTestBase.Log(string.Format("Waiting for element {0} to not be present for " +secs+ " seconds.", locator));
             var now = DateTime.Now;
@@ -129,6 +120,7 @@ namespace ProtoTest.Nightshade
             throw new Exception(string.Format("WaitForNotPresent Failed : Element was still present after {0} seconds", secs));
         }
 
+        // Soft verification failures - Test will keep progressing
         public EggplantElement VerifyPresent()
         {
             EggplantTestBase.Log(string.Format("Verifying element {0} should be present.",locator));
@@ -157,18 +149,6 @@ namespace ProtoTest.Nightshade
             }
             return this;
         }
-
-        public void WithState(Enum state)
-        {
-            this.locator = this.locator + "/" + state.ToString();
-        }
-
-        public void verifyState<E>(E state) where E : struct, IComparable, IConvertible, IFormattable
-        {
-            string element = state.GetType().Name;
-            EggplantTestBase.Log("Verifying element(" + element + ") with state (" + state + ").");
-            locator = this.locator + "/" + state;
-            Driver.WaitFor(locator);
-        }
+        
     }
 }

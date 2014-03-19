@@ -11,7 +11,9 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.Menu
         IAlarmsApp GoToAlarmsApp();
         IBrowserApp GoToBrowserApp();
         ICalendarApp GoToCalendarApp();
+        IFileExplorer GoToAudioFiles();
         IPicturesAndVideoApp GoToPicturesAndVideoApp();
+        IMediaPlayerApp GoToMediaPlayerApp();
         ITasksApp GoToTasksApp();
     }
   

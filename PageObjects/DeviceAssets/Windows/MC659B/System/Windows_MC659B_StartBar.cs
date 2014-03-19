@@ -8,6 +8,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public EggplantElement KeyboardButton = new EggplantElement(By.Image("MC659B/System/StartBar/KeyboardButton"));
         public EggplantElement OKButton = new EggplantElement(By.Image("MC659B/System/StartBar/OKButton"));
         public EggplantElement MenuButton = new EggplantElement(By.Image("MC659B/System/StartBar/MenuButton"));
+        public EggplantElement MenuOption = new EggplantElement(By.Image("MC659B/System/StartBar/MenuOption"));
         public EggplantElement NowPlaying = new EggplantElement(By.Image("MC659B/Apps/WindowsMedia/NowPlaying"));
         public EggplantElement StartButton = new EggplantElement(By.Image("MC659B/System/StartBar/StartButton"));
         public EggplantElement StopButton = new EggplantElement(By.Image("MC659B/System/StartBar/StopButton"));
@@ -19,7 +20,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public Windows_MC659B_StartBar VerifyElements()
         {
             EggplantTestBase.Log("Verifying start bar elements.");
-            StartButton.VerifyPresent();
+            StartButton.WaitForPresent();
             return this;
         }
         

@@ -11,7 +11,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public void ClickYes()
         {
             EggplantTestBase.Log("Selecting popup option - Yes.");
-            YesButton.VerifyPresent();
+            YesButton.Click();
         }
         
         public void ClickNo()

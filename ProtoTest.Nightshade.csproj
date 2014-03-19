@@ -62,6 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackgroundVideoRecorder.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_FileExplorerApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_Template.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_WindowsMediaApp.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_PicturesAndVideoApp.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_BrowserApp.cs" />
@@ -71,6 +73,8 @@
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\Windows_MC659B_HomeDesktop.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\Windows_MC659B_Popups.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\Windows_MC659B_NetworkSettings.cs" />
+    <Compile Include="PageObjects\Steps\Apps\IFileExplorer.cs" />
+    <Compile Include="PageObjects\Steps\Apps\ITemplate.cs" />
     <Compile Include="PageObjects\Steps\Apps\IMediaPlayerApp.cs" />
     <Compile Include="PageObjects\Steps\Apps\IPicturesAndVideoApp.cs" />
     <Compile Include="PageObjects\Steps\Apps\IBrowserApp.cs" />

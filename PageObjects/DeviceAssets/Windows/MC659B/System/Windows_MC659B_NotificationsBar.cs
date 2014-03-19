@@ -1,4 +1,5 @@
-﻿using ProtoTest.Nightshade.PageObjects.Steps.System;
+﻿using System.Threading;
+using ProtoTest.Nightshade.PageObjects.Steps.System;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 {
@@ -10,8 +11,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         EggplantElement Battery1 = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Battery/Battery1"));
         EggplantElement Wifi = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Wifi"));
         EggplantElement WifiConnected4 = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Wifi/Connected4"));
+        EggplantElement BluetoothConnected = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Bluetooth/BluetoothConnected"));
 
-        EggplantElement RunningProgramsMenuHeader = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/RunningProgramsMenuHeader"));
+        EggplantElement RunningPrograms = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/RunningPrograms"));
         EggplantElement RunningProgramsMenuOKButton = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/OKButton"));
         EggplantElement RunningProgramsArrowRight = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/OptionsArrowRight"));
         EggplantElement RunningProgramsArrowLeft = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/OptionsArrowLeft"));
@@ -21,21 +23,21 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         EggplantElement RunningProgramsAlarm1On = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/Alarms/Alarm1On"));
         EggplantElement RunningProgramsAlarm1Off = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/Alarms/Alarm1Off"));
 
-        EggplantElement RunningProgramsPowerAndRadio = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/PowerAndRadio/OptionButton"));
-        EggplantElement RunningProgramsBatteryRemaining = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/PowerAndRadio/BatteryRemaining"));
-        EggplantElement RunningProgramsPhoneRadioOn = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/PowerAndRadio/PhoneRadioOn"));
-        EggplantElement RunningProgramsPhoneRadioOff = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/PowerAndRadio/PhoneRadioOff"));
-        EggplantElement RunningProgramsWifiRadioOn = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/PowerAndRadio/WifiRadioOn"));
-        EggplantElement RunningProgramsWifiRadioOff = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/PowerAndRadio/WifiRadioOff"));
+        EggplantElement PowerAndRadioOptionButton = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/PowerAndRadio/OptionButton"));
+        EggplantElement PowerAndRadioBatteryRemaining = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/PowerAndRadio/BatteryRemaining"));
+        EggplantElement PowerAndRadioPhoneRadioOn = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/PowerAndRadio/PhoneRadioOn"));
+        EggplantElement PowerAndRadioPhoneRadioOff = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/PowerAndRadio/PhoneRadioOff"));
+        EggplantElement PowerAndRadioWifiRadioOn = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/PowerAndRadio/WifiRadioOn"));
+        EggplantElement PowerAndRadioWifiRadioOff = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/PowerAndRadio/WifiRadioOff"));
+        EggplantElement PowerAndRadioBluetoothRadioOn = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/PowerAndRadio/BluetoothRadioOn"));
+        EggplantElement PowerAndRadioBluetoothRadioOff = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/PowerAndRadio/BluetoothRadioOff"));
 
 
         public INotificationsBar VerifyElements()
         {
             EggplantTestBase.Log("Verifying Notification Bar elements.");
-            Battery.VerifyPresent();
-            Wifi.VerifyPresent();
-            ClockTime.VerifyPresent();
-            ClockTime.LogText();
+            Battery.WaitForPresent();
+            //ClockTime.LogText();
             return this;
         }
 
@@ -43,8 +45,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         {
             EggplantTestBase.Log("Opening the Running Programs notification menu.");
             Battery.Click();
-            RunningProgramsMenuHeader.VerifyPresent();
-            RunningProgramsArrowRight.Click();
+            RunningPrograms.WaitForPresent();
             return this;
         }
 
@@ -60,29 +61,74 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             EggplantTestBase.Log("Selecting Alarms menu option.");
             RunningProgramsArrowRight.Click();
             RunningProgramsAlarms.Click();
-            RunningProgramsEditAlarm.VerifyPresent();
+            RunningProgramsEditAlarm.WaitForPresent();
             return this;
         }
 
         public INotificationsBar SelectPowerAndRadioMenuOption()
         {
             EggplantTestBase.Log("Selecting Power & Radio menu option.");
-            RunningProgramsPowerAndRadio.Click();
-            RunningProgramsBatteryRemaining.VerifyPresent();
+            PowerAndRadioOptionButton.Click();
+            PowerAndRadioBatteryRemaining.WaitForPresent();
             return this;
         }
 
         public INotificationsBar VerifyAlarm1On()
         {
             EggplantTestBase.Log("Verifying Alarm 1 is ON.");
-            RunningProgramsAlarm1On.VerifyPresent();
+            RunningProgramsAlarm1On.WaitForPresent();
             return this;
         }
 
         public INotificationsBar VerifyAlarm1Off()
         {
             EggplantTestBase.Log("Verifying Alarm 1 is OFF.");
-            RunningProgramsAlarm1Off.VerifyPresent();
+            RunningProgramsAlarm1Off.WaitForPresent();
+            return this;
+        }
+
+        public INotificationsBar ResetNFCRadioToDefault()
+        {
+            EggplantTestBase.Log("Resetting NFC radio to default.");
+            if (PowerAndRadioBluetoothRadioOn.IsPresent())
+            {
+                EggplantTestBase.Log("NFC radio was falsely in 'On' State.");
+                SetNFCRadioToOff();
+            }
+            PowerAndRadioBluetoothRadioOff.WaitForPresent();
+            EggplantTestBase.Log("NFC in default state.");
+            return this;
+        }
+
+        public INotificationsBar SetNFCRadioToOn()
+        {
+            EggplantTestBase.Log("Setting NFC radio to: On.");
+            PowerAndRadioBluetoothRadioOff.Click();
+            PowerAndRadioBluetoothRadioOn.WaitForPresent(15);
+            return this;
+        }
+
+        public INotificationsBar VerifyNFCOn()
+        {
+            EggplantTestBase.Log("Verifying NFC is on.");
+            PowerAndRadioBluetoothRadioOff.Click();
+            PowerAndRadioBluetoothRadioOn.WaitForPresent(15);
+            return this;
+        }
+
+        public INotificationsBar SetNFCRadioToOff()
+        {
+            EggplantTestBase.Log("Setting NFC radio to: Off.");
+            PowerAndRadioBluetoothRadioOn.Click();
+            PowerAndRadioBluetoothRadioOff.WaitForPresent(15);
+            return this;
+        }
+
+        public INotificationsBar VerifyNFCOff()
+        {
+            EggplantTestBase.Log("Verifying NFC is off.");
+            PowerAndRadioBluetoothRadioOff.Click();
+            PowerAndRadioBluetoothRadioOn.WaitForNotPresent(15);
             return this;
         }
     }

@@ -11,7 +11,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen ConfirmHomeScreen()
         {
-            desktop.VerifyPresent();
+            desktop.WaitForPresent();
             startBar.VerifyElements();
             notificationsBar.VerifyElements();
             return this;
@@ -39,6 +39,41 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
                 .SelectAlarmsMenuOption()
                 .VerifyAlarm1Off()
                 .ClickOnMenuOKButton();
+            return new Windows_MC659B_HomeDesktop();
+        }
+
+        public IHomeScreen VerifyNFCInDefaultState()
+        {
+            Command.OnHomeScreenScreen()
+                .OpenNotificationsBar().SelectPowerAndRadioMenuOption().ResetNFCRadioToDefault().ClickOnMenuOKButton();
+            return new Windows_MC659B_HomeDesktop();
+        }
+
+        public IHomeScreen TurnOnNFC()
+        {
+            VerifyNFCInDefaultState();
+
+            Command.OnHomeScreenScreen()
+                .OpenNotificationsBar().SelectPowerAndRadioMenuOption().SetNFCRadioToOn().ClickOnMenuOKButton();
+            return new Windows_MC659B_HomeDesktop();
+        }
+
+        public IHomeScreen VerifyNFCOn()
+        {
+            Command.OnHomeScreenScreen().VerifyNFCOn();
+            return new Windows_MC659B_HomeDesktop();
+        }
+
+        public IHomeScreen TurnOffNFC()
+        {
+            Command.OnHomeScreenScreen()
+                .OpenNotificationsBar().SelectPowerAndRadioMenuOption().SetNFCRadioToOff().ClickOnMenuOKButton();
+            return new Windows_MC659B_HomeDesktop();
+        }
+
+        public IHomeScreen VerifyNFCOff()
+        {
+            Command.OnHomeScreenScreen().VerifyNFCOff();
             return new Windows_MC659B_HomeDesktop();
         }
 

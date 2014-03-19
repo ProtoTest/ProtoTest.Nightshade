@@ -24,8 +24,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public ICalendarApp VerifyElements()
         {
             EggplantTestBase.Log("Verifying Calendar app elements.");
-            CalendarAppHeader.VerifyPresent();
-            CalendarGoToToday.VerifyPresent();
+            CalendarAppHeader.WaitForPresent();
+            CalendarGoToToday.WaitForPresent();
             return this;
         }
 
@@ -46,7 +46,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                     var popup = new Windows_MC659B_Popups();
                     popup.ClickYes();
                 }
-                CalendarAppointment.VerifyNotPresent();
+                CalendarAppointment.WaitForNotPresent();
             }
             CalendarGoToToday.Click();
             EggplantTestBase.Log("Calendar app is ready for testing.");
@@ -64,7 +64,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             CalendarAppointmentSubjectField.Type("Appt #1");
             CalendarAppointmentLocationField.Type("Conference Room");
             startBar.OKButton.Click();
-            CalendarAppointment.VerifyPresent();
+            CalendarAppointment.WaitForPresent();
             EggplantTestBase.Log("Appointment #1 set.");
             
             //int iterationsMax = Config.CalendarAppointmentsIterations;
@@ -77,7 +77,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 CalendarAppointmentSubjectField.Type("Appt #" + currentIteration);
                 CalendarAppointmentLocationField.Type("Conference Room");
                 startBar.OKButton.Click();
-                CalendarAppointment.VerifyPresent();
+                CalendarAppointment.WaitForPresent();
                 EggplantTestBase.Log("Appointment #" + currentIteration + " set.");
             }
             CalendarGoToToday.Click();
@@ -102,7 +102,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                     var popup = new Windows_MC659B_Popups();
                     popup.ClickYes();
                 }
-                CalendarAppointment.VerifyNotPresent();
+                CalendarAppointment.WaitForNotPresent();
             }
             CalendarGoToToday.Click();
             EggplantTestBase.Log("Previous appointments deleted.");

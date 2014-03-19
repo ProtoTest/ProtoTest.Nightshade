@@ -16,8 +16,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public ITasksApp VerifyElements()
         {
             EggplantTestBase.Log("Verifying Tasks app elements.");
-            TasksAppHeader.VerifyPresent();
-            TasksTaskHeader.VerifyPresent();
+            TasksAppHeader.WaitForPresent();
+            TasksTaskHeader.WaitForPresent();
             return this;
         }
 
@@ -33,7 +33,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 var popup = new Windows_MC659B_Popups();
                 popup.ClickYes();
             }
-            TaskHeaderText.VerifyNotPresent();
+            TaskHeaderText.WaitForNotPresent();
             EggplantTestBase.Log("Calendar app is ready for testing.");
             return this;
         }
@@ -46,12 +46,12 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             NewTask.Click();
             TaskSubjectField.Type("TASK 1");
             startBar.OKButton.Click();
-            TaskTitleText.VerifyPresent();
+            TaskTitleText.WaitForPresent();
             TaskTitleText.LogText();
             TaskTitleText.Click();
-            TaskHeaderText.VerifyPresent();
+            TaskHeaderText.WaitForPresent();
             TaskHeaderText.LogText();
-            startBar.TaskEditButton.VerifyPresent();
+            startBar.TaskEditButton.WaitForPresent();
             EggplantTestBase.Log("Task created.");
             startBar.OKButton.Click();
             return this;
@@ -69,7 +69,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 var popup = new Windows_MC659B_Popups();
                 popup.ClickYes();
             }
-            TaskHeaderText.VerifyNotPresent();
+            TaskHeaderText.WaitForNotPresent();
             EggplantTestBase.Log("All tasks cleared.");
             return this;
             

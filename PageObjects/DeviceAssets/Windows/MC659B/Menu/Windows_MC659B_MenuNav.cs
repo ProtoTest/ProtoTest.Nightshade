@@ -22,7 +22,6 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
             return new Windows_MC659B_NetworkSettings();
         }
         
-
         public IAlarmsApp GoToAlarmsApp()
         {
             var startBar = new Windows_MC659B_StartBar();
@@ -54,6 +53,41 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
             utilities.SearchMenuFor(startMenu.CalendarApp);
             startMenu.CalendarApp.Click();
             return new Windows_MC659B_CalendarApp();
+        }
+
+        public IFileExplorer GoToAudioFiles()
+        {
+            var startBar = new Windows_MC659B_StartBar();
+            startBar.EnterStartMenu();
+            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var startMenu = new Windows_MC659B_StartMenu();
+            utilities.SearchMenuFor(startMenu.FileExplorerApp);
+            startMenu.FileExplorerApp.Click();
+            return new Windows_MC659B_FileExplorerApp();
+        }
+
+        public IHomeScreen GoToHome()
+        {
+            var startBar = new Windows_MC659B_StartBar();
+            startBar.EnterStartMenu();
+            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var startMenu = new Windows_MC659B_StartMenu();
+            utilities.SearchMenuFor(startMenu.HomeIcon);
+            startMenu.HomeIcon.Click();
+            return new Windows_MC659B_HomeDesktop();
+        }
+
+        public IMediaPlayerApp GoToMediaPlayerApp()
+        {
+            var startBar = new Windows_MC659B_StartBar();
+            startBar.EnterStartMenu();
+            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var startMenu = new Windows_MC659B_StartMenu();
+            utilities.SearchMenuFor(startMenu.WindowsMediaApp);
+            startMenu.CalendarApp.Click();
+            var mediaApp = new Windows_MC659B_WindowsMediaApp();
+            mediaApp.SetAppState();
+            return new Windows_MC659B_WindowsMediaApp();
         }
 
         public IPicturesAndVideoApp GoToPicturesAndVideoApp()

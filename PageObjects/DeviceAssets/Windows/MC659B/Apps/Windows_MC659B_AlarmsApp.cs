@@ -15,8 +15,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IAlarmsApp VerifyElements()
         {
             EggplantTestBase.Log("Verifying Alarm app elements.");
-            AlarmsAppHeader.VerifyPresent();
-            AlarmsSectionHeader.VerifyPresent();
+            AlarmsAppHeader.WaitForPresent();
+            AlarmsSectionHeader.WaitForPresent();
             return this;
         }
 
@@ -28,7 +28,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 EggplantTestBase.Log("Previous alarm detected.  Disabling alarm...");
                 AlarmCheckboxOn.Click();
             }
-            AlarmCheckboxOn.VerifyNotPresent();
+            AlarmCheckboxOn.WaitForNotPresent();
             EggplantTestBase.Log("Alarms app is ready for testing.");
             return this;
         }
@@ -38,15 +38,15 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             EggplantTestBase.Log("Setting alarm #1.");
             AlarmCheckboxOff.Click();
             AlarmTime.LogText();
-            AlarmPropertiesDefault.VerifyPresent();
-            AlarmCheckboxOn.VerifyPresent();
+            AlarmPropertiesDefault.WaitForPresent();
+            AlarmCheckboxOn.WaitForPresent();
             return this;
         }
 
         public IAlarmsApp ConfirmAlarm1()
         {
             EggplantTestBase.Log("Confirming alarm #1 is set.");
-            AlarmCheckboxOn.VerifyPresent();
+            AlarmCheckboxOn.WaitForPresent();
             ExitApp();
             return this;
         }
@@ -58,7 +58,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             {
                 AlarmCheckboxOn.Click();
             }
-            AlarmCheckboxOn.VerifyNotPresent();
+            AlarmCheckboxOn.WaitForNotPresent();
             return this;
         }
 

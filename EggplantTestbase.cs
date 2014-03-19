@@ -120,8 +120,8 @@ namespace ProtoTest.Nightshade
         {
             Thread.Sleep(1000);
             LogScreenshotOnError();
-           StopVideoRecording();
-           Driver.Disconnect();
+            StopVideoRecording();
+            Driver.Disconnect();
         }
 
 

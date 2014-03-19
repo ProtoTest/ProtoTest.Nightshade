@@ -1,4 +1,5 @@
-﻿using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
+﻿using System.Drawing;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
@@ -15,15 +16,27 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IMediaPlayerApp VerifyElements()
         {
             EggplantTestBase.Log("Verifying Windows Media elements.");
-            WindowsMediaHeader.VerifyPresent();
+            WindowsMediaHeader.WaitForPresent();
+            return this;
+        }
+
+        public IMediaPlayerApp SetAppState()
+        {
+            EggplantTestBase.Log("Setting Windows Media app state.");
+            var startBar = new Windows_MC659B_StartBar();
+            if (startBar.OKButton.IsPresent())
+            {
+                startBar.OKButton.Click();
+            }
+            PlayIcon.WaitForPresent();
             return this;
         }
 
         public IMediaPlayerApp VerifyFilePlaying()
         {
             EggplantTestBase.Log("Verifying file is currently playing.");
-            PlayingFile.VerifyPresent();
-            PauseIcon.VerifyPresent();
+            PlayingFile.WaitForPresent();
+            PauseIcon.WaitForPresent();
             return this;
         }
 
@@ -31,7 +44,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             EggplantTestBase.Log("Pausing file that is currently playing.");
             PauseIcon.Click();
-            PlayIcon.VerifyPresent();
+            PlayIcon.WaitForPresent();
             return this;
         }
 

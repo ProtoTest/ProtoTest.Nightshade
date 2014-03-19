@@ -9,7 +9,6 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IBrowserApp VerifyElements()
         {
             EggplantTestBase.Log("Verifying browser app (Internet Explorer) elements.");
-            //.VerifyPresent();
             return this;
         }
 

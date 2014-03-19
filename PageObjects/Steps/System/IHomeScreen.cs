@@ -12,6 +12,11 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.System
         IHomeScreen ConfirmAlarm1On();
         IHomeScreen ConfirmAlarm1Off();
 
+        IHomeScreen TurnOnNFC();
+        IHomeScreen VerifyNFCOn();
+        IHomeScreen TurnOffNFC();
+        IHomeScreen VerifyNFCOff();
+
         INotificationsBar OpenNotificationsBar();
 
     }

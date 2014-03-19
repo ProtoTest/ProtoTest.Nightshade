@@ -25,7 +25,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             {
                 StillMenuOption.Click();
             }
-            PictureModeIcon.VerifyPresent();
+            PictureModeIcon.WaitForPresent();
         }
 
         public void SetToVideoMode()
@@ -36,13 +36,13 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             {
                 VideoMenuOption.Click();
             }
-            VideoModeIcon.VerifyPresent();
+            VideoModeIcon.WaitForPresent();
         }
 
         public IPicturesAndVideoApp VerifyElements()
         {
             EggplantTestBase.Log("Verifying Pictures & Video app elements.");
-            PicturesAndVideoHeader.VerifyPresent();
+            PicturesAndVideoHeader.WaitForPresent();
             return this;
         }
 
@@ -55,10 +55,10 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             SetToPicturesMode();
             startBar.KeyboardButton.Click();
             startBar.KeyboardKeyEnter.Click();
-            PictureCaptured.VerifyPresent();
+            PictureCaptured.WaitForPresent();
             startBar.OKButton.Click();
             startBar.ThumbnailsButton.Click();
-            PictureCapturedIcon.VerifyPresent();
+            PictureCapturedIcon.WaitForPresent();
             return this;
         }
 
@@ -66,7 +66,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             EggplantTestBase.Log("Opening the picture taken with device camera.");
             PictureCapturedIcon.Click();
-            PictureCaptured.VerifyPresent();
+            PictureCaptured.WaitForPresent();
             var startBar = new Windows_MC659B_StartBar();
             startBar.OKButton.Click();
             return this;
@@ -79,9 +79,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             startBar.MenuButton.Click();
             DeleteMenuOption.Click();
             var popUp = new Windows_MC659B_Popups();
-            popUp.DeleteItem.VerifyPresent();
+            popUp.DeleteItem.WaitForPresent();
             popUp.ClickYes();
-            PictureCapturedIcon.VerifyNotPresent();
+            PictureCapturedIcon.WaitForNotPresent();
             startBar.ExitButton.Click();
             return this;
         }
@@ -96,7 +96,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             startBar.KeyboardButton.Click();
             startBar.KeyboardKeyEnter.Click();
             startBar.KeyboardButton.Click();
-            startBar.StopButton.WaitForNotPresentForTime(60);
+            startBar.StopButton.WaitForNotPresent(60);
             startBar.ThumbnailsButton.Click();
             return this;
         }
@@ -121,9 +121,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             startBar.MenuButton.Click();
             DeleteMenuOption.Click();
             var popUp = new Windows_MC659B_Popups();
-            popUp.DeleteItem.VerifyPresent();
+            popUp.DeleteItem.WaitForPresent();
             popUp.ClickYes();
-            PictureCapturedIcon.VerifyNotPresent();
+            PictureCapturedIcon.WaitForNotPresent();
             startBar.ExitButton.Click();
             return this;
         }

@@ -45,11 +45,25 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         }
 
         [Test]
-        [Description("Open and Close the Music Player - Tests 5.1.8.11, 5.1.8.12, and 5.1.8.13")]
+        [Description("Open and Close the Music Player - Test 5.1.8.11")]
         [Category("Single Device")]
+        [Repeat(20)]
         public void TestOpenAndCloseTheMusicPlayer()
         {
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.NavigateTheMenu().GoToMediaPlayerApp().VerifyElements().ExitApp();
+        }
 
+        [Test]
+        [Description("Use the Music Player to Play a Music File - Tests 5.1.8.12 and 5.1.8.13")]
+        [Category("Single Device")]
+        [Repeat(1)] //Number of iterations set within "IterativelyOpenAudioFiles"
+        public void TestPlayingAMusicFile()
+        {
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.NavigateTheMenu().GoToAudioFiles().IterativelyOpenAudioFiles(50).ExitApp(); //Number of iterations set within "IterativelyOpenAudioFiles"
         }
 
         [Test]
