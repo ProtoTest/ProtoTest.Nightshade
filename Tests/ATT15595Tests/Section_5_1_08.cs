@@ -71,7 +71,21 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Category("Single Device")]
         public void TestDeviceThemes()
         {
-
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.OnHomeScreenScreen()
+                .SetThemeToOption("01")
+                .SetThemeToOption("02")
+                .SetThemeToOption("03")
+                .SetThemeToOption("04")
+                .SetThemeToOption("05")
+                .SetThemeToOption("06")
+                .SetThemeToOption("07")
+                .SetThemeToOption("08")
+                .SetThemeToOption("09")
+                .SetThemeToOption("10")
+                .SetThemeToDefault();
+            Command.OnHomeScreenScreen().ConfirmHomeScreen();
         }
 
     }

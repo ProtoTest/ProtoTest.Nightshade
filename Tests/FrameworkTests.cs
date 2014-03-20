@@ -87,7 +87,7 @@ namespace ProtoTest.Nightshade
             public void TestPageObject()
             {
                 Driver.Connect(Config.Hosts[0]);
-                var page = new PageObjectExample();
+                var page = new FrameworkPageObjectExample();
                 page.DoSomething();
             }
 

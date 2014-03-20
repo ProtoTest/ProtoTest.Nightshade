@@ -15,7 +15,7 @@ namespace ProtoTest.Nightshade.Enhacements.Windows.MC659B
             int driverTimeOut = Config.DriveTimeoutSec;
             int driverTimeOutMS = driverTimeOut*1000;
             var eggplantDriver = new EggplantDriver(driverTimeOutMS);
-            string elementText = element.ToString();
+            string elementText = element.locator;
 
             if (element.IsPresent())
             {

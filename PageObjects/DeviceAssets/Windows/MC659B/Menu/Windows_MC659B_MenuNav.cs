@@ -6,7 +6,7 @@ using ProtoTest.Nightshade.PageObjects.Steps.System;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
 {
-    class Windows_MC659B_MenuNav : IMenuNav
+    public class Windows_MC659B_MenuNav : IMenuNav
     {
         public INetworkSettings SetCellularConnectionToTwoG()
         {
@@ -53,6 +53,17 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
             utilities.SearchMenuFor(startMenu.CalendarApp);
             startMenu.CalendarApp.Click();
             return new Windows_MC659B_CalendarApp();
+        }
+
+        public IContactsApp GoToContactsApp()
+        {
+            var startBar = new Windows_MC659B_StartBar();
+            startBar.EnterStartMenu();
+            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var startMenu = new Windows_MC659B_StartMenu();
+            utilities.SearchMenuFor(startMenu.ContactsApp);
+            startMenu.CalendarApp.Click();
+            return new Windows_MC659B_ContactsApp();
         }
 
         public IFileExplorer GoToAudioFiles()

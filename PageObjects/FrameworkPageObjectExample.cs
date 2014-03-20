@@ -2,7 +2,7 @@
 
 namespace ProtoTest.Nightshade.PageObjects
 {
-    public class PageObjectExample
+    public class FrameworkPageObjectExample
     {
         public EggplantElement firsTElement = new EggplantElement(By.Image("path/to/element"));
         public EggplantElement secondElement = new EggplantElement(By.Image("path/to/element"));
@@ -15,7 +15,7 @@ namespace ProtoTest.Nightshade.PageObjects
             LowBattery
         };
 
-        public PageObjectExample DoSomething()
+        public FrameworkPageObjectExample DoSomething()
         {
             firsTElement.Click();
             secondElement.Click();

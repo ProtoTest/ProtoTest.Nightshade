@@ -4,6 +4,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 {
     public class Windows_MC659B_StartBar
     {
+        public EggplantElement AddItemButton = new EggplantElement(By.Image("MC659B/System/StartBar/AddItemButton"));
         public EggplantElement ExitButton = new EggplantElement(By.Image("MC659B/System/StartBar/ExitButton"));
         public EggplantElement KeyboardButton = new EggplantElement(By.Image("MC659B/System/StartBar/KeyboardButton"));
         public EggplantElement OKButton = new EggplantElement(By.Image("MC659B/System/StartBar/OKButton"));

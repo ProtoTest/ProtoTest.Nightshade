@@ -25,6 +25,9 @@ namespace ProtoTest.Nightshade
         public static bool LogDriveCommands = IsTruthy(Config.GetConfigValue("LogDriveCommands", "False"));
         public static int VideoFrameRate = int.Parse(Config.GetConfigValue("VideoFrameRate", "20"));
         public static int CalendarAppointmentsIterations = int.Parse(Config.GetConfigValue("CalendarAppointmentsIterations", "5"));
+
+        public static string AudioTestFileNamePrefix = GetConfigValue("AudioTestFileNamePrefix", "null");
+
         public static List<string> Hosts
         {
             //looks in app.config for Host1, Host2....Host5.  

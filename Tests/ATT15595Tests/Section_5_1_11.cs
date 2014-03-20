@@ -15,7 +15,13 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Category("Single Device")]
         public void TestTurnWifiRadioOffandOn()
         {
-
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            //Command.OnHomeScreenScreen().TurnOnWifi();
+            //Command.OnHomeScreenScreen().VerifyWifiOn();
+            //Command.OnHomeScreenScreen().TurnOffWifi();
+            //Command.OnHomeScreenScreen().VerifyWifiOff();
+            Command.OnHomeScreenScreen().ConfirmHomeScreen();
         }
 
         [Test]
