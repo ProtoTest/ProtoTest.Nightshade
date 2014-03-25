@@ -54,6 +54,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             var startBar = new Windows_MC659B_StartBar();
             startBar.NowPlaying.Click();
             NowPlayingRemoveFile.Click();
+            startBar.OKButton.Click();
             return this;
         }
 

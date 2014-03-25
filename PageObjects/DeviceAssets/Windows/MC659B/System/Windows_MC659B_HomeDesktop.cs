@@ -1,4 +1,5 @@
-﻿using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
+﻿using System;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
 using ProtoTest.Nightshade.PageObjects.Steps.System;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
@@ -23,9 +24,51 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen ConfirmHomeScreen()
         {
+            if (!DefaultDesktop.IsPresent())
+            {
+                throw new Exception("Device is not on the home screen.");
+            }
+            EggplantTestBase.Log("Device is on the home screen.");
             DefaultDesktop.WaitForPresent();
             startBar.VerifyElements();
             notificationsBar.VerifyElements();
+            return this;
+        }
+
+        public IHomeScreen ResetDeviceStateToDefault()
+        {
+            EggplantTestBase.Log("Resetting device state to default.");
+            int loops = 1;
+            while (startBar.ExitButton.IsPresent() || startBar.OKButton.IsPresent() || notificationsBar.RunningProgramsMenuOKButton.IsPresent())
+            {
+                if (loops == 10)
+                {
+                    throw new Exception("Cannot close menu to return to the desktop after " + loops + " attempts.");
+                }
+                
+                EggplantTestBase.Log("Open menu detected.  Closing now...");
+                if (startBar.ExitButton.IsPresent())
+                {
+                    startBar.ExitButton.Click();
+                }
+                if (startBar.OKButton.IsPresent())
+                {
+                    startBar.OKButton.Click();
+                }
+                if (notificationsBar.RunningProgramsMenuOKButton.IsPresent())
+                {
+                    notificationsBar.RunningProgramsMenuOKButton.Click();
+                }
+                loops++;
+            }
+            notificationsBar.OpenRunningProgramsMenu();
+            if (notificationsBar.RunningProgramsCloseAllButton.IsPresent())
+            {
+                EggplantTestBase.Log("Running programs detected.  Closing now...");
+                notificationsBar.ClickOnMenuCloseAllButton();
+            }
+            notificationsBar.ClickOnMenuOKButton();
+            ConfirmHomeScreen();
             return this;
         }
 
@@ -42,6 +85,15 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             picsApp.ResetThemeToDefault();
             return this;
         }
+
+
+        public INotificationsBar OpenNotificationsBar()
+        {
+            var bar = new Windows_MC659B_NotificationsBar();
+            bar.OpenRunningProgramsMenu();
+            return new Windows_MC659B_NotificationsBar();
+        }
+
 
         public IHomeScreen ConfirmAlarm1On()
         {
@@ -63,7 +115,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             return new Windows_MC659B_HomeDesktop();
         }
 
-        public IHomeScreen VerifyNFCInDefaultState()
+
+        public IHomeScreen ResetNFCRadioToDefault()
         {
             Command.OnHomeScreenScreen()
                 .OpenNotificationsBar().SelectPowerAndRadioMenuOption().ResetNFCRadioToDefault().ClickOnMenuOKButton();
@@ -72,8 +125,6 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen TurnOnNFC()
         {
-            VerifyNFCInDefaultState();
-
             Command.OnHomeScreenScreen()
                 .OpenNotificationsBar().SelectPowerAndRadioMenuOption().SetNFCRadioToOn().ClickOnMenuOKButton();
             return new Windows_MC659B_HomeDesktop();
@@ -81,7 +132,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen VerifyNFCOn()
         {
-            Command.OnHomeScreenScreen().VerifyNFCOn();
+            notificationsBar.BluetoothConnected.WaitForPresent();
             return new Windows_MC659B_HomeDesktop();
         }
 
@@ -94,16 +145,54 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen VerifyNFCOff()
         {
-            Command.OnHomeScreenScreen().VerifyNFCOff();
+            notificationsBar.BluetoothConnected.WaitForNotPresent();
             return new Windows_MC659B_HomeDesktop();
         }
 
-        public INotificationsBar OpenNotificationsBar()
+
+        public IHomeScreen ResetWifiRadioToDefault()
         {
-            var bar = new Windows_MC659B_NotificationsBar();
-            bar.OpenRunningProgramsMenu();
-            return new Windows_MC659B_NotificationsBar();
+            Command.OnHomeScreenScreen()
+                .OpenNotificationsBar().SelectPowerAndRadioMenuOption().ResetWifiRadioToDefault().ClickOnMenuOKButton();
+            return new Windows_MC659B_HomeDesktop();
         }
 
+        public IHomeScreen TurnOnWifi()
+        {
+            Command.OnHomeScreenScreen()
+                .OpenNotificationsBar().SelectPowerAndRadioMenuOption().SetWifiRadioToOn().ClickOnMenuOKButton();
+            return new Windows_MC659B_HomeDesktop();
+        }
+
+        public IHomeScreen VerifyWifiOn()
+        {
+            Command.OnHomeScreenScreen().VerifyWifiOn();
+            return new Windows_MC659B_HomeDesktop();
+        }
+
+        public IHomeScreen TurnOffWifi()
+        {
+            Command.OnHomeScreenScreen()
+                .OpenNotificationsBar().SelectPowerAndRadioMenuOption().SetWifiRadioToOff().ClickOnMenuOKButton();
+            return new Windows_MC659B_HomeDesktop();
+        }
+
+        public IHomeScreen VerifyWifiOff()
+        {
+            Command.OnHomeScreenScreen().VerifyWifiOff();
+            return new Windows_MC659B_HomeDesktop();
+        }
+
+        public IHomeScreen ConnectToDefaultWifiNetwork()
+        {
+            
+            return new Windows_MC659B_HomeDesktop();
+        }
+
+        public IHomeScreen DisconnectFromDefaultWifiNetwork()
+        {
+            
+            return new Windows_MC659B_HomeDesktop();
+        }
     }
 }

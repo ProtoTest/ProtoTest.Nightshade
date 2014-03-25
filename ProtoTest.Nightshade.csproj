@@ -64,6 +64,7 @@
     <Compile Include="BackgroundVideoRecorder.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_FileExplorerApp.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_ContactsApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_WifiManager.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_Template.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_WindowsMediaApp.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_PicturesAndVideoApp.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\Windows_MC659B_NetworkSettings.cs" />
     <Compile Include="PageObjects\Steps\Apps\IFileExplorer.cs" />
     <Compile Include="PageObjects\Steps\Apps\IContactsApp.cs" />
+    <Compile Include="PageObjects\Steps\Apps\IWifiManager.cs" />
     <Compile Include="PageObjects\Steps\Apps\ITemplate.cs" />
     <Compile Include="PageObjects\Steps\Apps\IMediaPlayerApp.cs" />
     <Compile Include="PageObjects\Steps\Apps\IPicturesAndVideoApp.cs" />
@@ -175,6 +177,7 @@
     <Content Include="Setup Files\Audio Test Files\Audio Test 48.mp3" />
     <Content Include="Setup Files\Audio Test Files\Audio Test 49.mp3" />
     <Content Include="Setup Files\Audio Test Files\Audio Test 50.mp3" />
+    <Content Include="Setup Files\TestAccounts.txt" />
     <Content Include="Setup Files\Windows\MC659B\Testing Background.png" />
     <Content Include="Suites\MotorolaMaster.suite\Images\MC659B\AppIcons\AlarmsApp.png" />
     <Content Include="Suites\MotorolaMaster.suite\Images\MC659B\AppIcons\CalendarApp.png" />
@@ -420,6 +423,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Setup Files\Contacts.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Suites\MotorolaMaster.suite\.timestamp" />
     <None Include="Suites\MotorolaMaster.suite\Images\MC659B\AppIcons\AlarmsApp.imageinfo" />
     <None Include="Suites\MotorolaMaster.suite\Images\MC659B\AppIcons\CalendarApp.imageinfo" />

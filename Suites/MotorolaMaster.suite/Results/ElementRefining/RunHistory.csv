@@ -1,0 +1,10 @@
+﻿Date Run,Status,Time,# of Errors,# of Warnings,# of Exceptions,Log File,Return Value,Error Message,# of Successes
+2014-03-24 16:09:25.436 -0600,"Failure",0:00:01,1,0,0,"20140324_160925.436/LogFile.txt","","STUnknownMessage -- ERROR: No Such Command: 'print'",0
+2014-03-24 16:09:51.573 -0600,"Success",0:00:00,0,0,0,"20140324_160951.573/LogFile.txt","","",1
+2014-03-24 16:10:37.466 -0600,"Success",0:00:00,0,0,0,"20140324_161037.466/LogFile.txt","","",1
+2014-03-24 16:11:06.085 -0600,"Success",0:00:00,0,0,0,"20140324_161106.085/LogFile.txt","","",1
+2014-03-24 16:11:54.837 -0600,"Success",0:00:00,0,0,0,"20140324_161154.837/LogFile.txt","","",1
+2014-03-24 16:12:57.966 -0600,"Success",0:00:00,0,0,0,"20140324_161257.966/LogFile.txt","","",1
+2014-03-24 16:13:36.540 -0600,"Success",0:00:00,0,0,0,"20140324_161336.540/LogFile.txt","","",1
+2014-03-24 16:13:51.415 -0600,"Success",0:00:00,0,0,0,"20140324_161351.415/LogFile.txt","","",1
+2014-03-24 16:15:12.073 -0600,"Failure",0:00:07,1,0,1,"20140324_161512.073/LogFile.txt","","Image Not Found -- click Error - No Image Found On Screen: ""(TEXT:""TASK1"")""",0

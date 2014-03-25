@@ -26,7 +26,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
         {
             var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var utilities = new Enhancements.Windows.MC659B.Utilities();
             var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.AlarmsApp);
             startMenu.AlarmsApp.Click();
@@ -37,7 +37,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
         {
             var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var utilities = new Enhancements.Windows.MC659B.Utilities();
             var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.BrowserApp);
             startMenu.BrowserApp.Click();
@@ -48,7 +48,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
         {
             var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var utilities = new Enhancements.Windows.MC659B.Utilities();
             var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.CalendarApp);
             startMenu.CalendarApp.Click();
@@ -59,10 +59,10 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
         {
             var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var utilities = new Enhancements.Windows.MC659B.Utilities();
             var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.ContactsApp);
-            startMenu.CalendarApp.Click();
+            startMenu.ContactsApp.Click();
             return new Windows_MC659B_ContactsApp();
         }
 
@@ -70,7 +70,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
         {
             var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var utilities = new Enhancements.Windows.MC659B.Utilities();
             var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.FileExplorerApp);
             startMenu.FileExplorerApp.Click();
@@ -81,7 +81,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
         {
             var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var utilities = new Enhancements.Windows.MC659B.Utilities();
             var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.HomeIcon);
             startMenu.HomeIcon.Click();
@@ -92,7 +92,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
         {
             var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var utilities = new Enhancements.Windows.MC659B.Utilities();
             var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.WindowsMediaApp);
             startMenu.CalendarApp.Click();
@@ -105,7 +105,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
         {
             var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var utilities = new Enhancements.Windows.MC659B.Utilities();
             var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.PicturesAndVideoApp);
             startMenu.PicturesAndVideoApp.Click();
@@ -116,7 +116,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
         {
             var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhacements.Windows.MC659B.Utilities();
+            var utilities = new Enhancements.Windows.MC659B.Utilities();
             var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.TasksApp);
             startMenu.TasksApp.Click();

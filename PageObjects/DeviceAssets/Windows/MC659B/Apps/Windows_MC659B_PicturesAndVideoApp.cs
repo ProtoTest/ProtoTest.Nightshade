@@ -42,30 +42,63 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public void SetToPicturesMode()
         {
+            EggplantTestBase.Log("Setting app to Pictures mode.");
             var startBar = new Windows_MC659B_StartBar();
-            startBar.MenuButton.Click();
-            if (StillMenuOption.IsPresent())
+            startBar.MenuOption.Click();
+            if (VideoMenuOption.IsPresent())
             {
+                EggplantTestBase.Log("App is currently in Video mode.");
+                startBar.MenuOption.Click();
+            }
+            else
+            {
+                EggplantTestBase.Log("Activating Pictures mode.");
                 StillMenuOption.Click();
             }
             PictureModeIcon.WaitForPresent();
+            EggplantTestBase.Log("App is now in Pictures mode.");
         }
 
         public void SetToVideoMode()
         {
+            EggplantTestBase.Log("Setting app to Video mode.");
             var startBar = new Windows_MC659B_StartBar();
-            startBar.MenuButton.Click();
-            if (VideoMenuOption.IsPresent())
+            startBar.MenuOption.Click();
+            if (StillMenuOption.IsPresent())
             {
+                EggplantTestBase.Log("App is currently in Video mode.");
+                startBar.MenuOption.Click();
+            }
+            else
+            {
+                EggplantTestBase.Log("Activating Video mode.");
                 VideoMenuOption.Click();
             }
             VideoModeIcon.WaitForPresent();
+            EggplantTestBase.Log("App is now in Video mode.");
         }
 
         public IPicturesAndVideoApp VerifyElements()
         {
             EggplantTestBase.Log("Verifying Pictures & Video app elements.");
-            PicturesAndVideoHeader.WaitForPresent();
+            PicturesAndVideoHeader.WaitForPresent(15);
+            return this;
+        }
+
+        public IPicturesAndVideoApp SetUpPicturesAndVideoApp()
+        {
+            EggplantTestBase.Log("Confirming Pictures and Video app is configured correctly.");
+            while (VideoCapturedIcon.IsPresent())
+            {
+                VideoCapturedIcon.Press();
+                Thread.Sleep(1000);
+                DeleteMenuOption.Click();
+                var popup = new Windows_MC659B_Popups();
+                popup.ClickYes();
+                Thread.Sleep(2000);
+            }
+            VideoCapturedIcon.WaitForNotPresent();
+            EggplantTestBase.Log("Previous video files deleted.");
             return this;
         }
 
@@ -113,13 +146,13 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             EggplantTestBase.Log("Recording a video with the device camera.");
             var startBar = new Windows_MC659B_StartBar();
-            startBar.MenuButton.Click();
+            startBar.MenuOption.Click();
             CameraMenuOption.Click();
             SetToVideoMode();
             startBar.KeyboardButton.Click();
             startBar.KeyboardKeyEnter.Click();
             startBar.KeyboardButton.Click();
-            startBar.StopButton.WaitForNotPresent(60);
+            startBar.StopOption.WaitForNotPresent(60);
             startBar.ThumbnailsButton.Click();
             return this;
         }
@@ -133,7 +166,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             mediaPlayer.VerifyFilePlaying();
             mediaPlayer.PauseFile();
             mediaPlayer.RemoveFileFromActiveStatus();
-            mediaPlayer.ExitApp();
+            startBar.ExitButton.Click();
             return this;
         }
 
@@ -141,13 +174,12 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             EggplantTestBase.Log("Deleting the video recorded with the device camera.");
             var startBar = new Windows_MC659B_StartBar();
-            startBar.MenuButton.Click();
+            startBar.MenuOption.Click();
             DeleteMenuOption.Click();
             var popUp = new Windows_MC659B_Popups();
             popUp.DeleteItem.WaitForPresent();
             popUp.ClickYes();
             PictureCapturedIcon.WaitForNotPresent();
-            startBar.ExitButton.Click();
             return this;
         }
 

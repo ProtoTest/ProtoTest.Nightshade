@@ -1,4 +1,5 @@
-﻿using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
+﻿using System.Threading;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
@@ -7,6 +8,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
     {
         public EggplantElement AlarmsAppHeader = new EggplantElement(By.Image("MC659B/Apps/Alarms/AlarmsAppHeader"));
         public EggplantElement AlarmsSectionHeader = new EggplantElement(By.Image("MC659B/Apps/Alarms/AlarmsAlarmsHeader"));
+        public EggplantElement Alarm1Checkbox = new EggplantElement(By.Image("MC659B/Apps/Alarms/Alarm1Checkbox"));
         public EggplantElement AlarmCheckboxOff = new EggplantElement(By.Image("MC659B/Apps/Alarms/AlarmCheckboxOff"));
         public EggplantElement AlarmCheckboxOn = new EggplantElement(By.Image("MC659B/Apps/Alarms/AlarmCheckboxOn"));
         public EggplantElement AlarmTime = new EggplantElement(By.Image("MC659B/Apps/Alarms/AlarmTime"));
@@ -27,6 +29,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             {
                 EggplantTestBase.Log("Previous alarm detected.  Disabling alarm...");
                 AlarmCheckboxOn.Click();
+                Thread.Sleep(1000);
             }
             AlarmCheckboxOn.WaitForNotPresent();
             EggplantTestBase.Log("Alarms app is ready for testing.");
@@ -36,8 +39,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IAlarmsApp SetAlarm1()
         {
             EggplantTestBase.Log("Setting alarm #1.");
-            AlarmCheckboxOff.Click();
-            AlarmTime.LogText();
+            Alarm1Checkbox.Click();
+            //AlarmTime.LogText();
             AlarmPropertiesDefault.WaitForPresent();
             AlarmCheckboxOn.WaitForPresent();
             return this;
@@ -66,7 +69,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             EggplantTestBase.Log("Exiting alarms app.");
             var startBar = new Windows_MC659B_StartBar();
-            startBar.ExitButton.Click();
+            startBar.OKButton.Click();
             Command.OnHomeScreenScreen().ConfirmHomeScreen();
             return this;
         }

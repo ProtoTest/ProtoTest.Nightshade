@@ -12,7 +12,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public EggplantElement MenuOption = new EggplantElement(By.Image("MC659B/System/StartBar/MenuOption"));
         public EggplantElement NowPlaying = new EggplantElement(By.Image("MC659B/Apps/WindowsMedia/NowPlaying"));
         public EggplantElement StartButton = new EggplantElement(By.Image("MC659B/System/StartBar/StartButton"));
-        public EggplantElement StopButton = new EggplantElement(By.Image("MC659B/System/StartBar/StopButton"));
+        public EggplantElement StopOption = new EggplantElement(By.Image("MC659B/System/StartBar/StopOption"));
         public EggplantElement TaskEditButton = new EggplantElement(By.Image("MC659B/System/StartBar/TaskEditButton"));
         public EggplantElement ThumbnailsButton = new EggplantElement(By.Image("MC659B/System/StartBar/ThumbnailsButton"));
 

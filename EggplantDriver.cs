@@ -184,7 +184,7 @@ namespace ProtoTest.TestRunner.Nightshade
         public string ExecuteAndGetOutput(string command)
         {
             var rpc = Execute(command);
-            var output = (string) rpc["Output"];
+            var output = (string)rpc["Output"];
             return output.TrimEnd("\r\n".ToCharArray());
         }
 
@@ -317,6 +317,7 @@ namespace ProtoTest.TestRunner.Nightshade
         public void Type(string text)
         {
             ExecuteCommand("TypeText", text);
+            Thread.Sleep(2000);
         }
 
         public void Type(List<string> listOfText)
@@ -327,6 +328,7 @@ namespace ProtoTest.TestRunner.Nightshade
                 commands += ", " + listOfText[0];
             }
             ExecuteCommand("TypeText", commands);
+            Thread.Sleep(2000);
         }
 
         public void ScrollWheelUp(string num)
@@ -398,7 +400,12 @@ namespace ProtoTest.TestRunner.Nightshade
 
         public string ReadText(string element)
         {
-            return ExecuteAndGetOutput(string.Format("ReadText ((\"{0}\"))", element));
+            //EggplantTestBase.Log(string.Format("Command used is: put ReadText (\"{0}\")", element));
+            //return ExecuteAndGetOutput(string.Format("put ReadText (\"{0}\")", element));
+            //EggplantTestBase.Log(string.Format("Command used is: put ReadText (40,100),(175,175)"));
+            //return ExecuteAndGetOutput(string.Format("put ReadText (40,100),(175,175)"));
+            EggplantTestBase.Log(string.Format("Command used is: put ReadText {0}", element));
+            return ExecuteAndGetOutput(string.Format("put ReadText {0}", element));
         }
 
         public SearchRectangle GetScreenRectangle()

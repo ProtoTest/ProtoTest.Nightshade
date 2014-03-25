@@ -7,6 +7,8 @@ namespace ProtoTest.Nightshade
     public class By : EggplantTestBase
     {
         private string locator;
+        private static string _path;
+        public string Path { get { return _path; } }
 
         public By(string locator)
         {
@@ -34,6 +36,7 @@ namespace ProtoTest.Nightshade
 
         public static By Image(string path, string options=null)
         {
+            _path = path;
             string endstring = string.Format("(image: \"{0}\"", path);
             if (options != null)
             {
@@ -41,7 +44,7 @@ namespace ProtoTest.Nightshade
                 {
                     endstring += string.Format(",{0}", option);
                 }
-                
+            
             }
             endstring += ")";
             return new By(endstring);
@@ -49,6 +52,7 @@ namespace ProtoTest.Nightshade
 
         public static By TextAtLocation(string path)
         {
+            _path = path;
             string endstring = EggplantTestBase.Driver.ReadText(path);
             if(endstring != null)
             {

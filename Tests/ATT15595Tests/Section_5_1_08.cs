@@ -13,8 +13,8 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         public void TestCameraVideo()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
-            Command.NavigateTheMenu().GoToPicturesAndVideoApp().VerifyElements().RecordAVideo().OpenRecordedVideo().DeleteRecordedVideo().ExitApp();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.NavigateTheMenu().GoToPicturesAndVideoApp().VerifyElements().SetUpPicturesAndVideoApp().RecordAVideo().OpenRecordedVideo().DeleteRecordedVideo().ExitApp();
         }
 
         [Test]
@@ -24,7 +24,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         public void TestCameraPictures()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToPicturesAndVideoApp().VerifyElements().TakePicture().OpenTakenPicture().DeleteTakenPicture().ExitApp();
         }
 
@@ -51,7 +51,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         public void TestOpenAndCloseTheMusicPlayer()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToMediaPlayerApp().VerifyElements().ExitApp();
         }
 
@@ -62,7 +62,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         public void TestPlayingAMusicFile()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToAudioFiles().IterativelyOpenAudioFiles(50).ExitApp(); //Number of iterations set within "IterativelyOpenAudioFiles"
         }
 
@@ -72,7 +72,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         public void TestDeviceThemes()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.OnHomeScreenScreen()
                 .SetThemeToOption("01")
                 .SetThemeToOption("02")

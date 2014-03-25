@@ -13,23 +13,31 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Turn the Wifi Radio Off and On - Test 5.1.11.1")]
         [Category("Single Device")]
+        [Repeat(20)]
         public void TestTurnWifiRadioOffandOn()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
-            //Command.OnHomeScreenScreen().TurnOnWifi();
-            //Command.OnHomeScreenScreen().VerifyWifiOn();
-            //Command.OnHomeScreenScreen().TurnOffWifi();
-            //Command.OnHomeScreenScreen().VerifyWifiOff();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
+            Command.OnHomeScreenScreen().TurnOnWifi();
+            Command.OnHomeScreenScreen().VerifyWifiOn();
+            Command.OnHomeScreenScreen().TurnOffWifi();
+            Command.OnHomeScreenScreen().VerifyWifiOff();
+            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
             Command.OnHomeScreenScreen().ConfirmHomeScreen();
         }
 
         [Test]
         [Description("Connect and Disconnect to a Wifi Network - Test 5.1.11.2")]
         [Category("Single Device")]
+        [Repeat(20)]
         public void TestConnectAndDisconnectToAWifiNetwork()
         {
-
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
+            Command.OnHomeScreenScreen().ConnectToDefaultWifiNetwork();
+            Command.OnHomeScreenScreen().DisconnectFromDefaultWifiNetwork();
         }
 
     }

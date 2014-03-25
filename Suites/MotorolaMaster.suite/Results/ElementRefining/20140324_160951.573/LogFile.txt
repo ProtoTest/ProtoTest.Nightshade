@@ -1,0 +1,5 @@
+﻿2014-03-24 16:09:51.582 -0600	START		Running Untitled.script
+2014-03-24 16:09:51.705 -0600	readtext		(61,138)
+2014-03-24 16:09:51.710 -0600	Log			2	on_untitled	Untitled.script
+2014-03-24 16:09:51.774 -0600	EndTestCase		(Duration:"0.183", Errors:"0", Exceptions:"0", StartTime:"2014-03-24 16:09:51 -0600", Successes:"1", TestCase:"Untitled.script", Warnings:"0")
+2014-03-24 16:09:51.909 -0600	SUCCESS		Execution Time 0:00:00 Untitled.script

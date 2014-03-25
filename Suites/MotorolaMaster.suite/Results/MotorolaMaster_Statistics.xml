@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"?>
+<statistics>
+ <script name="ElementRefining">
+  <LastStatus>Failure</LastStatus>
+  <NumberOfRuns>9</NumberOfRuns>
+  <NumberOfFails>2</NumberOfFails>
+  <FirstRun>2014-03-24 16:09:25 -0600</FirstRun>
+  <LastRun>2014-03-24 16:15:12 -0600</LastRun>
+  <TotalTimeOnSuccess>1.714000</TotalTimeOnSuccess>
+ </script>
+</statistics>

@@ -13,7 +13,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         public void TestCalendarAppointments()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToCalendarApp().VerifyElements().SetUpCalendarApp().SetCalendarAppointments(5).ExitApp(); //Number of iterations set within "SetCalendarAppointments"
             Command.NavigateTheMenu().GoToCalendarApp().DeleteCalendarAppointments().ExitApp();
         }
@@ -25,7 +25,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         public void TestAlarms()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToAlarmsApp().VerifyElements().SetUpAlarmsApp().SetAlarm1().ExitApp();
             Command.OnHomeScreenScreen().ConfirmAlarm1On();
             Command.NavigateTheMenu().GoToAlarmsApp().TurnOffAllAlarms().ExitApp();
@@ -39,7 +39,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         public void TestTasks()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToTasksApp().VerifyElements().SetUpTasksApp().CreateTask().DeleteAllTasks().ExitApp();
         }
 

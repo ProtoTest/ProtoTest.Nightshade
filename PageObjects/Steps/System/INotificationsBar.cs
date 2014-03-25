@@ -18,7 +18,12 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.System
         INotificationsBar VerifyNFCOn();
         INotificationsBar SetNFCRadioToOff();
         INotificationsBar VerifyNFCOff();
+        INotificationsBar ResetWifiRadioToDefault();
+        INotificationsBar SetWifiRadioToOn();
+        INotificationsBar VerifyWifiOn();
+        INotificationsBar SetWifiRadioToOff();
+        INotificationsBar VerifyWifiOff();
 
-        
+        INotificationsBar SelectWifiManagerOption();
     }
 }

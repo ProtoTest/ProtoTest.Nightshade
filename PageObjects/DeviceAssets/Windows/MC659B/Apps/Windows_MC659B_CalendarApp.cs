@@ -1,4 +1,5 @@
-﻿using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
+﻿using System.Threading;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
@@ -12,14 +13,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public EggplantElement CalendarGoToToday = new EggplantElement(By.Image("MC659B/Apps/Calendar/CalendarGoToToday"));
 
         public EggplantElement CalendarNewAppointment = new EggplantElement(By.Image("MC659B/Apps/Calendar/CalendarNewAppointment"));
-        public EggplantElement CalendarDeleteAppointment = new EggplantElement(By.Image("MC659B/Apps/Calendar/CalendarNewAppointment"));
+        public EggplantElement CalendarDeleteAppointment = new EggplantElement(By.Image("MC659B/Apps/Calendar/CalendarDeleteAppointment"));
 
         public EggplantElement CalendarAppointmentSubjectField = new EggplantElement(By.Image("MC659B/Apps/Calendar/CalendarAppointmentSubjectField"));
         public EggplantElement CalendarAppointmentLocationField = new EggplantElement(By.Image("MC659B/Apps/Calendar/CalendarAppointmentLocationField"));
         public EggplantElement CalendarAppointmentEndsText = new EggplantElement(By.Image("MC659B/Apps/Calendar/CalendarAppointmentEndsText"));
         public EggplantElement CalendarAppointmentStartText = new EggplantElement(By.Image("MC659B/Apps/Calendar/CalendarAppointmentStartText"));
 
-        public EggplantElement CalendarAppointment = new EggplantElement(By.Image("MC659B/Apps/Calendar/CalendarAppointment1"));
+        public EggplantElement CalendarAppointmentSelected = new EggplantElement(By.Image("MC659B/Apps/Calendar/CalendarAppointmentSelected"));
 
         public ICalendarApp VerifyElements()
         {
@@ -32,12 +33,24 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public ICalendarApp SetUpCalendarApp()
         {
             EggplantTestBase.Log("Confirming Calendar app is configured correctly.");
+
             CalendarGoToToday.Click();
+            while (CalendarAppointmentSelected.IsPresent())
+            {
+                EggplantTestBase.Log("Previous appointment detected.  Deleting...");
+                var startBar = new Windows_MC659B_StartBar();
+                startBar.MenuButton.Click();
+                CalendarDeleteAppointment.Click();
+                var popup = new Windows_MC659B_Popups();
+                popup.ClickYes();
+            }
+            CalendarAppointmentSelected.WaitForNotPresent();
+
             int iterationsMax = Config.CalendarAppointmentsIterations;
             for (int currentIteration = 1; currentIteration < iterationsMax; currentIteration++)
             {
                 CalendarRightArrow.Click();
-                while (CalendarAppointment.IsPresent())
+                while (CalendarAppointmentSelected.IsPresent())
                 {
                     EggplantTestBase.Log("Previous appointment detected.  Deleting...");
                     var startBar = new Windows_MC659B_StartBar();
@@ -46,7 +59,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                     var popup = new Windows_MC659B_Popups();
                     popup.ClickYes();
                 }
-                CalendarAppointment.WaitForNotPresent();
+                CalendarAppointmentSelected.WaitForNotPresent();
             }
             CalendarGoToToday.Click();
             EggplantTestBase.Log("Calendar app is ready for testing.");
@@ -61,10 +74,10 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             CalendarGoToToday.Click();
             startBar.MenuButton.Click();
             CalendarNewAppointment.Click();
-            CalendarAppointmentSubjectField.Type("Appt #1");
-            CalendarAppointmentLocationField.Type("Conference Room");
+            CalendarAppointmentSubjectField.Type("Appt_1");
+            CalendarAppointmentLocationField.Type("Conference_Room");
             startBar.OKButton.Click();
-            CalendarAppointment.WaitForPresent();
+            CalendarAppointmentSelected.WaitForPresent();
             EggplantTestBase.Log("Appointment #1 set.");
             
             //int iterationsMax = Config.CalendarAppointmentsIterations;
@@ -72,12 +85,13 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             {
                 EggplantTestBase.Log("Setting appointment #" + currentIteration + ".");
                 CalendarRightArrow.Click();
+                Thread.Sleep(2000);
                 startBar.MenuButton.Click();
                 CalendarNewAppointment.Click();
-                CalendarAppointmentSubjectField.Type("Appt #" + currentIteration);
-                CalendarAppointmentLocationField.Type("Conference Room");
+                CalendarAppointmentSubjectField.Type("Appt_" + currentIteration);
+                CalendarAppointmentLocationField.Type("Conference_Room");
                 startBar.OKButton.Click();
-                CalendarAppointment.WaitForPresent();
+                CalendarAppointmentSelected.WaitForPresent();
                 EggplantTestBase.Log("Appointment #" + currentIteration + " set.");
             }
             CalendarGoToToday.Click();
@@ -89,11 +103,21 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             EggplantTestBase.Log("Deleting previously set appointments.");
             CalendarGoToToday.Click();
+            while (CalendarAppointmentSelected.IsPresent())
+            {
+                EggplantTestBase.Log("Previous appointment detected.  Deleting...");
+                var startBar = new Windows_MC659B_StartBar();
+                startBar.MenuButton.Click();
+                CalendarDeleteAppointment.Click();
+                var popup = new Windows_MC659B_Popups();
+                popup.ClickYes();
+            }
+            CalendarAppointmentSelected.WaitForNotPresent();
             int iterationsMax = Config.CalendarAppointmentsIterations;
             for (int currentIteration = 1; currentIteration <= iterationsMax; currentIteration++)
             {
                 CalendarRightArrow.Click();
-                while (CalendarAppointment.IsPresent())
+                while (CalendarAppointmentSelected.IsPresent())
                 {
                     EggplantTestBase.Log("Previous appointment detected.  Deleting...");
                     var startBar = new Windows_MC659B_StartBar();
@@ -102,7 +126,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                     var popup = new Windows_MC659B_Popups();
                     popup.ClickYes();
                 }
-                CalendarAppointment.WaitForNotPresent();
+                CalendarAppointmentSelected.WaitForNotPresent();
             }
             CalendarGoToToday.Click();
             EggplantTestBase.Log("Previous appointments deleted.");

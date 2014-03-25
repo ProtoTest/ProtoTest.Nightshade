@@ -55,6 +55,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 if (numInt < 10)
                 {
                     string iterationNum = "0" + numStr;
+
                     var audioFileName = new EggplantElement(By.Text(Config.AudioTestFileNamePrefix + iterationNum));
                     EggplantTestBase.Log("Searching for file: " + audioFileName + ".");
                     int searches = iterations;

@@ -1,0 +1,17 @@
+﻿Log "Scanning for Bluetooth Passkey2."
+universal passkey2
+set passkey2 to ReadText("MC659B/Apps/Calendar/CalendarAppointment1")
+put passkey2 into passkey2
+Log "Passkey (" &passkey2& ") detected."
+
+Click (Text:"TASK1")
+//Click "MC659B/Apps/Tasks/TaskTitleText"
+Click (Text:"TASK1", SearchRectangle:((10,25),(470,225)))
+
+Log "Scanning for Bluetooth Passkey2."
+universal passkey2
+set passkey2 to ReadText((1,160),(75,190))
+put passkey2 into passkey2
+Log "Passkey (" &passkey2& ") detected."
+
+Click "MC659B/System/Startbar/MenuOption"

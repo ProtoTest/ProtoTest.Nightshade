@@ -1,18 +1,1 @@
-{
-    CaptureDate = <*D2014-03-05 20:52:21 +0000>;
-    CaptureHost = "Motorola MC659B DeviceA";
-    CaptureScreenSize = (
-	<*I480>,
-	<*I640>
-    );
-    HasAlpha = <*BY>;
-    HonorAlpha = <*BY>;
-    HotSpotX = <*R238>;
-    HotSpotY = <*R173>;
-    LastKnownLocationX = <*I0>;
-    LastKnownLocationY = <*I0>;
-    OriginalLocationX = <*I5>;
-    OriginalLocationY = <*I5>;
-    Pulsing = <*BN>;
-    Scale = <*R1>;
-}
+﻿{CaptureDate = "2014-03-05 20:52:21 +0000"; CaptureHost = "Motorola MC659B DeviceA"; CaptureScreenSize = (480, 640); HasAlpha = 1; HonorAlpha = 1; HotSpotX = 38; HotSpotY = 175; ImageDescription = <>; LastKnownLocationX = 0; LastKnownLocationY = 0; OriginalLocationX = 5; OriginalLocationY = 5; Pulsing = 0; Scale = 1; }
