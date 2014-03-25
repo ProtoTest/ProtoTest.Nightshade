@@ -1,4 +1,7 @@
 ﻿using System;
+using Gallio.Model.Environments;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Android.Shelter.System;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
@@ -7,9 +10,8 @@ using ProtoTest.Nightshade.PageObjects.Steps.System;
 
 namespace ProtoTest.Nightshade
 {
-    public static class Command
+    public class Command
     {
-
         public static IHomeScreen OnHomeScreenScreen()
         {
             if (Config.DeviceType == "null")
@@ -17,13 +19,12 @@ namespace ProtoTest.Nightshade
                 throw new Exception("You must have a device type.");
             }
 
-            else if (Config.DeviceType.Contains("Windows"))
+            if (Config.DeviceType.Contains("Windows"))
             {
                 if (Config.DeviceType.Contains("MC659B"))
                 {
                     return new Windows_MC659B_HomeDesktop();
                 }
-                //else if()
                 else
                 {
                     throw new Exception("Unknown windows device.  Check type formatting or add new device assets.");
@@ -31,13 +32,12 @@ namespace ProtoTest.Nightshade
 
             }
 
-            else if (Config.DeviceType.Contains("Android"))
+            if (Config.DeviceType.Contains("Android"))
             {
                 if (Config.DeviceType.Contains("Shelter"))
                 {
-                    return new Windows_MC659B_HomeDesktop();
+                    return new Android_Shelter_HomeDesktop();
                 }
-                //else if()
                 else
                 {
                     throw new Exception("Unknown android device.  Check type formatting or add new device assets.");
@@ -46,7 +46,7 @@ namespace ProtoTest.Nightshade
             throw new Exception("Unknown device type.  Check type formatting or add new device assets.");
             
         }
-        
+
         public static IMenuNav NavigateTheMenu()
         {
             if (Config.DeviceType.Contains("Windows"))
@@ -62,7 +62,7 @@ namespace ProtoTest.Nightshade
             }
             else if(Config.DeviceType.Contains("Android"))
             {
-                return new Windows_MC659B_MenuNav();
+                throw new NotImplementedException();
             }
             else
             {

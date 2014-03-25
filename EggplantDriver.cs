@@ -114,16 +114,22 @@ namespace ProtoTest.TestRunner.Nightshade
         ///     Connects to a device, must be run before any steps can be executed.
         /// </summary>
         /// <param name="host"></param>
-        public void Connect(string host)
+        public void Connect(string host, string port = "5900")
         {
             for (var i = 1; i <= 5; i++)
             {
                 try
                 {
-
-
                     DiagnosticLog.WriteLine("Trying to connect to device (" + i + ") : " + host);
-                    Execute(string.Format("Connect (ServerID:\"{0}\")", host));
+                    if (port == "0")
+                    {
+                        Execute(string.Format("Connect (ServerID:\"{0}\")", host));
+                    }
+                    else
+                    {
+                        Execute(string.Format("Connect (ServerID:\"{0}\", portNum: \"{1}\")", host, port));
+                    }
+                    
                     DiagnosticLog.WriteLine("Connection established to device : " + GetConnectionInfo());
                     return;
                 }

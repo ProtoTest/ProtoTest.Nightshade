@@ -52,7 +52,7 @@ namespace ProtoTest.Nightshade
             WaitForPresent();
             EggplantTestBase.Log(string.Format("Reading text on element {0}.", locator));
             var text = Driver.ReadText(locator);
-            EggplantTestBase.Log("Text was : " + text);
+            //EggplantTestBase.Log("Text was : " + text);
             return text;
         }
 
@@ -124,11 +124,23 @@ namespace ProtoTest.Nightshade
 
         private void LogSourceImage()
         {
-            if (locator.Contains("image:"))
+            if (locator.Contains("image"))
             {
                 string nameOfImage = locator.Split(':')[1].Trim(' ').Trim(')').Trim('"').Replace("/", "\\");
-                string pathToImage = Config.SuitePath + "\\Images\\" + nameOfImage + ".png";
-                TestLog.EmbedImage(null, Image.FromFile(pathToImage));
+                string pathToImage = Config.SuitePath + "\\Images\\" + nameOfImage;
+                if (Directory.Exists(pathToImage))
+                {
+                    foreach (var file in Directory.GetFiles(pathToImage,"*.png"))
+                    {
+                        TestLog.EmbedImage(null, Image.FromFile(file));  
+                    }
+                }
+                else
+                {
+                    pathToImage += ".png";
+                    TestLog.EmbedImage(null, Image.FromFile(pathToImage));
+                }
+                
             }
         }
 

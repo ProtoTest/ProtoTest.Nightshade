@@ -10,7 +10,12 @@ namespace ProtoTest.Nightshade
 {
     public static class Config
     {
+
         public static string DeviceType = GetConfigValue("DeviceType", "null");
+        public static string Host1Type = GetConfigValue("Host1Type", "null");
+        public static string Host2Type = GetConfigValue("Host2Type", "null");
+        public static string Host1Ip = GetConfigValue("Host1Ip", "localhost");
+        public static string Host2Ip = GetConfigValue("Host1Ip", "localhost");
         public static int ElementWaitSec = int.Parse(GetConfigValue("ElementWaitTime", "5"));
         public static int ElementSearchTime = int.Parse(GetConfigValue("ElementSearchTime", "1"));
         public static string BatchFilePath = Directory.GetCurrentDirectory() + "\\StartDrive.bat";
@@ -18,7 +23,8 @@ namespace ProtoTest.Nightshade
         public static int WaitForDriveMs = int.Parse(GetConfigValue("WaitForDriveMs", "30000"));
         public static string SuitePath = GetConfigValue("SuitePath", Common.GetCodeDirectory() + @"\Suites\MotorolaMaster.suite");
         public static int DelayTimeMs = int.Parse(GetConfigValue("DelayTimeMs", "200"));
-        public static int DevicePort = int.Parse(GetConfigValue("DevicePort", "5901"));
+        public static int Host1Port = int.Parse(GetConfigValue("Host1Port", "5900"));
+        public static int Host2Port = int.Parse(GetConfigValue("Host2Port", "5900"));
         public static bool AutoCaptureScreen = IsTruthy(GetConfigValue("AutoCaptureScreen", "True"));
         public static bool RecordVideo = IsTruthy(GetConfigValue("RecordVideo", "False"));
         public static int ImageSearchCount = int.Parse(Config.GetConfigValue("ImageSearchCount", "1"));
@@ -30,26 +36,7 @@ namespace ProtoTest.Nightshade
         public static string DefaultWifiNetworkName = GetConfigValue("DefaultWifiNetworkName", "null");
         public static string DeleteContactsStarting = GetConfigValue("DeleteContactsStarting", "null");
         public static string DeleteContactsTotalCount = GetConfigValue("DeleteContactsTotalCount", "null");
-
-        public static List<string> Hosts
-        {
-            //looks in app.config for Host1, Host2....Host5.  
-            get
-            {
-                var list = new List<string>();
-                for (int i = 1; i < 6; i ++)
-                {
-                    string value = GetConfigValue("Host" + i, "Null");
-                    if (value != "Null")
-                    {
-                        list.Add(value);
-                    }
-                }
-                return list;
-            }
-        }
-
-
+  
         /// <summary>
         ///     Returns the App.config value for requested key, or default value if not defined.
         /// </summary>
