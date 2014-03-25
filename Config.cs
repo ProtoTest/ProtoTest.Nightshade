@@ -16,7 +16,7 @@ namespace ProtoTest.Nightshade
         public static string BatchFilePath = Directory.GetCurrentDirectory() + "\\StartDrive.bat";
         public static int DriveTimeoutSec = int.Parse(GetConfigValue("DriveTimeoutSec", "60"));
         public static int WaitForDriveMs = int.Parse(GetConfigValue("WaitForDriveMs", "30000"));
-        public static string SuitePath = GetConfigValue("SuitePath", Common.GetCodeDirectory() + SuitePath);
+        public static string SuitePath = GetConfigValue("SuitePath", Common.GetCodeDirectory() + @"\Suites\MotorolaMaster.suite");
         public static int DelayTimeMs = int.Parse(GetConfigValue("DelayTimeMs", "200"));
         public static int DevicePort = int.Parse(GetConfigValue("DevicePort", "5901"));
         public static bool AutoCaptureScreen = IsTruthy(GetConfigValue("AutoCaptureScreen", "True"));

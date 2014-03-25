@@ -13,17 +13,13 @@ namespace ProtoTest.Nightshade
 {
     public class EggplantTestBase
     {
-        private Process EggPlantDriveProcess;
+        private static Process EggPlantDriveProcess;
         private BackgroundVideoRecorder recorder;
         public static EggplantDriver _Driver;
        
         public static EggplantDriver Driver
         {
-            get
-            {
-                
-                return _Driver;
-            }
+            get { return _Driver; }
             set { _Driver = value; }
         }
 

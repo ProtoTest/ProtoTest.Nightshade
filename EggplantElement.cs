@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 using Gallio.Framework;
 using Gallio.Model;
@@ -50,19 +51,12 @@ namespace ProtoTest.Nightshade
         {
             WaitForPresent();
             EggplantTestBase.Log(string.Format("Reading text on element {0}.", locator));
-            return Driver.ReadText(locator);
+            var text = Driver.ReadText(locator);
+            EggplantTestBase.Log("Text was : " + text);
+            return text;
         }
 
-        public void LogText()
-        {
-            //WaitForPresent();
-            ////var elementText = Driver.ReadText(_by.Path);
-            //var elementText = Driver.ReadText(_by.Path);
-            //EggplantTestBase.Log("Text at element location is (" + elementText +").");
-            //return this;
-            EggplantTestBase.Log("Scanning element for text...");
-            EggplantTestBase.Log(GetText());
-        }
+
 
         public EggplantElement Click()
         {
@@ -123,16 +117,19 @@ namespace ProtoTest.Nightshade
                 }
             }
 
-            string locatorString1 = Convert.ToString(locator);
-            EggplantTestBase.Log(string.Format("Locator not found: (" + locatorString1 + ")."));
-            string locatorString2 = locatorString1.Remove(0,9);
-            string locatorString3 = locatorString2.TrimEnd('\"',')');
-            string locatorString4 = locatorString3.Replace('/', '\\');
-            string locatorString5 = locatorString4 + ".png";
-            EggplantTestBase.Log(string.Format("Image not found: " + Config.SuitePath + "\\Images\\" + locatorString5));
-            TestLog.EmbedImage(null, Image.FromFile(Config.SuitePath + "\\Images\\" + locatorString5));
-            
+            EggplantTestBase.Log(string.Format("!----ERROR : Element not found: " + locator + "."));
+            LogSourceImage();
             throw new Exception(string.Format("Element was not present after {0} seconds", Config.ElementWaitSec));
+        }
+
+        private void LogSourceImage()
+        {
+            if (locator.Contains("image:"))
+            {
+                string nameOfImage = locator.Split(':')[1].Trim(' ').Trim(')').Trim('"').Replace("/", "\\");
+                string pathToImage = Config.SuitePath + "\\Images\\" + nameOfImage + ".png";
+                TestLog.EmbedImage(null, Image.FromFile(pathToImage));
+            }
         }
 
         public EggplantElement WaitForNotPresent()
@@ -159,15 +156,8 @@ namespace ProtoTest.Nightshade
                 }
             }
 
-            string locatorString1 = Convert.ToString(locator);
-            EggplantTestBase.Log(string.Format("Locator still present: (" + locatorString1 + ")."));
-            string locatorString2 = locatorString1.Remove(0, 9);
-            string locatorString3 = locatorString2.TrimEnd('\"', ')');
-            string locatorString4 = locatorString3.Replace('/', '\\');
-            string locatorString5 = locatorString4 + ".png";
-            EggplantTestBase.Log(string.Format("Image still present: " + Config.SuitePath + "\\Images\\" + locatorString5));
-            TestLog.EmbedImage(null, Image.FromFile(Config.SuitePath + "\\Images\\" + locatorString5));
-
+            EggplantTestBase.Log(string.Format("Element still present: " + locator));
+            LogSourceImage();
             throw new Exception(string.Format("WaitForNotPresent Failed : Element was still present after {0} seconds", secs));
         }
 

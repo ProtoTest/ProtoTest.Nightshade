@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using CookComputing.XmlRpc;
 using Gallio.Framework;
@@ -404,8 +405,11 @@ namespace ProtoTest.TestRunner.Nightshade
             //return ExecuteAndGetOutput(string.Format("put ReadText (\"{0}\")", element));
             //EggplantTestBase.Log(string.Format("Command used is: put ReadText (40,100),(175,175)"));
             //return ExecuteAndGetOutput(string.Format("put ReadText (40,100),(175,175)"));
-            EggplantTestBase.Log(string.Format("Command used is: put ReadText {0}", element));
-            return ExecuteAndGetOutput(string.Format("put ReadText {0}", element));
+           // EggplantTestBase.Log(string.Format("Command used is: put ReadText {0}", element));
+            var result = ExecuteAndGetOutput(string.Format("put ReadText {0}", element));
+             WaitFor(element);
+            var toks = result.Split("\r\n".ToCharArray());
+            return toks[toks.Length - 1];
         }
 
         public SearchRectangle GetScreenRectangle()
