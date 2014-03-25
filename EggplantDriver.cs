@@ -317,6 +317,7 @@ namespace ProtoTest.TestRunner.Nightshade
 
         public void Type(string text)
         {
+            text = "\"" + text + "\"";
             ExecuteCommand("TypeText", text);
             Thread.Sleep(2000);
         }
