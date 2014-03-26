@@ -40,7 +40,7 @@ namespace ProtoTest.Nightshade
         public void ConnectToHost2()
         {
             Config.DeviceType = Config.Host2Type;
-            Driver.Connect(Config.Host1Ip, Config.Host2Port.ToString());
+            Driver.Connect(Config.Host2Ip, Config.Host2Port.ToString());
             
         }
 
@@ -109,7 +109,6 @@ namespace ProtoTest.Nightshade
         [SetUp]
         public void SetUp()
         {
-           // ConnectToHost1();
             StartVideoRecording();   
         }
 

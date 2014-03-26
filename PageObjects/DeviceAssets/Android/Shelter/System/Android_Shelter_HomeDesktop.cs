@@ -1,6 +1,7 @@
 ﻿using System;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
+using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 using ProtoTest.Nightshade.PageObjects.Steps.System;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Android.Shelter.System
@@ -153,6 +154,26 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Android.Shelter.System
         {
 
             return new Android_Shelter_HomeDesktop();
+        }
+
+        public INetworkSettings SetCellularNetworkToTwoG()
+        {
+            throw new NotImplementedException();
+        }
+
+        public INetworkSettings SetCellularNetworkToThreeG()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IPhoneApp AnswerPhoneCall()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IPhoneApp EndPhoneCall()
+        {
+            throw new NotImplementedException();
         }
     }
 }

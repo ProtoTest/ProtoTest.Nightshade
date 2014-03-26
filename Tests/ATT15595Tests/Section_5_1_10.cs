@@ -7,15 +7,26 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
     
     public class Section_5_1_10 : EggplantTestBase
     {
-        // AT&T 15595 Test Suite
-        // Section 5.1.10 - Menu Navigation Stability Tests
-
         [Test]
         [Description("Navigate to Each Desktop Icon Until Menu Tree Complete - Test 5.1.10.1")]
         [Category("Single Device")]
+        [Repeat(1)]
         public void TestNavigateToEachDesktopIconUntilMenuTreeCompelted()
         {
-
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.NavigateTheMenu().GoToAlarmsApp().VerifyElements().ExitApp();
+            //Command.NavigateTheMenu().GoToBrowserApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToCalendarApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToContactsApp().VerifyElements().ExitApp();
+            //Command.NavigateTheMenu().GoToEmailApp().VerifyElements().ExitApp();
+            //Command.NavigateTheMenu().GoToInstantMessengerApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToMediaPlayerApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToPhoneApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToSettingsApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToTasksApp().VerifyElements().ExitApp();
+            //Command.NavigateTheMenu().GoToTextMessagesApp().VerifyElements().ExitApp();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
         }
 
     }

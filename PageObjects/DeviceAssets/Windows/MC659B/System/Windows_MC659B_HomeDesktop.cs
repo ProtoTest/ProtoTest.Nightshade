@@ -1,5 +1,6 @@
 ﻿using System;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
+using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 using ProtoTest.Nightshade.PageObjects.Steps.System;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
@@ -21,6 +22,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         
         public Windows_MC659B_StartBar startBar = new Windows_MC659B_StartBar();
         public Windows_MC659B_NotificationsBar notificationsBar = new Windows_MC659B_NotificationsBar();
+        public Windows_MC659B_NetworkSettings networkSettings = new Windows_MC659B_NetworkSettings();
 
         public IHomeScreen ConfirmHomeScreen()
         {
@@ -166,7 +168,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen VerifyWifiOn()
         {
-            Command.OnHomeScreenScreen().VerifyWifiOn();
+            notificationsBar.VerifyWifiOn();
             return new Windows_MC659B_HomeDesktop();
         }
 
@@ -179,7 +181,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen VerifyWifiOff()
         {
-            Command.OnHomeScreenScreen().VerifyWifiOff();
+            notificationsBar.VerifyWifiOff();
             return new Windows_MC659B_HomeDesktop();
         }
 
@@ -193,6 +195,33 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         {
             
             return new Windows_MC659B_HomeDesktop();
+        }
+
+
+        public INetworkSettings SetCellularNetworkToTwoG()
+        {
+            networkSettings.SetCellularNetworkToTwoG();
+            return new Windows_MC659B_NetworkSettings();
+        }
+
+        public INetworkSettings SetCellularNetworkToThreeG()
+        {
+            networkSettings.SetCellularNetworkToThreeG();
+            return new Windows_MC659B_NetworkSettings();
+        }
+
+        public IPhoneApp AnswerPhoneCall()
+        {
+            var phoneApp = new Windows_MC659B_PhoneApp();
+            phoneApp.AnswerPhoneCall();
+            return new Windows_MC659B_PhoneApp();
+        }
+
+        public IPhoneApp EndPhoneCall()
+        {
+            var phoneApp = new Windows_MC659B_PhoneApp();
+            phoneApp.EndPhoneCall();
+            return new Windows_MC659B_PhoneApp();
         }
     }
 }

@@ -39,11 +39,11 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public Windows_MC659B_NotificationsBar notificationsBar = new Windows_MC659B_NotificationsBar();
         public Windows_MC659B_MenuNav menuNav = new Windows_MC659B_MenuNav();
         public Windows_MC659B_StartBar startBar = new Windows_MC659B_StartBar();
+        public Windows_MC659B_Popups popup = new Windows_MC659B_Popups();
 
         public void SetToPicturesMode()
         {
             EggplantTestBase.Log("Setting app to Pictures mode.");
-            var startBar = new Windows_MC659B_StartBar();
             startBar.MenuOption.Click();
             if (VideoMenuOption.IsPresent())
             {
@@ -62,7 +62,6 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public void SetToVideoMode()
         {
             EggplantTestBase.Log("Setting app to Video mode.");
-            var startBar = new Windows_MC659B_StartBar();
             startBar.MenuOption.Click();
             if (StillMenuOption.IsPresent())
             {
@@ -93,7 +92,6 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 VideoCapturedIcon.Press();
                 Thread.Sleep(1000);
                 DeleteMenuOption.Click();
-                var popup = new Windows_MC659B_Popups();
                 popup.ClickYes();
                 Thread.Sleep(2000);
             }
@@ -105,7 +103,6 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IPicturesAndVideoApp TakePicture()
         {
             EggplantTestBase.Log("Taking a picture using device camera.");
-            var startBar = new Windows_MC659B_StartBar();
             startBar.MenuButton.Click();
             CameraMenuOption.Click();
             SetToPicturesMode();
@@ -123,7 +120,6 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             EggplantTestBase.Log("Opening the picture taken with device camera.");
             PictureCapturedIcon.Click();
             PictureCaptured.WaitForPresent();
-            var startBar = new Windows_MC659B_StartBar();
             startBar.OKButton.Click();
             return this;
         }
@@ -131,12 +127,10 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IPicturesAndVideoApp DeleteTakenPicture()
         {
             EggplantTestBase.Log("Deleting the picture taken with device camera.");
-            var startBar = new Windows_MC659B_StartBar();
             startBar.MenuButton.Click();
             DeleteMenuOption.Click();
-            var popUp = new Windows_MC659B_Popups();
-            popUp.DeleteItem.WaitForPresent();
-            popUp.ClickYes();
+            popup.DeleteItem.WaitForPresent();
+            popup.ClickYes();
             PictureCapturedIcon.WaitForNotPresent();
             startBar.ExitButton.Click();
             return this;
@@ -145,7 +139,6 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IPicturesAndVideoApp RecordAVideo()
         {
             EggplantTestBase.Log("Recording a video with the device camera.");
-            var startBar = new Windows_MC659B_StartBar();
             startBar.MenuOption.Click();
             CameraMenuOption.Click();
             SetToVideoMode();
@@ -173,12 +166,10 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IPicturesAndVideoApp DeleteRecordedVideo()
         {
             EggplantTestBase.Log("Deleting the video recorded with the device camera.");
-            var startBar = new Windows_MC659B_StartBar();
             startBar.MenuOption.Click();
             DeleteMenuOption.Click();
-            var popUp = new Windows_MC659B_Popups();
-            popUp.DeleteItem.WaitForPresent();
-            popUp.ClickYes();
+            popup.DeleteItem.WaitForPresent();
+            popup.ClickYes();
             PictureCapturedIcon.WaitForNotPresent();
             return this;
         }
@@ -237,7 +228,6 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             {
                 BackgroundPreview10.Click();
             }
-            var startBar = new Windows_MC659B_StartBar();
             startBar.MenuOption.Click();
             SetAsHomeBackgroundMenuOption.Click();
             Thread.Sleep(5000);
@@ -328,7 +318,6 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IPicturesAndVideoApp ExitApp()
         {
             EggplantTestBase.Log("Exiting Pictures & Video app.");
-            var startBar = new Windows_MC659B_StartBar();
             startBar.ExitButton.Click();
             Command.OnHomeScreenScreen().ConfirmHomeScreen();
             return this;

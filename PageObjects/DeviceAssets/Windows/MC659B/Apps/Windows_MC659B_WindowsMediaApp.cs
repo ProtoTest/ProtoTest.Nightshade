@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Threading;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 
@@ -62,7 +63,20 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             EggplantTestBase.Log("Exiting Windows Media app.");
             var startBar = new Windows_MC659B_StartBar();
-            startBar.ExitButton.Click();
+            while (startBar.OKButton.IsPresent() || startBar.ExitButton.IsPresent())
+            {
+                Thread.Sleep(2000);
+                if (startBar.OKButton.IsPresent())
+                {
+                    Thread.Sleep(1000);
+                    startBar.OKButton.Click();
+                }
+                if (startBar.ExitButton.IsPresent())
+                {
+                    Thread.Sleep(1000);
+                    startBar.ExitButton.Click();    
+                }
+            }
             Command.OnHomeScreenScreen().ConfirmHomeScreen();
             return this;
         }

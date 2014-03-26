@@ -17,13 +17,13 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public INetworkSettings SetCellularNetworkToTwoG()
         {
-            //Device cannot switch to 2G
+            EggplantTestBase.Log("Device cannot switch dyanmically to 2G.");
             return this;
         }
 
         public INetworkSettings SetCellularNetworkToThreeG()
         {
-            //Device is 3G only
+            EggplantTestBase.Log("Device is 3G only.");
             return this;
         }
 

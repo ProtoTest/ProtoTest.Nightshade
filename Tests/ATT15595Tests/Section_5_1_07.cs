@@ -38,7 +38,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Repeat(1)]
         public void TestTasks()
         {
-            ConnectToHost1();
+            ConnectToHost2();
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToTasksApp().VerifyElements().SetUpTasksApp().CreateTask().DeleteAllTasks().ExitApp();
         }

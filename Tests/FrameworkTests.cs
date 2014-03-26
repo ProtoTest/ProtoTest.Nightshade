@@ -86,7 +86,7 @@ namespace ProtoTest.Nightshade
             [Test]
             public void TestPageObject()
             {
-                Driver.Connect(Config.Hosts[0]);
+                Driver.Connect(Config.Host1Ip);
                 var page = new FrameworkPageObjectExample();
                 page.DoSomething();
             }
@@ -94,7 +94,7 @@ namespace ProtoTest.Nightshade
             [Test]
             public void TestByLocators()
             {
-                Driver.Connect(Config.Hosts[0]);
+                Driver.Connect(Config.Host1Ip);
                 var Element = new EggplantElement(By.Text("Run"));
                 Element.Click();
             }

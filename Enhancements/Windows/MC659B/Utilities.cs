@@ -1,5 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using System.Threading;
+using Gallio.Runtime.Extensibility.Schema;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu;
 using ProtoTest.TestRunner.Nightshade;
@@ -78,6 +81,17 @@ namespace ProtoTest.Nightshade.Enhancements.Windows.MC659B
             }
 
             throw new Exception("Element not detected within menu after " + totalAttempts + " attempts.");
+        }
+
+        public string[][] ParseCsvFile(string filePath, bool hasHeader = false, string separator = ", ")
+        {
+            var lines = System.IO.File.ReadAllLines(filePath);
+            if (hasHeader)
+            {
+                lines = lines.Skip(1).ToArray();
+            }
+            var csv = from line in lines select (line.Split(new string[] {separator}, StringSplitOptions.None)).ToArray();
+            return csv.ToArray();
         }
     }
 }

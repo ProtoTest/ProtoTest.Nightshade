@@ -12,10 +12,15 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.Menu
         IBrowserApp GoToBrowserApp();
         ICalendarApp GoToCalendarApp();
         IContactsApp GoToContactsApp();
+        IEmailApp GoToEmailApp();
+        IInstantMessengerApp GoToInstantMessengerApp();
         IFileExplorer GoToAudioFiles();
         IPicturesAndVideoApp GoToPicturesAndVideoApp();
         IMediaPlayerApp GoToMediaPlayerApp();
+        IPhoneApp GoToPhoneApp();
+        ISettingsApp GoToSettingsApp();
         ITasksApp GoToTasksApp();
+        ITextMessagesApp GoToTextMessagesApp();
     }
   
 }

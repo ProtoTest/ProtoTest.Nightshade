@@ -1,4 +1,5 @@
 ﻿using MbUnit.Framework;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
 
 namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 {
@@ -7,50 +8,45 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
     
     public class Section_5_1_01 : EggplantTestBase
     {
-        [Test]
-        [Description("2G Voice Call (Dialed) - Test 5.1.1.1")]
-        [Category("Paired Devices")]
-        public void TestTwoGVoiceCallDialed()
-        {
-
-        }
-
-        [Test]
-        [Description("3G Voice Call (Dialed) - Test 5.1.1.2")]
-        [Category("Paired Devices")]
-        public void TestThreeGVoiceCallDialed()
-        {
-
-        }
-
         //[Test]
-        //[Description("LTE Voice Call (Dialed) - Test 5.1.1.3")]
+        //[Description("2G Voice Call (Dialed) - Test 5.1.1.1 and 2G Voice Call (History) - Test 5.1.1.4")]
         //[Category("Paired Devices")]
-        //public void TestLTEVoiceCallDialed()
+        //[Repeat(1)]
+        //public void TestTwoGVoiceCallFromContactsAndHistory()
         //{
+            
 
         //}
 
         [Test]
-        [Description("2G Voice Call (History) - Test 5.1.1.4")]
+        [Description("3G Voice Call (Dialed) - Test 5.1.1.2 and 3G Voice Call (History) - Test 5.1.1.5")]
         [Category("Paired Devices")]
-        public void TestTwoGVoiceCallHistory()
+        [Repeat(1)]
+        public void TestThreeGVoiceCallFromContactsAndHistory()
         {
-
-        }
-
-        [Test]
-        [Description("3G Voice Call (History) - Test 5.1.1.5")]
-        [Category("Paired Devices")]
-        public void TestThreeGVoiceCallHistory()
-        {
-
+            //3G Voice Call (Dialed) - Test 5.1.1.2
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().SetCellularNetworkToThreeG();
+            Command.NavigateTheMenu().GoToPhoneApp().UseDialpadToCallContactNumber("02");
+            ConnectToHost2();
+            Command.OnHomeScreenScreen().AnswerPhoneCall().EndPhoneCall();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            //3G Voice Call (History) - Test 5.1.1.5
+            Command.NavigateTheMenu().GoToPhoneApp().CallMostRecentContactFromHistory();
+            ConnectToHost2();
+            Command.OnHomeScreenScreen().AnswerPhoneCall().VerifyCallEstablished().EndPhoneCall();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
         }
 
         //[Test]
-        //[Description("LTE Voice Call (History) - Test 5.1.1.6")]
+        //[Description("LTE Voice Call (Dialed) - Test 5.1.1.3 and LTE Voice Call (History) - Test 5.1.1.6")]
         //[Category("Paired Devices")]
-        //public void TestLTEVoiceCallHistory()
+        //[Repeat(1)]
+        //public void TestLTEVoiceCallFromContactsAndHistory()
         //{
 
         //}
@@ -58,9 +54,16 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Receive a Voice Call - Test 5.1.1.7")]
         [Category("Paired Devices")]
+        [Repeat(1)]
         public void TestReceiveVoiceCall()
         {
-
+            ConnectToHost2();
+            Command.NavigateTheMenu().GoToPhoneApp().UseDialpadToCallContactNumber("02");
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().AnswerPhoneCall().EndPhoneCall();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            ConnectToHost2();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
         }
 
         [CsvData(FilePath = ".\\Setup Files\\Contacts.csv", HasHeader = true)]

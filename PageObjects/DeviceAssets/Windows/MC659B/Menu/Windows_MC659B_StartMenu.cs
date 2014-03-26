@@ -9,12 +9,17 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
         public EggplantElement BrowserApp = new EggplantElement(By.Image("MC659B/AppIcons/BrowserApp"));
         public EggplantElement CalendarApp = new EggplantElement(By.Image("MC659B/AppIcons/CalendarApp"));
         public EggplantElement ContactsApp = new EggplantElement(By.Image("MC659B/AppIcons/ContactsApp"));
+        public EggplantElement EmailApp = new EggplantElement(By.Image("MC659B/AppIcons/EmailApp"));
         public EggplantElement FileExplorerApp = new EggplantElement(By.Image("MC659B/AppIcons/FileExplorerApp"));
         public EggplantElement HomeIcon = new EggplantElement(By.Image("MC659B/AppIcons/HomeIcon"));
-        public EggplantElement WindowsMediaApp = new EggplantElement(By.Image("MC659B/AppIcons/WindowsMediaApp"));
         public EggplantElement PicturesAndVideoApp = new EggplantElement(By.Image("MC659B/AppIcons/PicturesAndVideoApp"));
+        public EggplantElement PhoneApp = new EggplantElement(By.Image("MC659B/AppIcons/PicturesAndVideoApp"));
+        public EggplantElement SettingsApp = new EggplantElement(By.Image("MC659B/AppIcons/SettingsApp"));
         public EggplantElement TasksApp = new EggplantElement(By.Image("MC659B/AppIcons/TasksApp"));
-        
+        public EggplantElement TextMessengerApp = new EggplantElement(By.Image("MC659B/AppIcons/TextMessagesApp"));
+        public EggplantElement WindowsMediaApp = new EggplantElement(By.Image("MC659B/AppIcons/WindowsMediaPlayerApp"));
+        public EggplantElement WindowsMessengerApp = new EggplantElement(By.Image("MC659B/AppIcons/WindowsMessengerApp"));
+
         public Windows_MC659B_StartMenu VerifyElements()
         {
             EggplantTestBase.Log("Entering start menu.");

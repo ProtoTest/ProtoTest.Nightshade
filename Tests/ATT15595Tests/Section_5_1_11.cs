@@ -13,7 +13,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Turn the Wifi Radio Off and On - Test 5.1.11.1")]
         [Category("Single Device")]
-        [Repeat(20)]
+        [Repeat(1)]
         public void TestTurnWifiRadioOffandOn()
         {
             ConnectToHost1();

@@ -8,26 +8,30 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
 {
     public class Windows_MC659B_MenuNav : IMenuNav
     {
+        public Windows_MC659B_HomeDesktop homeDesktop = new Windows_MC659B_HomeDesktop();
+        public Windows_MC659B_NotificationsBar notificationsBar = new Windows_MC659B_NotificationsBar();
+        public Windows_MC659B_StartBar startBar = new Windows_MC659B_StartBar();
+        public Windows_MC659B_Popups popup = new Windows_MC659B_Popups();
+        public Windows_MC659B_NetworkSettings settings = new Windows_MC659B_NetworkSettings();
+        public Windows_MC659B_StartMenu startMenu = new Windows_MC659B_StartMenu();
+        public Enhancements.Windows.MC659B.Utilities utilities = new Enhancements.Windows.MC659B.Utilities();
+
+
         public INetworkSettings SetCellularConnectionToTwoG()
         {
-            var settings = new Windows_MC659B_NetworkSettings();
             settings.SetCellularNetworkToTwoG();
             return new Windows_MC659B_NetworkSettings();
         }
 
         public INetworkSettings SetCellularConnectionToThreeG()
         {
-            var settings = new Windows_MC659B_NetworkSettings();
             settings.SetCellularNetworkToThreeG();
             return new Windows_MC659B_NetworkSettings();
         }
         
         public IAlarmsApp GoToAlarmsApp()
         {
-            var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhancements.Windows.MC659B.Utilities();
-            var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.AlarmsApp);
             startMenu.AlarmsApp.Click();
             return new Windows_MC659B_AlarmsApp();
@@ -35,10 +39,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
 
         public IBrowserApp GoToBrowserApp()
         {
-            var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhancements.Windows.MC659B.Utilities();
-            var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.BrowserApp);
             startMenu.BrowserApp.Click();
             return new Windows_MC659B_BrowserApp();
@@ -46,10 +47,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
 
         public ICalendarApp GoToCalendarApp()
         {
-            var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhancements.Windows.MC659B.Utilities();
-            var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.CalendarApp);
             startMenu.CalendarApp.Click();
             return new Windows_MC659B_CalendarApp();
@@ -57,21 +55,31 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
 
         public IContactsApp GoToContactsApp()
         {
-            var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhancements.Windows.MC659B.Utilities();
-            var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.ContactsApp);
             startMenu.ContactsApp.Click();
             return new Windows_MC659B_ContactsApp();
         }
 
+        public IEmailApp GoToEmailApp()
+        {
+            startBar.EnterStartMenu();
+            utilities.SearchMenuFor(startMenu.EmailApp);
+            startMenu.EmailApp.Click();
+            return new Windows_MC659B_EmailApp();
+        }
+
+        public IInstantMessengerApp GoToInstantMessengerApp()
+        {
+            startBar.EnterStartMenu();
+            utilities.SearchMenuFor(startMenu.WindowsMessengerApp);
+            startMenu.WindowsMessengerApp.Click();
+            return new Windows_MC659B_WindowsMessengerApp();
+        }
+
         public IFileExplorer GoToAudioFiles()
         {
-            var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhancements.Windows.MC659B.Utilities();
-            var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.FileExplorerApp);
             startMenu.FileExplorerApp.Click();
             return new Windows_MC659B_FileExplorerApp();
@@ -79,10 +87,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
 
         public IHomeScreen GoToHome()
         {
-            var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhancements.Windows.MC659B.Utilities();
-            var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.HomeIcon);
             startMenu.HomeIcon.Click();
             return new Windows_MC659B_HomeDesktop();
@@ -90,37 +95,50 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
 
         public IMediaPlayerApp GoToMediaPlayerApp()
         {
-            var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhancements.Windows.MC659B.Utilities();
-            var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.WindowsMediaApp);
-            startMenu.CalendarApp.Click();
-            var mediaApp = new Windows_MC659B_WindowsMediaApp();
-            mediaApp.SetAppState();
+            startMenu.WindowsMediaApp.Click();
             return new Windows_MC659B_WindowsMediaApp();
         }
 
         public IPicturesAndVideoApp GoToPicturesAndVideoApp()
         {
-            var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhancements.Windows.MC659B.Utilities();
-            var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.PicturesAndVideoApp);
             startMenu.PicturesAndVideoApp.Click();
             return new Windows_MC659B_PicturesAndVideoApp();
         }
 
+        public IPhoneApp GoToPhoneApp()
+        {
+            startBar.EnterStartMenu();
+            utilities.SearchMenuFor(startMenu.PhoneApp);
+            startMenu.PhoneApp.Click();
+            return new Windows_MC659B_PhoneApp();
+        }
+
+        public ISettingsApp GoToSettingsApp()
+        {
+            startBar.EnterStartMenu();
+            utilities.SearchMenuFor(startMenu.SettingsApp);
+            startMenu.SettingsApp.Click();
+            return new Windows_MC659B_SettingsApp();
+        }
+
         public ITasksApp GoToTasksApp()
         {
-            var startBar = new Windows_MC659B_StartBar();
             startBar.EnterStartMenu();
-            var utilities = new Enhancements.Windows.MC659B.Utilities();
-            var startMenu = new Windows_MC659B_StartMenu();
             utilities.SearchMenuFor(startMenu.TasksApp);
             startMenu.TasksApp.Click();
             return new Windows_MC659B_TasksApp();
+        }
+
+        public ITextMessagesApp GoToTextMessagesApp()
+        {
+            startBar.EnterStartMenu();
+            utilities.SearchMenuFor(startMenu.TextMessengerApp);
+            startMenu.TextMessengerApp.Click();
+            return new Windows_MC659B_TextMessagesApp();
         }
     }
 }

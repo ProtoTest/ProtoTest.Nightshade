@@ -15,7 +15,7 @@ namespace ProtoTest.Nightshade
         public static string Host1Type = GetConfigValue("Host1Type", "null");
         public static string Host2Type = GetConfigValue("Host2Type", "null");
         public static string Host1Ip = GetConfigValue("Host1Ip", "localhost");
-        public static string Host2Ip = GetConfigValue("Host1Ip", "localhost");
+        public static string Host2Ip = GetConfigValue("Host2Ip", "localhost");
         public static int ElementWaitSec = int.Parse(GetConfigValue("ElementWaitTime", "5"));
         public static int ElementSearchTime = int.Parse(GetConfigValue("ElementSearchTime", "1"));
         public static string BatchFilePath = Directory.GetCurrentDirectory() + "\\StartDrive.bat";

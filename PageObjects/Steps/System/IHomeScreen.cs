@@ -1,6 +1,5 @@
-﻿
-
-using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
+﻿using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
+using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 
 namespace ProtoTest.Nightshade.PageObjects.Steps.System
 {
@@ -29,6 +28,11 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.System
         IHomeScreen VerifyWifiOff();
         IHomeScreen ConnectToDefaultWifiNetwork();
         IHomeScreen DisconnectFromDefaultWifiNetwork();
-        
+
+        INetworkSettings SetCellularNetworkToTwoG();
+        INetworkSettings SetCellularNetworkToThreeG();
+
+        IPhoneApp AnswerPhoneCall();
+        IPhoneApp EndPhoneCall();
     }
 }

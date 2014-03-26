@@ -62,8 +62,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackgroundVideoRecorder.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Android\Shelter\System\Android_Shelter_HomeDesktop.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_FileExplorerApp.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_ContactsApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_PhoneApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_EmailApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_SettingsApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_WindowsMessagerApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_TextMessagesApp.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_WifiManager.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_Template.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_WindowsMediaApp.cs" />
@@ -77,6 +83,11 @@
     <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\Windows_MC659B_NetworkSettings.cs" />
     <Compile Include="PageObjects\Steps\Apps\IFileExplorer.cs" />
     <Compile Include="PageObjects\Steps\Apps\IContactsApp.cs" />
+    <Compile Include="PageObjects\Steps\Apps\IPhoneApp.cs" />
+    <Compile Include="PageObjects\Steps\Apps\IEmailApp.cs" />
+    <Compile Include="PageObjects\Steps\Apps\IInstantMessengerApp.cs" />
+    <Compile Include="PageObjects\Steps\Apps\ISettingsApp.cs" />
+    <Compile Include="PageObjects\Steps\Apps\ITextMessagesApp.cs" />
     <Compile Include="PageObjects\Steps\Apps\IWifiManager.cs" />
     <Compile Include="PageObjects\Steps\Apps\ITemplate.cs" />
     <Compile Include="PageObjects\Steps\Apps\IMediaPlayerApp.cs" />
@@ -747,7 +758,6 @@
     <None Include="Suites\MotorolaMaster.suite\SuiteInfo" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="PageObjects\DeviceAssets\Android\" />
     <Folder Include="Suites\MotorolaMaster.suite\Images\MC659B\System\Taskbar\" />
     <Folder Include="Suites\MotorolaMaster.suite\Results\MC659B\" />
   </ItemGroup>

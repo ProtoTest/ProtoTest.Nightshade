@@ -15,3 +15,5 @@ put passkey2 into passkey2
 Log "Passkey (" &passkey2& ") detected."
 
 Click "MC659B/System/Startbar/MenuOption"
+
+Click (Text:"TEST02")
