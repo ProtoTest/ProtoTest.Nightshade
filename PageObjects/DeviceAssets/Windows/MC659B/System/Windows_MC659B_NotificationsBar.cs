@@ -17,6 +17,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public EggplantElement OptionsArrowLeft = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/OptionsArrowLeft"));
 
         public EggplantElement RunningPrograms = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/RunningPrograms/RunningProgramsHeader"));
+        public EggplantElement RunningProgramsSelected = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/RunningPrograms/RunningProgramsSelected"));
+        public EggplantElement RunningProgramsUnselected = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/RunningPrograms/RunningProgramsUnselected"));
         public EggplantElement RunningProgramsMenuOKButton = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/OKButton"));
         public EggplantElement RunningProgramsCloseAllButton = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/RunningProgramsCloseAllButton"));
         public EggplantElement PicturesAndVideoProgram = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/RunningPrograms/PicturesAndVideosProgram"));
@@ -50,10 +52,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             return this;
         }
 
-        public INotificationsBar OpenRunningProgramsMenu()
+        public INotificationsBar OpenNotificationsBarMenu()
         {
-            EggplantTestBase.Log("Opening the Running Programs notification menu.");
+            EggplantTestBase.Log("Opening the notification menu.");
             Battery.Click();
+            if (RunningProgramsUnselected.IsPresent())
+            {
+                RunningProgramsUnselected.Click();
+            }
             RunningPrograms.WaitForPresent();
             return this;
         }
@@ -73,7 +79,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             Thread.Sleep(3000);
             RunningProgramsCloseAllButton.Click();
             popup.ClickOK();
-            Thread.Sleep(3000);
+            Thread.Sleep(5000);
             return this;
         }
 

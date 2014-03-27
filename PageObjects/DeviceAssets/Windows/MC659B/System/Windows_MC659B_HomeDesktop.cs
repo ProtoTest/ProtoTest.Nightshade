@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 using ProtoTest.Nightshade.PageObjects.Steps.System;
@@ -23,9 +24,11 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public Windows_MC659B_StartBar startBar = new Windows_MC659B_StartBar();
         public Windows_MC659B_NotificationsBar notificationsBar = new Windows_MC659B_NotificationsBar();
         public Windows_MC659B_NetworkSettings networkSettings = new Windows_MC659B_NetworkSettings();
-
+        public Windows_MC659B_Popups popup = new Windows_MC659B_Popups();
+        
         public IHomeScreen ConfirmHomeScreen()
         {
+            popup.IfNetworkingPopupAppearsClickOK();
             if (!DefaultDesktop.IsPresent())
             {
                 throw new Exception("Device is not on the home screen.");
@@ -40,7 +43,22 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public IHomeScreen ResetDeviceStateToDefault()
         {
             EggplantTestBase.Log("Resetting device state to default.");
+            EggplantTestBase.Log("Scanning for presence of notification bar menu.");
+            if (notificationsBar.RunningProgramsMenuOKButton.IsPresent())
+            {
+                notificationsBar.ClickOnMenuOKButton();
+            }
+            Thread.Sleep(2000);
+            EggplantTestBase.Log("Scanning for presence of browser app.");
+            var browser = new Windows_MC659B_BrowserApp();
+            if (browser.ShowOverlayButton.IsPresent())
+            {
+                browser.ShowOverlayButton.Click();
+                browser.OverlayExitButton.Click();
+            }
+            Thread.Sleep(2000);
             int loops = 1;
+            EggplantTestBase.Log("Closing any open menus.");
             while (startBar.ExitButton.IsPresent() || startBar.OKButton.IsPresent() || notificationsBar.RunningProgramsMenuOKButton.IsPresent())
             {
                 if (loops == 10)
@@ -63,13 +81,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
                 }
                 loops++;
             }
-            notificationsBar.OpenRunningProgramsMenu();
+            notificationsBar.OpenNotificationsBarMenu();
             if (notificationsBar.RunningProgramsCloseAllButton.IsPresent())
             {
                 EggplantTestBase.Log("Running programs detected.  Closing now...");
                 notificationsBar.ClickOnMenuCloseAllButton();
             }
             notificationsBar.ClickOnMenuOKButton();
+            popup.IfNetworkingPopupAppearsClickOK();
             ConfirmHomeScreen();
             return this;
         }
@@ -92,7 +111,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public INotificationsBar OpenNotificationsBar()
         {
             var bar = new Windows_MC659B_NotificationsBar();
-            bar.OpenRunningProgramsMenu();
+            bar.OpenNotificationsBarMenu();
             return new Windows_MC659B_NotificationsBar();
         }
 

@@ -1,4 +1,5 @@
-﻿using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
+﻿using System.Threading;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 using ProtoTest.Nightshade.PageObjects.Steps.Menu;
@@ -42,6 +43,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
             startBar.EnterStartMenu();
             utilities.SearchMenuFor(startMenu.BrowserApp);
             startMenu.BrowserApp.Click();
+            Thread.Sleep(10000);
             return new Windows_MC659B_BrowserApp();
         }
 

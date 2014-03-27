@@ -51,7 +51,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Android.Shelter.System
         public INotificationsBar OpenNotificationsBar()
         {
             var bar = new Windows_MC659B_NotificationsBar();
-            bar.OpenRunningProgramsMenu();
+            bar.OpenNotificationsBarMenu();
             return new Windows_MC659B_NotificationsBar();
         }
 

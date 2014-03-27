@@ -1,7 +1,0 @@
-﻿2014-03-24 16:15:12.079 -0600	START		Running Untitled.script
-2014-03-24 16:15:12.148 -0600	Log		Scanning for Bluetooth Passkey2.	1	on_untitled	Untitled.script
-2014-03-24 16:15:12.214 -0600	readtext		(61,138)
-2014-03-24 16:15:12.218 -0600	Log		Passkey () detected.	5	on_untitled	Untitled.script
-2014-03-24 16:15:19.942 -0600	Exception	(CaseSensitive:"No", Contrast:"Off", ImageLocation:"", ImageRectangle:"", Language:"English", Text:"TASK1", TextPlatform:"Generic OCR")	No Image Found On Screen: "(TEXT:"TASK1")"	7	on_untitled	Untitled.script
-2014-03-24 16:15:19.992 -0600	EndTestCase		(Duration:"7.907", Errors:"1", Exceptions:"1", StartTime:"2014-03-24 16:15:12 -0600", Successes:"0", TestCase:"Untitled.script", Warnings:"0")
-2014-03-24 16:15:20.208 -0600	FAILURE	Screen_Error.png	Image Not Found click Error - No Image Found On Screen: "(TEXT:"TASK1")"\nExecution Time 0:00:07 Untitled.script

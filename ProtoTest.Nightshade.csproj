@@ -189,6 +189,7 @@
     <Content Include="Setup Files\Audio Test Files\Audio Test 49.mp3" />
     <Content Include="Setup Files\Audio Test Files\Audio Test 50.mp3" />
     <Content Include="Setup Files\TestAccounts.txt" />
+    <Content Include="Setup Files\Manual Setup Steps.txt" />
     <Content Include="Setup Files\Windows\MC659B\Testing Background.png" />
     <Content Include="Suites\MotorolaMaster.suite\Images\MC659B\AppIcons\AlarmsApp.png" />
     <Content Include="Suites\MotorolaMaster.suite\Images\MC659B\AppIcons\CalendarApp.png" />

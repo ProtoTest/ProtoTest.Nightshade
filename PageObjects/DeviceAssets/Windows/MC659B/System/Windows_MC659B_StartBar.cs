@@ -5,6 +5,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
     public class Windows_MC659B_StartBar
     {
         public EggplantElement AddItemButton = new EggplantElement(By.Image("MC659B/System/StartBar/AddItemButton"));
+        public EggplantElement ClearOption = new EggplantElement(By.Image("MC659B/System/StartBar/ClearOption"));
         public EggplantElement ExitButton = new EggplantElement(By.Image("MC659B/System/StartBar/ExitButton"));
         public EggplantElement KeyboardButton = new EggplantElement(By.Image("MC659B/System/StartBar/KeyboardButton"));
         public EggplantElement OKButton = new EggplantElement(By.Image("MC659B/System/StartBar/OKButton"));
@@ -15,6 +16,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public EggplantElement StopOption = new EggplantElement(By.Image("MC659B/System/StartBar/StopOption"));
         public EggplantElement TaskEditButton = new EggplantElement(By.Image("MC659B/System/StartBar/TaskEditButton"));
         public EggplantElement ThumbnailsButton = new EggplantElement(By.Image("MC659B/System/StartBar/ThumbnailsButton"));
+        public EggplantElement YesOption = new EggplantElement(By.Image("MC659B/System/StartBar/YesOption"));
 
         public EggplantElement KeyboardKeyEnter = new EggplantElement(By.Image("MC659B/System/StartBar/Keyboard/KeyboardKeyEnter"));
 

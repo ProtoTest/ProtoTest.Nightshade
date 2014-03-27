@@ -1,6 +1,0 @@
-﻿2014-03-24 16:13:36.545 -0600	START		Running Untitled.script
-2014-03-24 16:13:36.602 -0600	Log		Scanning for Bluetooth Passkey2.	1	on_untitled	Untitled.script
-2014-03-24 16:13:36.676 -0600	readtext		(61,138)
-2014-03-24 16:13:36.679 -0600	Log		Passkey  detected.	5	on_untitled	Untitled.script
-2014-03-24 16:13:36.743 -0600	EndTestCase		(Duration:"0.19", Errors:"0", Exceptions:"0", StartTime:"2014-03-24 16:13:36 -0600", Successes:"1", TestCase:"Untitled.script", Warnings:"0")
-2014-03-24 16:13:36.888 -0600	SUCCESS		Execution Time 0:00:00 Untitled.script

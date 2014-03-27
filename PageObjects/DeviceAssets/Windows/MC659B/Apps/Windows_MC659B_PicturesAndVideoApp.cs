@@ -183,7 +183,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             }
             else
             {
-                notificationsBar.OpenRunningProgramsMenu();
+                notificationsBar.OpenNotificationsBarMenu();
                 Thread.Sleep(2000);
                 notificationsBar.PicturesAndVideoProgram.Click();
             }
@@ -296,7 +296,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IHomeScreen ResetThemeToDefault()
         {
             EggplantTestBase.Log("Setting device theme to default.");
-            notificationsBar.OpenRunningProgramsMenu();
+            notificationsBar.OpenNotificationsBarMenu();
             notificationsBar.PicturesAndVideoProgram.Click();
             BackgroundDefault.Click();
             startBar.MenuOption.Click();

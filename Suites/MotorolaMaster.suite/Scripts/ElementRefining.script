@@ -14,6 +14,20 @@ set passkey2 to ReadText((1,160),(75,190))
 put passkey2 into passkey2
 Log "Passkey (" &passkey2& ") detected."
 
-Click "MC659B/System/Startbar/MenuOption"
+Click "MC659B/System/Startbar/KeyboardButton"
 
 Click (Text:"TEST02")
+
+
+
+Click (image: "MC659B/Apps/BrowserIE/ShowOverlayButton")
+
+wait 1
+put ImageFound (image: "MC659B/Apps/BrowserIE/AddressBar")
+
+wait 1
+Click (image: "MC659B/Apps/BrowserIE/AddressBar")
+
+wait 1
+TypeText "m.yahoo.com"
+

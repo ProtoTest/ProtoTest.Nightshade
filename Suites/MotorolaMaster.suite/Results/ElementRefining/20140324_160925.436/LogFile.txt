@@ -1,4 +1,0 @@
-﻿2014-03-24 16:09:25.443 -0600	START		Running Untitled.script
-2014-03-24 16:09:26.639 -0600	readtext		(61,138)
-2014-03-24 16:09:26.783 -0600	EndTestCase		(Duration:"1.331", Errors:"1", Exceptions:"0", StartTime:"2014-03-24 16:09:25 -0600", Successes:"0", TestCase:"Untitled.script", Warnings:"0")
-2014-03-24 16:09:27.010 -0600	FAILURE	Screen_Error.png	STUnknownMessage ERROR: No Such Command: 'print'\nExecution Time 0:00:01 Untitled.script

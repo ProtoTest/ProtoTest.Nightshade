@@ -8,7 +8,10 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public EggplantElement NoButton = new EggplantElement(By.Image("MC659B/System/Popups/NoButton"));
         public EggplantElement DeleteItem = new EggplantElement(By.Image("MC659B/System/Popups/Delete"));
         public EggplantElement OKButton = new EggplantElement(By.Image("MC659B/System/Popups/OKButton"));
-        
+
+        public EggplantElement PopupPocketPCNetworkingHeader = new EggplantElement(By.Image("MC659B/System/Popups/PopupPocketPCNetworkingHeader"));
+        public EggplantElement PopupPocketPCNetworkingOKButton = new EggplantElement(By.Image("MC659B/System/Popups/PopupPocketPCNetworkingOKButton"));
+
         public void ClickYes()
         {
             EggplantTestBase.Log("Selecting popup option - Yes.");
@@ -27,5 +30,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             OKButton.Click();
         }
 
+        public void IfNetworkingPopupAppearsClickOK()
+        {
+            if (PopupPocketPCNetworkingHeader.IsPresent())
+            {
+                EggplantTestBase.Log("Pocket PC Networking popup detected.  Clicking OK.");
+                PopupPocketPCNetworkingOKButton.Click();
+            }
+            
+        }
     }
 }

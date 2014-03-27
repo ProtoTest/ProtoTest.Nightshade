@@ -5,7 +5,7 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.System
     public interface INotificationsBar
     {
         INotificationsBar VerifyElements();
-        INotificationsBar OpenRunningProgramsMenu();
+        INotificationsBar OpenNotificationsBarMenu();
         INotificationsBar ClickOnMenuOKButton();
 
         INotificationsBar SelectAlarmsMenuOption();

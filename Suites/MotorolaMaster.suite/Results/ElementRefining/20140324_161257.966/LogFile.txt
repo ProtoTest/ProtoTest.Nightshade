@@ -1,5 +1,0 @@
-﻿2014-03-24 16:12:57.972 -0600	START		Running Untitled.script
-2014-03-24 16:12:58.101 -0600	readtext		(61,138)
-2014-03-24 16:12:58.106 -0600	Log		Text present is: ().	4	on_untitled	Untitled.script
-2014-03-24 16:12:58.171 -0600	EndTestCase		(Duration:"0.19", Errors:"0", Exceptions:"0", StartTime:"2014-03-24 16:12:57 -0600", Successes:"1", TestCase:"Untitled.script", Warnings:"0")
-2014-03-24 16:12:58.288 -0600	SUCCESS		Execution Time 0:00:01 Untitled.script

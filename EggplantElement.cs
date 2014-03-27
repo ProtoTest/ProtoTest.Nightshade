@@ -85,10 +85,12 @@ namespace ProtoTest.Nightshade
 
         public EggplantElement Type(string text)
         {
-            EggplantTestBase.Log(string.Format("Typing text:({0}).",text));
+            EggplantTestBase.Log(string.Format("Clicking on text field..."));
             Click();
-            Thread.Sleep(3000);
+            EggplantTestBase.Log(string.Format("Typing text:({0}).", text));
+            Thread.Sleep(2000);
             Driver.Type(text);
+            Thread.Sleep(2000);
             return this;
         }
 
@@ -119,7 +121,7 @@ namespace ProtoTest.Nightshade
 
             EggplantTestBase.Log(string.Format("!----ERROR : Element not found: " + locator + "."));
             LogSourceImage();
-            throw new Exception(string.Format("Element was not present after {0} seconds", Config.ElementWaitSec));
+            throw new Exception(string.Format("Element was not present after {0} seconds", secs));
         }
 
         private void LogSourceImage()

@@ -1,0 +1,4 @@
+﻿Manual Setup Steps:
+
+Connect to default wireless network.
+Add bookmark for google.com into the browser app.
