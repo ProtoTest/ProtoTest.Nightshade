@@ -20,7 +20,7 @@ Click (Text:"TEST02")
 
 
 
-Click (image: "MC659B/Apps/BrowserIE/ShowOverlayButton")
+Click (image: "MC659B/System/StartBar/NotificationOption")
 
 wait 1
 put ImageFound (image: "MC659B/Apps/BrowserIE/AddressBar")
@@ -31,3 +31,10 @@ Click (image: "MC659B/Apps/BrowserIE/AddressBar")
 wait 1
 TypeText "m.yahoo.com"
 
+TypeText Backspace
+TypeText Escape
+TypeText escape
+TypeText F4
+TypeText CommandDown,CommandUp
+
+TypeText "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient."

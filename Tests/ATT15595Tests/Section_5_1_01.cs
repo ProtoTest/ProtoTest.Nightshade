@@ -25,7 +25,11 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         public void TestThreeGVoiceCallFromContactsAndHistory()
         {
             //3G Voice Call (Dialed) - Test 5.1.1.2
+            ConnectToHost2();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             ConnectToHost1();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
             Command.OnHomeScreenScreen().SetCellularNetworkToThreeG();
             Command.NavigateTheMenu().GoToPhoneApp().UseDialpadToCallContactNumber("02");
             ConnectToHost2();
@@ -57,12 +61,18 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Repeat(1)]
         public void TestReceiveVoiceCall()
         {
-            ConnectToHost2();
-            Command.NavigateTheMenu().GoToPhoneApp().UseDialpadToCallContactNumber("02");
             ConnectToHost1();
-            Command.OnHomeScreenScreen().AnswerPhoneCall().EndPhoneCall();
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             ConnectToHost2();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreenScreen().SetCellularNetworkToThreeG();
+            Command.NavigateTheMenu().GoToPhoneApp().CallMostRecentContactFromHistory();
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().AnswerPhoneCall().VerifyCallEstablished();
+            ConnectToHost2();
+            Command.OnHomeScreenScreen().VerifyCallEstablished().ReturnToHomeScreen();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            ConnectToHost1();
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
         }
 

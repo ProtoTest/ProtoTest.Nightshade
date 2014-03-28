@@ -14,7 +14,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Category("Setup Contacts")]
         public void AddContacts(string handle, string first, string last, string company, string phone1, string phone2, string phone3, string email1, string email2, string email3, string im1, string im2, string im3)
         {
-            ConnectToHost1();
+            ConnectToHost2();
             Command.NavigateTheMenu()
                 .GoToContactsApp()
                 .AddContact(handle, first, last, company, phone1, phone2, phone3, email1, email2, email3, im1, im2, im3)

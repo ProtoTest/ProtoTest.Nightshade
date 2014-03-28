@@ -87,6 +87,12 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             return this;
         }
 
+        public void ClickOnContact(string contactName)
+        {
+            var contact = new EggplantElement(By.Text(contactName));
+            contact.Click();
+        }
+
         public IContactsApp RestoreDelectedContacts(string handle, string first, string last, string company, string phone1,
             string phone2, string phone3, string email1, string email2, string email3, string im1, string im2,
             string im3)

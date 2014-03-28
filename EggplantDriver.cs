@@ -339,6 +339,13 @@ namespace ProtoTest.TestRunner.Nightshade
             Thread.Sleep(2000);
         }
 
+        public void PressKey(string text)
+        {
+            //text = "\"" + text + "\"";
+            ExecuteCommand("TypeText", text);
+            Thread.Sleep(2000);
+        }
+
         public void ScrollWheelUp(string num)
         {
             ExecuteCommand("ScrollWheelUp", num);

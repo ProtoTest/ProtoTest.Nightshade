@@ -17,6 +17,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public EggplantElement TaskEditButton = new EggplantElement(By.Image("MC659B/System/StartBar/TaskEditButton"));
         public EggplantElement ThumbnailsButton = new EggplantElement(By.Image("MC659B/System/StartBar/ThumbnailsButton"));
         public EggplantElement YesOption = new EggplantElement(By.Image("MC659B/System/StartBar/YesOption"));
+        public EggplantElement SendMessage = new EggplantElement(By.Image("MC659B/System/StartBar/SendMessage"));
+        public EggplantElement NotificationOption = new EggplantElement(By.Image("MC659B/System/StartBar/NotificationOption"));
 
         public EggplantElement KeyboardKeyEnter = new EggplantElement(By.Image("MC659B/System/StartBar/Keyboard/KeyboardKeyEnter"));
 

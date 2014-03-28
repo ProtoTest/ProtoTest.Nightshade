@@ -47,6 +47,11 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Android.Shelter.System
             return this;
         }
 
+        public IHomeScreen ReturnToHomeScreen()
+        {
+            throw new NotImplementedException();
+        }
+
 
         public INotificationsBar OpenNotificationsBar()
         {
@@ -172,6 +177,16 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Android.Shelter.System
         }
 
         public IPhoneApp EndPhoneCall()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IHomeScreen VerifyCallEstablished()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IHomeScreen VerifyTextMessageArrived()
         {
             throw new NotImplementedException();
         }

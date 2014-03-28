@@ -3,6 +3,7 @@ using System.Threading;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 using ProtoTest.Nightshade.PageObjects.Steps.System;
+using ProtoTest.TestRunner.Nightshade;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 {
@@ -43,6 +44,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public IHomeScreen ResetDeviceStateToDefault()
         {
             EggplantTestBase.Log("Resetting device state to default.");
+            ReturnToHomeScreen();
             EggplantTestBase.Log("Scanning for presence of notification bar menu.");
             if (notificationsBar.RunningProgramsMenuOKButton.IsPresent())
             {
@@ -104,6 +106,13 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         {
             var picsApp = new Windows_MC659B_PicturesAndVideoApp();
             picsApp.ResetThemeToDefault();
+            return this;
+        }
+
+        public IHomeScreen ReturnToHomeScreen()
+        {
+            var driver = new EggplantDriver(1000);
+            driver.PressKey("F4");
             return this;
         }
 
@@ -242,5 +251,24 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             phoneApp.EndPhoneCall();
             return new Windows_MC659B_PhoneApp();
         }
+
+        public IHomeScreen VerifyCallEstablished()
+        {
+            var phone = new Windows_MC659B_PhoneApp();
+            phone.VerifyCallEstablished();
+            return this;
+        }
+
+
+        public IHomeScreen VerifyTextMessageArrived()
+        {
+            EggplantTestBase.Log("Verifying Text Message has arrived.");
+            notificationsBar.NewMessage.WaitForPresent(30);
+            startBar.NotificationOption.WaitForPresent(30);
+            startBar.NotificationOption.Click();
+            popup.NewTextMessage.WaitForPresent();
+            return this;
+        }
+
     }
 }

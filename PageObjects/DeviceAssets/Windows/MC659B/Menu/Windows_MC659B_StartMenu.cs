@@ -13,7 +13,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
         public EggplantElement FileExplorerApp = new EggplantElement(By.Image("MC659B/AppIcons/FileExplorerApp"));
         public EggplantElement HomeIcon = new EggplantElement(By.Image("MC659B/AppIcons/HomeIcon"));
         public EggplantElement PicturesAndVideoApp = new EggplantElement(By.Image("MC659B/AppIcons/PicturesAndVideoApp"));
-        public EggplantElement PhoneApp = new EggplantElement(By.Image("MC659B/AppIcons/PicturesAndVideoApp"));
+        public EggplantElement PhoneApp = new EggplantElement(By.Image("MC659B/AppIcons/PhoneApp"));
         public EggplantElement SettingsApp = new EggplantElement(By.Image("MC659B/AppIcons/SettingsApp"));
         public EggplantElement TasksApp = new EggplantElement(By.Image("MC659B/AppIcons/TasksApp"));
         public EggplantElement TextMessengerApp = new EggplantElement(By.Image("MC659B/AppIcons/TextMessagesApp"));

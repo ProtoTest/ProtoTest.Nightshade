@@ -12,10 +12,13 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public EggplantElement Battery1 = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Battery/Battery1"));
         public EggplantElement WifiConnected = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Wifi"));
         public EggplantElement CellularConnected4 = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Cellular/CellularConnected4"));
+        public EggplantElement CallInProgress = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Cellular/CallActive"));
         public EggplantElement BluetoothConnected = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Bluetooth/BluetoothConnected"));
+        public EggplantElement NewMessage = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Messaging/NewMessage"));
+        public EggplantElement OutgoingTextMessage = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Messaging/OutgoingTextMessage"));
+
         public EggplantElement OptionsArrowRight = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/OptionsArrowRight"));
         public EggplantElement OptionsArrowLeft = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/OptionsArrowLeft"));
-
         public EggplantElement RunningPrograms = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/RunningPrograms/RunningProgramsHeader"));
         public EggplantElement RunningProgramsSelected = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/RunningPrograms/RunningProgramsSelected"));
         public EggplantElement RunningProgramsUnselected = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/RunningPrograms/RunningProgramsUnselected"));

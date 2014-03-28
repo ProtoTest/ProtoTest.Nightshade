@@ -9,6 +9,7 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.System
         IHomeScreen ResetDeviceStateToDefault();
         IHomeScreen SetThemeToOption(string picNumber);
         IHomeScreen SetThemeToDefault();
+        IHomeScreen ReturnToHomeScreen();
 
         INotificationsBar OpenNotificationsBar();
         
@@ -34,5 +35,8 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.System
 
         IPhoneApp AnswerPhoneCall();
         IPhoneApp EndPhoneCall();
+        IHomeScreen VerifyCallEstablished();
+
+        IHomeScreen VerifyTextMessageArrived();
     }
 }

@@ -12,7 +12,31 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Repeat(1)]
         public void TestStartPhoneCallSwitchToOtherAppsEndCall()
         {
-
+            ConnectToHost2();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreenScreen().SetCellularNetworkToThreeG();
+            Command.NavigateTheMenu().GoToPhoneApp().CallMostRecentContactFromHistory();
+            ConnectToHost2();
+            Command.OnHomeScreenScreen().AnswerPhoneCall().VerifyCallEstablished();
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().VerifyCallEstablished().ReturnToHomeScreen();
+            Command.NavigateTheMenu().GoToAlarmsApp().VerifyElements().ExitApp();
+            //Command.NavigateTheMenu().GoToBrowserApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToCalendarApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToContactsApp().VerifyElements().ExitApp();
+            //Command.NavigateTheMenu().GoToEmailApp().VerifyElements().ExitApp();
+            //Command.NavigateTheMenu().GoToInstantMessengerApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToMediaPlayerApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToPhoneApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToSettingsApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToTasksApp().VerifyElements().ExitApp();
+            //Command.NavigateTheMenu().GoToTextMessagesApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToPhoneApp().EndPhoneCall().ExitApp();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            ConnectToHost2();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
         }
 
         [Test]

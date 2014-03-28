@@ -12,6 +12,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public EggplantElement PopupPocketPCNetworkingHeader = new EggplantElement(By.Image("MC659B/System/Popups/PopupPocketPCNetworkingHeader"));
         public EggplantElement PopupPocketPCNetworkingOKButton = new EggplantElement(By.Image("MC659B/System/Popups/PopupPocketPCNetworkingOKButton"));
 
+        public EggplantElement NewTextMessage = new EggplantElement(By.Image("MC659B/System/Popups/NewTextMessage"));
+
         public void ClickYes()
         {
             EggplantTestBase.Log("Selecting popup option - Yes.");
