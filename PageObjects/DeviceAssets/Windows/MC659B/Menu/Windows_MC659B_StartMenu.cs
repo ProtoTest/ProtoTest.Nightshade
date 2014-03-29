@@ -19,7 +19,13 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
         public EggplantElement TextMessengerApp = new EggplantElement(By.Image("MC659B/AppIcons/TextMessagesApp"));
         public EggplantElement WindowsMediaApp = new EggplantElement(By.Image("MC659B/AppIcons/WindowsMediaPlayerApp"));
         public EggplantElement WindowsMessengerApp = new EggplantElement(By.Image("MC659B/AppIcons/WindowsMessengerApp"));
+        public EggplantElement WirelessCompanionApp = new EggplantElement(By.Image("MC659B/AppIcons/WirelessCompanionApp"));
 
+        public EggplantElement WirelessCompanionAppWirelessLaunch = new EggplantElement(By.Image("MC659B/AppIcons/WirelessCompanionMenu/WirelessLaunch"));
+        public EggplantElement WirelessCompanionAppWirelessStatus = new EggplantElement(By.Image("MC659B/AppIcons/WirelessCompanionMenu/WirelessStatus"));
+        public EggplantElement WirelessCompanionAppManageProfilesOption = new EggplantElement(By.Image("MC659B/AppIcons/WirelessCompanionMenu/ManageProfilesOption"));
+        
+        
         public Windows_MC659B_StartMenu VerifyElements()
         {
             EggplantTestBase.Log("Entering start menu.");

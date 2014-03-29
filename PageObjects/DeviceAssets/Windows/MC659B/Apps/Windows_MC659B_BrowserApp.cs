@@ -168,6 +168,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             EggplantTestBase.Log("Going to AT&T mobile homepage (m.att.com).");
             ActivateOverlayIfHidden();
             AddressBar.Type("m.att.com");
+            Thread.Sleep(2000);
             GoButton.Click();
             Thread.Sleep(3000);
             //ShowOverlayButton.WaitForPresent(30);   >>> Website is unstable, just doing simplistic checks.
@@ -184,6 +185,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             EggplantTestBase.Log("Going to Yahoo mobile website (m.yahoo.com).");
             ActivateOverlayIfHidden();
             AddressBar.Type("m.yahoo.com");
+            Thread.Sleep(2000);
             GoButton.Click();
             Thread.Sleep(15000);
             ContinueIfWarned();
@@ -203,6 +205,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             EggplantTestBase.Log("Going to Facebook mobile website (m.facebook.com).");
             ActivateOverlayIfHidden();
             AddressBar.Type("m.facebook.com");
+            Thread.Sleep(2000);
             GoButton.Click();
             Thread.Sleep(15000);
             ContinueIfWarned();
@@ -222,6 +225,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             EggplantTestBase.Log("Going to Youtube mobile website (m.youtube.com).");
             ActivateOverlayIfHidden();
             AddressBar.Type("m.youtube.com");
+            Thread.Sleep(2000);
             GoButton.Click();
             Thread.Sleep(15000);
             ContinueIfWarned();
@@ -241,6 +245,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             EggplantTestBase.Log("Going to NY Times mobile website (m.nytimes.com).");
             ActivateOverlayIfHidden();
             AddressBar.Type("m.nytimes.com");
+            Thread.Sleep(2000);
             GoButton.Click();
             Thread.Sleep(15000);
             ContinueIfWarned();

@@ -215,7 +215,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen ConnectToDefaultWifiNetwork()
         {
-            
+            Command.NavigateTheMenu().GoToWifiManagerApp().ConnectToDefaultWifiNetwork().ExitApp();
             return new Windows_MC659B_HomeDesktop();
         }
 

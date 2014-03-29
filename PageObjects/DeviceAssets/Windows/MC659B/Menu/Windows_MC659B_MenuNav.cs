@@ -142,5 +142,13 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
             startMenu.TextMessengerApp.Click();
             return new Windows_MC659B_TextMessagesApp();
         }
+
+        public IWifiManager GoToWifiManagerApp()
+        {
+            startBar.EnterStartMenu();
+            utilities.SearchMenuFor(startMenu.WirelessCompanionApp);
+            startMenu.WirelessCompanionApp.Click();
+            return new Windows_MC659B_WifiManager();
+        }
     }
 }

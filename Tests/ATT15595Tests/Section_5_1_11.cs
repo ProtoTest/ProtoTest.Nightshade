@@ -30,14 +30,18 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Connect and Disconnect to a Wifi Network - Test 5.1.11.2")]
         [Category("Single Device")]
-        [Repeat(20)]
+        [Repeat(1)]
         public void TestConnectAndDisconnectToAWifiNetwork()
         {
             ConnectToHost1();
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
+            Command.OnHomeScreenScreen().TurnOnWifi();
+            Command.OnHomeScreenScreen().DisconnectFromDefaultWifiNetwork();
             Command.OnHomeScreenScreen().ConnectToDefaultWifiNetwork();
             Command.OnHomeScreenScreen().DisconnectFromDefaultWifiNetwork();
+            Command.OnHomeScreenScreen().ConnectToDefaultWifiNetwork();
+            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
         }
 
     }

@@ -16,7 +16,7 @@ Log "Passkey (" &passkey2& ") detected."
 
 Click "MC659B/System/Startbar/KeyboardButton"
 
-Click (Text:"TEST02")
+Click (Text:"Phone")
 
 
 

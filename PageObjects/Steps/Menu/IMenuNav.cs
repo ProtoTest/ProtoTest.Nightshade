@@ -21,6 +21,7 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.Menu
         ISettingsApp GoToSettingsApp();
         ITasksApp GoToTasksApp();
         ITextMessagesApp GoToTextMessagesApp();
+        IWifiManager GoToWifiManagerApp();
     }
   
 }
