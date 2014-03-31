@@ -190,5 +190,10 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Android.Shelter.System
         {
             throw new NotImplementedException();
         }
+
+        public IHomeScreen VerifyEmailArrived()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

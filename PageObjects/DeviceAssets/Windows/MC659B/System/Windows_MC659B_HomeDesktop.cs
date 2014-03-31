@@ -270,5 +270,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             return this;
         }
 
+        public IHomeScreen VerifyEmailArrived()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
