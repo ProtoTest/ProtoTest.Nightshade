@@ -30,7 +30,7 @@ namespace ProtoTest.Nightshade
 
         public static IEnumerable<int> GetNumRepetitions()
         {
-            var num = int.Parse(Config.GetConfigValue("SuiteRepetitions", "2"));
+            var num = int.Parse(Config.GetConfigValue("SuiteRepetitions", "1"));
             for (var i = 1; i <= num; i++)
             {
                 yield return i;
