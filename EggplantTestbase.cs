@@ -23,6 +23,19 @@ namespace ProtoTest.Nightshade
             set { _Driver = value; }
         }
 
+        [Factory("GetNumRepetitions")]
+        public int SuiteRepetitions;
+
+        public int GetNumRepetitions()
+        {
+            return int.Parse(Config.GetConfigValue("SuiteRepetitions", "1"));
+        }
+
+        public void SkipThisTest(string message)
+        {
+            throw new SilentTestException(TestOutcome.Skipped, message);
+        }
+
         public void SetDefaultSearchTime()
         {
             Driver.Execute("set the ImageSearchTime to " + Config.ElementSearchTime);
