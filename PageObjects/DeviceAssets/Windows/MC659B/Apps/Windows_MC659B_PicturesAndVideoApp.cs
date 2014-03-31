@@ -4,6 +4,7 @@ using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 using ProtoTest.Nightshade.PageObjects.Steps.System;
+using ProtoTest.TestRunner.Nightshade;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 {
@@ -16,7 +17,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public EggplantElement StillMenuOption = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/StillMenuOption"));
         public EggplantElement VideoMenuOption = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/VideoMenuOption"));
 
-        public EggplantElement PictureModeIcon = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/PictureModeIcon"));
+        public EggplantElement PictureModeIcon = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/PicturesModeIcon"));
         public EggplantElement VideoModeIcon = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/VideoModeIcon"));
         public EggplantElement PictureCaptured = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/PictureCaptured"));
         public EggplantElement PictureCapturedIcon = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/PictureCapturedIcon"));
@@ -45,16 +46,17 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             EggplantTestBase.Log("Setting app to Pictures mode.");
             startBar.MenuOption.Click();
+            Thread.Sleep(1000);
             if (VideoMenuOption.IsPresent())
             {
-                EggplantTestBase.Log("App is currently in Video mode.");
                 startBar.MenuOption.Click();
             }
             else
             {
-                EggplantTestBase.Log("Activating Pictures mode.");
+                EggplantTestBase.Log("App is currently in Video mode.  Changing to pictures mode...");
                 StillMenuOption.Click();
             }
+            Thread.Sleep(1000);
             PictureModeIcon.WaitForPresent();
             EggplantTestBase.Log("App is now in Pictures mode.");
         }
@@ -63,16 +65,17 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             EggplantTestBase.Log("Setting app to Video mode.");
             startBar.MenuOption.Click();
+            Thread.Sleep(1000);
             if (StillMenuOption.IsPresent())
             {
-                EggplantTestBase.Log("App is currently in Video mode.");
                 startBar.MenuOption.Click();
             }
             else
             {
-                EggplantTestBase.Log("Activating Video mode.");
+                EggplantTestBase.Log("App is currently in Pictures mode.  Changing to video mode...");
                 VideoMenuOption.Click();
             }
+            Thread.Sleep(1000);
             VideoModeIcon.WaitForPresent();
             EggplantTestBase.Log("App is now in Video mode.");
         }
@@ -81,19 +84,40 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             EggplantTestBase.Log("Verifying Pictures & Video app elements.");
             PicturesAndVideoHeader.WaitForPresent(15);
+            Thread.Sleep(5000);
             return this;
         }
 
         public IPicturesAndVideoApp SetUpPicturesAndVideoApp()
         {
             EggplantTestBase.Log("Confirming Pictures and Video app is configured correctly.");
+            while (PictureCapturedIcon.IsPresent())
+            {
+                EggplantTestBase.Log("Previous picture file detected.  Deleting...");
+                PictureCapturedIcon.Press();
+                Thread.Sleep(3000);
+                var driver = new EggplantDriver(1000);
+                driver.Type("d");
+                Thread.Sleep(1000);
+                driver.PressKey("RightArrow");
+                Thread.Sleep(1000);
+                driver.PressKey("Return");
+                Thread.Sleep(5000);
+            }
+            PictureCapturedIcon.WaitForNotPresent();
+            EggplantTestBase.Log("Previous picture files deleted.");
             while (VideoCapturedIcon.IsPresent())
             {
+                EggplantTestBase.Log("Previous video file detected.  Deleting...");
                 VideoCapturedIcon.Press();
+                Thread.Sleep(5000);
+                var driver = new EggplantDriver(1000);
+                driver.Type("d");
                 Thread.Sleep(1000);
-                DeleteMenuOption.Click();
-                popup.ClickYes();
-                Thread.Sleep(2000);
+                driver.PressKey("RightArrow");
+                Thread.Sleep(1000);
+                driver.PressKey("Return");
+                Thread.Sleep(5000);
             }
             VideoCapturedIcon.WaitForNotPresent();
             EggplantTestBase.Log("Previous video files deleted.");
@@ -103,7 +127,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IPicturesAndVideoApp TakePicture()
         {
             EggplantTestBase.Log("Taking a picture using device camera.");
-            startBar.MenuButton.Click();
+            startBar.MenuOption.Click();
             CameraMenuOption.Click();
             SetToPicturesMode();
             startBar.KeyboardButton.Click();
@@ -121,18 +145,22 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             PictureCapturedIcon.Click();
             PictureCaptured.WaitForPresent();
             startBar.OKButton.Click();
+            Thread.Sleep(5000);
             return this;
         }
 
         public IPicturesAndVideoApp DeleteTakenPicture()
         {
             EggplantTestBase.Log("Deleting the picture taken with device camera.");
-            startBar.MenuButton.Click();
-            DeleteMenuOption.Click();
+            PictureCapturedIcon.Press();
+            var driver = new EggplantDriver(1000);
+            driver.Type("d");
             popup.DeleteItem.WaitForPresent();
-            popup.ClickYes();
+            Thread.Sleep(1000);
+            driver.PressKey("RightArrow");
+            Thread.Sleep(1000);
+            driver.PressKey("Return");
             PictureCapturedIcon.WaitForNotPresent();
-            startBar.ExitButton.Click();
             return this;
         }
 
@@ -160,17 +188,23 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             mediaPlayer.PauseFile();
             mediaPlayer.RemoveFileFromActiveStatus();
             startBar.ExitButton.Click();
+            Thread.Sleep(5000);
             return this;
         }
 
         public IPicturesAndVideoApp DeleteRecordedVideo()
         {
             EggplantTestBase.Log("Deleting the video recorded with the device camera.");
-            startBar.MenuOption.Click();
-            DeleteMenuOption.Click();
+            VideoCapturedIcon.Press();
+            Thread.Sleep(1000);
+            var driver = new EggplantDriver(1000);
+            driver.Type("d");
             popup.DeleteItem.WaitForPresent();
-            popup.ClickYes();
-            PictureCapturedIcon.WaitForNotPresent();
+            Thread.Sleep(1000);
+            driver.PressKey("RightArrow");
+            Thread.Sleep(1000);
+            driver.PressKey("Return");
+            VideoCapturedIcon.WaitForNotPresent();
             return this;
         }
 
@@ -318,7 +352,20 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IPicturesAndVideoApp ExitApp()
         {
             EggplantTestBase.Log("Exiting Pictures & Video app.");
-            startBar.ExitButton.Click();
+            while (startBar.OKButton.IsPresent() || startBar.ExitButton.IsPresent())
+            {
+                Thread.Sleep(2000);
+                if (startBar.OKButton.IsPresent())
+                {
+                    Thread.Sleep(1000);
+                    startBar.OKButton.Click();
+                }
+                if (startBar.ExitButton.IsPresent())
+                {
+                    Thread.Sleep(1000);
+                    startBar.ExitButton.Click();
+                }
+            }
             Command.OnHomeScreenScreen().ConfirmHomeScreen();
             return this;
         }

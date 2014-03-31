@@ -151,7 +151,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             BookmarksButton.Click();
             BookmarksHeader.WaitForPresent();
             BookmarkGoogleIcon.Click();
-            GoButton.Click();
+            //GoButton.Click();
             Thread.Sleep(10000);
             CloseKeyboardIfOpened();
             ShowOverlayButton.WaitForPresent(60);

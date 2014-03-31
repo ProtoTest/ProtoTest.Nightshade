@@ -26,13 +26,15 @@ wait 1
 put ImageFound (image: "MC659B/Apps/BrowserIE/AddressBar")
 
 wait 1
-Click (image: "MC659B/Apps/BrowserIE/AddressBar")
+Press "MC659B/Apps/PicturesAndVideo/PictureCapturedIcon"
+Click "MC659B/Apps/PicturesAndVideo/DeleteMenuOption"
 
 wait 1
 TypeText "m.yahoo.com"
 
 TypeText Backspace
-TypeText Escape
+typetext RightArrow
+TypeText Return
 TypeText escape
 TypeText F4
 TypeText CommandDown,CommandUp

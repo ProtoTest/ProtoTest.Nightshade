@@ -59,9 +59,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         {
             EggplantTestBase.Log("Opening the notification menu.");
             Battery.Click();
+            Thread.Sleep(3000);
             if (RunningProgramsUnselected.IsPresent())
             {
                 RunningProgramsUnselected.Click();
+            }
+            if (RunningProgramsSelected.IsPresent())
+            {
+                RunningProgramsSelected.Click();
             }
             RunningPrograms.WaitForPresent();
             return this;

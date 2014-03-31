@@ -25,7 +25,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         {
             ConnectToHost1();
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
-            Command.NavigateTheMenu().GoToPicturesAndVideoApp().VerifyElements().TakePicture().OpenTakenPicture().DeleteTakenPicture().ExitApp();
+            Command.NavigateTheMenu().GoToPicturesAndVideoApp().VerifyElements().SetUpPicturesAndVideoApp().TakePicture().OpenTakenPicture().DeleteTakenPicture().ExitApp();
         }
 
         //[Test]
@@ -69,6 +69,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
             ConnectToHost1();
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToAudioFiles().IterativelyOpenAudioFiles(50).ExitApp(); //Number of iterations set within "IterativelyOpenAudioFiles"
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
         }
 
         [Test]

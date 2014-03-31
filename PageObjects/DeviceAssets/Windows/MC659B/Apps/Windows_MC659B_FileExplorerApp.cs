@@ -41,7 +41,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             return this;
         }
 
-        public IFileExplorer IterativelyOpenAudioFiles(int iterations)
+        public IMediaPlayerApp IterativelyOpenAudioFiles(int iterations)
         {
             ResetAppState();
             EnterFolderMyMusic();
@@ -109,12 +109,15 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 Thread.Sleep(20000);
                 mediaPlayer.RemoveFileFromActiveStatus();
                 var startBar = new Windows_MC659B_StartBar();
-                startBar.OKButton.Click();
+                if (startBar.OKButton.IsPresent())
+                {
+                    startBar.OKButton.Click();
+                }
                 startBar.ExitButton.Click();
             }
 
 
-            return this;
+            return new Windows_MC659B_WindowsMediaApp();
         }
 
         public IFileExplorer ExitApp()

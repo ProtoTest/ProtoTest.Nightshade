@@ -25,11 +25,11 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().SetCellularConnectionToThreeG();
             Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
-            Command.OnHomeScreenScreen().TurnOnWifi();
-            Command.OnHomeScreenScreen().VerifyWifiOn();
+            //Command.OnHomeScreenScreen().TurnOnWifi();
+            //Command.OnHomeScreenScreen().VerifyWifiOn();
             Command.NavigateTheMenu().GoToBrowserApp().ResetBrowserToDefaultState().ExitApp();
             Command.NavigateTheMenu().GoToBrowserApp().GoToATTWebsite().ExitApp();
-            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
+            //Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
         }
 
@@ -52,11 +52,11 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().SetCellularConnectionToThreeG();
             Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
-            Command.OnHomeScreenScreen().TurnOnWifi();
-            Command.OnHomeScreenScreen().VerifyWifiOn();
+            //Command.OnHomeScreenScreen().TurnOnWifi();
+            //Command.OnHomeScreenScreen().VerifyWifiOn();
             Command.NavigateTheMenu().GoToBrowserApp().ResetBrowserToDefaultState().ExitApp();
             Command.NavigateTheMenu().GoToBrowserApp().GoToBookmarkedWebsite().ExitApp();
-            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
+            //Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
         }
 
@@ -79,15 +79,15 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().SetCellularConnectionToThreeG();
             Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
-            Command.OnHomeScreenScreen().TurnOnWifi();
-            Command.OnHomeScreenScreen().VerifyWifiOn();
+            //Command.OnHomeScreenScreen().TurnOnWifi();
+            //Command.OnHomeScreenScreen().VerifyWifiOn();
             Command.NavigateTheMenu().GoToBrowserApp().ResetBrowserToDefaultState().ExitApp();
             Command.NavigateTheMenu().GoToBrowserApp().GoToATTWebsite().ExitApp();
             Command.NavigateTheMenu().GoToBrowserApp().GoToYahooWebsite().ExitApp();
             Command.NavigateTheMenu().GoToBrowserApp().GoToFacebookWebsite().ExitApp();
             Command.NavigateTheMenu().GoToBrowserApp().GoToYoutubeWebsite().ExitApp();
             Command.NavigateTheMenu().GoToBrowserApp().GoToNYTimesWebsite().ExitApp();
-            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
+            //Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
         }
 

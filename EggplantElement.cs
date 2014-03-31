@@ -80,6 +80,7 @@ namespace ProtoTest.Nightshade
             WaitForPresent();
             EggplantTestBase.Log(string.Format("Performing click+hold on element {0}.", locator));
             Driver.Press(locator);
+            Thread.Sleep(2000);
             return this;
         }
 
