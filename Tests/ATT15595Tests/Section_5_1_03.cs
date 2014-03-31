@@ -6,44 +6,98 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
     [Category("Email Stability Tests")]
     public class Section_5_1_03 : EggplantTestBase
     {
-        [Test]
-        [Description("Send 2G Email with No Attachment - Test 5.1.3.1A")]
-        [Category("Paired Device")]
-        public void TestSendTwoGEmailNoAttachment()
-        {
+        //[Test]
+        //[Description("Send 2G Email with No Attachment - Test 5.1.3.1A")]
+        //[Category("Paired Device")]
+        //[Repeat(1)]
+        //public void TestSendTwoGEmailNoAttachment()
+        //{
 
-        }
+        //}
 
         [Test]
         [Description("Send 3G Email with No Attachment - Test 5.1.3.1B")]
         [Category("Paired Device")]
+        [Repeat(1)]
         public void TestSendThreeGEmailNoAttachment()
         {
+            ConnectToHost2();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.NavigateTheMenu().GoToEmailApp().ResetEmailAppToDefault();
 
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
+            Command.OnHomeScreenScreen().SetCellularNetworkToThreeG();
+            Command.NavigateTheMenu()
+                .GoToEmailApp()
+                .ResetEmailAppToDefault()
+                .SendEmailWithNoAttachment("TEST02")
+                .ResetEmailAppToDefault()
+                .ExitApp();
+
+            ConnectToHost2();
+            Command.OnHomeScreenScreen().VerifyEmailArrived();
+            Command.NavigateTheMenu().GoToEmailApp().ResetEmailAppToDefault().ExitApp();
         }
 
-        [Test]
-        [Description("Send 2G Email with Attachment - Test 5.1.3.2A")]
-        [Category("Paired Device")]
-        public void TestSendTwoGEmailWithAttachment()
-        {
+        //[Test]
+        //[Description("Send 2G Email with Attachment - Test 5.1.3.2A")]
+        //[Category("Paired Device")]
+        //[Repeat(1)]
+        //public void TestSendTwoGEmailWithAttachment()
+        //{
 
-        }
+        //}
 
         [Test]
         [Description("Send 3G Email with Attachment - Test 5.1.3.2B")]
         [Category("Paired Device")]
+        [Repeat(1)]
         public void TestSendThreeGEmailWithAttachment()
         {
+            ConnectToHost2();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.NavigateTheMenu().GoToEmailApp().ResetEmailAppToDefault();
 
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
+            Command.OnHomeScreenScreen().SetCellularNetworkToThreeG();
+            Command.NavigateTheMenu()
+                .GoToEmailApp()
+                .ResetEmailAppToDefault()
+                .SendEmailWithAnAttachment("TEST02")
+                .ResetEmailAppToDefault()
+                .ExitApp();
+
+            ConnectToHost2();
+            Command.OnHomeScreenScreen().VerifyEmailArrived();
+            Command.NavigateTheMenu().GoToEmailApp().ResetEmailAppToDefault().ExitApp();
         }
 
         [Test]
         [Description("Open an Email - Test 5.1.3.3")]
         [Category("Paired Device")]
+        [Repeat(1)]
         public void TestOpenAnEmail()
         {
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
 
+            ConnectToHost2();
+            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
+            Command.NavigateTheMenu()
+                .GoToEmailApp()
+                .ResetEmailAppToDefault()
+                .SendEmailWithNoAttachment("TEST01")
+                .ResetEmailAppToDefault()
+                .ExitApp();
+
+            ConnectToHost1();
+            Command.OnHomeScreenScreen().VerifyEmailArrived();
+            Command.NavigateTheMenu().GoToEmailApp().ResetEmailAppToDefault();
         }
 
     }

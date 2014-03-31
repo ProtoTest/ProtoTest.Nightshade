@@ -36,6 +36,7 @@ namespace ProtoTest.Nightshade
         public static string DefaultWifiNetworkName = GetConfigValue("DefaultWifiNetworkName", "null");
         public static string DeleteContactsStarting = GetConfigValue("DeleteContactsStarting", "null");
         public static string DeleteContactsTotalCount = GetConfigValue("DeleteContactsTotalCount", "null");
+        public static string DownloadAppTestPath = GetConfigValue("DownloadAppTestPath", "null");
   
         /// <summary>
         ///     Returns the App.config value for requested key, or default value if not defined.

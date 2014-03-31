@@ -80,6 +80,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Contacts - Tests 5.1.1.8 and 5.1.1.9")]
         [Category("Single Device")]
+        [Repeat(1)]
         public void DeleteAndRestoreContacts(string handle, string first, string last, string company, string phone1, 
             string phone2, string phone3, string email1, string email2, string email3, string im1, string im2, string im3)
         {

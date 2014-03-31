@@ -260,6 +260,19 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             return this;
         }
 
+        public IBrowserApp DownloadNativeApp()
+        {
+            EggplantTestBase.Log("Downloading native application.");
+            ActivateOverlayIfHidden();
+            AddressBar.Type(Config.DownloadAppTestPath);
+            Thread.Sleep(3000);
+            GoButton.Click();
+            Thread.Sleep(3000);
+            DownloadTheFilePrompt.WaitForPresent(10);
+            startBar.YesOption.Click();
+            return this;
+        }
+
         public IHomeScreen ReturnToHomeScreen()
         {
             EggplantTestBase.Log("Returning to the home screen from the browser app.");

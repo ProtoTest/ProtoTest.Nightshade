@@ -9,6 +9,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("2G Open Native Browser and go to AT&T Homepage - Test 5.1.5.1A")]
         //[Category("Single Device")]
+        //[Repeat(1)]
         //public void TestOpenTwoGNativeBrowserGoToATTHomepage()
         //{
 
@@ -35,6 +36,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("2G Open Native Browser and Click on a Link - Test 5.1.5.2A")]
         //[Category("Single Device")]
+        //[Repeat(1)]
         //public void TestOpenTwoGNativeBrowserClickOnLink()
         //{
 
@@ -61,6 +63,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("2G Open Native Browser and go to Top Websites - Test 5.1.5.3A")]
         //[Category("Single Device")]
+        //[Repeat(1)]
         //public void TestOpenTwoGNativeBrowserGoToTopWebsites()
         //{
 
@@ -91,6 +94,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("Start the Seasame client and load Seasame Homepage - Test 5.1.5.4")]
         //[Category("Single Device")]
+        //[Repeat(1)]
         //public void TestOpenSeasameClientLoadSeasameHomepage()
         //{
 
@@ -99,6 +103,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("Start the Seasame client and Click on a Link - Test 5.1.5.5")]
         //[Category("Single Device")]
+        //[Repeat(1)]
         //public void TestOpenSeasameClientClickLink()
         //{
 

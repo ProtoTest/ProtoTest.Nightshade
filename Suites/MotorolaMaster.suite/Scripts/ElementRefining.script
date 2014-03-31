@@ -37,4 +37,4 @@ TypeText escape
 TypeText F4
 TypeText CommandDown,CommandUp
 
-TypeText "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient."
+TypeText "http://www.youtube.com/watch?v=lcJuZIUeBME"

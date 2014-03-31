@@ -10,6 +10,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("Send 2G SMS with Max Characters - Test 5.1.2.1A")]
         //[Category("Paired Device")]
+        //[Repeat(1)]
         //public void TestSendTwoGMessageMaxCharacters()
         //{
 
@@ -24,6 +25,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
             ConnectToHost2();
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToTextMessagesApp().ResetTextMessagesAppToDefault().ExitApp();
+
             ConnectToHost1();
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
@@ -31,7 +33,9 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
                 .GoToTextMessagesApp()
                 .ResetTextMessagesAppToDefault()
                 .SendSMSWithMaxCharacters("TEST02")
-                .ResetTextMessagesAppToDefault().ExitApp();
+                .ResetTextMessagesAppToDefault()
+                .ExitApp();
+
             ConnectToHost2();
             Command.OnHomeScreenScreen().VerifyTextMessageArrived();
             Command.NavigateTheMenu().GoToTextMessagesApp().ResetTextMessagesAppToDefault().ExitApp();
@@ -40,6 +44,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("Send 2G MMS with Audio Attachment - Test 5.1.2.2A")]
         //[Category("Paired Device")]
+        //[Repeat(1)]
         //public void TestSendTwoGMessageAudioAttachment()
         //{
 
@@ -48,6 +53,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("Send 3G MMS with Audio Attachment - Test 5.1.2.2B")]
         //[Category("Paired Device")]
+        //[Repeat(1)]
         //public void TestSendThreeGMessageAudioAttachment()
         //{
 
@@ -56,6 +62,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("Send 2G MMS with Video Attachment - Test 5.1.2.3A")]
         //[Category("Paired Device")]
+        //[Repeat(1)]
         //public void TestSendTwoGMessageVideoAttachment()
         //{
 
@@ -64,6 +71,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("Send 3G MMS with Video Attachment - Test 5.1.2.3B")]
         //[Category("Paired Device")]
+        //[Repeat(1)]
         //public void TestSendThreeGMessageVideoAttachment()
         //{
 
@@ -72,6 +80,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("Send 2G MMS with Image Attachment - Test 5.1.2.4A")]
         //[Category("Paired Device")]
+        //[Repeat(1)]
         //public void TestSendTwoGMessageImageAttachment()
         //{
 
@@ -80,6 +89,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("Send 3G MMS with Image Attachment - Test 5.1.2.4B")]
         //[Category("Paired Device")]
+        //[Repeat(1)]
         //public void TestSendThreeGMessageImageAttachment()
         //{
 
@@ -88,6 +98,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("Open MMS with Audio Attachment - Test 5.1.2.5")]
         //[Category("Paired Device")]
+        //[Repeat(1)]
         //public void TestOpenMessageAudioAttachment()
         //{
 
@@ -96,6 +107,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("Open MMS with Video Attachment - Test 5.1.2.6")]
         //[Category("Paired Device")]
+        //[Repeat(1)]
         //public void TestOpenMessageVideoAttachment()
         //{
 
@@ -104,6 +116,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //[Test]
         //[Description("Open MMS with Image Attachment - Test 5.1.2.7")]
         //[Category("Paired Device")]
+        //[Repeat(1)]
         //public void TestOpenMessageImageAttachment()
         //{
 
@@ -117,6 +130,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         {
             ConnectToHost1();
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+
             ConnectToHost2();
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
@@ -124,7 +138,9 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
                 .GoToTextMessagesApp()
                 .ResetTextMessagesAppToDefault()
                 .SendSMSWithMaxCharacters("TEST01")
-                .ResetTextMessagesAppToDefault();
+                .ResetTextMessagesAppToDefault()
+                .ExitApp();
+
             ConnectToHost1();
             Command.OnHomeScreenScreen().VerifyTextMessageArrived();
             Command.NavigateTheMenu().GoToTextMessagesApp().ResetTextMessagesAppToDefault();

@@ -20,7 +20,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Camera Pictures - Tests 5.1.8.4, 5.1.8.5, and 5.1.8.6")]
         [Category("Single Device")]
-        [Repeat(20)]
+        [Repeat(1)]
         public void TestCameraPictures()
         {
             ConnectToHost1();
@@ -28,26 +28,31 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
             Command.NavigateTheMenu().GoToPicturesAndVideoApp().VerifyElements().TakePicture().OpenTakenPicture().DeleteTakenPicture().ExitApp();
         }
 
-        [Test]
-        [Description("Record Audio Message - Tests 5.1.8.7, 5.1.8.8, and 5.1.8.9")]
-        [Category("Single Device")]
-        public void TestRecordAudioMessage()
-        {
+        //[Test]
+        //[Description("Record Audio Message - Tests 5.1.8.7, 5.1.8.8, and 5.1.8.9")]
+        //[Category("Single Device")]
+        //[Repeat(1)]
+        //public void TestRecordAudioMessage()
+        //{
 
-        }
+        //}
 
-        [Test]
-        [Description("Play Video Streaming Content With Browser and Player - Test 5.1.8.10")]
-        [Category("Single Device")]
-        public void TestVideoStreamingWithBrowserAndPlayer()
-        {
+        //[Test]
+        //[Description("Play Video Streaming Content With Browser and Player - Test 5.1.8.10")]
+        //[Category("Single Device")]
+        //[Repeat(1)]
+        //public void TestVideoStreamingWithBrowserAndPlayer()
+        //{
+        //    ConnectToHost1();
+        //    Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+        //    Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
 
-        }
+        //}
 
         [Test]
         [Description("Open and Close the Music Player - Test 5.1.8.11")]
         [Category("Single Device")]
-        [Repeat(20)]
+        [Repeat(1)]
         public void TestOpenAndCloseTheMusicPlayer()
         {
             ConnectToHost1();
@@ -69,6 +74,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Device Themes - Test 5.1.8.14")]
         [Category("Single Device")]
+        [Repeat(1)]
         public void TestDeviceThemes()
         {
             ConnectToHost1();

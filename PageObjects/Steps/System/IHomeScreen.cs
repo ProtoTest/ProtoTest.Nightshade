@@ -38,5 +38,6 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.System
         IHomeScreen VerifyCallEstablished();
 
         IHomeScreen VerifyTextMessageArrived();
+        IHomeScreen VerifyEmailArrived();
     }
 }

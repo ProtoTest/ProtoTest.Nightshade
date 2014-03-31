@@ -12,6 +12,7 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.Apps
         IBrowserApp GoToFacebookWebsite();
         IBrowserApp GoToYoutubeWebsite();
         IBrowserApp GoToNYTimesWebsite();
+        IBrowserApp DownloadNativeApp();
         IHomeScreen ReturnToHomeScreen();
         IBrowserApp ExitApp();
 
