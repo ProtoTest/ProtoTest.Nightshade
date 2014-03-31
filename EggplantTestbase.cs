@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using Gallio.Framework;
 using Gallio.Framework.Pattern;
 using Gallio.Model;
 using MbUnit.Framework;
+using ProtoTest.Nightshade;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
 using ProtoTest.Nightshade.PageObjects.Steps.System;
 using ProtoTest.TestRunner.Nightshade;
@@ -24,11 +26,15 @@ namespace ProtoTest.Nightshade
         }
 
         [Factory("GetNumRepetitions")]
-        public int SuiteRepetitions;
+        public static int SuiteRepetitions;
 
-        public int GetNumRepetitions()
+        public static IEnumerable<int> GetNumRepetitions()
         {
-            return int.Parse(Config.GetConfigValue("SuiteRepetitions", "1"));
+            var num = int.Parse(Config.GetConfigValue("SuiteRepetitions", "2"));
+            for (var i = 1; i <= num; i++)
+            {
+                yield return i;
+            }
         }
 
         public void SkipThisTest(string message)
@@ -98,7 +104,7 @@ namespace ProtoTest.Nightshade
             }
         }
 
-        [FixtureSetUp]
+       // [FixtureSetUp]
         public void FixtureSetup()
         {
             Config.BatchFilePath = Common.CreateBatchFile();
@@ -110,7 +116,7 @@ namespace ProtoTest.Nightshade
             SetDefaultSearchTime();
         }
 
-        [FixtureTearDown]
+       // [FixtureTearDown]
         public void FixtureTeardown()
         {
 
@@ -119,13 +125,13 @@ namespace ProtoTest.Nightshade
             Driver.StopEggPlantDrive();
         }
 
-        [SetUp]
+       // [SetUp]
         public void SetUp()
         {
             StartVideoRecording();   
         }
 
-        [TearDown]
+       // [TearDown]
         public void Teardown()
         {
             Thread.Sleep(1000);
