@@ -104,7 +104,7 @@ namespace ProtoTest.Nightshade
             }
         }
 
-       // [FixtureSetUp]
+        [FixtureSetUp]
         public void FixtureSetup()
         {
             Config.BatchFilePath = Common.CreateBatchFile();
@@ -116,7 +116,7 @@ namespace ProtoTest.Nightshade
             SetDefaultSearchTime();
         }
 
-       // [FixtureTearDown]
+        [FixtureTearDown]
         public void FixtureTeardown()
         {
 
@@ -125,13 +125,13 @@ namespace ProtoTest.Nightshade
             Driver.StopEggPlantDrive();
         }
 
-       // [SetUp]
+        [SetUp]
         public void SetUp()
         {
             StartVideoRecording();   
         }
 
-       // [TearDown]
+        [TearDown]
         public void Teardown()
         {
             Thread.Sleep(1000);
