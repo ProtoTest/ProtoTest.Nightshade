@@ -85,7 +85,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             contacts.ClickOnContact(contactFirst);
             EggplantTestBase.Log("Contact added.  Inserting subject.");
             SubjectField.Click();
-            var driver = new EggplantDriver(1000);
+            var driver = new EggplantDriver();
             driver.Type("Test no atch");
             EggplantTestBase.Log("Subject added.  Inserting body text.");
             Thread.Sleep(10000);

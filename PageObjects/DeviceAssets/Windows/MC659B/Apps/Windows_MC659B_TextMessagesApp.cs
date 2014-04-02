@@ -94,7 +94,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             contacts.ClickOnContact(contactFirst);
             EggplantTestBase.Log("Contact added.  Inserting text.");
             SMSTextBodyField.Click();
-            var driver = new EggplantDriver(1000);
+            var driver = new EggplantDriver();
             driver.Type("Lorem ipsum dolor sit amet");
             Thread.Sleep(10000);
             driver.Type(", consectetuer adipiscing elit. ");

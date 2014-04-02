@@ -111,7 +111,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen ReturnToHomeScreen()
         {
-            var driver = new EggplantDriver(1000);
+            var driver = new EggplantDriver();
             driver.PressKey("F4");
             return this;
         }

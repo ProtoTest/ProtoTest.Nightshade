@@ -30,9 +30,13 @@ namespace ProtoTest.TestRunner.Nightshade
         public string suitePath;
         public bool suiteStarted = false;
 
-        public EggplantDriver(int timeoutMs)
+        public EggplantDriver(int timeoutMs = -1)
         {
-            driveService = (IEggplantDriveService) XmlRpcProxyGen.Create(typeof (IEggplantDriveService));
+            if (timeoutMs == -1)
+            {
+                timeoutMs = Config.DriveTimeoutSec * 1000;
+            }
+            driveService = (IEggplantDriveService)XmlRpcProxyGen.Create(typeof(IEggplantDriveService));
             driveService.Timeout = timeoutMs;
         }
 

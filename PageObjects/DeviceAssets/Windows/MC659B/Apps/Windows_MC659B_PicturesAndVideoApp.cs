@@ -96,7 +96,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 EggplantTestBase.Log("Previous picture file detected.  Deleting...");
                 PictureCapturedIcon.Press();
                 Thread.Sleep(3000);
-                var driver = new EggplantDriver(1000);
+                var driver = new EggplantDriver();
                 driver.Type("d");
                 Thread.Sleep(1000);
                 driver.PressKey("RightArrow");
@@ -111,7 +111,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 EggplantTestBase.Log("Previous video file detected.  Deleting...");
                 VideoCapturedIcon.Press();
                 Thread.Sleep(5000);
-                var driver = new EggplantDriver(1000);
+                var driver = new EggplantDriver();
                 driver.Type("d");
                 Thread.Sleep(1000);
                 driver.PressKey("RightArrow");
@@ -153,7 +153,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             EggplantTestBase.Log("Deleting the picture taken with device camera.");
             PictureCapturedIcon.Press();
-            var driver = new EggplantDriver(1000);
+            var driver = new EggplantDriver();
             driver.Type("d");
             popup.DeleteItem.WaitForPresent();
             Thread.Sleep(1000);
@@ -197,7 +197,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             EggplantTestBase.Log("Deleting the video recorded with the device camera.");
             VideoCapturedIcon.Press();
             Thread.Sleep(1000);
-            var driver = new EggplantDriver(1000);
+            var driver = new EggplantDriver();
             driver.Type("d");
             popup.DeleteItem.WaitForPresent();
             Thread.Sleep(1000);

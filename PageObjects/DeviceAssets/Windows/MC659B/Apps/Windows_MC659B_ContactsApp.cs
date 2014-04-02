@@ -73,7 +73,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             ContactDataFirstName.WaitForPresent();
             ContactDataCompany.WaitForPresent();
             AddMobileNumberOption.Click();
-            var driver = new EggplantDriver(1000);
+            var driver = new EggplantDriver();
             driver.Type(phone1);
             Thread.Sleep(3000);
             ContactFieldDone.Click();
