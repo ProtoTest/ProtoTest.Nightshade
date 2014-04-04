@@ -19,7 +19,7 @@ namespace ProtoTest.TestRunner.Nightshade
     public class EggplantScript
     {
         private readonly EggplantDriver Driver;
-        private Process cmdProcess;
+        //private Process cmdProcess;
         public string description;
         public string host;
         public string scriptName;

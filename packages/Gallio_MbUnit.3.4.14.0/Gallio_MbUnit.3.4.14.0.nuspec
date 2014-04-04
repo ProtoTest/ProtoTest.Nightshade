@@ -11,9 +11,6 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Gallio &amp; MbUnit dlls</description>
     <summary>Gallio &amp; MbUnit dlls</summary>
-    <releaseNotes />
-    <copyright />
-    <language />
     <tags>mbunit gallio</tags>
   </metadata>
 </package>

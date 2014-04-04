@@ -66,7 +66,7 @@ namespace ProtoTest.Nightshade
                         Gallio.Common.Func<PatternTestInstanceState, TestOutcome> inner)
                     {
                         TestOutcome outcome = TestOutcome.Passed;
-                        int failureCount = 0;
+                        //int failureCount = 0;
                         // we will try up to 'max' times to get a pass, if we do, then break out and don't run the test anymore
 
                         Stopwatch stopwatch = new Stopwatch();

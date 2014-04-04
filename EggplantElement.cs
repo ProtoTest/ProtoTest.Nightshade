@@ -3,23 +3,18 @@ using System.Drawing;
 using System.IO;
 using System.Threading;
 using Gallio.Framework;
-using Gallio.Model;
-using System.Timers;
-using Gallio.Framework;
-using Gallio.Framework.Pattern;
-using MbUnit.Framework;
 using ProtoTest.TestRunner.Nightshade;
 
 namespace ProtoTest.Nightshade
 {
     public class EggplantElement
     {
-        bool running;
-
-        private void timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            running = false;
-        }
+        //private bool running;
+        
+        //private void timer_Elapsed(object sender, ElapsedEventArgs e)
+        //{
+        //    running = false;
+        //}
 
         public string locator;
         private By _by;

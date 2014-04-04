@@ -46,7 +46,9 @@ namespace ProtoTest.Nightshade
         /// <returns></returns>
         public static string GetConfigValue(string key, string defaultValue)
         {
+            #pragma warning disable 618
             string setting = ConfigurationSettings.AppSettings[key];
+            #pragma warning restore 618
             if (setting == null)
             {
                 return defaultValue;

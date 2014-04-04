@@ -1,0 +1,15 @@
+﻿Account #1
+Name:   TEST01
+Email:  motorolatest01@hotmail.com
+Pass:   MotoProtoAuto
+Phone:  720-360-7206
+BDay:   Jan 1, 1905
+Gender: "Not Specified"
+
+Account #2
+Name:   TEST02
+Email:  motorolatest02@hotmail.com
+Pass:   MotoProtoAuto
+Phone:  720-360-7214
+BDay:   Feb 2, 1906
+Gender: "Not Specified"

@@ -97,7 +97,7 @@ namespace ProtoTest.Nightshade
             if (TestContext.CurrentContext.Outcome != TestOutcome.Passed)
             {
                 var screenshot = Driver.GetScreenshot();
-                if (screenshot != null) ;
+                if (screenshot != null)
                 {
                     TestLog.Failures.EmbedImage(null, screenshot);
                 }
