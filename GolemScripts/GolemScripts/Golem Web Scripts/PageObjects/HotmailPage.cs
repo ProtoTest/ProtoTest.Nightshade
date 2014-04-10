@@ -81,14 +81,14 @@ namespace Setup_Files.Golem_Web_Scripts.PageObjects
             Thread.Sleep(3000);
             PeopleDeleteConfirmation.WaitUntil().Present().Click();
             //PeopleDelete.SendKeys(Keys.Return);
-            PeopleHaveNoContacts.WaitUntil(10).Present();
+            PeopleHaveNoContacts.WaitUntil(60).Present();
             return new HotmailPage();
         }
 
-        public HotmailPage IterativelyAddContacts(int iterationsMax)
+        public HotmailPage IterativelyAddContacts(int iterationsStart, int iterationsMax)
         {
             Common.Log("Iteratively adding contacts...");
-            for (int i = 1; i < iterationsMax + 1; i++)
+            for (int i = iterationsStart; i < iterationsMax + 1; i++)
             {
                 PeopleAddNew.WaitUntil(10).Present().Click();
                 string first;

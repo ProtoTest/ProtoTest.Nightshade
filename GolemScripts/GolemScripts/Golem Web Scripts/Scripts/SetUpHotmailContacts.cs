@@ -15,7 +15,7 @@ namespace Setup_Files.Golem_Web_Scripts.Scripts
         [Test]
         public void AddContactsToHotmailAccount()
         {
-            HotmailPage.LaunchHotmail().LoginToHotmail().GoToPeopleMainPage().IterativelyAddContacts(50).LogOut();
+            HotmailPage.LaunchHotmail().LoginToHotmail().GoToPeopleMainPage().IterativelyAddContacts(50,50).LogOut();
         }
     }
 }

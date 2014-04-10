@@ -108,6 +108,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
             startBar.EnterStartMenu();
             utilities.SearchMenuFor(startMenu.PicturesAndVideoApp);
             startMenu.PicturesAndVideoApp.Click();
+            var picsApp = new Windows_MC659B_PicturesAndVideoApp();
+            picsApp.PicturePlaceholder.WaitForNotPresent(15);
+            Thread.Sleep(3000);
             return new Windows_MC659B_PicturesAndVideoApp();
         }
 

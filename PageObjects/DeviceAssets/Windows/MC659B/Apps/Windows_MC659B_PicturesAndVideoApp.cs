@@ -17,14 +17,17 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public EggplantElement StillMenuOption = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/StillMenuOption"));
         public EggplantElement VideoMenuOption = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/VideoMenuOption"));
 
+        public EggplantElement CameraIcon = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/CameraIcon"));
         public EggplantElement PictureModeIcon = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/PicturesModeIcon"));
         public EggplantElement VideoModeIcon = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/VideoModeIcon"));
         public EggplantElement PictureCaptured = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/PictureCaptured"));
         public EggplantElement PictureCapturedIcon = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/PictureCapturedIcon"));
         public EggplantElement VideoCapturedIcon = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/VideoCapturedIcon"));
+        public EggplantElement PicturePlaceholder = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/PicturePlaceholder"));
 
         public EggplantElement BackgroundDefault = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/PicturePreviews/Background01"));
-
+        public EggplantElement MyPicturesDefaultState = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/MyPicturesDefaultState"));
+        
         public EggplantElement BackgroundPreview01 = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/PicturePreviews/Background01"));
         public EggplantElement BackgroundPreview02 = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/PicturePreviews/Background02"));
         public EggplantElement BackgroundPreview03 = new EggplantElement(By.Image("MC659B/Apps/PicturesAndVideo/PicturePreviews/Background03"));
@@ -91,7 +94,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IPicturesAndVideoApp SetUpPicturesAndVideoApp()
         {
             EggplantTestBase.Log("Confirming Pictures and Video app is configured correctly.");
-            while (PictureCapturedIcon.IsPresent())
+            while (!MyPicturesDefaultState.IsPresent())
             {
                 EggplantTestBase.Log("Previous picture file detected.  Deleting...");
                 PictureCapturedIcon.Press();
@@ -104,8 +107,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 driver.PressKey("Return");
                 Thread.Sleep(5000);
             }
-            PictureCapturedIcon.WaitForNotPresent();
-            EggplantTestBase.Log("Previous picture files deleted.");
+            MyPicturesDefaultState.WaitForPresent();
             while (VideoCapturedIcon.IsPresent())
             {
                 EggplantTestBase.Log("Previous video file detected.  Deleting...");
@@ -121,29 +123,59 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             }
             VideoCapturedIcon.WaitForNotPresent();
             EggplantTestBase.Log("Previous video files deleted.");
+            //while (PictureCapturedIcon.IsPresent())
+            //{
+            //    EggplantTestBase.Log("Previous picture file detected.  Deleting...");
+            //    PictureCapturedIcon.Press();
+            //    Thread.Sleep(3000);
+            //    var driver = new EggplantDriver();
+            //    driver.Type("d");
+            //    Thread.Sleep(1000);
+            //    driver.PressKey("RightArrow");
+            //    Thread.Sleep(1000);
+            //    driver.PressKey("Return");
+            //    Thread.Sleep(5000);
+            //}
+            //PictureCapturedIcon.WaitForNotPresent();
+            BackgroundPreview10.WaitForPresent();
+            EggplantTestBase.Log("Previous picture files deleted.");
             return this;
         }
 
         public IPicturesAndVideoApp TakePicture()
         {
+            var driver = new EggplantDriver();
+            
             EggplantTestBase.Log("Taking a picture using device camera.");
-            startBar.MenuOption.Click();
-            CameraMenuOption.Click();
+            //startBar.MenuOption.Click();
+            //CameraMenuOption.Click();
+            CameraIcon.DoubleClick();
             SetToPicturesMode();
-            startBar.KeyboardButton.Click();
-            startBar.KeyboardKeyEnter.Click();
+            //startBar.KeyboardButton.Click();
+            //startBar.KeyboardKeyEnter.Click();
+            driver.PressKey("Return");
             PictureCaptured.WaitForPresent();
+            Thread.Sleep(1000);
+            driver.LogScreenshot();
             startBar.OKButton.Click();
             startBar.ThumbnailsButton.Click();
-            PictureCapturedIcon.WaitForPresent();
+            ExitApp();
             return this;
         }
 
         public IPicturesAndVideoApp OpenTakenPicture()
         {
+            var driver = new EggplantDriver();
+
             EggplantTestBase.Log("Opening the picture taken with device camera.");
+            notificationsBar.OpenNotificationsBarMenu();
+            notificationsBar.ClickOnMenuCloseAllButton();
+            notificationsBar.ClickOnMenuOKButton();
+            Thread.Sleep(1000);
+            menuNav.GoToPicturesAndVideoApp();
             PictureCapturedIcon.Click();
             PictureCaptured.WaitForPresent();
+            driver.LogScreenshot();
             startBar.OKButton.Click();
             Thread.Sleep(5000);
             return this;
@@ -160,21 +192,27 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             driver.PressKey("RightArrow");
             Thread.Sleep(1000);
             driver.PressKey("Return");
-            PictureCapturedIcon.WaitForNotPresent();
+            //PictureCapturedIcon.WaitForNotPresent();
+            MyPicturesDefaultState.WaitForPresent();
             return this;
         }
 
         public IPicturesAndVideoApp RecordAVideo()
         {
+            var driver = new EggplantDriver();
+
             EggplantTestBase.Log("Recording a video with the device camera.");
-            startBar.MenuOption.Click();
-            CameraMenuOption.Click();
+            CameraIcon.DoubleClick();
+            //startBar.MenuOption.Click();
+            //CameraMenuOption.Click();
             SetToVideoMode();
-            startBar.KeyboardButton.Click();
-            startBar.KeyboardKeyEnter.Click();
-            startBar.KeyboardButton.Click();
-            startBar.StopOption.WaitForNotPresent(60);
+            //startBar.KeyboardButton.Click();
+            //startBar.KeyboardKeyEnter.Click();
+            //startBar.KeyboardButton.Click();
+            driver.PressKey("Return");
+            startBar.StopOption.WaitForNotPresent(120);
             startBar.ThumbnailsButton.Click();
+            Thread.Sleep(5000);
             return this;
         }
 

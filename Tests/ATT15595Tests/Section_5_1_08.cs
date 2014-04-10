@@ -9,7 +9,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Camera Video - Tests 5.1.8.1, 5.1.8.2, and 5.1.8.3")]
         [Category("Single Device")]
-        [Repeat(1)]
+        [Repeat(10)]
         public void TestCameraVideo()
         {
             ConnectToHost1();
@@ -20,7 +20,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Camera Pictures - Tests 5.1.8.4, 5.1.8.5, and 5.1.8.6")]
         [Category("Single Device")]
-        [Repeat(1)]
+        [Repeat(10)]
         public void TestCameraPictures()
         {
             ConnectToHost1();
@@ -52,7 +52,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Open and Close the Music Player - Test 5.1.8.11")]
         [Category("Single Device")]
-        [Repeat(1)]
+        [Repeat(10)]
         public void TestOpenAndCloseTheMusicPlayer()
         {
             ConnectToHost1();
@@ -75,7 +75,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Device Themes - Test 5.1.8.14")]
         [Category("Single Device")]
-        [Repeat(1)]
+        [Repeat(10)]
         public void TestDeviceThemes()
         {
             ConnectToHost1();

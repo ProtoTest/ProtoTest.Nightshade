@@ -4,6 +4,7 @@ using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 using ProtoTest.Nightshade.PageObjects.Steps.System;
 using ProtoTest.TestRunner.Nightshade;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu;
 
 namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 {
@@ -29,7 +30,26 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         
         public IHomeScreen ConfirmHomeScreen()
         {
+            var menuNav = new Windows_MC659B_MenuNav();
+            
             popup.IfNetworkingPopupAppearsClickOK();
+            if (!DefaultDesktop.IsPresent())
+            {
+                var picsApp = new Windows_MC659B_PicturesAndVideoApp();
+                EggplantTestBase.Log("Device's home screen is incorrect.  Fixing...");
+                menuNav.GoToPicturesAndVideoApp();
+                Thread.Sleep(1000);
+                picsApp.SetUpPicturesAndVideoApp();
+                picsApp.BackgroundDefault.Click();
+                startBar.MenuOption.Click();
+                picsApp.SetAsHomeBackgroundMenuOption.Click();
+                Thread.Sleep(5000);
+                startBar.OKButton.Click();
+                Thread.Sleep(5000);
+                startBar.OKButton.Click();
+                Thread.Sleep(2000);
+                startBar.ExitButton.Click();
+            }
             if (!DefaultDesktop.IsPresent())
             {
                 throw new Exception("Device is not on the home screen.");
@@ -49,14 +69,6 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             if (notificationsBar.RunningProgramsMenuOKButton.IsPresent())
             {
                 notificationsBar.ClickOnMenuOKButton();
-            }
-            Thread.Sleep(2000);
-            EggplantTestBase.Log("Scanning for presence of browser app.");
-            var browser = new Windows_MC659B_BrowserApp();
-            if (browser.ShowOverlayButton.IsPresent())
-            {
-                browser.ShowOverlayButton.Click();
-                browser.OverlayExitButton.Click();
             }
             Thread.Sleep(2000);
             int loops = 1;

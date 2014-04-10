@@ -25,7 +25,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public EggplantElement RunningProgramsMenuOKButton = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/OKButton"));
         public EggplantElement RunningProgramsCloseAllButton = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/RunningProgramsCloseAllButton"));
         public EggplantElement PicturesAndVideoProgram = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/RunningPrograms/PicturesAndVideosProgram"));
-        
+
         public EggplantElement AlarmsOptionButton = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/Alarms/OptionButton"));
         public EggplantElement AlarmsEditAlarm = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/Alarms/AlarmsEditAlarm"));
         public EggplantElement AlarmsAlarm1On = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/Alarms/Alarm1On"));
@@ -44,7 +44,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public EggplantElement FusionWirelessManager = new EggplantElement(By.Image("MC659B/System/NotificationsBar/Options/Fusion/FusionWirelessManager"));
 
 
-        public Windows_MC659B_Popups popup = new Windows_MC659B_Popups(); 
+        public Windows_MC659B_Popups popup = new Windows_MC659B_Popups();
 
 
         public INotificationsBar VerifyElements()
@@ -60,6 +60,11 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             EggplantTestBase.Log("Opening the notification menu.");
             Battery.Click();
             Thread.Sleep(3000);
+            if (OptionsArrowLeft.IsPresent())
+            {
+                OptionsArrowLeft.Click();
+                Thread.Sleep(1000);
+            }
             if (RunningProgramsUnselected.IsPresent())
             {
                 RunningProgramsUnselected.Click();

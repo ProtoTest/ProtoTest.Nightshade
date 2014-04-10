@@ -10,7 +10,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Navigate to Each Desktop Icon Until Menu Tree Complete - Test 5.1.10.1")]
         [Category("Single Device")]
-        [Repeat(1)]
+        [Repeat(10)]
         public void TestNavigateToEachDesktopIconUntilMenuTreeCompelted()
         {
             ConnectToHost1();

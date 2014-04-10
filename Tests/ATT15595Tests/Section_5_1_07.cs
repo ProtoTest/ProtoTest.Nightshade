@@ -9,7 +9,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Calendar Appointments - Tests 5.1.7.1 and 5.1.7.3")]
         [Category("Single Device")]
-        [Repeat(1)] //Number of iterations set within "SetCalendarAppointments"
+        [Repeat(10)] //Number of iterations set within "SetCalendarAppointments"
         public void TestCalendarAppointments()
         {
             ConnectToHost1();
@@ -21,7 +21,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Alarms - Tests 5.1.7.2 and 5.1.7.4")]
         [Category("Single Device")]
-        [Repeat(1)]
+        [Repeat(10)]
         public void TestAlarms()
         {
             ConnectToHost1();
@@ -35,10 +35,10 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Tasks - Tests 5.1.7.5, 5.1.7.6, and 5.1.7.7")]
         [Category("Single Device")]
-        [Repeat(1)]
+        [Repeat(10)]
         public void TestTasks()
         {
-            ConnectToHost2();
+            ConnectToHost1();
             Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToTasksApp().VerifyElements().SetUpTasksApp().CreateTask().DeleteAllTasks().ExitApp();
         }
