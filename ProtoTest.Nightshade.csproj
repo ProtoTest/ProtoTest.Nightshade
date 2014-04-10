@@ -110,8 +110,8 @@
     <Compile Include="PageObjects\Steps\System\INetworkSettings.cs" />
     <Compile Include="PageObjects\Steps\System\IHomeScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepeatForConfigValueAttribute.cs" />
     <Compile Include="RepeatForTime.cs" />
-    <Compile Include="RepeatForConfigValue.cs" />
     <Compile Include="RepeatOnFailureAttribute.cs" />
     <Compile Include="SearchOption.cs" />
     <Compile Include="SearchRectangle.cs" />
