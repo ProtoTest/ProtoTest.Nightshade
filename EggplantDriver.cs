@@ -413,7 +413,21 @@ namespace ProtoTest.TestRunner.Nightshade
 
         public void LogScreenshot()
         {
-            TestLog.EmbedImage(null, GetScreenshot());
+            
+            string screenshotDir = Directory.GetCurrentDirectory() + "\\Screenshots\\";
+            string screenshotPath = screenshotDir + "Screenshot_" + DateTime.Now.ToString("hhmmssff") + ".png";
+            var screenshot = GetScreenshot(screenshotPath);
+            if (!Directory.Exists(screenshotDir))
+            {
+                Directory.CreateDirectory(screenshotDir);
+            }
+            if (screenshot == null)
+            {
+                TestLog.Warnings.WriteLine("Could not get screenshot.");
+                return;
+            }
+            TestLog.EmbedImage(null, screenshot);
+
         }
 
         public string ReadText(string element)
