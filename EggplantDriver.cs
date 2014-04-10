@@ -415,7 +415,7 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             
             string screenshotDir = Directory.GetCurrentDirectory() + "\\Screenshots\\";
-            string screenshotPath = screenshotDir + "Screenshot_" + DateTime.Now.ToString("hhmmssff") + ".png";
+            string screenshotPath = screenshotDir + "Screenshot_" + DateTime.Now.ToString("yymmddhhmmssff") + ".png";
             var screenshot = GetScreenshot(screenshotPath);
             if (!Directory.Exists(screenshotDir))
             {
