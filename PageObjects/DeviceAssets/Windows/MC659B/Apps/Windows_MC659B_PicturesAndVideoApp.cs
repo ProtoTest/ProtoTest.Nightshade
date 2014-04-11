@@ -383,7 +383,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             {
                 notificationsBar.ClickOnMenuOKButton();
             }
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.OnHomeScreen().ConfirmHomeScreen();
             return new Windows_MC659B_HomeDesktop();
         }
 
@@ -404,7 +404,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                     startBar.ExitButton.Click();
                 }
             }
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.OnHomeScreen().ConfirmHomeScreen();
             return this;
         }
     }

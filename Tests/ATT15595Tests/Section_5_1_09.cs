@@ -9,19 +9,19 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Start a Phone Call, Switch to other Running Apps, End Call - Tests 5.1.9.1, 5.1.9.2, and 5.1.9.3")]
         [Category("Paired Device")]
-        [Repeat(1)]
+        [RepeatForConfigValue("TestStartPhoneCallSwitchToOtherAppsEndCall#")]
         public void TestStartPhoneCallSwitchToOtherAppsEndCall()
         {
             ConnectToHost2();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreenScreen().SetCellularNetworkToThreeG();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().SetCellularNetworkToThreeG();
             Command.NavigateTheMenu().GoToPhoneApp().CallMostRecentContactFromHistory();
             ConnectToHost2();
-            Command.OnHomeScreenScreen().AnswerPhoneCall().VerifyCallEstablished();
+            Command.OnHomeScreen().AnswerPhoneCall().VerifyCallEstablished();
             ConnectToHost1();
-            Command.OnHomeScreenScreen().VerifyCallEstablished().ReturnToHomeScreen();
+            Command.OnHomeScreen().VerifyCallEstablished().ReturnToHomeScreen();
             Command.NavigateTheMenu().GoToAlarmsApp().VerifyElements().ExitApp();
             //Command.NavigateTheMenu().GoToBrowserApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToCalendarApp().VerifyElements().ExitApp();
@@ -34,23 +34,23 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
             Command.NavigateTheMenu().GoToTasksApp().VerifyElements().ExitApp();
             //Command.NavigateTheMenu().GoToTextMessagesApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToPhoneApp().EndPhoneCall().ExitApp();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             ConnectToHost2();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
         }
 
         [Test]
         [Description("Open the Browser, Switch to other Running Apps, Close Browser - Tests 5.1.9.4, 5.1.9.5, and 5.1.9.6")]
         [Category("Single Device")]
-        [Repeat(1)]
+        [RepeatForConfigValue("TestStartBrowserCallSwitchToOtherAppsCloseBrowser#")]
         public void TestStartBrowserCallSwitchToOtherAppsCloseBrowser()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().SetCellularConnectionToThreeG();
-            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
-            Command.OnHomeScreenScreen().TurnOnWifi();
-            Command.OnHomeScreenScreen().VerifyWifiOn();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
+            Command.OnHomeScreen().TurnOnWifi();
+            Command.OnHomeScreen().VerifyWifiOn();
             Command.NavigateTheMenu().GoToBrowserApp().ResetBrowserToDefaultState().ExitApp();
             Command.NavigateTheMenu().GoToBrowserApp().GoToBookmarkedWebsite().ReturnToHomeScreen();
             Command.NavigateTheMenu().GoToAlarmsApp().VerifyElements().ExitApp();
@@ -64,8 +64,8 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
             Command.NavigateTheMenu().GoToSettingsApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToTasksApp().VerifyElements().ExitApp();
             //Command.NavigateTheMenu().GoToTextMessagesApp().VerifyElements().ExitApp();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
         }
 
     }

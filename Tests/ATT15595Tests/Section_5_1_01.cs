@@ -21,29 +21,29 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("3G Voice Call (Dialed) - Test 5.1.1.2 and 3G Voice Call (History) - Test 5.1.1.5")]
         [Category("Paired Devices")]
-        [Repeat(1)]
+        [RepeatForConfigValue("TestThreeGVoiceCallFromContactsAndHistory#")]
         public void TestThreeGVoiceCallFromContactsAndHistory()
         {
             //3G Voice Call (Dialed) - Test 5.1.1.2
             ConnectToHost2();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
-            Command.OnHomeScreenScreen().SetCellularNetworkToThreeG();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
+            Command.OnHomeScreen().SetCellularNetworkToThreeG();
             Command.NavigateTheMenu().GoToPhoneApp().UseDialpadToCallContactNumber("02");
             ConnectToHost2();
-            Command.OnHomeScreenScreen().AnswerPhoneCall().EndPhoneCall();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().AnswerPhoneCall().EndPhoneCall();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             //3G Voice Call (History) - Test 5.1.1.5
             Command.NavigateTheMenu().GoToPhoneApp().CallMostRecentContactFromHistory();
             ConnectToHost2();
-            Command.OnHomeScreenScreen().AnswerPhoneCall().VerifyCallEstablished().EndPhoneCall();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().AnswerPhoneCall().VerifyCallEstablished().EndPhoneCall();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
         }
 
         //[Test]
@@ -58,29 +58,29 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Receive a Voice Call - Test 5.1.1.7")]
         [Category("Paired Devices")]
-        [Repeat(1)]
+        [RepeatForConfigValue("TestReceiveVoiceCall#")]
         public void TestReceiveVoiceCall()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             ConnectToHost2();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreenScreen().SetCellularNetworkToThreeG();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().SetCellularNetworkToThreeG();
             Command.NavigateTheMenu().GoToPhoneApp().CallMostRecentContactFromHistory();
             ConnectToHost1();
-            Command.OnHomeScreenScreen().AnswerPhoneCall().VerifyCallEstablished();
+            Command.OnHomeScreen().AnswerPhoneCall().VerifyCallEstablished();
             ConnectToHost2();
-            Command.OnHomeScreenScreen().VerifyCallEstablished().ReturnToHomeScreen();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().VerifyCallEstablished().ReturnToHomeScreen();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
         }
 
         [CsvData(FilePath = ".\\Setup Files\\Contacts.csv", HasHeader = true)]
         [Test]
         [Description("Contacts - Tests 5.1.1.8 and 5.1.1.9")]
         [Category("Single Device")]
-        [Repeat(1)]
+        [RepeatForConfigValue("DeleteAndRestoreContacts#")]
         public void DeleteAndRestoreContacts(string handle, string first, string last, string company, string phone1, 
             string phone2, string phone3, string email1, string email2, string email3, string im1, string im2, string im3)
         {

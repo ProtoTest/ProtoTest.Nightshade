@@ -138,7 +138,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             EggplantTestBase.Log("Exiting Calendar app.");
             var startBar = new Windows_MC659B_StartBar();
             startBar.ExitButton.Click();
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.OnHomeScreen().ConfirmHomeScreen();
             return this;
         }
     }

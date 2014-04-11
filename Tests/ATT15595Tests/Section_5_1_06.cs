@@ -15,19 +15,19 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 
         //}
 
-        [Test]
-        [Description("3G Download, Open, and Delete a Native Application - Tests 5.1.6.1B, 5.1.6.2, and 5.1.6.3")]
-        [Category("Single Device")]
-        [Repeat(1)]
-        public void TestThreeGDownloadOpenDeleteNativeApp()
-        {
-            ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
-            Command.OnHomeScreenScreen().SetCellularNetworkToThreeG();
-            Command.NavigateTheMenu().GoToBrowserApp().DownloadNativeApp();
-            //MC659B experiencing download issues
-        }
+        //[Test]
+        //[Description("3G Download, Open, and Delete a Native Application - Tests 5.1.6.1B, 5.1.6.2, and 5.1.6.3")]
+        //[Category("Single Device")]
+        //[Repeat(1)]
+        //public void TestThreeGDownloadOpenDeleteNativeApp()
+        //{
+        //    ConnectToHost1();
+        //    Command.OnHomeScreen().ResetDeviceStateToDefault();
+        //    Command.OnHomeScreen().ResetWifiRadioToDefault();
+        //    Command.OnHomeScreen().SetCellularNetworkToThreeG();
+        //    Command.NavigateTheMenu().GoToBrowserApp().DownloadNativeApp();
+        //    //MC659B experiencing download issues
+        //}
 
     }
 }

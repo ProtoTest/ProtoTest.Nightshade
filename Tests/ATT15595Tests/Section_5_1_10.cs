@@ -10,11 +10,11 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Navigate to Each Desktop Icon Until Menu Tree Complete - Test 5.1.10.1")]
         [Category("Single Device")]
-        [Repeat(10)]
+        [RepeatForConfigValue("TestNavigateToEachDesktopIconUntilMenuTreeCompelted#")]
         public void TestNavigateToEachDesktopIconUntilMenuTreeCompelted()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToAlarmsApp().VerifyElements().ExitApp();
             //Command.NavigateTheMenu().GoToBrowserApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToCalendarApp().VerifyElements().ExitApp();
@@ -26,7 +26,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
             Command.NavigateTheMenu().GoToSettingsApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToTasksApp().VerifyElements().ExitApp();
             //Command.NavigateTheMenu().GoToTextMessagesApp().VerifyElements().ExitApp();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
         }
 
     }

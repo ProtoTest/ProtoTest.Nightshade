@@ -303,7 +303,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 }
             }
             Thread.Sleep(3000);
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.OnHomeScreen().ConfirmHomeScreen();
             return this;
         }
     }

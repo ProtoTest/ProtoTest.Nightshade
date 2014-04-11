@@ -12,7 +12,7 @@ namespace ProtoTest.Nightshade
 {
     public class Command
     {
-        public static IHomeScreen OnHomeScreenScreen()
+        public static IHomeScreen OnHomeScreen()
         {
             if (Config.DeviceType == "null")
             {

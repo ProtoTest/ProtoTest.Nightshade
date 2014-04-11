@@ -9,22 +9,22 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Camera Video - Tests 5.1.8.1, 5.1.8.2, and 5.1.8.3")]
         [Category("Single Device")]
-        [Repeat(10)]
+        [RepeatForConfigValue("TestCameraVideo#")]
         public void TestCameraVideo()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToPicturesAndVideoApp().VerifyElements().SetUpPicturesAndVideoApp().RecordAVideo().OpenRecordedVideo().DeleteRecordedVideo().ExitApp();
         }
 
         [Test]
         [Description("Camera Pictures - Tests 5.1.8.4, 5.1.8.5, and 5.1.8.6")]
         [Category("Single Device")]
-        [Repeat(10)]
+        [RepeatForConfigValue("TestCameraPictures#")]
         public void TestCameraPictures()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToPicturesAndVideoApp().VerifyElements().SetUpPicturesAndVideoApp().TakePicture().OpenTakenPicture().DeleteTakenPicture().ExitApp();
         }
 
@@ -52,35 +52,35 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Open and Close the Music Player - Test 5.1.8.11")]
         [Category("Single Device")]
-        [Repeat(10)]
+        [RepeatForConfigValue("TestOpenAndCloseTheMusicPlayer#")]
         public void TestOpenAndCloseTheMusicPlayer()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToMediaPlayerApp().VerifyElements().ExitApp();
         }
 
         [Test]
         [Description("Use the Music Player to Play a Music File - Tests 5.1.8.12 and 5.1.8.13")]
         [Category("Single Device")]
-        [Repeat(1)] //Number of iterations set within "IterativelyOpenAudioFiles"
+        [RepeatForConfigValue("TestPlayingAMusicFile#")] //Number of audio files played is set within "IterativelyOpenAudioFiles"
         public void TestPlayingAMusicFile()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToAudioFiles().IterativelyOpenAudioFiles(50).ExitApp(); //Number of iterations set within "IterativelyOpenAudioFiles"
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
         }
 
         [Test]
         [Description("Device Themes - Test 5.1.8.14")]
         [Category("Single Device")]
-        [Repeat(10)]
+        [RepeatForConfigValue("TestDeviceThemes#")]
         public void TestDeviceThemes()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreenScreen()
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen()
                 .SetThemeToOption("01")
                 .SetThemeToOption("02")
                 .SetThemeToOption("03")
@@ -92,7 +92,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
                 .SetThemeToOption("09")
                 .SetThemeToOption("10")
                 .SetThemeToDefault();
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.OnHomeScreen().ConfirmHomeScreen();
         }
 
     }

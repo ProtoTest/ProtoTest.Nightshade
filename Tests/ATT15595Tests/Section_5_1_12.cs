@@ -10,18 +10,18 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Turn the NFC Radio Off and On - Test 5.1.12.1")]
         [Category("Single Device")]
-        [Repeat(10)]
+        [RepeatForConfigValue("TestTurnNFCRadioOnAndOff#")]
         public void TestTurnNFCRadioOnAndOff()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreenScreen().ResetNFCRadioToDefault();
-            Command.OnHomeScreenScreen().TurnOnNFC();
-            Command.OnHomeScreenScreen().VerifyNFCOn();
-            Command.OnHomeScreenScreen().TurnOffNFC();
-            Command.OnHomeScreenScreen().VerifyNFCOff();
-            Command.OnHomeScreenScreen().ResetNFCRadioToDefault();
-            Command.OnHomeScreenScreen().ConfirmHomeScreen();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetNFCRadioToDefault();
+            Command.OnHomeScreen().TurnOnNFC();
+            Command.OnHomeScreen().VerifyNFCOn();
+            Command.OnHomeScreen().TurnOffNFC();
+            Command.OnHomeScreen().VerifyNFCOff();
+            Command.OnHomeScreen().ResetNFCRadioToDefault();
+            Command.OnHomeScreen().ConfirmHomeScreen();
         }
 
     }

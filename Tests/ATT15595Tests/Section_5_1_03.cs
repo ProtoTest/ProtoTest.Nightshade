@@ -4,6 +4,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 {
     [Description("ATT 15595 Suite - Section 5.1.3")]
     [Category("Email Stability Tests")]
+
     public class Section_5_1_03 : EggplantTestBase
     {
         //[Test]
@@ -18,17 +19,17 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Send 3G Email with No Attachment - Test 5.1.3.1B")]
         [Category("Paired Device")]
-        [Repeat(1)]
+        [RepeatForConfigValue("TestSendThreeGEmailNoAttachment#")]
         public void TestSendThreeGEmailNoAttachment()
         {
             ConnectToHost2();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToEmailApp().ResetEmailAppToDefault();
 
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
-            Command.OnHomeScreenScreen().SetCellularNetworkToThreeG();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
+            Command.OnHomeScreen().SetCellularNetworkToThreeG();
             Command.NavigateTheMenu()
                 .GoToEmailApp()
                 .ResetEmailAppToDefault()
@@ -37,7 +38,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
                 .ExitApp();
 
             ConnectToHost2();
-            Command.OnHomeScreenScreen().VerifyEmailArrived();
+            Command.OnHomeScreen().VerifyEmailArrived();
             Command.NavigateTheMenu().GoToEmailApp().ResetEmailAppToDefault().ExitApp();
         }
 
@@ -53,17 +54,17 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Send 3G Email with Attachment - Test 5.1.3.2B")]
         [Category("Paired Device")]
-        [Repeat(1)]
+        [RepeatForConfigValue("TestSendThreeGEmailWithAttachment#")]
         public void TestSendThreeGEmailWithAttachment()
         {
             ConnectToHost2();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToEmailApp().ResetEmailAppToDefault();
 
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
-            Command.OnHomeScreenScreen().SetCellularNetworkToThreeG();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
+            Command.OnHomeScreen().SetCellularNetworkToThreeG();
             Command.NavigateTheMenu()
                 .GoToEmailApp()
                 .ResetEmailAppToDefault()
@@ -72,22 +73,22 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
                 .ExitApp();
 
             ConnectToHost2();
-            Command.OnHomeScreenScreen().VerifyEmailArrived();
+            Command.OnHomeScreen().VerifyEmailArrived();
             Command.NavigateTheMenu().GoToEmailApp().ResetEmailAppToDefault().ExitApp();
         }
 
         [Test]
         [Description("Open an Email - Test 5.1.3.3")]
         [Category("Paired Device")]
-        [Repeat(1)]
+        [RepeatForConfigValue("TestOpenAnEmail#")]
         public void TestOpenAnEmail()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
 
             ConnectToHost2();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
             Command.NavigateTheMenu()
                 .GoToEmailApp()
                 .ResetEmailAppToDefault()
@@ -96,7 +97,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
                 .ExitApp();
 
             ConnectToHost1();
-            Command.OnHomeScreenScreen().VerifyEmailArrived();
+            Command.OnHomeScreen().VerifyEmailArrived();
             Command.NavigateTheMenu().GoToEmailApp().ResetEmailAppToDefault();
         }
 

@@ -19,16 +19,16 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Send 3G SMS with Max Characters - Test 5.1.2.1B")]
         [Category("Paired Device")]
-        [Repeat(1)]
+        [RepeatForConfigValue("TestSendThreeGMessageMaxCharacters#")]
         public void TestSendThreeGMessageMaxCharacters()
         {
             ConnectToHost2();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToTextMessagesApp().ResetTextMessagesAppToDefault().ExitApp();
 
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
             Command.NavigateTheMenu()
                 .GoToTextMessagesApp()
                 .ResetTextMessagesAppToDefault()
@@ -37,7 +37,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
                 .ExitApp();
 
             ConnectToHost2();
-            Command.OnHomeScreenScreen().VerifyTextMessageArrived();
+            Command.OnHomeScreen().VerifyTextMessageArrived();
             Command.NavigateTheMenu().GoToTextMessagesApp().ResetTextMessagesAppToDefault().ExitApp();
         }
 
@@ -50,14 +50,14 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 
         //}
 
-        //[Test]
-        //[Description("Send 3G MMS with Audio Attachment - Test 5.1.2.2B")]
-        //[Category("Paired Device")]
-        //[Repeat(1)]
-        //public void TestSendThreeGMessageAudioAttachment()
-        //{
+        [Test]
+        [Description("Send 3G MMS with Audio Attachment - Test 5.1.2.2B")]
+        [Category("Paired Device")]
+        [RepeatForConfigValue("TestSendThreeGMessageAudioAttachment#")]
+        public void TestSendThreeGMessageAudioAttachment()
+        {
 
-        //}
+        }
 
         //[Test]
         //[Description("Send 2G MMS with Video Attachment - Test 5.1.2.3A")]
@@ -68,14 +68,14 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 
         //}
 
-        //[Test]
-        //[Description("Send 3G MMS with Video Attachment - Test 5.1.2.3B")]
-        //[Category("Paired Device")]
-        //[Repeat(1)]
-        //public void TestSendThreeGMessageVideoAttachment()
-        //{
+        [Test]
+        [Description("Send 3G MMS with Video Attachment - Test 5.1.2.3B")]
+        [Category("Paired Device")]
+        [RepeatForConfigValue("TestSendThreeGMessageVideoAttachment#")]
+        public void TestSendThreeGMessageVideoAttachment()
+        {
 
-        //}
+        }
 
         //[Test]
         //[Description("Send 2G MMS with Image Attachment - Test 5.1.2.4A")]
@@ -86,54 +86,54 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 
         //}
 
-        //[Test]
-        //[Description("Send 3G MMS with Image Attachment - Test 5.1.2.4B")]
-        //[Category("Paired Device")]
-        //[Repeat(1)]
-        //public void TestSendThreeGMessageImageAttachment()
-        //{
+        [Test]
+        [Description("Send 3G MMS with Image Attachment - Test 5.1.2.4B")]
+        [Category("Paired Device")]
+        [RepeatForConfigValue("TestSendThreeGMessageImageAttachment#")]
+        public void TestSendThreeGMessageImageAttachment()
+        {
 
-        //}
+        }
 
-        //[Test]
-        //[Description("Open MMS with Audio Attachment - Test 5.1.2.5")]
-        //[Category("Paired Device")]
-        //[Repeat(1)]
-        //public void TestOpenMessageAudioAttachment()
-        //{
+        [Test]
+        [Description("Open MMS with Audio Attachment - Test 5.1.2.5")]
+        [Category("Paired Device")]
+        [RepeatForConfigValue("TestOpenMessageAudioAttachment#")]
+        public void TestOpenMessageAudioAttachment()
+        {
 
-        //}
+        }
 
-        //[Test]
-        //[Description("Open MMS with Video Attachment - Test 5.1.2.6")]
-        //[Category("Paired Device")]
-        //[Repeat(1)]
-        //public void TestOpenMessageVideoAttachment()
-        //{
+        [Test]
+        [Description("Open MMS with Video Attachment - Test 5.1.2.6")]
+        [Category("Paired Device")]
+        [RepeatForConfigValue("TestOpenMessageVideoAttachment#")]
+        public void TestOpenMessageVideoAttachment()
+        {
 
-        //}
+        }
 
-        //[Test]
-        //[Description("Open MMS with Image Attachment - Test 5.1.2.7")]
-        //[Category("Paired Device")]
-        //[Repeat(1)]
-        //public void TestOpenMessageImageAttachment()
-        //{
+        [Test]
+        [Description("Open MMS with Image Attachment - Test 5.1.2.7")]
+        [Category("Paired Device")]
+        [RepeatForConfigValue("TestOpenMessageImageAttachment#")]
+        public void TestOpenMessageImageAttachment()
+        {
 
-        //}
+        }
 
         [Test]
         [Description("Open SMS with Max Characters - Test 5.1.2.8")]
         [Category("Paired Device")]
-        [Repeat(1)]
+        [RepeatForConfigValue("TestOpenMessageMaxCharacters#")]
         public void TestOpenMessageMaxCharacters()
         {
             ConnectToHost1();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
 
             ConnectToHost2();
-            Command.OnHomeScreenScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreenScreen().ResetWifiRadioToDefault();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
             Command.NavigateTheMenu()
                 .GoToTextMessagesApp()
                 .ResetTextMessagesAppToDefault()
@@ -142,7 +142,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
                 .ExitApp();
 
             ConnectToHost1();
-            Command.OnHomeScreenScreen().VerifyTextMessageArrived();
+            Command.OnHomeScreen().VerifyTextMessageArrived();
             Command.NavigateTheMenu().GoToTextMessagesApp().ResetTextMessagesAppToDefault();
         }
 

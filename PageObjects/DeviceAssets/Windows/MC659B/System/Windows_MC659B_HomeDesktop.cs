@@ -139,7 +139,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen ConfirmAlarm1On()
         {
-            Command.OnHomeScreenScreen()
+            Command.OnHomeScreen()
                 .OpenNotificationsBar()
                 .SelectAlarmsMenuOption()
                 .VerifyAlarm1On()
@@ -149,7 +149,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen ConfirmAlarm1Off()
         {
-            Command.OnHomeScreenScreen()
+            Command.OnHomeScreen()
                 .OpenNotificationsBar()
                 .SelectAlarmsMenuOption()
                 .VerifyAlarm1Off()
@@ -160,14 +160,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen ResetNFCRadioToDefault()
         {
-            Command.OnHomeScreenScreen()
+            Command.OnHomeScreen()
                 .OpenNotificationsBar().SelectPowerAndRadioMenuOption().ResetNFCRadioToDefault().ClickOnMenuOKButton();
             return new Windows_MC659B_HomeDesktop();
         }
 
         public IHomeScreen TurnOnNFC()
         {
-            Command.OnHomeScreenScreen()
+            Command.OnHomeScreen()
                 .OpenNotificationsBar().SelectPowerAndRadioMenuOption().SetNFCRadioToOn().ClickOnMenuOKButton();
             return new Windows_MC659B_HomeDesktop();
         }
@@ -180,7 +180,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen TurnOffNFC()
         {
-            Command.OnHomeScreenScreen()
+            Command.OnHomeScreen()
                 .OpenNotificationsBar().SelectPowerAndRadioMenuOption().SetNFCRadioToOff().ClickOnMenuOKButton();
             return new Windows_MC659B_HomeDesktop();
         }
@@ -194,14 +194,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen ResetWifiRadioToDefault()
         {
-            Command.OnHomeScreenScreen()
+            Command.OnHomeScreen()
                 .OpenNotificationsBar().SelectPowerAndRadioMenuOption().ResetWifiRadioToDefault().ClickOnMenuOKButton();
             return new Windows_MC659B_HomeDesktop();
         }
 
         public IHomeScreen TurnOnWifi()
         {
-            Command.OnHomeScreenScreen()
+            Command.OnHomeScreen()
                 .OpenNotificationsBar().SelectPowerAndRadioMenuOption().SetWifiRadioToOn().ClickOnMenuOKButton();
             return new Windows_MC659B_HomeDesktop();
         }
@@ -214,7 +214,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen TurnOffWifi()
         {
-            Command.OnHomeScreenScreen()
+            Command.OnHomeScreen()
                 .OpenNotificationsBar().SelectPowerAndRadioMenuOption().SetWifiRadioToOff().ClickOnMenuOKButton();
             return new Windows_MC659B_HomeDesktop();
         }
