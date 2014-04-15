@@ -2,6 +2,7 @@
 Name:   TEST01 ACCOUNT
 Email:  motorolatest01@hotmail.com
 Pass:   MotoProtoAuto
+Zip:    80202
 Phone:  720-360-7206
 BDay:   Jan 1, 1905
 Gender: "Not Specified"
@@ -11,5 +12,24 @@ Name:   TEST02 ACCOUNT
 Email:  motorolatest02@hotmail.com
 Pass:   MotoProtoAuto
 Phone:  720-360-7214
+Zip:    80202
 BDay:   Feb 2, 1906
+Gender: "Not Specified"
+
+Account #3
+Name:   TEST03 ACCOUNT
+Email:  motorolatest03@hotmail.com
+Pass:   MotoProtoAuto
+Phone:  
+Zip:    11779
+BDay:   Mar 3, 1907
+Gender: "Not Specified"
+
+Account #4
+Name:   TEST04 ACCOUNT
+Email:  motorolatest04@hotmail.com
+Pass:   MotoProtoAuto
+Phone:  
+Zip:    11779
+BDay:   Apr 4, 1908
 Gender: "Not Specified"

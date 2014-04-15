@@ -4,7 +4,7 @@ using ProtoTest.Golem.WebDriver;
 using OpenQA.Selenium;
 using ProtoTest.Golem.WebDriver.Elements.Types;
 
-namespace Setup_Files.Golem_Web_Scripts.PageObjects
+namespace GolemWebScripts.PageObjects
 {
     public class HotmailPage : BasePageObject
     {

@@ -42,8 +42,8 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Open the Browser, Switch to other Running Apps, Close Browser - Tests 5.1.9.4, 5.1.9.5, and 5.1.9.6")]
         [Category("Single Device")]
-        [RepeatForConfigValue("TestStartBrowserCallSwitchToOtherAppsCloseBrowser#")]
-        public void TestStartBrowserCallSwitchToOtherAppsCloseBrowser()
+        [RepeatForConfigValue("TestStartBrowserSwitchToOtherAppsCloseBrowser#")]
+        public void TestStartBrowserSwitchToOtherAppsCloseBrowser()
         {
             ConnectToHost1();
             Command.OnHomeScreen().ResetDeviceStateToDefault();

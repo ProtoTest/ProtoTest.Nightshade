@@ -78,8 +78,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Golem Web Scripts\PageObjects\HotmailPage.cs" />
-    <Compile Include="Golem Web Scripts\Scripts\SetUpHotmailContacts.cs" />
+    <Compile Include="GolemWebScripts\PageObjects\AuthPage.cs" />
+    <Compile Include="GolemWebScripts\PageObjects\HotmailPage.cs" />
+    <Compile Include="GolemWebScripts\PageObjects\LoginPage.cs" />
+    <Compile Include="GolemWebScripts\Scripts\AddOutlookContacts.cs" />
+    <Compile Include="GolemWebScripts\Scripts\DeleteAllHotmailContacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -93,7 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="chromedriver.exe" />
-    <Content Include="Golem Web Scripts\TestAccounts.txt" />
+    <Content Include="GolemWebScripts\TestAccounts.txt" />
     <Content Include="Hunspellx64.dll" />
     <Content Include="Hunspellx86.dll" />
     <Content Include="IEDriverServer.exe" />
