@@ -6,6 +6,7 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.Apps
     {
         IPhoneApp VerifyElements();
         IPhoneApp UseDialpadToCallContactNumber(string handle);
+        IPhoneApp CallTestContact(int contactNum);
         IPhoneApp CallMostRecentContactFromHistory();
         IPhoneApp AnswerPhoneCall();
         IPhoneApp VerifyCallEstablished();

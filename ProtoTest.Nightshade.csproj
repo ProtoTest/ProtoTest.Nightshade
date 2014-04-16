@@ -116,7 +116,6 @@
     <Compile Include="SearchOption.cs" />
     <Compile Include="SearchRectangle.cs" />
     <Compile Include="Command.cs" />
-    <Compile Include="Tests\ATT15595Tests\SetUpDevice.cs" />
     <Compile Include="Tests\FrameworkTests.cs" />
     <Compile Include="Tests\ATT15595Tests\Section_5_1_01.cs" />
     <Compile Include="Enhancements\Windows\MC659B\Utilities.cs" />

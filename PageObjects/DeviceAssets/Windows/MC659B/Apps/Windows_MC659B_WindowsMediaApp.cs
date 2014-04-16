@@ -36,7 +36,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IMediaPlayerApp VerifyFilePlaying()
         {
             EggplantTestBase.Log("Verifying file is currently playing.");
-            PlayingFile.WaitForPresent();
+            PlayingFile.WaitForPresent(20);
             PauseIcon.WaitForPresent();
             return this;
         }

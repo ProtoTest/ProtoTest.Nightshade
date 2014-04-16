@@ -58,7 +58,7 @@ namespace ProtoTest.Nightshade.Enhancements.Windows.MC659B
         public void SearchForContact(EggplantElement element)
         {
             string elementText = element.locator;
-            
+            Thread.Sleep(2000);
             if (element.IsPresent())
             {
                 EggplantTestBase.Log("Contact (" + elementText + ") detected.");

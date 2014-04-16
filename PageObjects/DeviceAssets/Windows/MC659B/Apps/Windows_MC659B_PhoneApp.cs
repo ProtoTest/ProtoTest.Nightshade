@@ -80,6 +80,34 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             return this;
         }
 
+        public IPhoneApp CallTestContact(int contactNum)
+        {
+            EggplantTestBase.Log("Calling all contacts iteratively until contact #" + contactNum + " is reached.");
+            for (int i = 1; i < contactNum + 1; i++)
+            {
+                ContactsButton.Click();
+                string handleNum;
+                if (contactNum < 10)
+                {
+                    string num = i.ToString();
+                    handleNum = "0" + num;
+                }
+                else
+                {
+                    string num = i.ToString();
+                    handleNum = num;
+                }
+                string contactName = "TEST" + handleNum;
+                var contactFirstName = new EggplantElement(By.Text(contactName).InRectangle(SearchRectangle.TopHalf));
+                utilities.SearchForContact(contactFirstName);
+                contactFirstName.Click();
+                var contactsApp = new Windows_MC659B_ContactsApp();
+                contactsApp.CallMobileButton.Click();
+                Thread.Sleep(1000);
+            }
+            return this;
+        }
+
         public IPhoneApp CallMostRecentContactFromHistory()
         {
             EggplantTestBase.Log("Selecting most recent contact from call log.");

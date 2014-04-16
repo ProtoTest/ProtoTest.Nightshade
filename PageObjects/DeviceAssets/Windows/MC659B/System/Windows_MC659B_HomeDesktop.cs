@@ -123,8 +123,28 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen ReturnToHomeScreen()
         {
-            var driver = new EggplantDriver();
-            driver.PressKey("F4");
+            var phoneApp = new Windows_MC659B_PhoneApp();
+            var startMenu = new Windows_MC659B_MenuNav();
+            if (phoneApp.CloseAppButton.IsPresent())
+            {
+                phoneApp.CloseAppButton.Click();
+                Thread.Sleep(1000);
+                if(notificationsBar.RunningPrograms.IsPresent())
+                {
+                    notificationsBar.Battery.Click();
+                }
+                Thread.Sleep(1000);
+                startBar.StartButton.Click();
+                Thread.Sleep(1000);
+                startMenu.GoToHome();
+            }
+            else
+            {
+                var driver = new EggplantDriver();
+                driver.PressKey("F4");
+                Thread.Sleep(1000);
+                driver.PressKey("F4");
+            }
             return this;
         }
 

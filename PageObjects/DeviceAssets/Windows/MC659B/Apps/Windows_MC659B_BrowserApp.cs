@@ -69,6 +69,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             {
                 EggplantTestBase.Log("Clicking on Show Overlay button.");
                 ShowOverlayButton.Click();
+                //Thread.Sleep(1000);
+                AddressBar.WaitForPresent();
                 Thread.Sleep(1000);
             }
         }
@@ -276,9 +278,10 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         public IHomeScreen ReturnToHomeScreen()
         {
             EggplantTestBase.Log("Returning to the home screen from the browser app.");
-            ActivateOverlayIfHidden();
-            StartButton.Click();
-            menuNav.GoToHome();
+            homeDesktop.ReturnToHomeScreen();
+            //ActivateOverlayIfHidden();
+            //StartButton.Click();
+            //menuNav.GoToHome();
             return new Windows_MC659B_HomeDesktop();
         }
 
