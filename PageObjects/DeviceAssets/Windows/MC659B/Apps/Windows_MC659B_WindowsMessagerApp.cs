@@ -20,14 +20,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IInstantMessengerApp VerifyElements()
         {
-            EggplantTestBase.Log("Verifying TEMPLATE elements.");
+            EggplantTestBase.Note("Verifying TEMPLATE elements.");
             //
             return this;
         }
 
         public IInstantMessengerApp ExitApp()
         {
-            EggplantTestBase.Log("Exiting TEMPLATE app.");
+            EggplantTestBase.Note("Exiting TEMPLATE app.");
             startBar.ExitButton.Click();
             Command.OnHomeScreen().ConfirmHomeScreen();
             return this;

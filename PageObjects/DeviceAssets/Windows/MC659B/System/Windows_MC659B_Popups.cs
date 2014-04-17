@@ -16,19 +16,19 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public void ClickYes()
         {
-            EggplantTestBase.Log("Selecting popup option - Yes.");
+            EggplantTestBase.Note("Selecting popup option - Yes.");
             YesButton.Click();
         }
         
         public void ClickNo()
         {
-            EggplantTestBase.Log("Selecting popup option - No.");
+            EggplantTestBase.Note("Selecting popup option - No.");
             NoButton.Click();
         }
 
         public void ClickOK()
         {
-            EggplantTestBase.Log("Selecting popup option - OK.");
+            EggplantTestBase.Note("Selecting popup option - OK.");
             OKButton.Click();
         }
 
@@ -36,7 +36,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         {
             if (PopupPocketPCNetworkingHeader.IsPresent())
             {
-                EggplantTestBase.Log("Pocket PC Networking popup detected.  Clicking OK.");
+                EggplantTestBase.Note("Pocket PC Networking popup detected.  Clicking OK.");
                 PopupPocketPCNetworkingOKButton.Click();
             }
             

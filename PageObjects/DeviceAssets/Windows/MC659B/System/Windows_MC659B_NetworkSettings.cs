@@ -10,20 +10,20 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public Windows_MC659B_NetworkSettings VerifyElements()
         {
-            EggplantTestBase.Log("Verifying Network Setup menu elements.");
+            EggplantTestBase.Note("Verifying Network Setup menu elements.");
             //NetworkSetupHeader.VerifyPresent();
             return this;
         }
 
         public INetworkSettings SetCellularNetworkToTwoG()
         {
-            EggplantTestBase.Log("Device cannot switch dyanmically to 2G.");
+            EggplantTestBase.Note("Device cannot switch dyanmically to 2G.");
             return this;
         }
 
         public INetworkSettings SetCellularNetworkToThreeG()
         {
-            EggplantTestBase.Log("Device is 3G only.");
+            EggplantTestBase.Note("Device is 3G only.");
             return this;
         }
 

@@ -28,7 +28,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
         
         public Windows_MC659B_StartMenu VerifyElements()
         {
-            EggplantTestBase.Log("Entering start menu.");
+            EggplantTestBase.Note("Entering start menu.");
             StartMenuHeader.WaitForPresent();
             return this;
         }

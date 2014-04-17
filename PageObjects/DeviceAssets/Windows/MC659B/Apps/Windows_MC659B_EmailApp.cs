@@ -39,19 +39,19 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IEmailApp VerifyElements()
         {
-            EggplantTestBase.Log("Verifying Email app elements.");
+            EggplantTestBase.Note("Verifying Email app elements.");
             //
             return this;
         }
 
         public IEmailApp ResetEmailAppToDefault()
         {
-            EggplantTestBase.Log("Resetting Email app to default state.");
+            EggplantTestBase.Note("Resetting Email app to default state.");
             ShowMenuDropdown.Click();
             InboxIcon.Click();
             while (InboxIconTextMessage.IsPresent())
             {
-                EggplantTestBase.Log("Previous email detected in Inbox.  Deleting...");
+                EggplantTestBase.Note("Previous email detected in Inbox.  Deleting...");
                 InboxIconTextMessage.Click();
                 DeleteMenuOption.Click();
                 Thread.Sleep(3000);
@@ -60,7 +60,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             DeletedItemsIcon.Click();
             while (InboxIconTextMessage.IsPresent())
             {
-                EggplantTestBase.Log("Previous email detected in Deleted Items.  Permanently deleting...");
+                EggplantTestBase.Note("Previous email detected in Deleted Items.  Permanently deleting...");
                 InboxIconTextMessage.Click();
                 DeleteMenuOption.Click();
                 popup.ClickYes();
@@ -69,25 +69,25 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             ShowMenuDropdown.Click();
             InboxIcon.Click();
             InboxIconTextMessage.WaitForNotPresent();
-            EggplantTestBase.Log("Email app has been to default state.");
+            EggplantTestBase.Note("Email app has been to default state.");
             return this;
         }
 
         public IEmailApp SendEmailWithNoAttachment(string contactFirst)
         {
-            EggplantTestBase.Log("Preparing email with no attachment.");
+            EggplantTestBase.Note("Preparing email with no attachment.");
             startBar.MenuButton.Click();
             NewMenuOption.Click();
-            EggplantTestBase.Log("Adding contact.");
+            EggplantTestBase.Note("Adding contact.");
             startBar.MenuButton.Click();
             AddRecipientMenuOption.Click();
             var contacts = new Windows_MC659B_ContactsApp();
             contacts.ClickOnContact(contactFirst);
-            EggplantTestBase.Log("Contact added.  Inserting subject.");
+            EggplantTestBase.Note("Contact added.  Inserting subject.");
             SubjectField.Click();
             var driver = new EggplantDriver();
             driver.Type("Test no atch");
-            EggplantTestBase.Log("Subject added.  Inserting body text.");
+            EggplantTestBase.Note("Subject added.  Inserting body text.");
             Thread.Sleep(10000);
             driver.Type("Lorem ipsum dolor sit amet con");
             Thread.Sleep(10000);
@@ -97,17 +97,40 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IEmailApp SendEmailWithAnAttachment(string contactFirst)
         {
-            throw new global::System.NotImplementedException();
+            EggplantTestBase.Note("Preparing email with attachment.");
+            startBar.MenuButton.Click();
+            NewMenuOption.Click();
+            EggplantTestBase.Note("Adding contact.");
+            startBar.MenuButton.Click();
+            AddRecipientMenuOption.Click();
+            var contacts = new Windows_MC659B_ContactsApp();
+            contacts.ClickOnContact(contactFirst);
+            EggplantTestBase.Note("Contact added.  Inserting subject.");
+            SubjectField.Click();
+            var driver = new EggplantDriver();
+            driver.Type("Test no atch");
+            //INSERT RANDOM NUMBER HERE
+            EggplantTestBase.Note("Subject added.  Inserting body text.");
+            Thread.Sleep(10000);
+            driver.Type("Lorem ipsum dolor sit amet con");
+            Thread.Sleep(10000);
+            startBar.SendMessage.Click();
+            return this;
         }
 
         public IEmailApp VerifyEmailArrived()
         {
-            throw new global::System.NotImplementedException();
+            return this;
+        }
+
+        public IEmailApp OpenReceivedEmail()
+        {
+            return this;
         }
 
         public IEmailApp ExitApp()
         {
-            EggplantTestBase.Log("Exiting Email app.");
+            EggplantTestBase.Note("Exiting Email app.");
             startBar.ExitButton.Click();
             Command.OnHomeScreen().ConfirmHomeScreen();
             return this;

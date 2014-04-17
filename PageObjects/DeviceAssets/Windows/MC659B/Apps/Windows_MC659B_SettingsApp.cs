@@ -22,7 +22,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public ISettingsApp VerifyElements()
         {
-            EggplantTestBase.Log("Verifying Settings menu elements.");
+            EggplantTestBase.Note("Verifying Settings menu elements.");
             SettingsMenuHeader.WaitForPresent();
             SettingsHomeIcon.WaitForPresent();
             SettingsSystemIcon.WaitForPresent();
@@ -31,7 +31,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public ISettingsApp ExitApp()
         {
-            EggplantTestBase.Log("Exiting Settings menu.");
+            EggplantTestBase.Note("Exiting Settings menu.");
             startBar.ExitButton.Click();
             Command.OnHomeScreen().ConfirmHomeScreen();
             return this;

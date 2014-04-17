@@ -33,7 +33,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
             Command.NavigateTheMenu()
                 .GoToEmailApp()
                 .ResetEmailAppToDefault()
-                .SendEmailWithNoAttachment("TEST02")
+                .SendEmailWithNoAttachment("TEST01")
                 .ResetEmailAppToDefault()
                 .ExitApp();
 
@@ -68,7 +68,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
             Command.NavigateTheMenu()
                 .GoToEmailApp()
                 .ResetEmailAppToDefault()
-                .SendEmailWithAnAttachment("TEST02")
+                .SendEmailWithAnAttachment("TEST01")
                 .ResetEmailAppToDefault()
                 .ExitApp();
 
@@ -98,7 +98,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 
             ConnectToHost1();
             Command.OnHomeScreen().VerifyEmailArrived();
-            Command.NavigateTheMenu().GoToEmailApp().ResetEmailAppToDefault();
+            Command.NavigateTheMenu().GoToEmailApp().OpenReceivedEmail().ResetEmailAppToDefault();
         }
 
     }

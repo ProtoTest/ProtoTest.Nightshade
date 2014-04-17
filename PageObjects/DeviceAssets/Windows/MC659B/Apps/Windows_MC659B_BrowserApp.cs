@@ -67,7 +67,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             if (ShowOverlayButton.IsPresent())
             {
-                EggplantTestBase.Log("Clicking on Show Overlay button.");
+                EggplantTestBase.Note("Clicking on Show Overlay button.");
                 ShowOverlayButton.Click();
                 //Thread.Sleep(1000);
                 AddressBar.WaitForPresent();
@@ -79,7 +79,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             if (startBar.KeyboardButton.IsPresent())
             {
-                EggplantTestBase.Log("Closing keyboard.");
+                EggplantTestBase.Note("Closing keyboard.");
                 startBar.KeyboardButton.Click();
                 Thread.Sleep(3000);
             }
@@ -89,44 +89,44 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             if (PopupWantToContinue.IsPresent())
             {
-                EggplantTestBase.Log("Do you want to continue?  Selecting (Yes).");
+                EggplantTestBase.Note("Do you want to continue?  Selecting (Yes).");
                 startBar.YesOption.Click();
             }
         }
 
         public IBrowserApp VerifyElements()
         {
-            EggplantTestBase.Log("Verifying browser app (Internet Explorer) elements.");
+            EggplantTestBase.Note("Verifying browser app (Internet Explorer) elements.");
             return this;
         }
 
         public IBrowserApp ResetBrowserToDefaultState()
         {
-            EggplantTestBase.Log("Resetting browser app (Internet Explorer) to default state.");
+            EggplantTestBase.Note("Resetting browser app (Internet Explorer) to default state.");
             ActivateOverlayIfHidden();
             BookmarksButton.Click();
             Thread.Sleep(3000);
             OverlayExitButton.Click();
-            EggplantTestBase.Log("Deleting browser app (Internet Explorer) cache items.");
+            EggplantTestBase.Note("Deleting browser app (Internet Explorer) cache items.");
             OverlayMenuButton.Click();
             ToolsMenuOption.Click();
             OptionsMenuOption.Click();
             BrowsingHistoryMenuOption.Click();
-            EggplantTestBase.Log("Deleting temporary files.");
+            EggplantTestBase.Note("Deleting temporary files.");
             TemporaryFilesOption.Click();
             startBar.ClearOption.Click();
             popup.ClickYes();
-            EggplantTestBase.Log("Deleting cookies.");
+            EggplantTestBase.Note("Deleting cookies.");
             CookiesOption.Click();
             startBar.ClearOption.Click();
             popup.ClickYes();
-            EggplantTestBase.Log("Deleting browser history.");
+            EggplantTestBase.Note("Deleting browser history.");
             HistoryOption.Click();
             startBar.ClearOption.Click();
             popup.ClickYes();
             startBar.OKButton.Click();
             startBar.OKButton.Click();
-            EggplantTestBase.Log("Cache items cleared.  Returning to home page...");
+            EggplantTestBase.Note("Cache items cleared.  Returning to home page...");
             Thread.Sleep(3000);
             ActivateOverlayIfHidden();
             OverlayMenuButton.Click();
@@ -134,13 +134,13 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             ContinueIfWarned();
             OverlayExitButton.WaitForNotPresent(30);
             HomepageBackground.WaitForPresent();
-            EggplantTestBase.Log("Browser is on the home page.");
+            EggplantTestBase.Note("Browser is on the home page.");
             Thread.Sleep(5000);
             if (startBar.KeyboardKeyEnter.IsPresent())
             {
                 startBar.KeyboardButton.Click();
             }
-            EggplantTestBase.Log("Browser state reset.  Waiting for overlay to hide...");
+            EggplantTestBase.Note("Browser state reset.  Waiting for overlay to hide...");
             ShowOverlayButton.WaitForPresent(15);
             Thread.Sleep(10000);
             return this;
@@ -148,7 +148,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IBrowserApp GoToBookmarkedWebsite()
         {
-            EggplantTestBase.Log("Going to bookmarked website (google.com).");
+            EggplantTestBase.Note("Going to bookmarked website (google.com).");
             ActivateOverlayIfHidden();
             BookmarksButton.Click();
             BookmarksHeader.WaitForPresent();
@@ -159,7 +159,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             ShowOverlayButton.WaitForPresent(60);
             GoogleSearchButton.WaitForPresent();
             GoogleViewingOptions.WaitForPresent();
-            EggplantTestBase.Log("Bookmarked website (google.com) has loaded.");
+            EggplantTestBase.Note("Bookmarked website (google.com) has loaded.");
             Thread.Sleep(30000);
             ShowOverlayButton.WaitForPresent(15);
             return this;
@@ -167,7 +167,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IBrowserApp GoToATTWebsite()
         {
-            EggplantTestBase.Log("Going to AT&T mobile homepage (m.att.com).");
+            EggplantTestBase.Note("Going to AT&T mobile homepage (m.att.com).");
             ActivateOverlayIfHidden();
             AddressBar.Type("m.att.com");
             Thread.Sleep(2000);
@@ -176,7 +176,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             //ShowOverlayButton.WaitForPresent(30);   >>> Website is unstable, just doing simplistic checks.
             CloseKeyboardIfOpened();
             ATTCopyright.WaitForPresent(60);
-            EggplantTestBase.Log("AT&T homepage (m.att.com) has loaded.");
+            EggplantTestBase.Note("AT&T homepage (m.att.com) has loaded.");
             Thread.Sleep(30000);
             ShowOverlayButton.WaitForPresent(60);
             return this;
@@ -184,7 +184,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IBrowserApp GoToYahooWebsite()
         {
-            EggplantTestBase.Log("Going to Yahoo mobile website (m.yahoo.com).");
+            EggplantTestBase.Note("Going to Yahoo mobile website (m.yahoo.com).");
             ActivateOverlayIfHidden();
             AddressBar.Type("m.yahoo.com");
             Thread.Sleep(2000);
@@ -196,7 +196,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             YahooLogo.WaitForPresent();
             YahooMailIcon.WaitForPresent();
             YahooSearchButton.WaitForPresent();
-            EggplantTestBase.Log("Yahoo mobile website (m.yahoo.com) has loaded.");
+            EggplantTestBase.Note("Yahoo mobile website (m.yahoo.com) has loaded.");
             Thread.Sleep(30000);
             ShowOverlayButton.WaitForPresent(60);
             return this;
@@ -204,7 +204,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IBrowserApp GoToFacebookWebsite()
         {
-            EggplantTestBase.Log("Going to Facebook mobile website (m.facebook.com).");
+            EggplantTestBase.Note("Going to Facebook mobile website (m.facebook.com).");
             ActivateOverlayIfHidden();
             AddressBar.Type("m.facebook.com");
             Thread.Sleep(2000);
@@ -216,7 +216,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             FacebookLogo.WaitForPresent();
             FacebookCreateAccount.WaitForPresent();
             FacebookLoginButton.WaitForPresent();
-            EggplantTestBase.Log("Facebook mobile website (m.facebook.com) has loaded.");
+            EggplantTestBase.Note("Facebook mobile website (m.facebook.com) has loaded.");
             Thread.Sleep(30000);
             ShowOverlayButton.WaitForPresent(60);
             return this;
@@ -224,7 +224,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IBrowserApp GoToYoutubeWebsite()
         {
-            EggplantTestBase.Log("Going to Youtube mobile website (m.youtube.com).");
+            EggplantTestBase.Note("Going to Youtube mobile website (m.youtube.com).");
             ActivateOverlayIfHidden();
             AddressBar.Type("m.youtube.com");
             Thread.Sleep(2000);
@@ -236,7 +236,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             YoutubeSignInButton.WaitForPresent();
             YoutubeSearchButton.WaitForPresent();
             YoutubeNextPageButton.WaitForPresent();
-            EggplantTestBase.Log("Youtube mobile website (m.youtube.com) has loaded.");
+            EggplantTestBase.Note("Youtube mobile website (m.youtube.com) has loaded.");
             Thread.Sleep(30000);
             ShowOverlayButton.WaitForPresent(60);
             return this;
@@ -244,7 +244,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IBrowserApp GoToNYTimesWebsite()
         {
-            EggplantTestBase.Log("Going to NY Times mobile website (m.nytimes.com).");
+            EggplantTestBase.Note("Going to NY Times mobile website (m.nytimes.com).");
             ActivateOverlayIfHidden();
             AddressBar.Type("m.nytimes.com");
             Thread.Sleep(2000);
@@ -256,7 +256,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             NYTimesUSEditionOption.WaitForPresent();
             NYTimesInternationalEditionOption.WaitForPresent();
             NYTimesTechnologySection.WaitForPresent();
-            EggplantTestBase.Log("NY Times mobile website (m.nytimes.com) has loaded.");
+            EggplantTestBase.Note("NY Times mobile website (m.nytimes.com) has loaded.");
             Thread.Sleep(30000);
             ShowOverlayButton.WaitForPresent(60);
             return this;
@@ -264,7 +264,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IBrowserApp DownloadNativeApp()
         {
-            EggplantTestBase.Log("Downloading native application.");
+            EggplantTestBase.Note("Downloading native application.");
             ActivateOverlayIfHidden();
             AddressBar.Type(Config.DownloadAppTestPath);
             Thread.Sleep(3000);
@@ -277,7 +277,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IHomeScreen ReturnToHomeScreen()
         {
-            EggplantTestBase.Log("Returning to the home screen from the browser app.");
+            EggplantTestBase.Note("Returning to the home screen from the browser app.");
             homeDesktop.ReturnToHomeScreen();
             //ActivateOverlayIfHidden();
             //StartButton.Click();
@@ -287,7 +287,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IBrowserApp ExitApp()
         {
-            EggplantTestBase.Log("Exiting browser app (Internet Explorer).");
+            EggplantTestBase.Note("Exiting browser app (Internet Explorer).");
             ActivateOverlayIfHidden();
             if (OverlayExitButton.IsPresent())
             {

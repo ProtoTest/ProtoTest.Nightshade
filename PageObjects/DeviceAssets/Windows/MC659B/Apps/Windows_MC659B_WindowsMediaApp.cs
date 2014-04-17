@@ -16,14 +16,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IMediaPlayerApp VerifyElements()
         {
-            EggplantTestBase.Log("Verifying Windows Media elements.");
+            EggplantTestBase.Note("Verifying Windows Media elements.");
             WindowsMediaHeader.WaitForPresent();
             return this;
         }
 
         public IMediaPlayerApp SetAppState()
         {
-            EggplantTestBase.Log("Setting Windows Media app state.");
+            EggplantTestBase.Note("Setting Windows Media app state.");
             var startBar = new Windows_MC659B_StartBar();
             if (startBar.OKButton.IsPresent())
             {
@@ -35,7 +35,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IMediaPlayerApp VerifyFilePlaying()
         {
-            EggplantTestBase.Log("Verifying file is currently playing.");
+            EggplantTestBase.Note("Verifying file is currently playing.");
             PlayingFile.WaitForPresent(20);
             PauseIcon.WaitForPresent();
             return this;
@@ -43,7 +43,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IMediaPlayerApp PauseFile()
         {
-            EggplantTestBase.Log("Pausing file that is currently playing.");
+            EggplantTestBase.Note("Pausing file that is currently playing.");
             PauseIcon.Click();
             PlayIcon.WaitForPresent();
             return this;
@@ -51,7 +51,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IMediaPlayerApp RemoveFileFromActiveStatus()
         {
-            EggplantTestBase.Log("Removing file from active status.");
+            EggplantTestBase.Note("Removing file from active status.");
             var startBar = new Windows_MC659B_StartBar();
             startBar.NowPlaying.Click();
             NowPlayingRemoveFile.Click();
@@ -62,7 +62,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IMediaPlayerApp ExitApp()
         {
-            EggplantTestBase.Log("Exiting Windows Media app.");
+            EggplantTestBase.Note("Exiting Windows Media app.");
             var startBar = new Windows_MC659B_StartBar();
             while (startBar.OKButton.IsPresent() || startBar.ExitButton.IsPresent())
             {

@@ -92,6 +92,13 @@ namespace ProtoTest.Nightshade
             DiagnosticLog.WriteLine(message);
         }
 
+        public static void Note(string message)
+        {
+            message = string.Format("|   {0}", message);
+            TestLog.WriteLine(message);
+            DiagnosticLog.WriteLine(message);
+        }
+
         private void LogScreenshotOnError()
         {
             if (TestContext.CurrentContext.Outcome != TestOutcome.Passed)

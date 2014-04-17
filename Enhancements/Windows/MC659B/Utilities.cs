@@ -6,6 +6,7 @@ using Gallio.Runtime.Extensibility.Schema;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu;
 using ProtoTest.TestRunner.Nightshade;
+using MbUnit.Framework;
 
 namespace ProtoTest.Nightshade.Enhancements.Windows.MC659B
 {
@@ -15,7 +16,7 @@ namespace ProtoTest.Nightshade.Enhancements.Windows.MC659B
         {
             int driverTimeOut = Config.DriveTimeoutSec;
             int driverTimeOutMS = driverTimeOut*1000;
-            var eggplantDriver = new EggplantDriver(driverTimeOutMS);
+            var eggplantDriver = EggplantTestBase.Driver;
             string elementText = element.locator;
             Thread.Sleep(2000);
 
@@ -32,7 +33,7 @@ namespace ProtoTest.Nightshade.Enhancements.Windows.MC659B
                 for (int j = 0; j < 5; j++)
                 {
                     //EggplantTestBase.Log("Searching for " + elementText + ".  Iteration #" + j + ".");
-                    eggplantDriver.SwipeUp();
+                    eggplantDriver.SwipeUp();                    
                     Thread.Sleep(3000);
                     if (element.IsPresent())
                     {
@@ -44,7 +45,7 @@ namespace ProtoTest.Nightshade.Enhancements.Windows.MC659B
                 EggplantTestBase.Log("Returning to top of menu for another attempt.");
                 for(int k = 0; k < 5; k++)
                 {
-                    eggplantDriver.SwipeDown();
+                    eggplantDriver.SwipeDown();                   
                     Thread.Sleep(3000);
                 }
                 var startMenu = new Windows_MC659B_StartMenu();
@@ -65,7 +66,7 @@ namespace ProtoTest.Nightshade.Enhancements.Windows.MC659B
                 return;
             }
 
-            const int totalAttempts = 50;
+            const int totalAttempts = 3;
             for (int i = 1; i < totalAttempts+1; i++)
             {
                 EggplantTestBase.Log("Searching through Contacts list for contact (" + elementText + "). Attempt #" + i + ".");
@@ -80,7 +81,8 @@ namespace ProtoTest.Nightshade.Enhancements.Windows.MC659B
                 }
             }
 
-            throw new Exception("Element not detected within menu after " + totalAttempts + " attempts.");
+            //Assert.Fail("Contact not detected within menu after " + totalAttempts + " attempts.");
+            throw new Exception("Contact not detected within menu after " + totalAttempts + " attempts.");
         }
 
         public string[][] ParseCsvFile(string filePath, bool hasHeader = false, string separator = ", ")

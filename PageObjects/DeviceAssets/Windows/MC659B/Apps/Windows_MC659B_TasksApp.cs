@@ -19,7 +19,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public ITasksApp VerifyElements()
         {
-            EggplantTestBase.Log("Verifying Tasks app elements.");
+            EggplantTestBase.Note("Verifying Tasks app elements.");
             TasksAppHeader.WaitForPresent();
             TapHereToAddANewTaskField.WaitForPresent();
             return this;
@@ -27,10 +27,10 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public ITasksApp SetUpTasksApp()
         {
-            EggplantTestBase.Log("Confirming Tasks app is configured correctly.");
+            EggplantTestBase.Note("Confirming Tasks app is configured correctly.");
             while (TaskTitleText.IsPresent())
             {
-                EggplantTestBase.Log("Previous task detected.  Deleting...");
+                EggplantTestBase.Note("Previous task detected.  Deleting...");
                 TaskTitleText.Click();
                 var startBar = new Windows_MC659B_StartBar();
                 startBar.MenuButton.Click();
@@ -39,36 +39,36 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 popup.ClickYes();
             }
             TaskTitleText.WaitForNotPresent();
-            EggplantTestBase.Log("Calendar app is ready for testing.");
+            EggplantTestBase.Note("Calendar app is ready for testing.");
             return this;
         }
 
         public ITasksApp CreateTask()
         {
-            EggplantTestBase.Log("Creating task #1.");
+            EggplantTestBase.Note("Creating task #1.");
             var startBar = new Windows_MC659B_StartBar();
             startBar.MenuButton.Click();
             NewTask.Click();
             Thread.Sleep(2000);
             TaskSubjectField.Type("TASK1");
             startBar.OKButton.Click();
-            EggplantTestBase.Log("Task created.  Verifying...");
+            EggplantTestBase.Note("Task created.  Verifying...");
             //TaskTitleText.LogText();
             TaskTitleText.Click();
             TaskHeaderText.WaitForPresent();
             //TaskHeaderText.LogText();
             startBar.TaskEditButton.WaitForPresent();
-            EggplantTestBase.Log("Task verified.");
+            EggplantTestBase.Note("Task verified.");
             startBar.OKButton.Click();
             return this;
         }
 
         public ITasksApp DeleteAllTasks()
         {
-            EggplantTestBase.Log("Deleting all tasks.");
+            EggplantTestBase.Note("Deleting all tasks.");
             while (TaskTitleText.IsPresent())
             {
-                EggplantTestBase.Log("Task detected.  Deleting...");
+                EggplantTestBase.Note("Task detected.  Deleting...");
                 var startBar = new Windows_MC659B_StartBar();
                 startBar.MenuButton.Click();
                 TaskDelete.Click();
@@ -76,14 +76,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 popup.ClickYes();
             }
             TaskTitleText.WaitForNotPresent();
-            EggplantTestBase.Log("All tasks cleared.");
+            EggplantTestBase.Note("All tasks cleared.");
             return this;
             
         }
 
         public ITasksApp ExitApp()
         {
-            EggplantTestBase.Log("Exiting Tasks app.");
+            EggplantTestBase.Note("Exiting Tasks app.");
             var startBar = new Windows_MC659B_StartBar();
             startBar.ExitButton.Click();
             Command.OnHomeScreen().ConfirmHomeScreen();

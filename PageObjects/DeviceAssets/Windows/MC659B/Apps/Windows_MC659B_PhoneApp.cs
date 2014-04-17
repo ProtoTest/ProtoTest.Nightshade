@@ -63,26 +63,26 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IPhoneApp VerifyElements()
         {
-            EggplantTestBase.Log("Verifying Phone app elements.");
+            EggplantTestBase.Note("Verifying Phone app elements.");
             //
             return this;
         }
 
         public IPhoneApp UseDialpadToCallContactNumber(string handle)
         {
-            EggplantTestBase.Log("Using dialpad to call contact #" + handle + ".");
+            EggplantTestBase.Note("Using dialpad to call contact #" + handle + ".");
             var contactData = utilities.ParseCsvFile(".\\Setup Files\\Contacts.csv", true);
             string[] contact = (from element in contactData
                 where element[0] == handle
                 select element).SingleOrDefault();
             string contactPhone1 = contact[4];
-            EggplantTestBase.Log("Contact's phone number is (" + contactPhone1 + ").");
+            EggplantTestBase.Note("Contact's phone number is (" + contactPhone1 + ").");
             return this;
         }
 
         public IPhoneApp CallTestContact(int contactNum)
         {
-            EggplantTestBase.Log("Calling all contacts iteratively until contact #" + contactNum + " is reached.");
+            EggplantTestBase.Note("Calling all contacts iteratively until contact #" + contactNum + " is reached.");
             for (int i = 1; i < contactNum + 1; i++)
             {
                 ContactsButton.Click();
@@ -110,7 +110,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IPhoneApp CallMostRecentContactFromHistory()
         {
-            EggplantTestBase.Log("Selecting most recent contact from call log.");
+            EggplantTestBase.Note("Selecting most recent contact from call log.");
             CallLogButton.Click();
             CallLogHeader.WaitForPresent();
             CallLogPreviousCall1.Click();
@@ -123,7 +123,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             //string name = CallerName.GetText();
             //string number = CallerNumber.GetText();
-            //EggplantTestBase.Log("Incoming call from: (" + name + ") at number (" + number + ").  Answering...");
+            //EggplantTestBase.Note("Incoming call from: (" + name + ") at number (" + number + ").  Answering...");
             AnswerCallButton.WaitForPresent(20);
             AnswerCallButton.Click();
             return this;
@@ -146,7 +146,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IPhoneApp ExitApp()
         {
-            EggplantTestBase.Log("Exiting Phone app.");
+            EggplantTestBase.Note("Exiting Phone app.");
             CloseAppButton.Click();
             Command.OnHomeScreen().ConfirmHomeScreen();
             return this;

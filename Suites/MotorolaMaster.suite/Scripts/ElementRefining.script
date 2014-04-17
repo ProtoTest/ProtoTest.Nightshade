@@ -17,6 +17,7 @@ Log "Passkey (" &passkey2& ") detected."
 Click "MC659B/System/Startbar/KeyboardButton"
 Click "MC659B/System/Startbar/StartButton"
 Click "MC659B/AppIcons/PicturesAndVideoApp"
+Click "MC659B/Apps/Contacts/ContactIcon"
 
 Click (Text:"Phone")
 

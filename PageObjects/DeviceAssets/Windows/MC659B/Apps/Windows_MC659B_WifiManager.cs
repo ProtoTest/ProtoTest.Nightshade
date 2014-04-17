@@ -29,14 +29,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IWifiManager VerifyElements()
         {
-            EggplantTestBase.Log("Verifying Fusion Wifi Manager elements.");
+            EggplantTestBase.Note("Verifying Fusion Wifi Manager elements.");
             //
             return this;
         }
 
         public IWifiManager ConnectToDefaultWifiNetwork()
         {
-            EggplantTestBase.Log("Connecting to the default wifi network.");
+            EggplantTestBase.Note("Connecting to the default wifi network.");
             startMenu.WirelessCompanionAppWirelessLaunch.Click();
             startMenu.WirelessCompanionAppManageProfilesOption.Click();
             DefaultWifiNetwork.DoubleClick();
@@ -45,20 +45,20 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             UnhighlightClickedProfile.Click();
             WifiProfileActiveIconHotspotAway.WaitForPresent(30);
             notificationsBar.VerifyWifiOn();
-            EggplantTestBase.Log("Connection to the default wifi network verified.");
+            EggplantTestBase.Note("Connection to the default wifi network verified.");
             startBar.OKButton.Click();
             Command.NavigateTheMenu().GoToWifiManagerApp();
             startMenu.WirelessCompanionAppWirelessStatus.Click();
             WirelessStatusSignalStrengthMenuOption.Click();
             WirelessStatusSignalStrengthBars.WaitForPresent();
-            EggplantTestBase.Log("Default wifi network signal strength verified.");
+            EggplantTestBase.Note("Default wifi network signal strength verified.");
             startBar.OKButton.Click();
             return this;
         }
 
         public IWifiManager DisconnectFromDefaultWifiNetwork()
         {
-            EggplantTestBase.Log("Disconnecting from the default wifi network.");
+            EggplantTestBase.Note("Disconnecting from the default wifi network.");
             startMenu.WirelessCompanionAppWirelessLaunch.Click();
             startMenu.WirelessCompanionAppManageProfilesOption.Click();
             DefaultWifiNetwork.DoubleClick();
@@ -72,7 +72,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IWifiManager ExitApp()
         {
-            EggplantTestBase.Log("Exiting Fusion Wifi Manager app.");
+            EggplantTestBase.Note("Exiting Fusion Wifi Manager app.");
             if (startBar.OKButton.IsPresent())
             {
                 startBar.OKButton.Click();

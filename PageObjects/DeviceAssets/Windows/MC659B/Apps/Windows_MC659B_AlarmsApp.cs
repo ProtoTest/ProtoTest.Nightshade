@@ -16,7 +16,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IAlarmsApp VerifyElements()
         {
-            EggplantTestBase.Log("Verifying Alarm app elements.");
+            EggplantTestBase.Note("Verifying Alarm app elements.");
             AlarmsAppHeader.WaitForPresent();
             AlarmsSectionHeader.WaitForPresent();
             return this;
@@ -24,21 +24,21 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IAlarmsApp SetUpAlarmsApp()
         {
-            EggplantTestBase.Log("Confirming Alarms app is configured correctly.");
+            EggplantTestBase.Note("Confirming Alarms app is configured correctly.");
             while (AlarmCheckboxOn.IsPresent())
             {
-                EggplantTestBase.Log("Previous alarm detected.  Disabling alarm...");
+                EggplantTestBase.Note("Previous alarm detected.  Disabling alarm...");
                 AlarmCheckboxOn.Click();
                 Thread.Sleep(1000);
             }
             AlarmCheckboxOn.WaitForNotPresent();
-            EggplantTestBase.Log("Alarms app is ready for testing.");
+            EggplantTestBase.Note("Alarms app is ready for testing.");
             return this;
         }
 
         public IAlarmsApp SetAlarm1()
         {
-            EggplantTestBase.Log("Setting alarm #1.");
+            EggplantTestBase.Note("Setting alarm #1.");
             Alarm1Checkbox.Click();
             //AlarmTime.LogText();
             AlarmPropertiesDefault.WaitForPresent();
@@ -48,7 +48,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IAlarmsApp ConfirmAlarm1()
         {
-            EggplantTestBase.Log("Confirming alarm #1 is set.");
+            EggplantTestBase.Note("Confirming alarm #1 is set.");
             AlarmCheckboxOn.WaitForPresent();
             ExitApp();
             return this;
@@ -56,7 +56,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IAlarmsApp TurnOffAllAlarms()
         {
-            EggplantTestBase.Log("Turning off all alarms.");
+            EggplantTestBase.Note("Turning off all alarms.");
             while (AlarmCheckboxOn.IsPresent())
             {
                 AlarmCheckboxOn.Click();
@@ -67,7 +67,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IAlarmsApp ExitApp()
         {
-            EggplantTestBase.Log("Exiting alarms app.");
+            EggplantTestBase.Note("Exiting alarms app.");
             var startBar = new Windows_MC659B_StartBar();
             startBar.OKButton.Click();
             Command.OnHomeScreen().ConfirmHomeScreen();

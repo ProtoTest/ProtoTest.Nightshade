@@ -1,4 +1,5 @@
-﻿using MbUnit.Framework;
+﻿using System;
+using MbUnit.Framework;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
 
 namespace ProtoTest.Nightshade.Tests.ATT15595Tests
@@ -19,31 +20,63 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //}
 
         [Test]
-        [Description("3G Voice Call (Contacts) - Test 5.1.1.2 and 3G Voice Call (History) - Test 5.1.1.5")]
+        [Description("3G Voice Call (Contacts) - Test 5.1.1.2")]
         [Category("Paired Devices")]
-        [RepeatForConfigValue("TestThreeGVoiceCallFromContactsAndHistory#")]
-        public void TestThreeGVoiceCallFromContactsAndHistory()
+        [RepeatForConfigValue("TestThreeGVoiceCallFromContacts#")]
+        public void TestThreeGVoiceCallFromContacts()
         {
-            //3G Voice Call (Contacts) - Test 5.1.1.2
-            ConnectToHost2();
-            Command.OnHomeScreen().ResetDeviceStateToDefault();
-            ConnectToHost1();
-            Command.OnHomeScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreen().ResetWifiRadioToDefault();
-            Command.OnHomeScreen().SetCellularNetworkToThreeG();
-            Command.NavigateTheMenu().GoToPhoneApp().CallTestContact(1);
-            ConnectToHost2();
-            Command.OnHomeScreen().AnswerPhoneCall().EndPhoneCall();
-            Command.OnHomeScreen().ResetDeviceStateToDefault();
-            ConnectToHost1();
-            Command.OnHomeScreen().ResetDeviceStateToDefault();
-            //3G Voice Call (History) - Test 5.1.1.5
-            Command.NavigateTheMenu().GoToPhoneApp().CallMostRecentContactFromHistory();
-            ConnectToHost2();
-            Command.OnHomeScreen().AnswerPhoneCall().VerifyCallEstablished().EndPhoneCall();
-            Command.OnHomeScreen().ResetDeviceStateToDefault();
-            ConnectToHost1();
-            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            try
+            {
+                ConnectToHost1();
+                Command.OnHomeScreen().ResetWifiRadioToDefault();
+                Command.OnHomeScreen().SetCellularNetworkToThreeG();
+                Command.NavigateTheMenu().GoToPhoneApp().CallTestContact(01);
+                ConnectToHost2();
+                Command.OnHomeScreen().AnswerPhoneCall().EndPhoneCall();               
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(e.Message);
+            }
+            finally
+            {
+                //TEARDOWN
+                ConnectToHost2();
+                Command.OnHomeScreen().ResetDeviceStateToDefault();
+                ConnectToHost1();
+                Command.OnHomeScreen().ResetDeviceStateToDefault();
+            }
+            
+        }
+
+        [Test]
+        [Description("3G Voice Call (History) - Test 5.1.1.5")]
+        [Category("Paired Devices")]
+        [DependsOn("TestThreeGVoiceCallFromContacts")]
+        [RepeatForConfigValue("TestThreeGVoiceCallFromHistory#")]
+        public void TestThreeGVoiceCallFromHistory()
+        {
+            try
+            {
+                //SETUP
+                //3G Voice Call (History) - Test 5.1.1.5
+                ConnectToHost1();
+                Command.NavigateTheMenu().GoToPhoneApp().CallMostRecentContactFromHistory();
+                ConnectToHost2();
+                Command.OnHomeScreen().AnswerPhoneCall().VerifyCallEstablished().EndPhoneCall();
+            }
+            catch
+            {
+                //Additional error reporting if necessary
+            }
+            finally
+            {
+                //TEARDOWN
+                ConnectToHost2();
+                Command.OnHomeScreen().ResetDeviceStateToDefault();
+                ConnectToHost1();
+                Command.OnHomeScreen().ResetDeviceStateToDefault();
+            }
         }
 
         //[Test]
@@ -79,15 +112,27 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Contacts - Tests 5.1.1.8 and 5.1.1.9")]
         [Category("Single Device")]
-        [RepeatForConfigValue("AddAndDeleteLocalContacts#")]
+        //[RepeatForConfigValue("AddAndDeleteLocalContacts#")]
         public void AddAndDeleteLocalContacts()
         {
-            ConnectToHost1();
-            Command.OnHomeScreen().ResetDeviceStateToDefault();
-            Command.NavigateTheMenu().GoToContactsApp().AddContactsToDelete(20).ExitApp();
-            Command.OnHomeScreen().ResetDeviceStateToDefault();
-            Command.NavigateTheMenu().GoToContactsApp().DeleteAddedContacts().ExitApp();
-
+            try
+            {
+                //SETUP
+                ConnectToHost1();
+                Command.OnHomeScreen().ResetDeviceStateToDefault();
+                //TEST
+                Command.NavigateTheMenu().GoToContactsApp().AddContactsToDelete(20).ExitApp();
+            }
+            catch (Exception e)
+            {
+                Assert.Fail(e.Message);
+            }
+            finally
+            {
+                //TEARDOWN
+                Command.OnHomeScreen().ResetDeviceStateToDefault();
+                Command.NavigateTheMenu().GoToContactsApp().DeleteAddedContacts().ExitApp();
+            }
         }
 
     }

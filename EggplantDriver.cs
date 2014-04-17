@@ -96,7 +96,7 @@ namespace ProtoTest.TestRunner.Nightshade
             }
             catch (Exception e)
             {
-                Assert.TerminateSilently(TestOutcome.Failed, "Exception caught stopping eggplant drive " + e.Message);
+                Assert.TerminateSilently(TestOutcome.Failed, "Eggplant Drive could not be properly stopped.  Message returned: (" + e.Message + ").");
             }
         }
 

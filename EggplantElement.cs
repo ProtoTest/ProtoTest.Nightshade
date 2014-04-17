@@ -58,7 +58,7 @@ namespace ProtoTest.Nightshade
             WaitForPresent();
             EggplantTestBase.Log(string.Format("Clicking on element {0}.",locator));
             Driver.Click(locator);
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             return this;
         }
 
@@ -67,6 +67,7 @@ namespace ProtoTest.Nightshade
             WaitForPresent();
             EggplantTestBase.Log(string.Format("Double-clicking on element {0}.", locator));
             Driver.DoubleTap(locator);
+            Thread.Sleep(2000);
             return this;
         }
 

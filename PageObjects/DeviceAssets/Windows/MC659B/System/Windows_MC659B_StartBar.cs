@@ -24,14 +24,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public Windows_MC659B_StartBar VerifyElements()
         {
-            EggplantTestBase.Log("Verifying start bar elements.");
+            EggplantTestBase.Note("Verifying start bar elements.");
             StartButton.WaitForPresent();
             return this;
         }
         
         public Windows_MC659B_StartMenu EnterStartMenu()
         {
-            EggplantTestBase.Log("Selecting Start Button.");
+            EggplantTestBase.Note("Selecting Start Button.");
             StartButton.Click();
             return new Windows_MC659B_StartMenu();
         }

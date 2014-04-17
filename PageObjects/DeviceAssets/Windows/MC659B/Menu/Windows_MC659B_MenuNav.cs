@@ -60,6 +60,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
             startBar.EnterStartMenu();
             utilities.SearchMenuFor(startMenu.ContactsApp);
             startMenu.ContactsApp.Click();
+            Thread.Sleep(3000);
             return new Windows_MC659B_ContactsApp();
         }
 

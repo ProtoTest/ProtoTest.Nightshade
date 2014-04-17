@@ -44,7 +44,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public ITextMessagesApp VerifyElements()
         {
-            EggplantTestBase.Log("Verifying Text Messaging app elements.");
+            EggplantTestBase.Note("Verifying Text Messaging app elements.");
             TextMessagesAppHeader.WaitForPresent();
             ShowingInbox.WaitForPresent();
             SortByReceived.WaitForPresent();
@@ -53,12 +53,12 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public ITextMessagesApp ResetTextMessagesAppToDefault()
         {
-            EggplantTestBase.Log("Resetting Text Messages app to default state.");
+            EggplantTestBase.Note("Resetting Text Messages app to default state.");
             ShowMenuDropdown.Click();
             InboxIcon.Click();
             while (InboxIconTextMessage.IsPresent())
             {
-                EggplantTestBase.Log("Previous text message detected in Inbox.  Deleting...");
+                EggplantTestBase.Note("Previous text message detected in Inbox.  Deleting...");
                 InboxIconTextMessage.Click();
                 DeleteMenuOption.Click();
                 Thread.Sleep(3000);
@@ -67,7 +67,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             DeletedItemsIcon.Click();
             while (InboxIconTextMessage.IsPresent())
             {
-                EggplantTestBase.Log("Previous text message detected in Deleted Items.  Permanently deleting...");
+                EggplantTestBase.Note("Previous text message detected in Deleted Items.  Permanently deleting...");
                 InboxIconTextMessage.Click();
                 DeleteMenuOption.Click();
                 popup.ClickYes();
@@ -76,23 +76,23 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             ShowMenuDropdown.Click();
             InboxIcon.Click();
             InboxIconTextMessage.WaitForNotPresent();
-            EggplantTestBase.Log("Text Messages app has been to default state.");
+            EggplantTestBase.Note("Text Messages app has been to default state.");
             return this;
         }
 
         public ITextMessagesApp SendSMSWithMaxCharacters(string contactFirst)
         {
-            EggplantTestBase.Log("Preparing SMS with Max characters.");
+            EggplantTestBase.Note("Preparing SMS with Max characters.");
             startBar.MenuButton.Click();
             NewMessageMenuOption.Click();
             SMSMenuOption.Click();
             SMSSendToField.WaitForPresent();
-            EggplantTestBase.Log("Adding contact.");
+            EggplantTestBase.Note("Adding contact.");
             startBar.MenuButton.Click();
             AddRecipientMenuOption.Click();
             var contacts = new Windows_MC659B_ContactsApp();
             contacts.ClickOnContact(contactFirst);
-            EggplantTestBase.Log("Contact added.  Inserting text.");
+            EggplantTestBase.Note("Contact added.  Inserting text.");
             SMSTextBodyField.Click();
             var driver = new EggplantDriver();
             driver.Type("Lorem ipsum dolor sit amet");
@@ -109,9 +109,124 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             return this;
         }
 
+        public ITextMessagesApp OpenReceivedSMSWithMaxCharacters()
+        {
+            EggplantTestBase.Note("Opening received SMS with max characters.");
+            
+            return this;
+        }
+
+        public ITextMessagesApp SendMMSWithAudioAttachment(string contactFirst)
+        {
+            EggplantTestBase.Note("Preparing SMS with Max characters.");
+            startBar.MenuButton.Click();
+            NewMessageMenuOption.Click();
+            SMSMenuOption.Click();
+            SMSSendToField.WaitForPresent();
+            EggplantTestBase.Note("Adding contact.");
+            startBar.MenuButton.Click();
+            AddRecipientMenuOption.Click();
+            var contacts = new Windows_MC659B_ContactsApp();
+            contacts.ClickOnContact(contactFirst);
+            EggplantTestBase.Note("Contact added.  Inserting text.");
+            SMSTextBodyField.Click();
+            var driver = new EggplantDriver();
+            driver.Type("Lorem ipsum dolor sit amet");
+            Thread.Sleep(10000);
+            driver.Type(", consectetuer adipiscing elit. ");
+            Thread.Sleep(10000);
+            driver.Type("Aenean commodo ligula eget dolor. ");
+            Thread.Sleep(10000);
+            driver.Type("Aenean massa. Cum sociis natoque ");
+            Thread.Sleep(10000);
+            driver.Type("penatibus et magnis dis parturient.");
+            TextMaxCharacters.WaitForPresent(30000);
+            startBar.SendMessage.Click();
+            return this;
+        }
+
+        public ITextMessagesApp SendMMSWithImageAttachment(string contactFirst)
+        {
+            EggplantTestBase.Note("Preparing SMS with Max characters.");
+            startBar.MenuButton.Click();
+            NewMessageMenuOption.Click();
+            SMSMenuOption.Click();
+            SMSSendToField.WaitForPresent();
+            EggplantTestBase.Note("Adding contact.");
+            startBar.MenuButton.Click();
+            AddRecipientMenuOption.Click();
+            var contacts = new Windows_MC659B_ContactsApp();
+            contacts.ClickOnContact(contactFirst);
+            EggplantTestBase.Note("Contact added.  Inserting text.");
+            SMSTextBodyField.Click();
+            var driver = new EggplantDriver();
+            driver.Type("Lorem ipsum dolor sit amet");
+            Thread.Sleep(10000);
+            driver.Type(", consectetuer adipiscing elit. ");
+            Thread.Sleep(10000);
+            driver.Type("Aenean commodo ligula eget dolor. ");
+            Thread.Sleep(10000);
+            driver.Type("Aenean massa. Cum sociis natoque ");
+            Thread.Sleep(10000);
+            driver.Type("penatibus et magnis dis parturient.");
+            TextMaxCharacters.WaitForPresent(30000);
+            startBar.SendMessage.Click();
+            return this;
+        }
+
+        public ITextMessagesApp SendMMSWithVideoAttachment(string contactFirst)
+        {
+            EggplantTestBase.Note("Preparing SMS with Max characters.");
+            startBar.MenuButton.Click();
+            NewMessageMenuOption.Click();
+            SMSMenuOption.Click();
+            SMSSendToField.WaitForPresent();
+            EggplantTestBase.Note("Adding contact.");
+            startBar.MenuButton.Click();
+            AddRecipientMenuOption.Click();
+            var contacts = new Windows_MC659B_ContactsApp();
+            contacts.ClickOnContact(contactFirst);
+            EggplantTestBase.Note("Contact added.  Inserting text.");
+            SMSTextBodyField.Click();
+            var driver = new EggplantDriver();
+            driver.Type("Lorem ipsum dolor sit amet");
+            Thread.Sleep(10000);
+            driver.Type(", consectetuer adipiscing elit. ");
+            Thread.Sleep(10000);
+            driver.Type("Aenean commodo ligula eget dolor. ");
+            Thread.Sleep(10000);
+            driver.Type("Aenean massa. Cum sociis natoque ");
+            Thread.Sleep(10000);
+            driver.Type("penatibus et magnis dis parturient.");
+            TextMaxCharacters.WaitForPresent(30000);
+            startBar.SendMessage.Click();
+            return this;
+        }
+
+        public ITextMessagesApp OpenReceivedMMSWithAttachment()
+        {
+            EggplantTestBase.Note("Opening received MMS with attachment.");
+            
+            return this;
+        }
+
+        public ITextMessagesApp VerifySMSReceived()
+        {
+            EggplantTestBase.Note("Verifying SMS was received.");
+
+            return this;
+        }
+
+        public ITextMessagesApp VerifyMMSReceived()
+        {
+            EggplantTestBase.Note("Verifying MMS was received.");
+
+            return this;
+        }
+
         public ITextMessagesApp ExitApp()
         {
-            EggplantTestBase.Log("Exiting Text Messaging app.");
+            EggplantTestBase.Note("Exiting Text Messaging app.");
             startBar.ExitButton.Click();
             Command.OnHomeScreen().ConfirmHomeScreen();
             return this;

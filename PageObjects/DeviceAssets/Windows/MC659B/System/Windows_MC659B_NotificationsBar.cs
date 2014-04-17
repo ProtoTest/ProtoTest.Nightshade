@@ -49,7 +49,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public INotificationsBar VerifyElements()
         {
-            EggplantTestBase.Log("Verifying Notification Bar elements.");
+            EggplantTestBase.Note("Verifying Notification Bar elements.");
             Battery.WaitForPresent();
             //ClockTime.LogText();
             return this;
@@ -57,7 +57,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public INotificationsBar OpenNotificationsBarMenu()
         {
-            EggplantTestBase.Log("Opening the notification menu.");
+            EggplantTestBase.Note("Opening the notification menu.");
             Battery.Click();
             Thread.Sleep(3000);
             if (OptionsArrowLeft.IsPresent())
@@ -79,7 +79,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public INotificationsBar ClickOnMenuOKButton()
         {
-            EggplantTestBase.Log("Closing the Running Programs notification menu.");
+            EggplantTestBase.Note("Closing the Running Programs notification menu.");
             Thread.Sleep(3000);
             RunningProgramsMenuOKButton.Click();
             Thread.Sleep(1000);
@@ -88,7 +88,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public INotificationsBar ClickOnMenuCloseAllButton()
         {
-            EggplantTestBase.Log("Closing all active running programs notification menu.");
+            EggplantTestBase.Note("Closing all active running programs notification menu.");
             Thread.Sleep(3000);
             RunningProgramsCloseAllButton.Click();
             popup.ClickOK();
@@ -99,7 +99,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public INotificationsBar SelectAlarmsMenuOption()
         {
-            EggplantTestBase.Log("Selecting Alarms menu option.");
+            EggplantTestBase.Note("Selecting Alarms menu option.");
             OptionsArrowRight.Click();
             AlarmsOptionButton.Click();
             AlarmsEditAlarm.WaitForPresent();
@@ -108,14 +108,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public INotificationsBar VerifyAlarm1On()
         {
-            EggplantTestBase.Log("Verifying Alarm 1 is ON.");
+            EggplantTestBase.Note("Verifying Alarm 1 is ON.");
             AlarmsAlarm1On.WaitForPresent();
             return this;
         }
 
         public INotificationsBar VerifyAlarm1Off()
         {
-            EggplantTestBase.Log("Verifying Alarm 1 is OFF.");
+            EggplantTestBase.Note("Verifying Alarm 1 is OFF.");
             AlarmsAlarm1Off.WaitForPresent();
             return this;
         }
@@ -123,7 +123,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public INotificationsBar SelectPowerAndRadioMenuOption()
         {
-            EggplantTestBase.Log("Selecting Power & Radio menu option.");
+            EggplantTestBase.Note("Selecting Power & Radio menu option.");
             PowerAndRadioOptionButton.Click();
             PowerAndRadioBatteryRemaining.WaitForPresent();
             return this;
@@ -131,21 +131,21 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public INotificationsBar ResetNFCRadioToDefault()
         {
-            EggplantTestBase.Log("Resetting NFC radio to default.");
+            EggplantTestBase.Note("Resetting NFC radio to default.");
             Thread.Sleep(5000);
             if (PowerAndRadioBluetoothRadioOn.IsPresent())
             {
-                EggplantTestBase.Log("NFC radio was falsely in 'On' State.");
+                EggplantTestBase.Note("NFC radio was falsely in 'On' State.");
                 SetNFCRadioToOff();
             }
             PowerAndRadioBluetoothRadioOff.WaitForPresent();
-            EggplantTestBase.Log("NFC is in default state (Off).");
+            EggplantTestBase.Note("NFC is in default state (Off).");
             return this;
         }
 
         public INotificationsBar SetNFCRadioToOn()
         {
-            EggplantTestBase.Log("Setting NFC radio to: On.");
+            EggplantTestBase.Note("Setting NFC radio to: On.");
             PowerAndRadioBluetoothRadioOff.Click();
             PowerAndRadioBluetoothRadioOn.WaitForPresent(15);
             return this;
@@ -153,14 +153,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public INotificationsBar VerifyNFCOn()
         {
-            EggplantTestBase.Log("Verifying NFC is on.");
+            EggplantTestBase.Note("Verifying NFC is on.");
             BluetoothConnected.WaitForPresent();
             return this;
         }
 
         public INotificationsBar SetNFCRadioToOff()
         {
-            EggplantTestBase.Log("Setting NFC radio to: Off.");
+            EggplantTestBase.Note("Setting NFC radio to: Off.");
             PowerAndRadioBluetoothRadioOn.Click();
             PowerAndRadioBluetoothRadioOff.WaitForPresent(15);
             return this;
@@ -168,7 +168,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public INotificationsBar VerifyNFCOff()
         {
-            EggplantTestBase.Log("Verifying NFC is off.");
+            EggplantTestBase.Note("Verifying NFC is off.");
             BluetoothConnected.WaitForNotPresent();
             Thread.Sleep(3000);
             return this;
@@ -176,22 +176,22 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public INotificationsBar ResetWifiRadioToDefault()
         {
-            EggplantTestBase.Log("Resetting Wifi radio to default.");
+            EggplantTestBase.Note("Resetting Wifi radio to default.");
             Thread.Sleep(5000);
             if (PowerAndRadioWifiRadioOn.IsPresent())
             {
-                EggplantTestBase.Log("Wifi radio was falsely in 'On' State.");
+                EggplantTestBase.Note("Wifi radio was falsely in 'On' State.");
                 SetWifiRadioToOff();
             }
             PowerAndRadioWifiRadioOff.WaitForPresent();
             WifiConnected.WaitForNotPresent();
-            EggplantTestBase.Log("Wifi is in default state (Off).");
+            EggplantTestBase.Note("Wifi is in default state (Off).");
             return this;
         }
 
         public INotificationsBar SetWifiRadioToOn()
         {
-            EggplantTestBase.Log("Setting Wifi radio to: On.");
+            EggplantTestBase.Note("Setting Wifi radio to: On.");
             PowerAndRadioWifiRadioOff.Click();
             PowerAndRadioWifiRadioOn.WaitForPresent(15);
             return this;
@@ -199,14 +199,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public INotificationsBar VerifyWifiOn()
         {
-            EggplantTestBase.Log("Verifying Wifi is on.");
+            EggplantTestBase.Note("Verifying Wifi is on.");
             WifiConnected.WaitForPresent();
             return this;
         }
 
         public INotificationsBar SetWifiRadioToOff()
         {
-            EggplantTestBase.Log("Setting Wifi radio to: Off.");
+            EggplantTestBase.Note("Setting Wifi radio to: Off.");
             PowerAndRadioWifiRadioOn.Click();
             PowerAndRadioWifiRadioOff.WaitForPresent(15);
             return this;
@@ -214,27 +214,27 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public INotificationsBar VerifyWifiOff()
         {
-            EggplantTestBase.Log("Verifying Wifi is off.");
+            EggplantTestBase.Note("Verifying Wifi is off.");
             WifiConnected.WaitForNotPresent();
             return this;
         }
 
         public INotificationsBar ConnectToDefaultWifiNetwork()
         {
-            EggplantTestBase.Log("Disconnecting from the default wifi network.");
+            EggplantTestBase.Note("Disconnecting from the default wifi network.");
             return this;
         }
 
         public INotificationsBar DisconnectFromDefaultWifiNetwork()
         {
-            EggplantTestBase.Log("Disconnecting from the default wifi network.");
+            EggplantTestBase.Note("Disconnecting from the default wifi network.");
             return this;
         }
 
 
         public INotificationsBar SelectWifiManagerOption()
         {
-            EggplantTestBase.Log("Selecting Fusion Wifi Manager menu option.");
+            EggplantTestBase.Note("Selecting Fusion Wifi Manager menu option.");
             OptionsArrowRight.Click();
             FusionOptionButton.Click();
             FusionWirelessManager.WaitForPresent();

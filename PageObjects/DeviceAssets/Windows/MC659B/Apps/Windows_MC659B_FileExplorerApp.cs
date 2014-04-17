@@ -18,14 +18,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IFileExplorer VerifyElements()
         {
-            EggplantTestBase.Log("Verifying File Explorer app elements.");
+            EggplantTestBase.Note("Verifying File Explorer app elements.");
             FileExplorerAppHeader.WaitForPresent();
             return this;
         }
 
         public IFileExplorer ResetAppState()
         {
-            EggplantTestBase.Log("Resetting File Explorer app to default state.");
+            EggplantTestBase.Note("Resetting File Explorer app to default state.");
             var startBar = new Windows_MC659B_StartBar();
             startBar.MenuOption.Click();
             GoToMenuOption.Click();
@@ -46,7 +46,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             ResetAppState();
             EnterFolderMyMusic();
             
-            EggplantTestBase.Log("Iteratively opening all " + iterations +" audio files.");
+            EggplantTestBase.Note("Iteratively opening all " + iterations +" audio files.");
             for (int i = 1; i < iterations+1; i++)
             {
                 int numInt = i;
@@ -57,7 +57,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                     string iterationNum = "0" + numStr;
 
                     var audioFileName = new EggplantElement(By.Text(Config.AudioTestFileNamePrefix + iterationNum));
-                    EggplantTestBase.Log("Searching for file: " + audioFileName + ".");
+                    EggplantTestBase.Note("Searching for file: " + audioFileName + ".");
                     int searches = iterations;
                         for (int j = 0; j < searches+1; j++)
                         {
@@ -72,7 +72,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                             }
                             else
                             {
-                                EggplantTestBase.Log("Clicking on file: " + audioFileName + ".");
+                                EggplantTestBase.Note("Clicking on file: " + audioFileName + ".");
                                 audioFileName.Click();
                                 break;
                             }
@@ -82,7 +82,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 else
                 {
                     var audioFileName = new EggplantElement(By.Text(Config.AudioTestFileNamePrefix + numStr));
-                    EggplantTestBase.Log("Searching for file: " + audioFileName + ".");
+                    EggplantTestBase.Note("Searching for file: " + audioFileName + ".");
                     int searches = iterations;
                     for (int j = 0; j < searches+1; j++)
                     {
@@ -97,7 +97,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                         }
                         else
                         {
-                            EggplantTestBase.Log("Clicking on file: " + audioFileName + ".");
+                            EggplantTestBase.Note("Clicking on file: " + audioFileName + ".");
                             audioFileName.Click();
                             break;
                         }
@@ -122,7 +122,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public IFileExplorer ExitApp()
         {
-            EggplantTestBase.Log("Exiting File Explorer app.");
+            EggplantTestBase.Note("Exiting File Explorer app.");
             var startBar = new Windows_MC659B_StartBar();
             startBar.ExitButton.Click();
             Command.OnHomeScreen().ConfirmHomeScreen();

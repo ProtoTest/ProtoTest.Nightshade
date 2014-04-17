@@ -32,7 +32,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
             Command.NavigateTheMenu()
                 .GoToTextMessagesApp()
                 .ResetTextMessagesAppToDefault()
-                .SendSMSWithMaxCharacters("TEST02")
+                .SendSMSWithMaxCharacters("TEST01")
                 .ResetTextMessagesAppToDefault()
                 .ExitApp();
 
@@ -53,10 +53,26 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Send 3G MMS with Audio Attachment - Test 5.1.2.2B")]
         [Category("Paired Device")]
-        [RepeatForConfigValue("TestSendThreeGMessageAudioAttachment#")]
+        //[RepeatForConfigValue("TestSendThreeGMessageAudioAttachment#")]
         public void TestSendThreeGMessageAudioAttachment()
         {
+            ConnectToHost2();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.NavigateTheMenu().GoToTextMessagesApp().ResetTextMessagesAppToDefault().ExitApp();
 
+            ConnectToHost1();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
+            Command.NavigateTheMenu()
+                .GoToTextMessagesApp()
+                .ResetTextMessagesAppToDefault()
+                .SendMMSWithAudioAttachment("TEST01")
+                .ResetTextMessagesAppToDefault()
+                .ExitApp();
+
+            ConnectToHost2();
+            Command.OnHomeScreen().VerifyTextMessageArrived();
+            Command.NavigateTheMenu().GoToTextMessagesApp().VerifyMMSReceived().ExitApp();
         }
 
         //[Test]
@@ -74,7 +90,23 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [RepeatForConfigValue("TestSendThreeGMessageVideoAttachment#")]
         public void TestSendThreeGMessageVideoAttachment()
         {
+            ConnectToHost2();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.NavigateTheMenu().GoToTextMessagesApp().ResetTextMessagesAppToDefault().ExitApp();
 
+            ConnectToHost1();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
+            Command.NavigateTheMenu()
+                .GoToTextMessagesApp()
+                .ResetTextMessagesAppToDefault()
+                .SendMMSWithVideoAttachment("TEST01")
+                .ResetTextMessagesAppToDefault()
+                .ExitApp();
+
+            ConnectToHost2();
+            Command.OnHomeScreen().VerifyTextMessageArrived();
+            Command.NavigateTheMenu().GoToTextMessagesApp().VerifyMMSReceived().ExitApp();
         }
 
         //[Test]
@@ -92,7 +124,23 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [RepeatForConfigValue("TestSendThreeGMessageImageAttachment#")]
         public void TestSendThreeGMessageImageAttachment()
         {
+            ConnectToHost2();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.NavigateTheMenu().GoToTextMessagesApp().ResetTextMessagesAppToDefault().ExitApp();
 
+            ConnectToHost1();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
+            Command.NavigateTheMenu()
+                .GoToTextMessagesApp()
+                .ResetTextMessagesAppToDefault()
+                .SendMMSWithImageAttachment("TEST01")
+                .ResetTextMessagesAppToDefault()
+                .ExitApp();
+
+            ConnectToHost2();
+            Command.OnHomeScreen().VerifyTextMessageArrived();
+            Command.NavigateTheMenu().GoToTextMessagesApp().VerifyMMSReceived().ExitApp();
         }
 
         [Test]
@@ -101,7 +149,23 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [RepeatForConfigValue("TestOpenMessageAudioAttachment#")]
         public void TestOpenMessageAudioAttachment()
         {
+            ConnectToHost1();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.NavigateTheMenu().GoToTextMessagesApp().ResetTextMessagesAppToDefault().ExitApp();
 
+            ConnectToHost2();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
+            Command.NavigateTheMenu()
+                .GoToTextMessagesApp()
+                .ResetTextMessagesAppToDefault()
+                .SendMMSWithAudioAttachment("TEST01")
+                .ResetTextMessagesAppToDefault()
+                .ExitApp();
+
+            ConnectToHost1();
+            Command.OnHomeScreen().VerifyTextMessageArrived();
+            Command.NavigateTheMenu().GoToTextMessagesApp().VerifyMMSReceived().OpenReceivedMMSWithAttachment().ExitApp();
         }
 
         [Test]
@@ -110,7 +174,23 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [RepeatForConfigValue("TestOpenMessageVideoAttachment#")]
         public void TestOpenMessageVideoAttachment()
         {
+            ConnectToHost1();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.NavigateTheMenu().GoToTextMessagesApp().ResetTextMessagesAppToDefault().ExitApp();
 
+            ConnectToHost2();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
+            Command.NavigateTheMenu()
+                .GoToTextMessagesApp()
+                .ResetTextMessagesAppToDefault()
+                .SendMMSWithVideoAttachment("TEST01")
+                .ResetTextMessagesAppToDefault()
+                .ExitApp();
+
+            ConnectToHost1();
+            Command.OnHomeScreen().VerifyTextMessageArrived();
+            Command.NavigateTheMenu().GoToTextMessagesApp().VerifyMMSReceived().OpenReceivedMMSWithAttachment().ExitApp();
         }
 
         [Test]
@@ -119,7 +199,23 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [RepeatForConfigValue("TestOpenMessageImageAttachment#")]
         public void TestOpenMessageImageAttachment()
         {
+            ConnectToHost1();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.NavigateTheMenu().GoToTextMessagesApp().ResetTextMessagesAppToDefault().ExitApp();
 
+            ConnectToHost2();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
+            Command.NavigateTheMenu()
+                .GoToTextMessagesApp()
+                .ResetTextMessagesAppToDefault()
+                .SendMMSWithVideoAttachment("TEST01")
+                .ResetTextMessagesAppToDefault()
+                .ExitApp();
+
+            ConnectToHost1();
+            Command.OnHomeScreen().VerifyTextMessageArrived();
+            Command.NavigateTheMenu().GoToTextMessagesApp().VerifyMMSReceived().OpenReceivedMMSWithAttachment().ExitApp();
         }
 
         [Test]

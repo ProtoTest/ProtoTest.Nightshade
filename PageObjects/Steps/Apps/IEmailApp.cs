@@ -9,6 +9,7 @@ namespace ProtoTest.Nightshade.PageObjects.Steps.Apps
         IEmailApp SendEmailWithNoAttachment(string contactFirst);
         IEmailApp SendEmailWithAnAttachment(string contactFirst);
         IEmailApp VerifyEmailArrived();
+        IEmailApp OpenReceivedEmail();
         IEmailApp ExitApp();
     }
 }

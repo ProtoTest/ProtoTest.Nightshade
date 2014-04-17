@@ -24,7 +24,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public ICalendarApp VerifyElements()
         {
-            EggplantTestBase.Log("Verifying Calendar app elements.");
+            EggplantTestBase.Note("Verifying Calendar app elements.");
             CalendarAppHeader.WaitForPresent();
             CalendarGoToToday.WaitForPresent();
             return this;
@@ -32,12 +32,12 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 
         public ICalendarApp SetUpCalendarApp()
         {
-            EggplantTestBase.Log("Confirming Calendar app is configured correctly.");
+            EggplantTestBase.Note("Confirming Calendar app is configured correctly.");
 
             CalendarGoToToday.Click();
             while (CalendarAppointmentSelected.IsPresent())
             {
-                EggplantTestBase.Log("Previous appointment detected.  Deleting...");
+                EggplantTestBase.Note("Previous appointment detected.  Deleting...");
                 var startBar = new Windows_MC659B_StartBar();
                 startBar.MenuButton.Click();
                 CalendarDeleteAppointment.Click();
@@ -52,7 +52,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 CalendarRightArrow.Click();
                 while (CalendarAppointmentSelected.IsPresent())
                 {
-                    EggplantTestBase.Log("Previous appointment detected.  Deleting...");
+                    EggplantTestBase.Note("Previous appointment detected.  Deleting...");
                     var startBar = new Windows_MC659B_StartBar();
                     startBar.MenuButton.Click();
                     CalendarDeleteAppointment.Click();
@@ -62,7 +62,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 CalendarAppointmentSelected.WaitForNotPresent();
             }
             CalendarGoToToday.Click();
-            EggplantTestBase.Log("Calendar app is ready for testing.");
+            EggplantTestBase.Note("Calendar app is ready for testing.");
             return this;
         }
 
@@ -70,7 +70,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
         {
             var startBar = new Windows_MC659B_StartBar();
             
-            EggplantTestBase.Log("Setting appointment #1.");
+            EggplantTestBase.Note("Setting appointment #1.");
             CalendarGoToToday.Click();
             startBar.MenuButton.Click();
             CalendarNewAppointment.Click();
@@ -78,12 +78,12 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
             CalendarAppointmentLocationField.Type("Conference_Room");
             startBar.OKButton.Click();
             CalendarAppointmentSelected.WaitForPresent();
-            EggplantTestBase.Log("Appointment #1 set.");
+            EggplantTestBase.Note("Appointment #1 set.");
             
             //int iterationsMax = Config.CalendarAppointmentsIterations;
             for (int currentIteration = 2; currentIteration <= iterationsMax; currentIteration++)
             {
-                EggplantTestBase.Log("Setting appointment #" + currentIteration + ".");
+                EggplantTestBase.Note("Setting appointment #" + currentIteration + ".");
                 CalendarRightArrow.Click();
                 Thread.Sleep(2000);
                 startBar.MenuButton.Click();
@@ -92,20 +92,20 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 CalendarAppointmentLocationField.Type("Conference_Room");
                 startBar.OKButton.Click();
                 CalendarAppointmentSelected.WaitForPresent();
-                EggplantTestBase.Log("Appointment #" + currentIteration + " set.");
+                EggplantTestBase.Note("Appointment #" + currentIteration + " set.");
             }
             CalendarGoToToday.Click();
-            EggplantTestBase.Log("Calendar appointments set.");
+            EggplantTestBase.Note("Calendar appointments set.");
             return this;
         }
 
         public ICalendarApp DeleteCalendarAppointments()
         {
-            EggplantTestBase.Log("Deleting previously set appointments.");
+            EggplantTestBase.Note("Deleting previously set appointments.");
             CalendarGoToToday.Click();
             while (CalendarAppointmentSelected.IsPresent())
             {
-                EggplantTestBase.Log("Previous appointment detected.  Deleting...");
+                EggplantTestBase.Note("Previous appointment detected.  Deleting...");
                 var startBar = new Windows_MC659B_StartBar();
                 startBar.MenuButton.Click();
                 CalendarDeleteAppointment.Click();
@@ -119,7 +119,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 CalendarRightArrow.Click();
                 while (CalendarAppointmentSelected.IsPresent())
                 {
-                    EggplantTestBase.Log("Previous appointment detected.  Deleting...");
+                    EggplantTestBase.Note("Previous appointment detected.  Deleting...");
                     var startBar = new Windows_MC659B_StartBar();
                     startBar.MenuButton.Click();
                     CalendarDeleteAppointment.Click();
@@ -129,13 +129,13 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
                 CalendarAppointmentSelected.WaitForNotPresent();
             }
             CalendarGoToToday.Click();
-            EggplantTestBase.Log("Previous appointments deleted.");
+            EggplantTestBase.Note("Previous appointments deleted.");
             return this;
         }
 
         public ICalendarApp ExitApp()
         {
-            EggplantTestBase.Log("Exiting Calendar app.");
+            EggplantTestBase.Note("Exiting Calendar app.");
             var startBar = new Windows_MC659B_StartBar();
             startBar.ExitButton.Click();
             Command.OnHomeScreen().ConfirmHomeScreen();

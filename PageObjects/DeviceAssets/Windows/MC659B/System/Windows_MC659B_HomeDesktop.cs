@@ -36,7 +36,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             if (!DefaultDesktop.IsPresent())
             {
                 var picsApp = new Windows_MC659B_PicturesAndVideoApp();
-                EggplantTestBase.Log("Device's home screen is incorrect.  Fixing...");
+                EggplantTestBase.Note("Device's home screen is incorrect.  Fixing...");
                 menuNav.GoToPicturesAndVideoApp();
                 Thread.Sleep(1000);
                 picsApp.SetUpPicturesAndVideoApp();
@@ -54,7 +54,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             {
                 throw new Exception("Device is not on the home screen.");
             }
-            EggplantTestBase.Log("Device is on the home screen.");
+            EggplantTestBase.Note("Device is on the home screen.");
             DefaultDesktop.WaitForPresent();
             startBar.VerifyElements();
             notificationsBar.VerifyElements();
@@ -63,16 +63,16 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen ResetDeviceStateToDefault()
         {
-            EggplantTestBase.Log("Resetting device state to default.");
+            EggplantTestBase.Note("Resetting device state to default.");
             ReturnToHomeScreen();
-            EggplantTestBase.Log("Scanning for presence of notification bar menu.");
+            EggplantTestBase.Note("Scanning for presence of notification bar menu.");
             if (notificationsBar.RunningProgramsMenuOKButton.IsPresent())
             {
                 notificationsBar.ClickOnMenuOKButton();
             }
             Thread.Sleep(2000);
             int loops = 1;
-            EggplantTestBase.Log("Closing any open menus.");
+            EggplantTestBase.Note("Closing any open menus.");
             while (startBar.ExitButton.IsPresent() || startBar.OKButton.IsPresent() || notificationsBar.RunningProgramsMenuOKButton.IsPresent())
             {
                 if (loops == 10)
@@ -80,7 +80,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
                     throw new Exception("Cannot close menu to return to the desktop after " + loops + " attempts.");
                 }
                 
-                EggplantTestBase.Log("Open menu detected.  Closing now...");
+                EggplantTestBase.Note("Open menu detected.  Closing now...");
                 if (startBar.ExitButton.IsPresent())
                 {
                     startBar.ExitButton.Click();
@@ -98,7 +98,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             notificationsBar.OpenNotificationsBarMenu();
             if (notificationsBar.RunningProgramsCloseAllButton.IsPresent())
             {
-                EggplantTestBase.Log("Running programs detected.  Closing now...");
+                EggplantTestBase.Note("Running programs detected.  Closing now...");
                 notificationsBar.ClickOnMenuCloseAllButton();
             }
             notificationsBar.ClickOnMenuOKButton();
@@ -294,7 +294,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen VerifyTextMessageArrived()
         {
-            EggplantTestBase.Log("Verifying Text Message has arrived.");
+            EggplantTestBase.Note("Verifying Text Message has arrived.");
             notificationsBar.NewMessage.WaitForPresent(30);
             startBar.NotificationOption.WaitForPresent(30);
             startBar.NotificationOption.Click();
@@ -304,7 +304,12 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen VerifyEmailArrived()
         {
-            throw new NotImplementedException();
+            EggplantTestBase.Note("Verifying Text Message has arrived.");
+            notificationsBar.NewMessage.WaitForPresent(30);
+            startBar.NotificationOption.WaitForPresent(30);
+            startBar.NotificationOption.Click();
+            popup.NewTextMessage.WaitForPresent();
+            return this;
         }
     }
 }
