@@ -7,7 +7,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps
 {
     public class Windows_MC659B_WifiManager : IWifiManager
     {
-        public EggplantElement DefaultWifiNetwork = new EggplantElement(By.Text(Config.DefaultWifiNetworkName));
+        public EggplantElement DefaultWifiNetwork = new EggplantElement(By.Text(Config.DefaultWifiNetworkName).InRectangle(SearchRectangle.TopHalf));
         public EggplantElement ConnectMenuOption = new EggplantElement(By.Image("MC659B/Apps/FusionWifiManager/ConnectMenuOption"));
         public EggplantElement DisableMenuOption = new EggplantElement(By.Image("MC659B/Apps/FusionWifiManager/DisableMenuOption"));
         public EggplantElement ManageProfiles = new EggplantElement(By.Image("MC659B/Apps/FusionWifiManager/ManageProfiles"));

@@ -6,7 +6,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
     {
         public EggplantElement AddItemButton = new EggplantElement(By.Image("MC659B/System/StartBar/AddItemButton"));
         public EggplantElement ClearOption = new EggplantElement(By.Image("MC659B/System/StartBar/ClearOption"));
+        public EggplantElement DoneOption = new EggplantElement(By.Image("MC659B/System/StartBar/DoneOption"));
         public EggplantElement ExitButton = new EggplantElement(By.Image("MC659B/System/StartBar/ExitButton"));
+        public EggplantElement GoToContactButton = new EggplantElement(By.Image("MC659B/System/StartBar/GoToContactButton"));
         public EggplantElement KeyboardButton = new EggplantElement(By.Image("MC659B/System/StartBar/KeyboardButton"));
         public EggplantElement OKButton = new EggplantElement(By.Image("MC659B/System/StartBar/OKButton"));
         public EggplantElement MenuButton = new EggplantElement(By.Image("MC659B/System/StartBar/MenuButton"));
@@ -21,6 +23,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
         public EggplantElement NotificationOption = new EggplantElement(By.Image("MC659B/System/StartBar/NotificationOption"));
 
         public EggplantElement KeyboardKeyEnter = new EggplantElement(By.Image("MC659B/System/StartBar/Keyboard/KeyboardKeyEnter"));
+
+        //MenuOptions
+        public EggplantElement SendAndReceiveEmailMenuOption = new EggplantElement(By.Image("MC659B/System/MenuOptions/SendAndReceiveEmailMenuOption"));
+        public EggplantElement DeleteMenuOption = new EggplantElement(By.Image("MC659B/System/MenuOptions/DeleteMenuOption"));
+        public EggplantElement ToolsMenuOption = new EggplantElement(By.Image("MC659B/System/MenuOptions/ToolsMenuOption"));
+        public EggplantElement EmptyDeletedItemsMenuOption = new EggplantElement(By.Image("MC659B/System/MenuOptions/EmptyDeletedItemsMenuOption"));
+        public EggplantElement InsertMenuOption = new EggplantElement(By.Image("MC659B/System/MenuOptions/InsertMenuOption"));
+        public EggplantElement PictureMenuOption = new EggplantElement(By.Image("MC659B/System/MenuOptions/InsertMenuOption"));
 
         public Windows_MC659B_StartBar VerifyElements()
         {

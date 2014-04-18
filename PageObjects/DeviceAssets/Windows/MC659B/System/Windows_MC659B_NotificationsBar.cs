@@ -92,6 +92,12 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
             Thread.Sleep(3000);
             RunningProgramsCloseAllButton.Click();
             popup.ClickOK();
+            if (popup.PopupPocketPCNetworkingOKButton.IsPresent())
+            {
+                popup.PopupPocketPCNetworkingOKButton.Click();
+            }
+            popup.PopupPocketPCNetworkingOKButton.WaitForNotPresent(30);
+            popup.OKButton.WaitForNotPresent(30);
             Thread.Sleep(5000);
             return this;
         }

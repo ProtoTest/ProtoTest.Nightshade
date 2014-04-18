@@ -18,12 +18,12 @@ Click "MC659B/System/Startbar/KeyboardButton"
 Click "MC659B/System/Startbar/StartButton"
 Click "MC659B/AppIcons/PicturesAndVideoApp"
 Click "MC659B/Apps/Contacts/ContactIcon"
+Find "MC659B/Apps/BrowserIE/Websites/YahooMailIcon"
 
 Click (Text:"Phone")
 
-
-
 Click (image: "MC659B/System/StartBar/NotificationOption")
+Click "MC659B/Apps/PicturesAndVideo/PicturePreviews/Background01"
 
 wait 1
 put ImageFound (image: "MC659B/Apps/BrowserIE/AddressBar")
@@ -36,6 +36,7 @@ wait 1
 TypeText "m.yahoo.com"
 
 TypeText Backspace
+typetext UpArrow
 typetext RightArrow
 TypeText Return
 TypeText escape

@@ -304,11 +304,16 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System
 
         public IHomeScreen VerifyEmailArrived()
         {
-            EggplantTestBase.Note("Verifying Text Message has arrived.");
-            notificationsBar.NewMessage.WaitForPresent(30);
-            startBar.NotificationOption.WaitForPresent(30);
-            startBar.NotificationOption.Click();
-            popup.NewTextMessage.WaitForPresent();
+            EggplantTestBase.Note("Verifying Email has arrived.");
+            //notificationsBar.NewMessage.WaitForPresent(30);
+            //startBar.NotificationOption.WaitForPresent(30);
+            //startBar.NotificationOption.Click();
+            //popup.NewTextMessage.WaitForPresent();
+            var menuNav = new Windows_MC659B_MenuNav();
+            menuNav.GoToEmailApp();
+            var emailApp = new Windows_MC659B_EmailApp();
+            emailApp.VerifyEmailArrived();
+            emailApp.ExitApp();
             return this;
         }
     }

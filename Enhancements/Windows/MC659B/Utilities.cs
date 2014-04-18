@@ -95,5 +95,11 @@ namespace ProtoTest.Nightshade.Enhancements.Windows.MC659B
             var csv = from line in lines select (line.Split(new string[] {separator}, StringSplitOptions.None)).ToArray();
             return csv.ToArray();
         }
+
+        public string GetRandomNumberSixDigits()
+        {
+            //int randomNum = DataGenerators.Random.Numbers()
+            return new Random().Next(100000, 999999).ToString();
+        }
     }
 }

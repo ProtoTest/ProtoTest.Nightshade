@@ -69,6 +69,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu
             startBar.EnterStartMenu();
             utilities.SearchMenuFor(startMenu.EmailApp);
             startMenu.EmailApp.Click();
+            var emailApp = new Windows_MC659B_EmailApp();
+            emailApp.MessagingHotmailAccount.Click();
+            Thread.Sleep(2000);
             return new Windows_MC659B_EmailApp();
         }
 
