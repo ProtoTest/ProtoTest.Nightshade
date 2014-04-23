@@ -26,7 +26,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         //    Command.OnHomeScreen().ResetWifiRadioToDefault();
         //    Command.OnHomeScreen().SetCellularNetworkToThreeG();
         //    Command.NavigateTheMenu().GoToBrowserApp().DownloadNativeApp();
-        //    //MC659B experiencing download issues
+        //    //MC65 experiencing download issues
         //}
 
     }

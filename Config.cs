@@ -30,8 +30,9 @@ namespace ProtoTest.Nightshade
         public static int ImageSearchCount = int.Parse(Config.GetConfigValue("ImageSearchCount", "1"));
         public static bool LogDriveCommands = IsTruthy(Config.GetConfigValue("LogDriveCommands", "False"));
         public static int VideoFrameRate = int.Parse(Config.GetConfigValue("VideoFrameRate", "20"));
-        public static int CalendarAppointmentsIterations = int.Parse(Config.GetConfigValue("CalendarAppointmentsIterations", "5"));
+        public static string MouseClickDelay = Config.GetConfigValue("MouseClickDelay", "0.02");
 
+        public static int CalendarAppointmentsIterations = int.Parse(Config.GetConfigValue("CalendarAppointmentsIterations", "5"));
         public static string AudioTestFileNamePrefix = GetConfigValue("AudioTestFileNamePrefix", "Audio Test ");
         public static string DefaultWifiNetworkName = GetConfigValue("DefaultWifiNetworkName", "null");
         public static string DeleteContactsStarting = GetConfigValue("DeleteContactsStarting", "null");

@@ -60,24 +60,24 @@
   <ItemGroup>
     <Compile Include="BackgroundVideoRecorder.cs" />
     <Compile Include="PageObjects\DeviceAssets\Android\Shelter\System\Android_Shelter_HomeDesktop.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_FileExplorerApp.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_ContactsApp.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_PhoneApp.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_EmailApp.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_SettingsApp.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_WindowsMessagerApp.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_TextMessagesApp.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_WifiManager.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_Template.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_WindowsMediaApp.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_PicturesAndVideoApp.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_BrowserApp.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_CalendarApp.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_AlarmsApp.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Apps\Windows_MC659B_TasksApp.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\Windows_MC659B_HomeDesktop.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\Windows_MC659B_Popups.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\Windows_MC659B_NetworkSettings.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_FileExplorerApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_ContactsApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_PhoneApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_EmailApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_SettingsApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_WindowsMessagerApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_TextMessagesApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_WifiManager.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_Template.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_WindowsMediaApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_PicturesAndVideoApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_BrowserApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_CalendarApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_AlarmsApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Apps\Windows_MC65_TasksApp.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\System\Windows_MC65_HomeDesktop.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\System\Windows_MC65_Popups.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\System\Windows_MC65_NetworkSettings.cs" />
     <Compile Include="PageObjects\Steps\Apps\IFileExplorer.cs" />
     <Compile Include="PageObjects\Steps\Apps\IContactsApp.cs" />
     <Compile Include="PageObjects\Steps\Apps\IPhoneApp.cs" />
@@ -102,10 +102,10 @@
     <Compile Include="EggplantTestBase.cs" />
     <Compile Include="IEggplantDriveService.cs" />
     <Compile Include="By.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Menu\Windows_MC659B_StartMenu.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\Windows_MC659B_NotificationsBar.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Menu\Windows_MC65_StartMenu.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\System\Windows_MC65_NotificationsBar.cs" />
     <Compile Include="PageObjects\FrameworkPageObjectExample.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\System\Windows_MC659B_StartBar.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\System\Windows_MC65_StartBar.cs" />
     <Compile Include="PageObjects\Steps\System\INotificationsBar.cs" />
     <Compile Include="PageObjects\Steps\System\INetworkSettings.cs" />
     <Compile Include="PageObjects\Steps\System\IHomeScreen.cs" />
@@ -118,7 +118,7 @@
     <Compile Include="Command.cs" />
     <Compile Include="Tests\FrameworkTests.cs" />
     <Compile Include="Tests\ATT15595Tests\Section_5_1_01.cs" />
-    <Compile Include="Enhancements\Windows\MC659B\Utilities.cs" />
+    <Compile Include="Enhancements\Windows\MC65\Utilities.cs" />
     <Compile Include="Tests\ATT15595Tests\Section_5_1_12.cs" />
     <Compile Include="Tests\ATT15595Tests\Section_5_1_11.cs" />
     <Compile Include="Tests\ATT15595Tests\Section_5_1_10.cs" />
@@ -131,7 +131,7 @@
     <Compile Include="Tests\ATT15595Tests\Section_5_1_03.cs" />
     <Compile Include="Tests\ATT15595Tests\Section_5_1_02.cs" />
     <Compile Include="VerificationErrors.cs" />
-    <Compile Include="PageObjects\DeviceAssets\Windows\MC659B\Menu\Windows_MC659B_MenuNav.cs" />
+    <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Menu\Windows_MC65_MenuNav.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="IEDriverServer.exe" />

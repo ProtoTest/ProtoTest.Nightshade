@@ -1,6 +1,6 @@
 ﻿using System;
 using MbUnit.Framework;
-using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps;
 
 namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 {

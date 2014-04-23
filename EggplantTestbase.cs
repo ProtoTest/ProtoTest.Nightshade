@@ -7,7 +7,7 @@ using Gallio.Framework.Pattern;
 using Gallio.Model;
 using MbUnit.Framework;
 using ProtoTest.Nightshade;
-using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System;
 using ProtoTest.Nightshade.PageObjects.Steps.System;
 using ProtoTest.TestRunner.Nightshade;
 
@@ -92,7 +92,7 @@ namespace ProtoTest.Nightshade
             DiagnosticLog.WriteLine(message);
         }
 
-        public static void Note(string message)
+        public static void Info(string message)
         {
             message = string.Format("|   {0}", message);
             TestLog.WriteLine(message);
@@ -121,6 +121,7 @@ namespace ProtoTest.Nightshade
             EggPlantDriveProcess = Driver.StartEggPlantDrive(Config.BatchFilePath, Config.WaitForDriveMs);
             Driver.WaitForDriveToLoad(Config.WaitForDriveMs);
             SetDefaultSearchTime();
+            Driver.SetOption("MouseClickDelay", Config.MouseClickDelay);
         }
 
         [FixtureTearDown]

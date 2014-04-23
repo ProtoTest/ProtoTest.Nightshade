@@ -2,8 +2,8 @@
 using Gallio.Model.Environments;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Android.Shelter.System;
-using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Menu;
-using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Menu;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 using ProtoTest.Nightshade.PageObjects.Steps.Menu;
 using ProtoTest.Nightshade.PageObjects.Steps.System;
@@ -21,9 +21,9 @@ namespace ProtoTest.Nightshade
 
             if (Config.DeviceType.Contains("Windows"))
             {
-                if (Config.DeviceType.Contains("MC659B"))
+                if (Config.DeviceType.Contains("MC65"))
                 {
-                    return new Windows_MC659B_HomeDesktop();
+                    return new Windows_MC65_HomeDesktop();
                 }
                 else
                 {
@@ -51,9 +51,9 @@ namespace ProtoTest.Nightshade
         {
             if (Config.DeviceType.Contains("Windows"))
             {
-                if (Config.DeviceType.Contains("MC659B"))
+                if (Config.DeviceType.Contains("MC65"))
                 {
-                    return new Windows_MC659B_MenuNav();
+                    return new Windows_MC65_MenuNav();
                 }
                 else
                 {

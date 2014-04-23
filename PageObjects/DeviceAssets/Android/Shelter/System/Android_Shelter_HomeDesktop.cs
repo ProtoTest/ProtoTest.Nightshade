@@ -1,6 +1,6 @@
 ﻿using System;
-using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.Apps;
-using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 using ProtoTest.Nightshade.PageObjects.Steps.System;
 
@@ -9,8 +9,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Android.Shelter.System
     public class Android_Shelter_HomeDesktop : IHomeScreen
     {
         public EggplantElement HomeButton = new EggplantElement(By.Image("Shelter/System/AppsIcon").InRectangle(SearchRectangle.BottomQuarter));
-        //public Windows_MC659B_StartBar startBar = new Windows_MC659B_StartBar();
-        //public Windows_MC659B_NotificationsBar notificationsBar = new Windows_MC659B_NotificationsBar();
+        //public Windows_MC65_StartBar startBar = new Windows_MC65_StartBar();
+        //public Windows_MC65_NotificationsBar notificationsBar = new Windows_MC65_NotificationsBar();
 
         public IHomeScreen ConfirmHomeScreen()
         {
@@ -35,14 +35,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Android.Shelter.System
 
         public IHomeScreen SetThemeToOption(string picNumber)
         {
-            var picsApp = new Windows_MC659B_PicturesAndVideoApp();
+            var picsApp = new Windows_MC65_PicturesAndVideoApp();
             picsApp.SetThemeToOption(picNumber);
             return this;
         }
 
         public IHomeScreen SetThemeToDefault()
         {
-            var picsApp = new Windows_MC659B_PicturesAndVideoApp();
+            var picsApp = new Windows_MC65_PicturesAndVideoApp();
             picsApp.ResetThemeToDefault();
             return this;
         }
@@ -55,9 +55,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Android.Shelter.System
 
         public INotificationsBar OpenNotificationsBar()
         {
-            var bar = new Windows_MC659B_NotificationsBar();
+            var bar = new Windows_MC65_NotificationsBar();
             bar.OpenNotificationsBarMenu();
-            return new Windows_MC659B_NotificationsBar();
+            return new Windows_MC65_NotificationsBar();
         }
 
 

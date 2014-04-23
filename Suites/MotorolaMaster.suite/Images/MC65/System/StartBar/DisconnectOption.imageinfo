@@ -1,0 +1,19 @@
+{
+    CaptureDate = <*D2014-02-26 01:45:22 +0000>;
+    CaptureHost = "Motorola MC65 DeviceA";
+    CaptureScreenSize = (
+	<*I480>,
+	<*I640>
+    );
+    HasAlpha = <*BY>;
+    HonorAlpha = <*BY>;
+    HotSpotX = <*R53>;
+    HotSpotY = <*R12>;
+    LastKnownLocationX = <*I0>;
+    LastKnownLocationY = <*I0>;
+    OriginalLocationX = <*I89>;
+    OriginalLocationY = <*I593>;
+    Pulsing = <*BN>;
+    Scale = <*R1>;
+    SearchAlgorithm = TextSmoothSquare;
+}

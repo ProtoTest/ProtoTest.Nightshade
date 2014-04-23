@@ -15,9 +15,9 @@ namespace ProtoTest.Nightshade
             [Test]
             public void TestDriver()
             {
-                EggplantElement StartButton = new EggplantElement(By.Image("MC659B/System/StartMenu/StartButton"));
+                EggplantElement StartButton = new EggplantElement(By.Image("MC65/System/StartMenu/StartButton"));
                 EggplantElement ContactsButton = new EggplantElement(By.Text("Contacts"));
-                EggplantElement CloseButton = new EggplantElement(By.Image("MC659B/System/StartMenu/ExitButton"));
+                EggplantElement CloseButton = new EggplantElement(By.Image("MC65/System/StartMenu/ExitButton"));
                 if(!ContactsButton.IsPresent())
                     StartButton.Click();
                 ContactsButton.Click();
@@ -56,7 +56,7 @@ namespace ProtoTest.Nightshade
                 ConnectToHost1();
 
                 EggplantElement Home = new EggplantElement(By.Text("Home").InRectangle(SearchRectangle.TopQuarter));
-                EggplantElement element = new EggplantElement(By.Image("MC659B/System/StartMenu/ExitButton").InRectangle(SearchRectangle.BottomQuarter));
+                EggplantElement element = new EggplantElement(By.Image("MC65/System/StartMenu/ExitButton").InRectangle(SearchRectangle.BottomQuarter));
                 Home.Click();
                 element.Click();
             }
@@ -64,7 +64,7 @@ namespace ProtoTest.Nightshade
             [Test]
             public void TestElementByPath()
             {
-                EggplantElement element = new EggplantElement(By.Image("MC659B/System/StartMenu/ExitButton"));
+                EggplantElement element = new EggplantElement(By.Image("MC65/System/StartMenu/ExitButton"));
                 element.Click();
             }
 

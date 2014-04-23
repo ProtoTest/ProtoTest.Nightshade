@@ -1,4 +1,4 @@
-﻿using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC659B.System;
+﻿using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
 
 namespace ProtoTest.Nightshade.PageObjects.Steps.System
