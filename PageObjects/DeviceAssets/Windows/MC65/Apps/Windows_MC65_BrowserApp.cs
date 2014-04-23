@@ -105,9 +105,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
         {
             EggplantTestBase.Info("Resetting browser app (Internet Explorer) to default state.");
             ActivateOverlayIfHidden();
-            BookmarksButton.Click();
-            Thread.Sleep(3000);
-            OverlayExitButton.Click();
+            //BookmarksButton.Click();
+            //Thread.Sleep(3000);
+            //OverlayExitButton.Click();
             EggplantTestBase.Info("Deleting browser app (Internet Explorer) cache items.");
             OverlayMenuButton.Click();
             ToolsMenuOption.Click();

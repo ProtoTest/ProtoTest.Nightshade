@@ -19,6 +19,7 @@ Click "MC659B/System/Startbar/StartButton"
 Click "MC659B/AppIcons/PicturesAndVideoApp"
 Click "MC659B/Apps/Contacts/ContactIcon"
 Find "MC659B/Apps/BrowserIE/Websites/YahooMailIcon"
+Click "MC65/AppIcons/HomeIcon"
 
 Click (Text:"Phone")
 

@@ -22,27 +22,27 @@ namespace ProtoTest.Nightshade.Enhancements.Windows.MC65
 
             if (element.IsPresent())
             {
-                EggplantTestBase.Log(elementText + " detected.");
+                EggplantTestBase.Info(elementText + " detected.");
                 return;
             }
             const int totalAttempts = 3;
             for (int i = 1; i < totalAttempts+1; i++)
             {
-                EggplantTestBase.Log("Scrolling through menu for " + elementText + ". Attempt #" + i + ".");
+                EggplantTestBase.Info("Scrolling through menu for " + elementText + ". Attempt #" + i + ".");
                     
                 for (int j = 0; j < 5; j++)
                 {
-                    //EggplantTestBase.Log("Searching for " + elementText + ".  Iteration #" + j + ".");
+                    //EggplantTestBase.Info("Searching for " + elementText + ".  Iteration #" + j + ".");
                     eggplantDriver.SwipeUp();                    
                     Thread.Sleep(3000);
                     if (element.IsPresent())
                     {
-                        EggplantTestBase.Log(elementText + " detected.");
+                        EggplantTestBase.Info(elementText + " detected.");
                         return;
                     }
                 }
 
-                EggplantTestBase.Log("Returning to top of menu for another attempt.");
+                EggplantTestBase.Info("Returning to top of menu for another attempt.");
                 for(int k = 0; k < 5; k++)
                 {
                     eggplantDriver.SwipeDown();                   
@@ -62,21 +62,21 @@ namespace ProtoTest.Nightshade.Enhancements.Windows.MC65
             Thread.Sleep(2000);
             if (element.IsPresent())
             {
-                EggplantTestBase.Log("Contact (" + elementText + ") detected.");
+                EggplantTestBase.Info("Contact (" + elementText + ") detected.");
                 return;
             }
 
             const int totalAttempts = 3;
             for (int i = 1; i < totalAttempts+1; i++)
             {
-                EggplantTestBase.Log("Searching through Contacts list for contact (" + elementText + "). Attempt #" + i + ".");
+                EggplantTestBase.Info("Searching through Contacts list for contact (" + elementText + "). Attempt #" + i + ".");
 
                 var contactsApp = new Windows_MC65_ContactsApp();
                 contactsApp.ScrollbarDownArrow.Click();
                 Thread.Sleep(3000);
                 if (element.IsPresent())
                 {
-                    EggplantTestBase.Log("Contact (" + elementText + ") detected.");
+                    EggplantTestBase.Info("Contact (" + elementText + ") detected.");
                     return;
                 }
             }
