@@ -14,27 +14,30 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         {
             ConnectToHost2();
             Command.OnHomeScreen().ResetDeviceStateToDefault();
+
             ConnectToHost1();
             Command.OnHomeScreen().ResetDeviceStateToDefault();
             Command.OnHomeScreen().SetCellularNetworkToThreeG();
             Command.NavigateTheMenu().GoToPhoneApp().CallMostRecentContactFromHistory();
+
             ConnectToHost2();
             Command.OnHomeScreen().AnswerPhoneCall().VerifyCallEstablished();
+
             ConnectToHost1();
             Command.OnHomeScreen().VerifyCallEstablished().ReturnToHomeScreen();
             Command.NavigateTheMenu().GoToAlarmsApp().VerifyElements().ExitApp();
-            //Command.NavigateTheMenu().GoToBrowserApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToBrowserApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToCalendarApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToContactsApp().VerifyElements().ExitApp();
-            //Command.NavigateTheMenu().GoToEmailApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToEmailApp().VerifyElements().ExitApp();
             //Command.NavigateTheMenu().GoToInstantMessengerApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToMediaPlayerApp().VerifyElements().ExitApp();
-            Command.NavigateTheMenu().GoToPhoneApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToSettingsApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToTasksApp().VerifyElements().ExitApp();
             //Command.NavigateTheMenu().GoToTextMessagesApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToPhoneApp().EndPhoneCall().ExitApp();
             Command.OnHomeScreen().ResetDeviceStateToDefault();
+
             ConnectToHost2();
             Command.OnHomeScreen().ResetDeviceStateToDefault();
         }
@@ -54,10 +57,9 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
             Command.NavigateTheMenu().GoToBrowserApp().ResetBrowserToDefaultState().ExitApp();
             Command.NavigateTheMenu().GoToBrowserApp().GoToBookmarkedWebsite().ReturnToHomeScreen();
             Command.NavigateTheMenu().GoToAlarmsApp().VerifyElements().ExitApp();
-            //Command.NavigateTheMenu().GoToBrowserApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToCalendarApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToContactsApp().VerifyElements().ExitApp();
-            //Command.NavigateTheMenu().GoToEmailApp().VerifyElements().ExitApp();
+            Command.NavigateTheMenu().GoToEmailApp().VerifyElements().ExitApp();
             //Command.NavigateTheMenu().GoToInstantMessengerApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToMediaPlayerApp().VerifyElements().ExitApp();
             Command.NavigateTheMenu().GoToPhoneApp().VerifyElements().ExitApp();

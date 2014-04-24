@@ -123,10 +123,12 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System
 
         public IHomeScreen ReturnToHomeScreen()
         {
+            EggplantTestBase.Info("Returning Device to the home screen.");
             var phoneApp = new Windows_MC65_PhoneApp();
             var startMenu = new Windows_MC65_MenuNav();
             if (phoneApp.CloseAppButton.IsPresent())
             {
+                EggplantTestBase.Info("Device is on the phone app.  Returning to home screen without closing app.");
                 phoneApp.CloseAppButton.Click();
                 Thread.Sleep(1000);
                 if(notificationsBar.RunningPrograms.IsPresent())
@@ -134,12 +136,11 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System
                     notificationsBar.Battery.Click();
                 }
                 Thread.Sleep(1000);
-                startBar.StartButton.Click();
-                Thread.Sleep(1000);
                 startMenu.GoToHome();
             }
             else
             {
+                EggplantTestBase.Info("Closing all active apps.");
                 var driver = new EggplantDriver();
                 driver.PressKey("F4");
                 Thread.Sleep(1000);
