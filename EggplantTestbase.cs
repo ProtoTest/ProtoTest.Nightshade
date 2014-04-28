@@ -111,49 +111,26 @@ namespace ProtoTest.Nightshade
             }
         }
 
-        public void StopEggplant()
-        {
-            if (EggPlantDriveProcess != null)
-            {
-                EggPlantDriveProcess.CloseMainWindow();
-                EggPlantDriveProcess.WaitForExit();
-            }
-            Driver.StopEggPlantDrive();
-        }
-
-        public void StartEggplant()
-        {
-            for (var i = 0; i < 5; i++)
-            {
-                try
-                {
-                    EggPlantDriveProcess = Driver.StartEggPlantDrive(Config.BatchFilePath, Config.WaitForDriveMs);
-                    Driver.WaitForDriveToLoad(Config.WaitForDriveMs);
-                    SetDefaultSearchTime();
-                    Driver.SetOption("MouseClickDelay", Config.MouseClickDelay);
-                }
-                catch (Exception e)
-                {
-                    TestLog.Warnings.WriteLine("Could not start Eggplant, trying again.");
-                    StopEggplant();
-                }
-            }
-
-        }
-
         [FixtureSetUp]
         public void FixtureSetup()
         {
             Config.BatchFilePath = Common.CreateBatchFile();
             TestAssemblyExecutionParameters.DefaultTestCaseTimeout = null;
             Driver = new EggplantDriver(Config.DriveTimeoutSec*1000);
-            StartEggplant();
+            Driver.StopEggPlantDrive();
+            EggPlantDriveProcess = Driver.StartEggPlantDrive(Config.BatchFilePath, Config.WaitForDriveMs);
+            Driver.WaitForDriveToLoad(Config.WaitForDriveMs);
+            SetDefaultSearchTime();
+            Driver.SetOption("MouseClickDelay", Config.MouseClickDelay);
         }
 
         [FixtureTearDown]
         public void FixtureTeardown()
         {
-            StopEggplant();
+
+            EggPlantDriveProcess.CloseMainWindow();
+            EggPlantDriveProcess.WaitForExit();
+            Driver.StopEggPlantDrive();
         }
 
         [SetUp]
@@ -170,7 +147,6 @@ namespace ProtoTest.Nightshade
             StopVideoRecording();
             Driver.Disconnect();
         }
-
 
 
     }
