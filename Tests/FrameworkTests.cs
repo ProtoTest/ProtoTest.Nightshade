@@ -5,6 +5,7 @@ using Gallio.Common.Media;
 using Gallio.Framework;
 using MbUnit.Framework;
 using ProtoTest.Nightshade.PageObjects;
+using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System;
 using ProtoTest.TestRunner.Nightshade;
 
 namespace ProtoTest.Nightshade
@@ -97,6 +98,42 @@ namespace ProtoTest.Nightshade
                 Driver.Connect(Config.Host1Ip);
                 var Element = new EggplantElement(By.Text("Run"));
                 Element.Click();
+            }
+
+            [Test]
+            [Repeat(5)]
+            public void StartAndStopEggplantDrive1()
+            {
+                Info("Test #1: Eggplant should have started up.  Now running simple test...");
+                Driver.Connect(Config.Host1Ip);
+                var desktop = new Windows_MC65_HomeDesktop();
+                desktop.ConfirmHomeScreen();
+                Thread.Sleep(5000);
+                Info("Eggplant should now power down successfully.");
+            }
+
+            [Test]
+            [Repeat(5)]
+            public void StartAndStopEggplantDrive2()
+            {
+                Info("Test #2: Eggplant should have started up.  Now running simple test...");
+                Driver.Connect(Config.Host1Ip);
+                var desktop = new Windows_MC65_HomeDesktop();
+                desktop.ConfirmHomeScreen();
+                Thread.Sleep(5000);
+                Info("Eggplant should now power down successfully.");
+            }
+
+            [Test]
+            [Repeat(5)]
+            public void StartAndStopEggplantDrive3()
+            {
+                Info("Test #3: Eggplant should have started up.  Now running simple test...");
+                Driver.Connect(Config.Host1Ip);
+                var desktop = new Windows_MC65_HomeDesktop();
+                desktop.ConfirmHomeScreen();
+                Thread.Sleep(5000);
+                Info("Eggplant should now power down successfully.");
             }
         }
 }
