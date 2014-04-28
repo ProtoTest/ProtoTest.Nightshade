@@ -56,7 +56,7 @@ namespace ProtoTest.TestRunner.Nightshade
             }
             catch (Exception e)
             {
-                Assert.TerminateSilently(TestOutcome.Failed, "Error Starting Eggplant Drive : " + e.Message);
+                TestLog.Warnings.WriteLine("Error Starting Eggplant Drive : " + e.Message);
                 return null;
             }
         }
@@ -77,8 +77,7 @@ namespace ProtoTest.TestRunner.Nightshade
                    // Thread.Sleep(1000);
                 }
             }
-            Assert.TerminateSilently(TestOutcome.Failed,
-                "Eggplant Drive did not appear to launch after " + waitForDriveMs +
+            TestLog.Warnings.WriteLine("Eggplant Drive did not appear to launch after " + waitForDriveMs +
                 "ms.  Please verify eggPlant is installed and has a valid license.");
         }
 
@@ -96,7 +95,7 @@ namespace ProtoTest.TestRunner.Nightshade
             }
             catch (Exception e)
             {
-                Assert.TerminateSilently(TestOutcome.Failed, "Eggplant Drive could not be properly stopped.  Message returned: (" + e.Message + ").");
+                TestLog.Warnings.WriteLine("Eggplant Drive could not be properly stopped.  Message returned: (" + e.Message + ").");
             }
         }
 
@@ -142,8 +141,7 @@ namespace ProtoTest.TestRunner.Nightshade
                 }
                 
             }
-            Assert.TerminateSilently(TestOutcome.Failed,
-                "Error caught connecting to device.  Check the internet connection and try connecting via Eggplant GUI : " + host);
+           TestLog.Warnings.WriteLine("Error caught connecting to device.  Check the internet connection and try connecting via Eggplant GUI : " + host);
         }
 
         /// <summary>
@@ -212,8 +210,7 @@ namespace ProtoTest.TestRunner.Nightshade
             }
             catch (Exception e)
             {
-                Assert.TerminateSilently(TestOutcome.Failed,
-                    "Exception Caught Ending EggPlant Session for suite : " + suitePath + e.Message);
+                TestLog.Warnings.WriteLine("Exception Caught Ending EggPlant Session for suite : " + suitePath + e.Message);
             }
         }
 
@@ -231,8 +228,7 @@ namespace ProtoTest.TestRunner.Nightshade
             }
             catch (Exception e)
             {
-                Assert.TerminateSilently(TestOutcome.Failed,
-                    "Exception Caught Starting EggPLant Session for suite : " + suitePath +
+                TestLog.Warnings.WriteLine("Exception Caught Starting EggPLant Session for suite : " + suitePath +
                     " Check the log to see if drive started correctly : " + e.Message);
             }
         }
