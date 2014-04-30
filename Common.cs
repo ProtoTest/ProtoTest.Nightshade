@@ -31,6 +31,7 @@ namespace ProtoTest.TestRunner.Nightshade
                 {
                     DiagnosticLog.WriteLine("Killing Process : " + name);
                     process.Kill();
+                    process.WaitForExit();
                 }
             }
         }
