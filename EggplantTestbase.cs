@@ -154,9 +154,9 @@ namespace ProtoTest.Nightshade
 
         private void VerifyEnvironment()
         {
-            if (!System.IO.File.Exists(Config.SuitePath))
+            if (!System.IO.Directory.Exists(Config.SuitePath))
             {
-                Assert.Fail("Cannot find suite file located at : " + Config.SuitePath + " Add an App.Config key 'SuitePath' with the correct locatijon of your Eggpplant .suite folder");
+                Assert.Fail("Cannot find suite located at : " + Config.SuitePath + " Add an App.Config key 'SuitePath' with the correct locatijon of your Eggpplant .suite folder");
             }
             if (!System.IO.File.Exists(Config.RunScriptPath))
             {
@@ -171,6 +171,7 @@ namespace ProtoTest.Nightshade
             Config.BatchFilePath = Common.CreateBatchFile();
             TestAssemblyExecutionParameters.DefaultTestCaseTimeout = null;
             Driver = new EggplantDriver(Config.DriveTimeoutSec*1000);
+            StopEggplant();
             StartEggplant();
         }
 

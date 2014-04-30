@@ -180,8 +180,6 @@ namespace ProtoTest.TestRunner.Nightshade
             {
                 EggplantTestBase.Log(string.Format("Executing command: {0}", command));
             }
-            
-            //return new object();
             return driveService.Execute(command);
         }
 
