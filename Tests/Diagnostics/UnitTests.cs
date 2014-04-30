@@ -1,15 +1,10 @@
-﻿using System.ComponentModel;
-using System.Drawing;
-using System.Threading;
-using Gallio.Common.Media;
-using Gallio.Framework;
+﻿using Gallio.Framework;
 using MbUnit.Framework;
 using ProtoTest.Nightshade.PageObjects;
-using ProtoTest.TestRunner.Nightshade;
 
-namespace ProtoTest.Nightshade
+namespace ProtoTest.Nightshade.Tests.Diagnostics
 {
-    public class Test : EggplantTestBase
+    public class UnitTests : EggplantTestBase
         {
 
             [Test]
@@ -34,6 +29,7 @@ namespace ProtoTest.Nightshade
                 var rect = Driver.GetScreenRectangle();
                 DiagnosticLog.WriteLine("The rect is : " + rect.width + " x " + rect.height);
             }
+
             [Test]
             public void TestGetOptions()
             {
@@ -98,5 +94,6 @@ namespace ProtoTest.Nightshade
                 var Element = new EggplantElement(By.Text("Run"));
                 Element.Click();
             }
+
         }
 }

@@ -112,7 +112,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Contacts - Tests 5.1.1.8 and 5.1.1.9")]
         [Category("Single Device")]
-        //[RepeatForConfigValue("AddAndDeleteLocalContacts#")]
+        [RepeatForConfigValue("AddAndDeleteLocalContacts#")]
         public void AddAndDeleteLocalContacts()
         {
             try
