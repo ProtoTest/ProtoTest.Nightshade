@@ -66,6 +66,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
 
         private void ActivateOverlayIfHidden()
         {
+            Thread.Sleep(1000);
+
+            if (startBar.KeyboardButton.IsPresent())
+            {
+                EggplantTestBase.Info("Clicking on Show Overlay button.");
+                startBar.KeyboardButton.Click();
+            }
+
             if (ShowOverlayButton.IsPresent())
             {
                 EggplantTestBase.Info("Clicking on Show Overlay button.");
@@ -74,6 +82,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
                 AddressBar.WaitForPresent();
                 Thread.Sleep(1000);
             }
+
         }
 
         private void CloseKeyboardIfOpened()

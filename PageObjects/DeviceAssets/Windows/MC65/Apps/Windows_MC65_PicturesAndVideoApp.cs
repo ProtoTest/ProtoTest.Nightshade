@@ -27,6 +27,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
 
         public EggplantElement BackgroundDefault = new EggplantElement(By.Image("MC65/Apps/PicturesAndVideo/PicturePreviews/Background01"));
         public EggplantElement MyPicturesDefaultState = new EggplantElement(By.Image("MC65/Apps/PicturesAndVideo/MyPicturesDefaultState"));
+        public EggplantElement DefaultPicturesState = new EggplantElement(By.Image("MC65/Apps/PicturesAndVideo/DefaultPicturesState"));
         
         public EggplantElement BackgroundPreview01 = new EggplantElement(By.Image("MC65/Apps/PicturesAndVideo/PicturePreviews/Background01"));
         public EggplantElement BackgroundPreview02 = new EggplantElement(By.Image("MC65/Apps/PicturesAndVideo/PicturePreviews/Background02"));
@@ -94,8 +95,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
         public IPicturesAndVideoApp SetUpPicturesAndVideoApp()
         {
             EggplantTestBase.Info("Confirming Pictures and Video app is configured correctly.");
+            Thread.Sleep(1000);
             while (!MyPicturesDefaultState.IsPresent())
             {
+                if (DefaultPicturesState.IsPresent())
+                {
+                    EggplantTestBase.Info("System default pictures detected - cannot delete any further.");
+                    break;
+                }
                 EggplantTestBase.Info("Previous picture file detected.  Deleting...");
                 PictureCapturedIcon.Press();
                 Thread.Sleep(3000);
@@ -110,6 +117,11 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             MyPicturesDefaultState.WaitForPresent();
             while (VideoCapturedIcon.IsPresent())
             {
+                if (DefaultPicturesState.IsPresent())
+                {
+                    EggplantTestBase.Info("System default pictures detected - cannot delete any further.");
+                    break;
+                }
                 EggplantTestBase.Info("Previous video file detected.  Deleting...");
                 VideoCapturedIcon.Press();
                 Thread.Sleep(5000);

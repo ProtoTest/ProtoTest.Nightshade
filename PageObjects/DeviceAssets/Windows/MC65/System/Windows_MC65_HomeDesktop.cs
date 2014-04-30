@@ -30,6 +30,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System
         
         public IHomeScreen ConfirmHomeScreen()
         {
+            Thread.Sleep(3000);
             var menuNav = new Windows_MC65_MenuNav();
             
             popup.IfNetworkingPopupAppearsClickOK();

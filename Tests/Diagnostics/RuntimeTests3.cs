@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Threading;
 using Gallio.Common.Media;
@@ -14,7 +15,7 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
         {
 
             [Test]
-            [Repeat(2)]
+            [RepeatForConfigValue("RuntimeTests#")]
             public void StartAndStopEggplantDrive3A()
             {
                 Info("Test #3A: Eggplant should have started up.  Now running simple test...");
@@ -26,7 +27,7 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
             }
 
             [Test]
-            [Repeat(2)]
+            [RepeatForConfigValue("RuntimeTests#")]
             public void StartAndStopEggplantDrive3B()
             {
                 Info("Test #3B: Eggplant should have started up.  Now running simple test...");

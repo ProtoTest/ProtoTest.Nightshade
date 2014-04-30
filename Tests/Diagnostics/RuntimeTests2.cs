@@ -14,7 +14,7 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
         {
             
             [Test]
-            [Repeat(2)]
+            [RepeatForConfigValue("RuntimeTests#")]
             public void StartAndStopEggplantDrive2A()
             {
                 Info("Test #2A: Eggplant should have started up.  Now running simple test...");
@@ -26,7 +26,7 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
             }
 
             [Test]
-            [Repeat(2)]
+            [RepeatForConfigValue("RuntimeTests#")]
             public void StartAndStopEggplantDrive2B()
             {
                 Info("Test #2B: Eggplant should have started up.  Now running simple test...");
