@@ -63,6 +63,7 @@ namespace ProtoTest.TestRunner.Nightshade
 
         public void WaitForDriveToLoad(int waitForDriveMs)
         {
+            DiagnosticLog.WriteLine("Waiting for drive");
             for (int i = 0; i < waitForDriveMs; i = i + 1000)
             {
                 try
@@ -73,7 +74,6 @@ namespace ProtoTest.TestRunner.Nightshade
                 }
                 catch (Exception e)
                 {
-                     DiagnosticLog.WriteLine("Waiting for drive : " +  e.Message);
                    // Thread.Sleep(1000);
                 }
             }

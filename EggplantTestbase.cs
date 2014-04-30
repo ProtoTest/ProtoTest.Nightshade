@@ -113,12 +113,21 @@ namespace ProtoTest.Nightshade
 
         public void StopEggplant()
         {
-            if (EggPlantDriveProcess != null)
-            {
-                EggPlantDriveProcess.CloseMainWindow();
-                EggPlantDriveProcess.WaitForExit();
-            }
-            Driver.StopEggPlantDrive();
+          try
+          {
+              if (EggPlantDriveProcess != null)
+              {
+                  EggPlantDriveProcess.CloseMainWindow();
+                  EggPlantDriveProcess.WaitForExit();
+                  EggPlantDriveProcess = null;
+              }
+              Driver.StopEggPlantDrive();
+          }
+          catch (Exception e)
+          {
+              TestLog.Warnings.WriteLine("Exception trying to stop eggplant : " + e.Message);
+          }
+           
         }
 
         public void StartEggplant()
@@ -131,24 +140,40 @@ namespace ProtoTest.Nightshade
                     Driver.WaitForDriveToLoad(Config.WaitForDriveMs);
                     SetDefaultSearchTime();
                     Driver.SetOption("MouseClickDelay", Config.MouseClickDelay);
+                    return;
                 }
                 catch (Exception e)
                 {
                     TestLog.Warnings.WriteLine("Could not start Eggplant, trying again.");
                     StopEggplant();
                 }
+                
             }
+            TestLog.Warnings.WriteLine("Eggplant drive did not appear to launch after 5 attempts");
+        }
 
+        private void VerifyEnvironment()
+        {
+            if (!System.IO.File.Exists(Config.SuitePath))
+            {
+                Assert.Fail("Cannot find suite file located at : " + Config.SuitePath + " Add an App.Config key 'SuitePath' with the correct locatijon of your Eggpplant .suite folder");
+            }
+            if (!System.IO.File.Exists(Config.RunScriptPath))
+            {
+                Assert.Fail("Cannot find eggplant's runscript.bat at : " + Config.RunScriptPath + " Please add a config key RunScriptPath with the correct location to your App.Config ");
+            }
         }
 
         [FixtureSetUp]
         public void FixtureSetup()
         {
+            VerifyEnvironment();
             Config.BatchFilePath = Common.CreateBatchFile();
             TestAssemblyExecutionParameters.DefaultTestCaseTimeout = null;
             Driver = new EggplantDriver(Config.DriveTimeoutSec*1000);
             StartEggplant();
         }
+
 
         [FixtureTearDown]
         public void FixtureTeardown()
@@ -156,19 +181,20 @@ namespace ProtoTest.Nightshade
             StopEggplant();
         }
 
+        public static string LastTestName;
+
         [SetUp]
         public void SetUp()
         {
-            StartVideoRecording();   
+            LastTestName = TestContext.CurrentContext.TestStep.FullName; 
         }
 
         [TearDown]
         public void Teardown()
         {
             Thread.Sleep(1000);
-            LogScreenshotOnError();
-            StopVideoRecording();
-            Driver.Disconnect();
+            //LogScreenshotOnError();
+            //Driver.Disconnect();
         }
 
 

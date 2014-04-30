@@ -18,6 +18,7 @@ namespace ProtoTest.Nightshade
         public static string Host2Ip = GetConfigValue("Host2Ip", "localhost");
         public static int ElementWaitSec = int.Parse(GetConfigValue("ElementWaitTime", "5"));
         public static int ElementSearchTime = int.Parse(GetConfigValue("ElementSearchTime", "1"));
+        public static string RunScriptPath = GetConfigValue("RunScriptPath", @"C:\Program Files (x86)\eggPlant\runscript.bat");
         public static string BatchFilePath = Directory.GetCurrentDirectory() + "\\StartDrive.bat";
         public static int DriveTimeoutSec = int.Parse(GetConfigValue("DriveTimeoutSec", "60"));
         public static int WaitForDriveMs = int.Parse(GetConfigValue("WaitForDriveMs", "30000"));

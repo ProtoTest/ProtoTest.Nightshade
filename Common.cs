@@ -7,6 +7,7 @@ using Gallio.Common.Media;
 using Gallio.Framework;
 using Gallio.Model;
 using MbUnit.Framework;
+using ProtoTest.Nightshade;
 
 namespace ProtoTest.TestRunner.Nightshade
 {
@@ -162,7 +163,7 @@ namespace ProtoTest.TestRunner.Nightshade
             {
                 File.Delete(filePath);
             }
-            string runScriptPath = "\"" + GetValueFromConfigFile("//RunScript/@path") + "\"";
+            string runScriptPath = "\"" + Config.RunScriptPath + "\"";
             string startDriveCommand = runScriptPath + " -driveport 5400";
             var lines = new string[1];
             lines[0] = startDriveCommand;
