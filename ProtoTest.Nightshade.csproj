@@ -116,7 +116,10 @@
     <Compile Include="SearchOption.cs" />
     <Compile Include="SearchRectangle.cs" />
     <Compile Include="Command.cs" />
-    <Compile Include="Tests\FrameworkTests.cs" />
+    <Compile Include="Tests\Diagnostics\RuntimeTests3.cs" />
+    <Compile Include="Tests\Diagnostics\RuntimeTests2.cs" />
+    <Compile Include="Tests\Diagnostics\RuntimeTests1.cs" />
+    <Compile Include="Tests\Diagnostics\UnitTests.cs" />
     <Compile Include="Tests\ATT15595Tests\Section_5_1_01.cs" />
     <Compile Include="Enhancements\Windows\MC65\Utilities.cs" />
     <Compile Include="Tests\ATT15595Tests\Section_5_1_12.cs" />
