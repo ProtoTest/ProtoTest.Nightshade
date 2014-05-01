@@ -155,7 +155,6 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 
             ConnectToHost2();
             Command.OnHomeScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreen().ResetWifiRadioToDefault();
             Command.NavigateTheMenu()
                 .GoToTextMessagesApp()
                 .ResetTextMessagesAppToDefault()
@@ -180,7 +179,6 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 
             ConnectToHost2();
             Command.OnHomeScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreen().ResetWifiRadioToDefault();
             Command.NavigateTheMenu()
                 .GoToTextMessagesApp()
                 .ResetTextMessagesAppToDefault()
@@ -205,7 +203,6 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 
             ConnectToHost2();
             Command.OnHomeScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreen().ResetWifiRadioToDefault();
             Command.NavigateTheMenu()
                 .GoToTextMessagesApp()
                 .ResetTextMessagesAppToDefault()
@@ -229,7 +226,6 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 
             ConnectToHost2();
             Command.OnHomeScreen().ResetDeviceStateToDefault();
-            Command.OnHomeScreen().ResetWifiRadioToDefault();
             Command.NavigateTheMenu()
                 .GoToTextMessagesApp()
                 .ResetTextMessagesAppToDefault()

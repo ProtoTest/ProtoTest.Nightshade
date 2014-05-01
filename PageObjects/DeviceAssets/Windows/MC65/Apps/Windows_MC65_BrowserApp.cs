@@ -167,8 +167,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             Thread.Sleep(10000);
             CloseKeyboardIfOpened();
             ShowOverlayButton.WaitForPresent(60);
-            GoogleSearchButton.WaitForPresent();
-            GoogleViewingOptions.WaitForPresent();
+            GoogleSearchButton.WaitForPresent(30);
+            GoogleViewingOptions.WaitForPresent(30);
             EggplantTestBase.Info("Bookmarked website (google.com) has loaded.");
             Thread.Sleep(30000);
             ShowOverlayButton.WaitForPresent(15);

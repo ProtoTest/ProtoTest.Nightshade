@@ -148,6 +148,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             MMSInsertContactsField.WaitForPresent();
             EggplantTestBase.Info("Adding contact.");
             MMSInsertContactsField.Click();
+            MMSAddContactFromContactsApp.Click();
+            Thread.Sleep(1000);
             //var contacts = new Windows_MC65_ContactsApp();
             //contacts.ClickOnContact(contactFirst);
             driver.Type(contactFirst);
@@ -187,6 +189,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             MMSInsertContactsField.WaitForPresent();
             EggplantTestBase.Info("Adding contact.");
             MMSInsertContactsField.Click();
+            MMSAddContactFromContactsApp.Click();
+            Thread.Sleep(1000);
             //var contacts = new Windows_MC65_ContactsApp();
             //contacts.ClickOnContact(contactFirst);
             driver.Type(contactFirst);
@@ -223,6 +227,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             MMSInsertContactsField.WaitForPresent();
             EggplantTestBase.Info("Adding contact.");
             MMSInsertContactsField.Click();
+            MMSAddContactFromContactsApp.Click();
+            Thread.Sleep(1000);
             //var contacts = new Windows_MC65_ContactsApp();
             //contacts.ClickOnContact(contactFirst);
             driver.Type(contactFirst);
