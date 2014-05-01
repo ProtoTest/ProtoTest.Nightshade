@@ -194,8 +194,8 @@ namespace ProtoTest.Nightshade
         public void Teardown()
         {
             Thread.Sleep(1000);
-            //LogScreenshotOnError();
-            //Driver.Disconnect();
+            LogScreenshotOnError();
+            Driver.Disconnect();
         }
 
 

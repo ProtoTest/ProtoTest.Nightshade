@@ -157,7 +157,7 @@ namespace ProtoTest.TestRunner.Nightshade
             }
             catch (Exception e)
             {
-                Assert.TerminateSilently(TestOutcome.Failed,
+                TestLog.Warnings.WriteLine(
                     "Error caught connecting to device.  Check the internet connection and try connecting via Eggplant GUI : " +
                     host + " : " + e.Message);
             }
