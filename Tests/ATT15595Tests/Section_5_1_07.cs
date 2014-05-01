@@ -1,4 +1,5 @@
-﻿using MbUnit.Framework;
+﻿using Gallio.Framework;
+using MbUnit.Framework;
 
 namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 {
@@ -36,11 +37,19 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Description("Tasks - Tests 5.1.7.5, 5.1.7.6, and 5.1.7.7")]
         [Category("Single Device")]
         [RepeatForConfigValue("TestTasks#")]
+        [TestTeardown("TestTasksTeardown")]
         public void TestTasks()
         {
+            //SETUP
             ConnectToHost1();
-            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            //Command.OnHomeScreen().ResetDeviceStateToDefault();
+            //TEST
             Command.NavigateTheMenu().GoToTasksApp().VerifyElements().SetUpTasksApp().CreateTask().DeleteAllTasks().ExitApp();
+        }
+        public void TestTasksTeardown()
+        {
+            //TEARDOWN
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
         }
 
     }

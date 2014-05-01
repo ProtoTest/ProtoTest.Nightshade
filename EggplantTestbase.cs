@@ -103,9 +103,12 @@ namespace ProtoTest.Nightshade
         {
             if (TestContext.CurrentContext.Outcome != TestOutcome.Passed)
             {
+                DiagnosticLog.WriteLine("Test Failed, capturing device screenshot.");
+                TestLog.WriteLine("Test Failed, capturing device screenshot.");
                 var screenshot = Driver.GetScreenshot();
                 if (screenshot != null)
                 {
+                    TestLog.Failures.WriteLine("Below screenshot was captured at the moment of the error.");
                     TestLog.Failures.EmbedImage(null, screenshot);
                 }
             }
@@ -193,9 +196,11 @@ namespace ProtoTest.Nightshade
         [TearDown]
         public void Teardown()
         {
+            DiagnosticLog.WriteLine("Eggplant Testbase Teardown started.");
+            TestLog.WriteLine("Eggplant Testbase Teardown started.");
             Thread.Sleep(1000);
             LogScreenshotOnError();
-            Driver.Disconnect();
+            //Driver.Disconnect();
         }
 
 

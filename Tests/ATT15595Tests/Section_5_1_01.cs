@@ -23,31 +23,27 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Description("3G Voice Call (Contacts) - Test 5.1.1.2")]
         [Category("Paired Devices")]
         [RepeatForConfigValue("TestThreeGVoiceCallFromContacts#")]
+        [TestTeardown("TestThreeGVoiceCallFromContactsTeardown")]
         public void TestThreeGVoiceCallFromContacts()
         {
-            try
-            {
-                ConnectToHost1();
-                Command.OnHomeScreen().ResetWifiRadioToDefault();
-                Command.OnHomeScreen().SetCellularNetworkToThreeG();
-                Command.NavigateTheMenu().GoToPhoneApp().CallTestContact(01);
-                ConnectToHost2();
-                Command.OnHomeScreen().AnswerPhoneCall().EndPhoneCall();               
-            }
-            catch (Exception e)
-            {
-                Assert.Fail(e.Message);
-            }
-            finally
-            {
-                //TEARDOWN
-                ConnectToHost2();
-                Command.OnHomeScreen().ResetDeviceStateToDefault();
-                ConnectToHost1();
-                Command.OnHomeScreen().ResetDeviceStateToDefault();
-            }
-            
+            //SETUP
+            ConnectToHost1();
+            Command.OnHomeScreen().ResetWifiRadioToDefault();
+            Command.OnHomeScreen().SetCellularNetworkToThreeG();
+            //TEST
+            Command.NavigateTheMenu().GoToPhoneApp().CallTestContact(01);
+            ConnectToHost2();
+            Command.OnHomeScreen().AnswerPhoneCall().EndPhoneCall();               
         }
+        public void TestThreeGVoiceCallFromContactsTeardown()
+        {
+            //TEARDOWN
+            ConnectToHost2();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+            ConnectToHost1();
+            Command.OnHomeScreen().ResetDeviceStateToDefault();
+        }                    
+
 
         [Test]
         [Description("3G Voice Call (History) - Test 5.1.1.5")]

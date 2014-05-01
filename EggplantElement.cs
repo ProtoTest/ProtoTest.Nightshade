@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Linq.Expressions;
 using System.Threading;
 using Gallio.Framework;
 using ProtoTest.TestRunner.Nightshade;
@@ -115,9 +116,11 @@ namespace ProtoTest.Nightshade
                     now = DateTime.Now;
                 }
             }
-
+            TestLog.BeginSection("ERROR FOUND");
             EggplantTestBase.Log(string.Format("!----ERROR : Element not found: " + locator + "."));
             LogSourceImage();
+            //LogFailureImage(string.Format("!----ERROR : Element not found: " + locator + "."));
+            TestLog.End();
             throw new Exception(string.Format("Element was not present after {0} seconds", secs));
         }
 
@@ -129,14 +132,17 @@ namespace ProtoTest.Nightshade
                 string pathToImage = Config.SuitePath + "\\Images\\" + nameOfImage;
                 if (Directory.Exists(pathToImage))
                 {
-                    foreach (var file in Directory.GetFiles(pathToImage,"*.png"))
+                    foreach (var file in Directory.GetFiles(pathToImage, "*.png"))
                     {
-                        TestLog.EmbedImage(null, Image.FromFile(file));  
+                        TestLog.Failures.EmbedImage(null, Image.FromFile(file));
+                        TestLog.EmbedImage(null, Image.FromFile(file));
                     }
                 }
                 else
                 {
                     pathToImage += ".png";
+                    TestLog.Failures.WriteLine("This element was not found in attached device screenshot.");
+                    TestLog.Failures.EmbedImage(null, Image.FromFile(pathToImage));
                     TestLog.EmbedImage(null, Image.FromFile(pathToImage));
                 }
                 

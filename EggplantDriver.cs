@@ -122,6 +122,7 @@ namespace ProtoTest.TestRunner.Nightshade
             {
                 try
                 {
+                    TestLog.WriteLine("Trying to connect to device (" + i + ") : " + host);
                     DiagnosticLog.WriteLine("Trying to connect to device (" + i + ") : " + host);
                     if (port == "0")
                     {

@@ -27,23 +27,9 @@ namespace ProtoTest.Nightshade
         /// <inheritdoc />
         protected override void DecorateTest(IPatternScope scope, ICodeElementInfo codeElement)
         {
-            //scope.TestBuilder.TestInstanceActions.AfterTestInstanceChain.After(delegate(
-            //    PatternTestInstanceState instanceState)
-            //    {
-
-            //        ITypeInfo typeInfo;
-            //        typeInfo = ReflectionUtils.GetType(codeElement);
-            //        IMethodInfo method = typeInfo.GetMethod(this.methodName, BindingFlags.Instance | BindingFlags.Public);
-            //        instanceState.InvokeFixtureMethod(method,
-            //                                          (IEnumerable<KeyValuePair<ISlotInfo, object>>)
-            //                                          EmptyArray<KeyValuePair<ISlotInfo, object>>.Instance);
-
-            //    });
-
-
-            scope.TestBuilder.TestInstanceActions.TearDownTestInstanceChain.Before(delegate(PatternTestInstanceState instanceState)
+           
+            scope.TestBuilder.TestInstanceActions.DisposeTestInstanceChain.After(delegate(PatternTestInstanceState instanceState)
             {
-
                 ITypeInfo typeInfo;
                 typeInfo = ReflectionUtils.GetType(codeElement);
                 IMethodInfo method = typeInfo.GetMethod(this.methodName, BindingFlags.Instance | BindingFlags.Public);

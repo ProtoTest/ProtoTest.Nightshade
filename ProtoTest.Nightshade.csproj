@@ -133,6 +133,7 @@
     <Compile Include="Tests\ATT15595Tests\Section_5_1_04.cs" />
     <Compile Include="Tests\ATT15595Tests\Section_5_1_03.cs" />
     <Compile Include="Tests\ATT15595Tests\Section_5_1_02.cs" />
+    <Compile Include="TestTeardown.cs" />
     <Compile Include="VerificationErrors.cs" />
     <Compile Include="PageObjects\DeviceAssets\Windows\MC65\Menu\Windows_MC65_MenuNav.cs" />
   </ItemGroup>
