@@ -127,7 +127,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             driver.Type("penatibus et magnis dis parturient.");
             TextMaxCharacters.WaitForPresent(30000);
             startBar.SendMessage.Click();
-            ExitApp();
+            //ExitApp();
             return this;
         }
 
@@ -174,7 +174,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             }
             MMSRemoveAttachmentButton.WaitForPresent(15);
             startBar.SendMessage.Click();
-            ExitApp();
+            //ExitApp();
             notificationsBar.OutgoingTextMessage.WaitForNotPresent(60);
             return this;
         }
@@ -212,7 +212,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             }
             MMSRemoveAttachmentButton.WaitForPresent(15);
             startBar.SendMessage.Click();
-            ExitApp();
+            //ExitApp();
             notificationsBar.OutgoingTextMessage.WaitForNotPresent(60);
             return this;
         }
@@ -250,7 +250,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             }
             MMSRemoveAttachmentButton.WaitForPresent(15);
             startBar.SendMessage.Click();
-            ExitApp();
+            //ExitApp();
             notificationsBar.OutgoingTextMessage.WaitForNotPresent(60);
             return this;
         }

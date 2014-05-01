@@ -1,5 +1,4 @@
-﻿using Gallio.Framework;
-using MbUnit.Framework;
+﻿using MbUnit.Framework;
 
 namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 {
