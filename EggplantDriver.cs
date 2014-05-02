@@ -323,7 +323,7 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             text = "\"" + text + "\"";
             ExecuteCommand("TypeText", text);
-            EggplantTestBase.Info("Typing text: (" + text + ").");
+            EggplantTestBase.Info("Driver - Typing text: (" + text + ").");
             Thread.Sleep(2000);
         }
 
@@ -342,7 +342,7 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             //text = "\"" + text + "\"";
             ExecuteCommand("TypeText", text);
-            EggplantTestBase.Info("Pressing keyboard key:(" + text + ").");
+            EggplantTestBase.Info("Driver - Pressing keyboard key: (" + text + ").");
             Thread.Sleep(2000);
         }
 

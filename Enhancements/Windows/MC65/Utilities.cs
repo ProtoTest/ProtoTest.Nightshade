@@ -22,7 +22,7 @@ namespace ProtoTest.Nightshade.Enhancements.Windows.MC65
 
             if (element.IsPresent())
             {
-                EggplantTestBase.Info(elementText + " detected.");
+                EggplantTestBase.Info("Element: (" + elementText + ") detected.");
                 return;
             }
             const int totalAttempts = 3;

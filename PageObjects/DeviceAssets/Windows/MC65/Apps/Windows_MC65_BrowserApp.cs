@@ -146,7 +146,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             HomepageBackground.WaitForPresent();
             EggplantTestBase.Info("Browser is on the home page.");
             Thread.Sleep(5000);
-            if (startBar.KeyboardKeyEnter.IsPresent())
+            if (startBar.KeyboardButton.IsPresent())
             {
                 startBar.KeyboardButton.Click();
             }
