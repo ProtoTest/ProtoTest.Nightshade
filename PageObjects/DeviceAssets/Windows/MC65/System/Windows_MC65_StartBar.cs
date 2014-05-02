@@ -20,6 +20,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System
         public EggplantElement ThumbnailsButton = new EggplantElement(By.Image("MC65/System/StartBar/ThumbnailsButton"));
         public EggplantElement YesOption = new EggplantElement(By.Image("MC65/System/StartBar/YesOption"));
         public EggplantElement SendMessage = new EggplantElement(By.Image("MC65/System/StartBar/SendMessage"));
+        public EggplantElement SendOption = new EggplantElement(By.Image("MC65/System/StartBar/SendOption"));
         public EggplantElement NotificationOption = new EggplantElement(By.Image("MC65/System/StartBar/NotificationOption"));
 
         public EggplantElement KeyboardKeyEnter = new EggplantElement(By.Image("MC65/System/StartBar/Keyboard/KeyboardKeyEnter"));

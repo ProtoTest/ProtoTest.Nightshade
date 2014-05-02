@@ -361,9 +361,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Setup Files\Contacts.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Suites\MotorolaMaster.suite\.timestamp" />
     <None Include="Suites\MotorolaMaster.suite\Images\Shelter\AppIcons\LeftNothing.imageinfo" />
     <None Include="Suites\MotorolaMaster.suite\Images\Shelter\AppIcons\MessagingApp.imageinfo" />

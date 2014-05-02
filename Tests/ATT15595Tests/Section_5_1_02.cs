@@ -53,7 +53,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Send 3G MMS with Audio Attachment - Test 5.1.2.2B")]
         [Category("Paired Device")]
-        //[RepeatForConfigValue("TestSendThreeGMessageAudioAttachment#")]
+        [RepeatForConfigValue("TestSendThreeGMessageAudioAttachment#")]
         public void TestSendThreeGMessageAudioAttachment()
         {
             ConnectToHost2();

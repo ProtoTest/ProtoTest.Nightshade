@@ -98,6 +98,18 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             return this;
         }
 
+        public void NavigateToTestFilesFolder()
+        {
+            if (!MMSAttachmentTestFileAudio.IsPresent())
+            {
+                Thread.Sleep(1000);
+                MMSTextMessagesFileNav.Click();
+                MMSFileNavMyDocuments.Click();
+                MMSFileNavDataFolder.Click();
+            }
+            EggplantTestBase.Info("File navigation is on the test file folder.");
+        }
+
         public ITextMessagesApp SendSMSWithMaxCharacters(string contactFirst)
         {
             var driver = new EggplantDriver();
@@ -114,6 +126,12 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             driver.Type(contactFirst);
             Thread.Sleep(2000);
             driver.PressKey("Return");
+            Thread.Sleep(1000);
+            if (MMSSelectContactMobileNumber.IsPresent())
+            {
+                EggplantTestBase.Info("Multiple send options detected.  Selecting mobile number...");
+                MMSSelectContactMobileNumber.Click();
+            }
             EggplantTestBase.Info("Contact added.  Inserting text.");
             SMSTextBodyField.Click();
             driver.Type("Lorem ipsum dolor sit amet");
@@ -126,7 +144,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             Thread.Sleep(10000);
             driver.Type("penatibus et magnis dis parturient.");
             TextMaxCharacters.WaitForPresent(30000);
-            startBar.SendMessage.Click();
+            if(startBar.SendMessage.IsPresent()
+            {
+                startBar.SendMessage.Click();
+            }
+            if(startBar.SendOption.IsPresent()
+            {
+                startBar.SendOption.Click();
+            }
             //ExitApp();
             return this;
         }
@@ -155,7 +180,12 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             driver.Type(contactFirst);
             Thread.Sleep(2000);
             driver.PressKey("Return");
-            MMSSelectContactMobileNumber.Click();
+            Thread.Sleep(1000);
+            if(MMSSelectContactMobileNumber.IsPresent())
+            {
+                EggplantTestBase.Info("Multiple send options detected.  Selecting mobile number...");
+                MMSSelectContactMobileNumber.Click();
+            }
             EggplantTestBase.Info("Contact added.  Inserting text.");
             MMSInsertSubjectField.Click();
             driver.Type("MMS Audio");
@@ -166,6 +196,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             startBar.DoneOption.Click();
             EggplantTestBase.Info("Subject and body added.  Attaching audio file.");
             MMSAttachAudioFile.Click();
+            NavigateToTestFilesFolder();
             MMSAttachmentTestFileAudio.Click();
             Thread.Sleep(3000);
             if (popup.YesButton.IsPresent())
@@ -173,7 +204,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
                 popup.ClickYes();
             }
             MMSRemoveAttachmentButton.WaitForPresent(15);
-            startBar.SendMessage.Click();
+            if(startBar.SendMessage.IsPresent()
+            {
+                startBar.SendMessage.Click();
+            }
+            if(startBar.SendOption.IsPresent()
+            {
+                startBar.SendOption.Click();
+            }
             //ExitApp();
             notificationsBar.OutgoingTextMessage.WaitForNotPresent(60);
             return this;
@@ -196,7 +234,12 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             driver.Type(contactFirst);
             Thread.Sleep(2000);
             driver.PressKey("Return");
-            MMSSelectContactMobileNumber.Click();
+            Thread.Sleep(1000);
+            if (MMSSelectContactMobileNumber.IsPresent())
+            {
+                EggplantTestBase.Info("Multiple send options detected.  Selecting mobile number...");
+                MMSSelectContactMobileNumber.Click();
+            }
             EggplantTestBase.Info("Contact added.  Inserting text.");
             MMSInsertSubjectField.Click();
             driver.Type("MMS Image");
@@ -204,6 +247,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             startBar.DoneOption.Click();
             EggplantTestBase.Info("Subject and body added.  Attaching image file.");
             MMSAttachPictureOrVideo.Click();
+            NavigateToTestFilesFolder();
             MMSAttachmentTestFileImage.Click();
             Thread.Sleep(3000);
             if (popup.YesButton.IsPresent())
@@ -211,7 +255,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
                 popup.ClickYes();
             }
             MMSRemoveAttachmentButton.WaitForPresent(15);
-            startBar.SendMessage.Click();
+            if(startBar.SendMessage.IsPresent()
+            {
+                startBar.SendMessage.Click();
+            }
+            if(startBar.SendOption.IsPresent()
+            {
+                startBar.SendOption.Click();
+            }
             //ExitApp();
             notificationsBar.OutgoingTextMessage.WaitForNotPresent(60);
             return this;
@@ -234,7 +285,12 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             driver.Type(contactFirst);
             Thread.Sleep(2000);
             driver.PressKey("Return");
-            MMSSelectContactMobileNumber.Click();
+            Thread.Sleep(1000);
+            if (MMSSelectContactMobileNumber.IsPresent())
+            {
+                EggplantTestBase.Info("Multiple send options detected.  Selecting mobile number...");
+                MMSSelectContactMobileNumber.Click();
+            }
             EggplantTestBase.Info("Contact added.  Inserting text.");
             MMSInsertSubjectField.Click();
             driver.Type("MMS Video");
@@ -242,6 +298,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             startBar.DoneOption.Click();
             EggplantTestBase.Info("Subject and body added.  Attaching video file.");
             MMSAttachPictureOrVideo.Click();
+            NavigateToTestFilesFolder();
             MMSAttachmentTestFileVideo.Click();
             Thread.Sleep(3000);
             if (popup.YesButton.IsPresent())
@@ -249,7 +306,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
                 popup.ClickYes();
             }
             MMSRemoveAttachmentButton.WaitForPresent(15);
-            startBar.SendMessage.Click();
+            if(startBar.SendMessage.IsPresent()
+            {
+                startBar.SendMessage.Click();
+            }
+            if(startBar.SendOption.IsPresent()
+            {
+                startBar.SendOption.Click();
+            }
             //ExitApp();
             notificationsBar.OutgoingTextMessage.WaitForNotPresent(60);
             return this;
