@@ -126,7 +126,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             driver.Type(contactFirst);
             Thread.Sleep(2000);
             driver.PressKey("Return");
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
             if (MMSSelectContactMobileNumber.IsPresent())
             {
                 EggplantTestBase.Info("Multiple send options detected.  Selecting mobile number...");
@@ -144,11 +144,11 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             Thread.Sleep(10000);
             driver.Type("penatibus et magnis dis parturient.");
             TextMaxCharacters.WaitForPresent(30000);
-            if(startBar.SendMessage.IsPresent()
+            if(startBar.SendMessage.IsPresent())
             {
                 startBar.SendMessage.Click();
             }
-            if(startBar.SendOption.IsPresent()
+            if(startBar.SendOption.IsPresent())
             {
                 startBar.SendOption.Click();
             }
@@ -159,7 +159,11 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
         public ITextMessagesApp OpenReceivedSMSWithMaxCharacters()
         {
             EggplantTestBase.Info("Opening received SMS with max characters.");
-            
+            //NewTextMessage.WaitForPresent();
+            OpenFirstTextMessage.Click();
+            var driver = new EggplantDriver();
+            driver.LogScreenshot();
+            startBar.OKButton.Click();
             return this;
         }
 
@@ -180,7 +184,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             driver.Type(contactFirst);
             Thread.Sleep(2000);
             driver.PressKey("Return");
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
             if(MMSSelectContactMobileNumber.IsPresent())
             {
                 EggplantTestBase.Info("Multiple send options detected.  Selecting mobile number...");
@@ -204,11 +208,11 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
                 popup.ClickYes();
             }
             MMSRemoveAttachmentButton.WaitForPresent(15);
-            if(startBar.SendMessage.IsPresent()
+            if(startBar.SendMessage.IsPresent())
             {
                 startBar.SendMessage.Click();
             }
-            if(startBar.SendOption.IsPresent()
+            if(startBar.SendOption.IsPresent())
             {
                 startBar.SendOption.Click();
             }
@@ -234,7 +238,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             driver.Type(contactFirst);
             Thread.Sleep(2000);
             driver.PressKey("Return");
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
             if (MMSSelectContactMobileNumber.IsPresent())
             {
                 EggplantTestBase.Info("Multiple send options detected.  Selecting mobile number...");
@@ -255,11 +259,11 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
                 popup.ClickYes();
             }
             MMSRemoveAttachmentButton.WaitForPresent(15);
-            if(startBar.SendMessage.IsPresent()
+            if(startBar.SendMessage.IsPresent())
             {
                 startBar.SendMessage.Click();
             }
-            if(startBar.SendOption.IsPresent()
+            if(startBar.SendOption.IsPresent())
             {
                 startBar.SendOption.Click();
             }
@@ -285,7 +289,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             driver.Type(contactFirst);
             Thread.Sleep(2000);
             driver.PressKey("Return");
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
             if (MMSSelectContactMobileNumber.IsPresent())
             {
                 EggplantTestBase.Info("Multiple send options detected.  Selecting mobile number...");
@@ -306,11 +310,11 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
                 popup.ClickYes();
             }
             MMSRemoveAttachmentButton.WaitForPresent(15);
-            if(startBar.SendMessage.IsPresent()
+            if(startBar.SendMessage.IsPresent())
             {
                 startBar.SendMessage.Click();
             }
-            if(startBar.SendOption.IsPresent()
+            if(startBar.SendOption.IsPresent())
             {
                 startBar.SendOption.Click();
             }
