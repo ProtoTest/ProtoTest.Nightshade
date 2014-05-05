@@ -12,7 +12,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [RepeatForConfigValue("TestCalendarAppointments#")] //"SetCalendarAppointments" section adds a given # of appointments
         public void TestCalendarAppointments()
         {
-            ConnectToHost1();
+            ConnectToHost2();
             Command.OnHomeScreen().ResetDeviceStateToDefault();
             Command.NavigateTheMenu().GoToCalendarApp().VerifyElements().SetUpCalendarApp().SetCalendarAppointments(5).ExitApp(); //Number of iterations set within "SetCalendarAppointments"
             Command.NavigateTheMenu().GoToCalendarApp().DeleteCalendarAppointments().ExitApp();
