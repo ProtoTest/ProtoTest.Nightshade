@@ -7,7 +7,7 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
     public class UnitTests : EggplantTestBase
         {
 
-            [Test]
+            //[Test]
             public void TestDriver()
             {
                 EggplantElement StartButton = new EggplantElement(By.Image("MC65/System/StartMenu/StartButton"));

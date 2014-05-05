@@ -32,7 +32,7 @@ namespace ProtoTest.Nightshade
         public static bool LogDriveCommands = IsTruthy(Config.GetConfigValue("LogDriveCommands", "False"));
         public static int VideoFrameRate = int.Parse(Config.GetConfigValue("VideoFrameRate", "20"));
         public static int ClickExecuteDelay = int.Parse(Config.GetConfigValue("ClickExecuteDelay", "10"));
-        public static string MouseClickPressTime = Config.GetConfigValue("MouseClickPressTime", "0.02");
+        public static string MouseClickDelay = Config.GetConfigValue("MouseClickPressTime", "0.02");
 
         public static int CalendarAppointmentsIterations = int.Parse(Config.GetConfigValue("CalendarAppointmentsIterations", "5"));
         public static string AudioTestFileNamePrefix = GetConfigValue("AudioTestFileNamePrefix", "Audio Test ");
