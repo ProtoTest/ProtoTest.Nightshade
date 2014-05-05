@@ -120,13 +120,15 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             driver.Type(randomNumber);
             EggplantTestBase.Info("Subject added.  Inserting body text...");
             Thread.Sleep(5000);
-            SubjectField.Click();
+            EmailBodyField.Click();
             driver.Type("Lorem ipsum dolor sit ");
             driver.Type(randomNumber);
             Thread.Sleep(5000);
             EggplantTestBase.Info("Sending email...");
             startBar.SendMessage.Click();
-            Thread.Sleep(10000);
+            FinishedSync.WaitForPresent(30);
+            //Thread.Sleep(10000);
+            EggplantTestBase.Info("Email has been sent.");
             return this;
         }
 
@@ -151,7 +153,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             driver.Type(randomNumber);
             EggplantTestBase.Info("Subject added.  Inserting body text...");
             Thread.Sleep(5000);
-            SubjectField.Click();
+            EmailBodyField.Click();
             driver.Type("Lorem ipsum dolor sit ");
             driver.Type(randomNumber);
             Thread.Sleep(5000);
@@ -164,7 +166,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             AttachedField.WaitForPresent();
             EggplantTestBase.Info("Sending email...");
             startBar.SendMessage.Click();
-            Thread.Sleep(30000);
+            FinishedSync.WaitForPresent(30);
+            //Thread.Sleep(30000);
+            EggplantTestBase.Info("Email has been sent.");
             return this;
         }
 
