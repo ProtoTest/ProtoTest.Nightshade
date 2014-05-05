@@ -102,6 +102,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
                 utilities.SearchForContact(contactFirstName);
                 contactFirstName.Click();
                 var contactsApp = new Windows_MC65_ContactsApp();
+                EggplantTestBase.Info("Calling contact.");
                 contactsApp.CallMobileButton.Click();
                 Thread.Sleep(1000);
             }
@@ -115,6 +116,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             CallLogHeader.WaitForPresent();
             CallLogPreviousCall1.Click();
             Thread.Sleep(1000);
+            EggplantTestBase.Info("Calling contact.");
             CallKey.Click();
             return this;
         }
@@ -125,6 +127,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             //string number = CallerNumber.GetText();
             //EggplantTestBase.Info("Incoming call from: (" + name + ") at number (" + number + ").  Answering...");
             AnswerCallButton.WaitForPresent(20);
+            EggplantTestBase.Info("Answering call...");
             AnswerCallButton.Click();
             return this;
         }
@@ -133,12 +136,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
         {
             EndCallKey.WaitForPresent();
             notificationsBar.CallInProgress.WaitForPresent();
+            EggplantTestBase.Info("Call established.");
             Thread.Sleep(5000);
             return this;
         }
 
         public IPhoneApp EndPhoneCall()
         {
+            EggplantTestBase.Info("Ending call...");
             var driver = new EggplantDriver();
             driver.PressKey("F4");
             return this;

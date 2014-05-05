@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Runtime.Remoting.Messaging;
+using System.Threading;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Menu;
 using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System;
 using ProtoTest.Nightshade.PageObjects.Steps.Apps;
@@ -83,19 +84,37 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             }
             ShowMenuDropdown.Click();
             DeletedItemsIcon.Click();
-            while (InboxIconTextMessage.IsPresent())
-            {
-                EggplantTestBase.Info("Previous text message detected in Deleted Items.  Permanently deleting...");
-                InboxIconTextMessage.Click();
-                DeleteMenuOption.Click();
-                popup.ClickYes();
-                Thread.Sleep(3000);
-            }
+            Thread.Sleep(3000);
+            //while (InboxIconTextMessage.IsPresent())
+            //{
+            //    EggplantTestBase.Info("Previous text message detected in Deleted Items.  Permanently deleting...");
+            //    InboxIconTextMessage.Click();
+            //    DeleteMenuOption.Click();
+            //    popup.ClickYes();
+            //    Thread.Sleep(3000);
+            //}
+            EggplantTestBase.Info("Permanently deleting all text messages...");
+            startBar.MenuButton.Click();
+            var driver = new EggplantDriver();
+            driver.PressKey("t");
+            driver.PressKey("e");
+            popup.ClickYes();
+            EggplantTestBase.Info("Returning to inbox...");
             ShowMenuDropdown.Click();
             InboxIcon.Click();
             InboxIconTextMessage.WaitForNotPresent();
             EggplantTestBase.Info("Text Messages app has been to default state.");
             return this;
+        }
+
+        public void CloseKeyboardOverlayIfPresent()
+        {
+            EggplantTestBase.Info("Scanning for presence of keyboard overlay.");
+            if (startBar.KeyboardButtonOpened.IsPresent())
+            {
+                EggplantTestBase.Info("Keyboard overlay detected.  Closing...");
+                startBar.KeyboardButtonOpened.Click();
+            }
         }
 
         public void NavigateToTestFilesFolder()
@@ -143,6 +162,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             driver.Type("Aenean massa. Cum sociis natoque ");
             Thread.Sleep(10000);
             driver.Type("penatibus et magnis dis parturient.");
+            Thread.Sleep(10000);
+            CloseKeyboardOverlayIfPresent();
             TextMaxCharacters.WaitForPresent(30000);
             if(startBar.SendMessage.IsPresent())
             {
@@ -153,6 +174,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
                 startBar.SendOption.Click();
             }
             //ExitApp();
+            Thread.Sleep(3000);
+            notificationsBar.OutgoingTextMessage.WaitForNotPresent(60);
             return this;
         }
 
@@ -217,7 +240,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
                 startBar.SendOption.Click();
             }
             //ExitApp();
+            Thread.Sleep(3000);
             notificationsBar.OutgoingTextMessage.WaitForNotPresent(60);
+            notificationsBar.OutgoingTextMessageSent.WaitForPresent(120);
             return this;
         }
 
@@ -268,7 +293,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
                 startBar.SendOption.Click();
             }
             //ExitApp();
+            Thread.Sleep(3000);
             notificationsBar.OutgoingTextMessage.WaitForNotPresent(60);
+            notificationsBar.OutgoingTextMessageSent.WaitForPresent(120);
             return this;
         }
 
@@ -319,7 +346,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
                 startBar.SendOption.Click();
             }
             //ExitApp();
+            Thread.Sleep(3000);
             notificationsBar.OutgoingTextMessage.WaitForNotPresent(60);
+            notificationsBar.OutgoingTextMessageSent.WaitForPresent(120);
             return this;
         }
 

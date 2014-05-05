@@ -70,6 +70,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             EggplantTestBase.Info("Exiting alarms app.");
             var startBar = new Windows_MC65_StartBar();
             startBar.OKButton.Click();
+            Thread.Sleep(2000);
             Command.OnHomeScreen().ConfirmHomeScreen();
             return this;
         }

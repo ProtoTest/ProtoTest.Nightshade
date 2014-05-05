@@ -186,7 +186,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             Thread.Sleep(3000);
             //ShowOverlayButton.WaitForPresent(30);   >>> Website is unstable, just doing simplistic checks.
             CloseKeyboardIfOpened();
-            ATTCopyright.WaitForPresent(60);
+            ATTCopyright.WaitForPresent(120);
             EggplantTestBase.Info("AT&T homepage (m.att.com) has loaded.");
             Thread.Sleep(30000);
             ShowOverlayButton.WaitForPresent(60);
@@ -205,9 +205,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             ContinueIfWarned();
             ShowOverlayButton.WaitForPresent(60);
             CloseKeyboardIfOpened();
-            YahooLogo.WaitForPresent(60);
-            YahooMailIcon.WaitForPresent(60);
-            YahooSearchButton.WaitForPresent(60);
+            YahooLogo.WaitForPresent(120);
+            YahooMailIcon.WaitForPresent(120);
+            YahooSearchButton.WaitForPresent(120);
             EggplantTestBase.Info("Yahoo mobile website (m.yahoo.com) has loaded.");
             Thread.Sleep(30000);
             ShowOverlayButton.WaitForPresent(60);
@@ -226,9 +226,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             ContinueIfWarned();
             ShowOverlayButton.WaitForPresent(60);
             CloseKeyboardIfOpened();
-            FacebookLogo.WaitForPresent(60);
-            FacebookCreateAccount.WaitForPresent(60);
-            FacebookLoginButton.WaitForPresent(60);
+            FacebookLogo.WaitForPresent(120);
+            FacebookCreateAccount.WaitForPresent(120);
+            FacebookLoginButton.WaitForPresent(120);
             EggplantTestBase.Info("Facebook mobile website (m.facebook.com) has loaded.");
             Thread.Sleep(30000);
             ShowOverlayButton.WaitForPresent(60);
@@ -247,9 +247,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             ContinueIfWarned();
             ShowOverlayButton.WaitForPresent(60);
             CloseKeyboardIfOpened();
-            YoutubeSignInButton.WaitForPresent(60);
-            YoutubeSearchButton.WaitForPresent(60);
-            YoutubeNextPageButton.WaitForPresent(60);
+            YoutubeSignInButton.WaitForPresent(120);
+            YoutubeSearchButton.WaitForPresent(120);
+            YoutubeNextPageButton.WaitForPresent(120);
             EggplantTestBase.Info("Youtube mobile website (m.youtube.com) has loaded.");
             Thread.Sleep(30000);
             ShowOverlayButton.WaitForPresent(60);
@@ -268,9 +268,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             ContinueIfWarned();
             ShowOverlayButton.WaitForPresent(60);
             CloseKeyboardIfOpened();
-            NYTimesUSEditionOption.WaitForPresent(60);
-            NYTimesInternationalEditionOption.WaitForPresent(60);
-            NYTimesTechnologySection.WaitForPresent(60);
+            NYTimesUSEditionOption.WaitForPresent(120);
+            NYTimesInternationalEditionOption.WaitForPresent(120);
+            NYTimesTechnologySection.WaitForPresent(120);
             EggplantTestBase.Info("NY Times mobile website (m.nytimes.com) has loaded.");
             Thread.Sleep(30000);
             ShowOverlayButton.WaitForPresent(60);

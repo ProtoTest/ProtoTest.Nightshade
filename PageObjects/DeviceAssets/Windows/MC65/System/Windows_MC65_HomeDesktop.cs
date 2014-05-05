@@ -297,7 +297,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System
         public IHomeScreen VerifyTextMessageArrived()
         {
             EggplantTestBase.Info("Verifying Text Message has arrived.");
-            notificationsBar.NewMessage.WaitForPresent(30);
+            notificationsBar.NewMessage.WaitForPresent(120);
             startBar.NotificationOption.WaitForPresent(30);
             startBar.NotificationOption.Click();
             popup.NewTextMessage.WaitForPresent();

@@ -10,6 +10,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System
         public EggplantElement ExitButton = new EggplantElement(By.Image("MC65/System/StartBar/ExitButton"));
         public EggplantElement GoToContactButton = new EggplantElement(By.Image("MC65/System/StartBar/GoToContactButton"));
         public EggplantElement KeyboardButton = new EggplantElement(By.Image("MC65/System/StartBar/KeyboardButton"));
+        public EggplantElement KeyboardButtonOpened = new EggplantElement(By.Image("MC65/System/StartBar/KeyboardButton/KeyboardButtonOpened"));
         public EggplantElement OKButton = new EggplantElement(By.Image("MC65/System/StartBar/OKButton"));
         public EggplantElement MenuButton = new EggplantElement(By.Image("MC65/System/StartBar/MenuButton"));
         public EggplantElement MenuOption = new EggplantElement(By.Image("MC65/System/StartBar/MenuOption"));
@@ -24,7 +25,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System
         public EggplantElement NotificationOption = new EggplantElement(By.Image("MC65/System/StartBar/NotificationOption"));
 
         public EggplantElement KeyboardKeyEnter = new EggplantElement(By.Image("MC65/System/StartBar/Keyboard/KeyboardKeyEnter"));
-
+        
         //MenuOptions
         public EggplantElement SendAndReceiveEmailMenuOption = new EggplantElement(By.Image("MC65/System/MenuOptions/SendAndReceiveEmailMenuOption"));
         public EggplantElement DeleteMenuOption = new EggplantElement(By.Image("MC65/System/MenuOptions/DeleteMenuOption"));

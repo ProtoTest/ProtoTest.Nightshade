@@ -72,7 +72,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 
             ConnectToHost2();
             Command.OnHomeScreen().VerifyTextMessageArrived();
-            Command.NavigateTheMenu().GoToTextMessagesApp().VerifyMMSReceived().ExitApp();
+            Command.NavigateTheMenu().GoToTextMessagesApp().VerifyMMSReceived().ResetTextMessagesAppToDefault().ExitApp();
         }
 
         //[Test]
@@ -106,7 +106,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 
             ConnectToHost2();
             Command.OnHomeScreen().VerifyTextMessageArrived();
-            Command.NavigateTheMenu().GoToTextMessagesApp().VerifyMMSReceived().ExitApp();
+            Command.NavigateTheMenu().GoToTextMessagesApp().VerifyMMSReceived().ResetTextMessagesAppToDefault().ExitApp();
         }
 
         //[Test]
@@ -140,7 +140,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
 
             ConnectToHost2();
             Command.OnHomeScreen().VerifyTextMessageArrived();
-            Command.NavigateTheMenu().GoToTextMessagesApp().VerifyMMSReceived().ExitApp();
+            Command.NavigateTheMenu().GoToTextMessagesApp().VerifyMMSReceived().ResetTextMessagesAppToDefault().ExitApp();
         }
 
         [Test]

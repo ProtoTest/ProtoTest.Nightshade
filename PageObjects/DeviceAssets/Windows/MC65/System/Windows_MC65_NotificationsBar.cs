@@ -16,6 +16,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System
         public EggplantElement BluetoothConnected = new EggplantElement(By.Image("MC65/System/NotificationsBar/Bluetooth/BluetoothConnected"));
         public EggplantElement NewMessage = new EggplantElement(By.Image("MC65/System/NotificationsBar/Messaging/NewMessage"));
         public EggplantElement OutgoingTextMessage = new EggplantElement(By.Image("MC65/System/NotificationsBar/Messaging/OutgoingTextMessage"));
+        public EggplantElement OutgoingTextMessageSent = new EggplantElement(By.Image("MC65/System/NotificationsBar/Messaging/OutgoingTextMessageSent"));
 
         public EggplantElement OptionsArrowRight = new EggplantElement(By.Image("MC65/System/NotificationsBar/Options/OptionsArrowRight"));
         public EggplantElement OptionsArrowLeft = new EggplantElement(By.Image("MC65/System/NotificationsBar/Options/OptionsArrowLeft"));
