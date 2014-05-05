@@ -147,7 +147,7 @@ namespace ProtoTest.Nightshade
                 }
                 catch (Exception e)
                 {
-                    TestLog.Warnings.WriteLine("Could not start Eggplant, trying again.");
+                    TestLog.Warnings.WriteLine("Could not start Eggplant, trying again. Mssage :" +e.Message);
                     StopEggplant();
                 }
                 
