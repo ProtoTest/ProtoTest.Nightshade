@@ -72,7 +72,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             //ContactDataFirstName.WaitForPresent(10);
             //ContactDataCompany.WaitForPresent(10);
             AddMobileNumberOption.Click();
-            EggplantTestBase.Driver.Type(phone1);
+            var driver = new EggplantDriver();
+            driver.Type(phone1);
             Thread.Sleep(3000);
             ContactFieldDone.Click();
             //AddEmailOption.Click();
@@ -147,7 +148,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
         {
             EggplantTestBase.Info("Deleting all added contacts from Contacts app.");
             //LocalContactIcon.WaitForPresent();
-            EggplantTestBase.Driver.LogScreenshot();
+            var driver = new EggplantDriver();
+            driver.LogScreenshot();
             int i = 0;
             while (LocalContactIcon.IsPresent())
             {

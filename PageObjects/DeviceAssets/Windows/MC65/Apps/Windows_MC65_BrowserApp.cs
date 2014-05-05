@@ -183,7 +183,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             ActivateOverlayIfHidden();
             AddressBar.Type("m.att.com");
             Thread.Sleep(2000);
-            EggplantTestBase.Driver.PressKey("Return");
+            var driver = new EggplantDriver();
+            driver.PressKey("Return");
             Thread.Sleep(3000);
             //ShowOverlayButton.WaitForPresent(30);   >>> Website is unstable, just doing simplistic checks.
             CloseKeyboardIfOpened();
@@ -200,7 +201,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             ActivateOverlayIfHidden();
             AddressBar.Type("m.yahoo.com");
             Thread.Sleep(2000);
-            EggplantTestBase.Driver.PressKey("Return");
+            var driver = new EggplantDriver();
+            driver.PressKey("Return");
             Thread.Sleep(15000);
             ContinueIfWarned();
             ShowOverlayButton.WaitForPresent(60);
@@ -220,7 +222,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             ActivateOverlayIfHidden();
             AddressBar.Type("m.facebook.com");
             Thread.Sleep(2000);
-            EggplantTestBase.Driver.PressKey("Return");
+            var driver = new EggplantDriver();
+            driver.PressKey("Return");
             Thread.Sleep(15000);
             ContinueIfWarned();
             ShowOverlayButton.WaitForPresent(60);
@@ -240,7 +243,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             ActivateOverlayIfHidden();
             AddressBar.Type("m.youtube.com");
             Thread.Sleep(2000);
-            EggplantTestBase.Driver.PressKey("Return");
+            var driver = new EggplantDriver();
+            driver.PressKey("Return");
             Thread.Sleep(15000);
             ContinueIfWarned();
             ShowOverlayButton.WaitForPresent(60);
@@ -260,7 +264,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             ActivateOverlayIfHidden();
             AddressBar.Type("m.nytimes.com");
             Thread.Sleep(2000);
-            EggplantTestBase.Driver.PressKey("Return");
+            var driver = new EggplantDriver();
+            driver.PressKey("Return");
             Thread.Sleep(15000);
             ContinueIfWarned();
             ShowOverlayButton.WaitForPresent(60);
@@ -280,7 +285,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             ActivateOverlayIfHidden();
             AddressBar.Type(Config.DownloadAppTestPath);
             Thread.Sleep(3000);
-            EggplantTestBase.Driver.PressKey("Return");
+            var driver = new EggplantDriver();
+            driver.PressKey("Return");
             Thread.Sleep(3000);
             DownloadTheFilePrompt.WaitForPresent(10);
             startBar.YesOption.Click();

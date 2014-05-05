@@ -87,8 +87,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             //}
             EggplantTestBase.Info("Clearing 'Deleted Items' folder...");
             startBar.MenuButton.Click();
-            EggplantTestBase.Driver.PressKey("t");
-            EggplantTestBase.Driver.PressKey("e");
+            var driver = new EggplantDriver();
+            driver.PressKey("t");
+            driver.PressKey("e");
             popup.ClickYes();
             ShowMenuDropdown.Click();
             InboxIcon.Click();
@@ -100,6 +101,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
 
         public IEmailApp SendEmailWithNoAttachment(string contactFirst)
         {
+            var driver = new EggplantDriver();
             EggplantTestBase.Info("Preparing email with no attachment.");
             startBar.MenuButton.Click();
             NewMenuOption.Click();
@@ -108,19 +110,19 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             AddRecipientMenuOption.Click();
             //var contacts = new Windows_MC65_ContactsApp();
             //contacts.ClickOnContact(contactFirst);
-           EggplantTestBase.Driver.Type(contactFirst);
+            driver.Type(contactFirst);
             Thread.Sleep(2000);
-           EggplantTestBase.Driver.PressKey("Return");
+            driver.PressKey("Return");
             EggplantTestBase.Info("Contact added.  Inserting subject...");
             SubjectField.Click();
-           EggplantTestBase.Driver.Type("Test no atch ");
+            driver.Type("Test no atch ");
             string randomNumber = utilities.GetRandomNumberSixDigits();
-           EggplantTestBase.Driver.Type(randomNumber);
+            driver.Type(randomNumber);
             EggplantTestBase.Info("Subject added.  Inserting body text...");
             Thread.Sleep(5000);
             SubjectField.Click();
-           EggplantTestBase.Driver.Type("Lorem ipsum dolor sit ");
-           EggplantTestBase.Driver.Type(randomNumber);
+            driver.Type("Lorem ipsum dolor sit ");
+            driver.Type(randomNumber);
             Thread.Sleep(5000);
             EggplantTestBase.Info("Sending email...");
             startBar.SendMessage.Click();
@@ -130,6 +132,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
 
         public IEmailApp SendEmailWithAnAttachment(string contactFirst)
         {
+            var driver = new EggplantDriver();
             EggplantTestBase.Info("Preparing email with attachment.");
             startBar.MenuButton.Click();
             NewMenuOption.Click();
@@ -138,19 +141,19 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             AddRecipientMenuOption.Click();
             //var contacts = new Windows_MC65_ContactsApp();
             //contacts.ClickOnContact(contactFirst);
-           EggplantTestBase.Driver.Type(contactFirst);
+            driver.Type(contactFirst);
             Thread.Sleep(2000);
-           EggplantTestBase.Driver.PressKey("Return");
+            driver.PressKey("Return");
             EggplantTestBase.Info("Contact added.  Inserting subject...");
             SubjectField.Click();
-           EggplantTestBase.Driver.Type("Test no atch ");
+            driver.Type("Test no atch ");
             string randomNumber = utilities.GetRandomNumberSixDigits();
-           EggplantTestBase.Driver.Type(randomNumber);
+            driver.Type(randomNumber);
             EggplantTestBase.Info("Subject added.  Inserting body text...");
             Thread.Sleep(5000);
             SubjectField.Click();
-           EggplantTestBase.Driver.Type("Lorem ipsum dolor sit ");
-           EggplantTestBase.Driver.Type(randomNumber);
+            driver.Type("Lorem ipsum dolor sit ");
+            driver.Type(randomNumber);
             Thread.Sleep(5000);
             EggplantTestBase.Info("Body text added.  Inserting attachment...");
             startBar.MenuButton.Click();
@@ -169,7 +172,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
         {
             EggplantTestBase.Info("Syncing email account.");
             startBar.MenuButton.Click();
-            EggplantTestBase.Driver.PressKey("UpArrow");
+            var driver = new EggplantDriver();
+            driver.PressKey("UpArrow");
             startBar.SendAndReceiveEmailMenuOption.Click();
             FinishedSync.WaitForPresent(30);
             return this;
@@ -180,7 +184,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             EggplantTestBase.Info("Verifying email has arrived.");
             SyncEmailAccount();
             NewEmailInInbox.WaitForPresent();
-            EggplantTestBase.Driver.LogScreenshot();
+            var driver = new EggplantDriver();
+            driver.LogScreenshot();
             //NewEmailInInbox.Click();
             return this;
         }
@@ -189,7 +194,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
         {
             EggplantTestBase.Info("Opening received email.");
             OpenFirstInboxEmail.Click();
-            EggplantTestBase.Driver.LogScreenshot();
+            var driver = new EggplantDriver();
+            driver.LogScreenshot();
             startBar.OKButton.Click();
             return this;
         }

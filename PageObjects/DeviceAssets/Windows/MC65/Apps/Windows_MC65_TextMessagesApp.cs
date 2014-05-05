@@ -95,8 +95,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             //}
             EggplantTestBase.Info("Permanently deleting all text messages...");
             startBar.MenuButton.Click();
-            EggplantTestBase.Driver.PressKey("t");
-            EggplantTestBase.Driver.PressKey("e");
+            var driver = new EggplantDriver();
+            driver.PressKey("t");
+            driver.PressKey("e");
             popup.ClickYes();
             EggplantTestBase.Info("Returning to inbox...");
             ShowMenuDropdown.Click();
@@ -130,6 +131,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
 
         public ITextMessagesApp SendSMSWithMaxCharacters(string contactFirst)
         {
+            var driver = new EggplantDriver();
             EggplantTestBase.Info("Preparing SMS with Max characters.");
             startBar.MenuButton.Click();
             NewMessageMenuOption.Click();
@@ -140,9 +142,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             AddRecipientMenuOption.Click();
             //var contacts = new Windows_MC65_ContactsApp();
             //contacts.ClickOnContact(contactFirst);
-            EggplantTestBase.Driver.Type(contactFirst);
+            driver.Type(contactFirst);
             Thread.Sleep(2000);
-            EggplantTestBase.Driver.PressKey("Return");
+            driver.PressKey("Return");
             Thread.Sleep(3000);
             if (MMSSelectContactMobileNumber.IsPresent())
             {
@@ -151,15 +153,15 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             }
             EggplantTestBase.Info("Contact added.  Inserting text.");
             SMSTextBodyField.Click();
-            EggplantTestBase.Driver.Type("Lorem ipsum dolor sit amet");
+            driver.Type("Lorem ipsum dolor sit amet");
             Thread.Sleep(10000);
-            EggplantTestBase.Driver.Type(", consectetuer adipiscing elit. ");
+            driver.Type(", consectetuer adipiscing elit. ");
             Thread.Sleep(10000);
-            EggplantTestBase.Driver.Type("Aenean commodo ligula eget dolor. ");
+            driver.Type("Aenean commodo ligula eget dolor. ");
             Thread.Sleep(10000);
-            EggplantTestBase.Driver.Type("Aenean massa. Cum sociis natoque ");
+            driver.Type("Aenean massa. Cum sociis natoque ");
             Thread.Sleep(10000);
-            EggplantTestBase.Driver.Type("penatibus et magnis dis parturient.");
+            driver.Type("penatibus et magnis dis parturient.");
             Thread.Sleep(10000);
             CloseKeyboardOverlayIfPresent();
             TextMaxCharacters.WaitForPresent(30000);
@@ -182,13 +184,15 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             EggplantTestBase.Info("Opening received SMS with max characters.");
             //NewTextMessage.WaitForPresent();
             OpenFirstTextMessage.Click();
-            EggplantTestBase.Driver.LogScreenshot();
+            var driver = new EggplantDriver();
+            driver.LogScreenshot();
             startBar.OKButton.Click();
             return this;
         }
 
         public ITextMessagesApp SendMMSWithAudioAttachment(string contactFirst)
         {
+            var driver = new EggplantDriver();
             EggplantTestBase.Info("Preparing MMS with audio attachment.");
             startBar.MenuButton.Click();
             NewMessageMenuOption.Click();
@@ -200,9 +204,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             Thread.Sleep(1000);
             //var contacts = new Windows_MC65_ContactsApp();
             //contacts.ClickOnContact(contactFirst);
-            EggplantTestBase.Driver.Type(contactFirst);
+            driver.Type(contactFirst);
             Thread.Sleep(2000);
-            EggplantTestBase.Driver.PressKey("Return");
+            driver.PressKey("Return");
             Thread.Sleep(3000);
             if(MMSSelectContactMobileNumber.IsPresent())
             {
@@ -211,11 +215,11 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             }
             EggplantTestBase.Info("Contact added.  Inserting text.");
             MMSInsertSubjectField.Click();
-            EggplantTestBase.Driver.Type("MMS Audio");
+            driver.Type("MMS Audio");
             Thread.Sleep(10000);
             startBar.DoneOption.Click();
             MMSTextBodyField.Click();
-            EggplantTestBase.Driver.Type("MMS Audio");
+            driver.Type("MMS Audio");
             startBar.DoneOption.Click();
             EggplantTestBase.Info("Subject and body added.  Attaching audio file.");
             MMSAttachAudioFile.Click();
@@ -244,6 +248,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
 
         public ITextMessagesApp SendMMSWithImageAttachment(string contactFirst)
         {
+            var driver = new EggplantDriver();
             EggplantTestBase.Info("Preparing MMS with image attachment.");
             startBar.MenuButton.Click();
             NewMessageMenuOption.Click();
@@ -255,9 +260,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             Thread.Sleep(1000);
             //var contacts = new Windows_MC65_ContactsApp();
             //contacts.ClickOnContact(contactFirst);
-            EggplantTestBase.Driver.Type(contactFirst);
+            driver.Type(contactFirst);
             Thread.Sleep(2000);
-            EggplantTestBase.Driver.PressKey("Return");
+            driver.PressKey("Return");
             Thread.Sleep(3000);
             if (MMSSelectContactMobileNumber.IsPresent())
             {
@@ -266,7 +271,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             }
             EggplantTestBase.Info("Contact added.  Inserting text.");
             MMSInsertSubjectField.Click();
-            EggplantTestBase.Driver.Type("MMS Image");
+            driver.Type("MMS Image");
             Thread.Sleep(10000);
             startBar.DoneOption.Click();
             EggplantTestBase.Info("Subject and body added.  Attaching image file.");
@@ -296,6 +301,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
 
         public ITextMessagesApp SendMMSWithVideoAttachment(string contactFirst)
         {
+            var driver = new EggplantDriver();
             EggplantTestBase.Info("Preparing MMS with video attachment.");
             startBar.MenuButton.Click();
             NewMessageMenuOption.Click();
@@ -307,9 +313,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             Thread.Sleep(1000);
             //var contacts = new Windows_MC65_ContactsApp();
             //contacts.ClickOnContact(contactFirst);
-            EggplantTestBase.Driver.Type(contactFirst);
+            driver.Type(contactFirst);
             Thread.Sleep(2000);
-            EggplantTestBase.Driver.PressKey("Return");
+            driver.PressKey("Return");
             Thread.Sleep(3000);
             if (MMSSelectContactMobileNumber.IsPresent())
             {
@@ -318,7 +324,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             }
             EggplantTestBase.Info("Contact added.  Inserting text.");
             MMSInsertSubjectField.Click();
-            EggplantTestBase.Driver.Type("MMS Video");
+            driver.Type("MMS Video");
             Thread.Sleep(10000);
             startBar.DoneOption.Click();
             EggplantTestBase.Info("Subject and body added.  Attaching video file.");
@@ -351,7 +357,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             EggplantTestBase.Info("Opening received MMS with attachment.");
             NewTextMessage.WaitForPresent();
             OpenFirstTextMessage.Click();
-            EggplantTestBase.Driver.LogScreenshot();
+            var driver = new EggplantDriver();
+            driver.LogScreenshot();
             startBar.OKButton.Click();
             return this;
         }

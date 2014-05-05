@@ -18,7 +18,7 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
             public void StartAndStopEggplantDrive2A()
             {
                 Info("Test #2A: Eggplant should have started up.  Now running simple test...");
-               EggplantTestBase.Driver.Connect(Config.Host1Ip);
+                Driver.Connect(Config.Host1Ip);
                 var desktop = new Windows_MC65_HomeDesktop();
                 desktop.ConfirmHomeScreen();
                 Thread.Sleep(3000);
@@ -30,7 +30,7 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
             public void StartAndStopEggplantDrive2B()
             {
                 Info("Test #2B: Eggplant should have started up.  Now running simple test...");
-               EggplantTestBase.Driver.Connect(Config.Host1Ip);
+                Driver.Connect(Config.Host1Ip);
                 var desktop = new Windows_MC65_HomeDesktop();
                 desktop.ConfirmHomeScreen();
                 Thread.Sleep(3000);
