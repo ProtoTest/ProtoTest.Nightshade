@@ -126,7 +126,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             Thread.Sleep(5000);
             EggplantTestBase.Info("Sending email...");
             startBar.SendMessage.Click();
-            FinishedSync.WaitForPresent(30);
+            FinishedSync.WaitForPresent(120);
             //Thread.Sleep(10000);
             EggplantTestBase.Info("Email has been sent.");
             return this;
@@ -166,7 +166,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             AttachedField.WaitForPresent();
             EggplantTestBase.Info("Sending email...");
             startBar.SendMessage.Click();
-            FinishedSync.WaitForPresent(30);
+            FinishedSync.WaitForPresent(120);
             //Thread.Sleep(30000);
             EggplantTestBase.Info("Email has been sent.");
             return this;
