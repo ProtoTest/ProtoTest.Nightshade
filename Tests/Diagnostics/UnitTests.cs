@@ -7,7 +7,7 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
     public class UnitTests : EggplantTestBase
         {
 
-            [Test]
+            //[Test]
             public void TestDriver()
             {
                 EggplantElement StartButton = new EggplantElement(By.Image("MC65/System/StartMenu/StartButton"));
@@ -22,7 +22,7 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
 
             }
 
-            [Test]
+            //[Test]
             public void TestScreenRectangle()
             {
                 ConnectToHost1();
@@ -30,7 +30,7 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
                 DiagnosticLog.WriteLine("The rect is : " + rect.width + " x " + rect.height);
             }
 
-            [Test]
+            //[Test]
             public void TestGetOptions()
             {
                 ConnectToHost1();
@@ -38,7 +38,7 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
                 DiagnosticLog.WriteLine(Driver.GetOption("ImageSearchTime"));
             }
 
-            [Test]
+            //[Test]
             public void TestConnectionInfo()
             {
                 ConnectToHost1();
@@ -46,7 +46,7 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
                 DiagnosticLog.WriteLine(info);
             }
 
-            [Test]
+            //[Test]
             public void TestElementSearchRectangle()
             {
                 ConnectToHost1();
@@ -57,21 +57,21 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
                 element.Click();
             }
 
-            [Test]
+            //[Test]
             public void TestElementByPath()
             {
                 EggplantElement element = new EggplantElement(By.Image("MC65/System/StartMenu/ExitButton"));
                 element.Click();
             }
 
-            [Test]
+            //[Test]
             public void TestElementByText()
             {
                 EggplantElement element = new EggplantElement(By.Image("(Text:\"Text Of Element\")"));
                 element.Click();
             }
 
-            [Test]
+            //[Test]
             public void TestTwoHosts()
             {
                 Driver.Disconnect();
@@ -79,7 +79,7 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
 
             }
 
-            [Test]
+            //[Test]
             public void TestPageObject()
             {
                 Driver.Connect(Config.Host1Ip);
@@ -87,7 +87,7 @@ namespace ProtoTest.Nightshade.Tests.Diagnostics
                 page.DoSomething();
             }
 
-            [Test]
+            //[Test]
             public void TestByLocators()
             {
                 Driver.Connect(Config.Host1Ip);
