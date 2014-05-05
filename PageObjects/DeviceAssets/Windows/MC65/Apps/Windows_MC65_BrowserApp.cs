@@ -87,12 +87,14 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
 
         private void CloseKeyboardIfOpened()
         {
+            EggplantTestBase.Info("Scanning for presence of open keyboard.");
             if (startBar.KeyboardButton.IsPresent())
             {
                 EggplantTestBase.Info("Closing keyboard.");
                 startBar.KeyboardButton.Click();
                 Thread.Sleep(3000);
             }
+            EggplantTestBase.Info("Keyoard should be closed.");
         }
 
         private void ContinueIfWarned()

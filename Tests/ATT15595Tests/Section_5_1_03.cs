@@ -19,7 +19,7 @@ namespace ProtoTest.Nightshade.Tests.ATT15595Tests
         [Test]
         [Description("Send 3G Email with No Attachment - Test 5.1.3.1B")]
         [Category("Paired Device")]
-        //[RepeatForConfigValue("TestSendThreeGEmailNoAttachment#")]
+        [RepeatForConfigValue("TestSendThreeGEmailNoAttachment#")]
         public void TestSendThreeGEmailNoAttachment()
         {
             ConnectToHost2();

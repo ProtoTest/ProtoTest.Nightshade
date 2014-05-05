@@ -253,6 +253,7 @@ namespace ProtoTest.TestRunner.Nightshade
 
         public void Click(string element)
         {
+            Thread.Sleep(Config.ClickExecuteDelay);
             ExecuteCommand("Click", element);
         }
 

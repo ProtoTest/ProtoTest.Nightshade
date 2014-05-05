@@ -76,15 +76,21 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             }
             ShowMenuDropdown.Click();
             DeletedItemsIcon.Click();
-            while (NewEmailInInbox.IsPresent() || OpenedEmail.IsPresent())
-            {
-                EggplantTestBase.Info("Clearing 'Deleted Items' folder...");
-                startBar.MenuButton.Click();
-                startBar.ToolsMenuOption.Click();
-                startBar.EmptyDeletedItemsMenuOption.Click();
-                popup.ClickYes();
-                Thread.Sleep(3000);
-            }
+            //while (NewEmailInInbox.IsPresent() || OpenedEmail.IsPresent())
+            //{
+            //    EggplantTestBase.Info("Clearing 'Deleted Items' folder...");
+            //    startBar.MenuButton.Click();
+            //    startBar.ToolsMenuOption.Click();
+            //    startBar.EmptyDeletedItemsMenuOption.Click();
+            //    popup.ClickYes();
+            //    Thread.Sleep(3000);
+            //}
+            EggplantTestBase.Info("Clearing 'Deleted Items' folder...");
+            startBar.MenuButton.Click();
+            var driver = new EggplantDriver();
+            driver.PressKey("t");
+            driver.PressKey("e");
+            popup.ClickYes();
             ShowMenuDropdown.Click();
             InboxIcon.Click();
             NewEmailInInbox.WaitForNotPresent();
@@ -164,6 +170,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
 
         public IEmailApp SyncEmailAccount()
         {
+            EggplantTestBase.Info("Syncing email account.");
             startBar.MenuButton.Click();
             var driver = new EggplantDriver();
             driver.PressKey("UpArrow");
@@ -174,6 +181,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
 
         public IEmailApp VerifyEmailArrived()
         {
+            EggplantTestBase.Info("Verifying email has arrived.");
             SyncEmailAccount();
             NewEmailInInbox.WaitForPresent();
             var driver = new EggplantDriver();
@@ -184,6 +192,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
 
         public IEmailApp OpenReceivedEmail()
         {
+            EggplantTestBase.Info("Opening received email.");
             OpenFirstInboxEmail.Click();
             var driver = new EggplantDriver();
             driver.LogScreenshot();

@@ -142,7 +142,7 @@ namespace ProtoTest.Nightshade
                     EggPlantDriveProcess = Driver.StartEggPlantDrive(Config.BatchFilePath, Config.WaitForDriveMs);
                     Driver.WaitForDriveToLoad(Config.WaitForDriveMs);
                     SetDefaultSearchTime();
-                    Driver.SetOption("MouseClickDelay", Config.MouseClickDelay);
+                    Driver.SetOption("MouseClickPressTime", Config.MouseClickPressTime);
                     return;
                 }
                 catch (Exception e)
