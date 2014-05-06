@@ -15,8 +15,8 @@ using ProtoTest.Nightshade;
 namespace ProtoTest.TestRunner.Nightshade
 {
     /// <summary>
-    ///     Eggplant drive is an RPC service that we can use to execute eggplant commands
-    ///     This class wraps all calls to the RPC service with easy to use methods.
+    ///     EggplantDrigver class wraps all calls to the XMLRPC service with easy to use methods.
+    ///     It is a singleton, so can be gotten using EggplantDriver.GetDriver();
     ///     The following methods should be called in the following order:
     ///     StartEggplantDrive, StartSuiteSession, Connect, Execute (or ExecuteScript), EndSession, StopEggplantDrive
     /// </summary>
@@ -28,15 +28,21 @@ namespace ProtoTest.TestRunner.Nightshade
         public string host;
         public string suitePath;
         public bool suiteStarted = false;
+        private static EggplantDriver driver;
+        private int timeoutMs;
 
-        public EggplantDriver(int timeoutMs = -1)
+        private EggplantDriver()
         {
-            if (timeoutMs == -1)
-            {
-                timeoutMs = Config.DriveTimeoutSec * 1000;
-            }
+            timeoutMs = Config.DriveTimeoutSec * 1000;
             driveService = (IEggplantDriveService)XmlRpcProxyGen.Create(typeof(IEggplantDriveService));
             driveService.Timeout = timeoutMs;
+        }
+
+        public static EggplantDriver GetDriver()
+        {
+            if(driver==null)
+                driver = new EggplantDriver();
+            return driver;
         }
 
         /// <summary>
@@ -74,7 +80,7 @@ namespace ProtoTest.TestRunner.Nightshade
                 }
                 catch (Exception e)
                 {
-                   // Thread.Sleep(1000);
+                   Thread.Sleep(1000);
                 }
             }
             TestLog.Warnings.WriteLine("Eggplant Drive did not appear to launch after " + waitForDriveMs +
@@ -88,7 +94,7 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             try
             {
-                //DiagnosticLog.WriteLine("Trying to stop Eggplant Drive");
+                DiagnosticLog.WriteLine("Trying to stop Eggplant Drive");
                 Common.KillProcess("Eggplant");
                 Common.KillProcess("adb");
                 driveRunning = false;
@@ -181,6 +187,7 @@ namespace ProtoTest.TestRunner.Nightshade
             {
                 EggplantTestBase.Log(string.Format("Executing command: {0}", command));
             }
+            Thread.Sleep(Config.DelayTimeMs);
             return driveService.Execute(command);
         }
 
@@ -249,6 +256,11 @@ namespace ProtoTest.TestRunner.Nightshade
         public object ExecuteCommand(string command, string firstArg, string secondArg)
         {
             return Execute(string.Format(command + " {0} {1}", firstArg, secondArg));
+        }
+
+        public EggplantElement FindElement(By locator)
+        {
+            return new EggplantElement(locator);
         }
 
         public void Click(string element)
@@ -340,7 +352,6 @@ namespace ProtoTest.TestRunner.Nightshade
 
         public void PressKey(string text)
         {
-            //text = "\"" + text + "\"";
             ExecuteCommand("TypeText", text);
             EggplantTestBase.Info("Driver - Pressing keyboard key: (" + text + ").");
             Thread.Sleep(2000);
@@ -429,11 +440,6 @@ namespace ProtoTest.TestRunner.Nightshade
 
         public string ReadText(string element)
         {
-            //EggplantTestBase.Log(string.Format("Command used is: put ReadText (\"{0}\")", element));
-            //return ExecuteAndGetOutput(string.Format("put ReadText (\"{0}\")", element));
-            //EggplantTestBase.Log(string.Format("Command used is: put ReadText (40,100),(175,175)"));
-            //return ExecuteAndGetOutput(string.Format("put ReadText (40,100),(175,175)"));
-           // EggplantTestBase.Log(string.Format("Command used is: put ReadText {0}", element));
             var result = ExecuteAndGetOutput(string.Format("put ReadText {0}", element));
              WaitFor(element);
             var toks = result.Split("\r\n".ToCharArray());

@@ -8,34 +8,27 @@ using ProtoTest.TestRunner.Nightshade;
 
 namespace ProtoTest.Nightshade
 {
+    /// <summary>
+    /// This class represents a UI element in an application. 
+    /// Can be instantiated using a By object representing its locator
+    /// Easy way to manipulate objects in the UI.  
+    /// </summary>
     public class EggplantElement
     {
-        //private bool running;
-        
-        //private void timer_Elapsed(object sender, ElapsedEventArgs e)
-        //{
-        //    running = false;
-        //}
-
         public string locator;
-        private By _by;
-
-        //private bool elementIsPresent(string locator)
-        //{
-        //    Driver.(locator);
-        //}
 
         public EggplantElement(By by)
         {
             locator = by.ToString();
-            _by = by;
-            //by by by oh right!
         }
 
         public static EggplantDriver Driver
         {
-            get {return EggplantTestBase.Driver; }
-            set { EggplantTestBase.Driver = value; }
+            get
+            {
+
+                return EggplantTestBase.Driver;
+            }
         }
 
         public bool IsPresent()
@@ -48,7 +41,6 @@ namespace ProtoTest.Nightshade
             WaitForPresent();
             EggplantTestBase.Log(string.Format("Reading text on element {0}.", locator));
             var text = Driver.ReadText(locator);
-            //EggplantTestBase.Log("Text was : " + text);
             return text;
         }
 

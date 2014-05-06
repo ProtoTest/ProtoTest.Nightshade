@@ -1,9 +1,0 @@
-//Motorola Shelter Stability Test 69 -- Data Stability Uplink - BT (Bluetooth)
-//Component of Script Series 69
-//Completed 6-26-2013
-
-//Subroutine B2 -- Shelter Device B - Accept Bluetooth connection to Shelter Device A
-run ClassUtilities.ConfirmTextOnScreen("Bluetooth pairing")
-run ClassUtilities.ScanBluetoothPasskey2
-run ClassUtilities.AuthenticateBluetoothPasskeys
-Click "Device/Apps/Settings/Bluetooth/PairButton"

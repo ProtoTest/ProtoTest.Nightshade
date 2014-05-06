@@ -11,6 +11,10 @@ using MbUnit.Framework;
 
 namespace ProtoTest.Nightshade
 {
+    /// <summary>
+    /// This attribute marks a method to be called after a test has completed.  
+    /// This should be used for test cleanup after all code is finished.  
+    /// </summary>
     [AttributeUsage(PatternAttributeTargets.Test, AllowMultiple = true, Inherited = true)]
     public class TestTeardownAttribute : TestDecoratorPatternAttribute
     {

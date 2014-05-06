@@ -4,6 +4,13 @@ using Gallio.Runtime.Loader;
 
 namespace ProtoTest.Nightshade
 {
+    /// <summary>
+    /// By class contains knowledge about how to build a locator for EggPlant. 
+    /// Eggplant supports a number of different ways to identify elements.
+    /// Example (image: 'path.to.image') (text: 'Text to find')
+    /// Can add optional params such as SearchRectangle.
+    /// By.Image("path/to/image").InRectangle(SearchRectangle.TopQuarter)
+    /// </summary>
     public class By : EggplantTestBase
     {
         private string locator;
@@ -20,6 +27,11 @@ namespace ProtoTest.Nightshade
             return locator;
         }
 
+        /// <summary>
+        /// Adjusts a locator to include a SearchRectangle.
+        /// </summary>
+        /// <param name="rectangle"></param>
+        /// <returns></returns>
         public By InRectangle(SearchRectangle rectangle)
         {
             this.locator = this.locator.TrimEnd(')');
@@ -27,6 +39,12 @@ namespace ProtoTest.Nightshade
             return this;
         }
 
+        /// <summary>
+        /// Adjusts a locator to look between two images
+        /// </summary>
+        /// <param name="topLeft"></param>
+        /// <param name="bottomRight"></param>
+        /// <returns></returns>
         public By BetweenImages(EggplantElement topLeft, EggplantElement bottomRight)
         {
             this.locator = this.locator.TrimEnd(')');
@@ -34,7 +52,14 @@ namespace ProtoTest.Nightshade
             return this;
         }
 
-        public static By Image(string path, string options=null)
+        /// <summary>
+        /// Looks for an image using the path found.  A list of optional params can be included
+        /// </summary>
+        /// Example: By.Image("path/to/image")
+        /// <param name="path"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public static By Image(string path, string[] options=null)
         {
             _path = path;
             string endstring = string.Format("(image: \"{0}\"", path);
@@ -50,22 +75,12 @@ namespace ProtoTest.Nightshade
             return new By(endstring);
         }
 
-        public static By TextAtLocation(string path)
-        {
-            _path = path;
-            string endstring = EggplantTestBase.Driver.ReadText(path);
-            if(endstring != null)
-            {
-                EggplantTestBase.Log("Text read at target location: (" + endstring + ").");
-            }
-            else
-            {
-                EggplantTestBase.Log("No text present at target location.");
-                Assert.Fail();
-            }
-            return new By(endstring);
-        }
-
+        /// <summary>
+        /// Look for an element based upon its text.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public static By Text(string text, string[] options=null)
         {
             string endstring = string.Format("(text: \"{0}\"", text);
@@ -78,13 +93,6 @@ namespace ProtoTest.Nightshade
                 
             }
             endstring += ")";
-            return new By(endstring);
-        }
-
-        public static By Text(string text, Point topLeft, Point bottomRight)
-        {
-            string endstring = string.Format("(text: \"{0}\"", text);
-            endstring += string.Format(", SearchRectangle:(({0},{1}),({2},{3})))", topLeft.X, topLeft.Y, bottomRight.X, bottomRight.Y);
             return new By(endstring);
         }
 

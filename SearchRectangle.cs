@@ -4,6 +4,11 @@ using ProtoTest.TestRunner.Nightshade;
 
 namespace ProtoTest.Nightshade
 {
+    /// <summary>
+    /// Builds rectangles to narrow the search area.
+    /// Includes some predefined SearchRectangles, or can be built using points
+    /// SearchRectangle.FullScreen, SearchRectangle.TopHalf, etc.
+    /// </summary>
     public class SearchRectangle
     {
         public Rectangle? searchRectangle = null;

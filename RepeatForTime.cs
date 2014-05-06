@@ -11,19 +11,8 @@ namespace ProtoTest.Nightshade
     namespace Tests.Common
     {
         /// <summary>
-        ///     Decorates a test method and causes it to be re-run following failure until we get a pass.
+        /// Repeats a test until the time has passed
         /// </summary>
-        /// <remarks>
-        ///     <para>
-        ///         Each repetition of the test method will occur within its own individually labeled
-        ///         test step so that it can be identified in the test report.
-        ///     </para>
-        ///     <para>
-        ///         The initialize, setup, teardown and dispose methods will are invoked around each
-        ///         repetition of the test.
-        ///     </para>
-        /// </remarks>
-        /// <seealso cref="RepeatAttribute" />
         [AttributeUsage(PatternAttributeTargets.Test, AllowMultiple = true, Inherited = true)]
         public class RepeatForTimeAttribute : TestDecoratorPatternAttribute
         {

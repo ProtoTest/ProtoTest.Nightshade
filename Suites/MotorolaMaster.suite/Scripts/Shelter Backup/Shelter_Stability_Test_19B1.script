@@ -1,7 +1,0 @@
-//Motorola Shelter Stability Test 19 -- Send an email with an attachment
-//Component of Script Series 19
-//Completed 6-13-2013
-
-//Subroutine B1 -- Shelter Device B - Setup
-run ClassNavigate.ResetState
-run ClassConfigure.MuteNotifications

@@ -10,16 +10,13 @@ namespace ProtoTest.Nightshade
 {
     public static class Log
     {
-        private static bool diagnosticMessages = Config.DiagnosticMessages;
-        private static bool logMessages = Config.LogMessages;
-
         private static void LogString(string message)
         {
-            if (diagnosticMessages)
+            if (Config.LogDiagnosticMessages)
             {
                 DiagnosticLog.WriteLine(message);
             }
-            if (logMessages)
+            if (Config.LogTestMessages)
             {
                 TestLog.WriteLine(message);
             }
@@ -27,11 +24,11 @@ namespace ProtoTest.Nightshade
 
         private static void LogError(string message)
         {
-            if (diagnosticMessages)
+            if (Config.LogDiagnosticMessages)
             {
                 DiagnosticLog.WriteLine(message);
             }
-            if (logMessages)
+            if (Config.LogTestMessages)
             {
                 TestLog.WriteHighlighted(message + "\r\n");
             }

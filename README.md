@@ -38,27 +38,6 @@ Nightshade is a test runner written in C#.  It's built to execute and validate s
 
 
 ## Config File : 
-Included in the project will be a file called TestConfig.xml.  This is a custom-built xml config file used by Nightshade.  This file is automatically copied to the bin folder upon compiling.  Please note that Gallio uses the file in the bin folder, not the one with the code.
-
-####EggPlantSettings - Global test settings
-	- waitForDriveMs - This is the Milliseconds of time Nightshade will wait for Drive to start up.
-	- driveTimeoutMs - This is the Milliseconds of time Nightshade will wait before commands to Drive time out. 
-####DriveBatchFile 
-	- path - Path to .bat file used to start eggplant drive.
-####Suite
-	- startDrive - Whether or not to automatically start Drive when the suite starts
-	- repeat - Number of times to repeat the suite
-	- path - path to the suite on the local computer.  Should end in .suite
-####Test - contains one or more scripts to be executed sequentially
-	- name - name of the test, used for reporting purposes 
-	- restartDrive - Whether or not to restart Drive at the beginning of the test.
-	- repeat - The number of times to repeat.  Will repeat all contained scripts in sequential order.
-	- retry - The number of times to retry a failed test.  Will retry all contained scripts in sequential order.
-####Script - A .script file to be executed against a specific host.  Assumed to live in the SuiteName\\Scripts\\ScriptName.script location.
-	- scriptName - the name of the script file.  Just the name, not the full path, and should not include .script extension.  
-	- host - The host to execute the test on.  Can be an IP address or a device name (if connected over usb)   host="10.10.1.99" or host="TC55 (4e8f191b)"
-	- timeout - The maximum test duration time.  After this many minutes the test will automatically stop and fail.  
-	
 
 ## Technical information
 

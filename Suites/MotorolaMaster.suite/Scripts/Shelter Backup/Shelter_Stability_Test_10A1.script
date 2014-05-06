@@ -1,8 +1,0 @@
-//Motorola Shelter Stability Test 10 -- Send an SMS maximum number of characters with out requiring the message to be segmented
-//Component of Script Series 10
-//Completed 6-11-2013
-
-//Subroutine A1 -- Shelter Device A - Setup
-run ClassNavigate.ResetState
-run ClassConfigure.MuteNotifications
-run ClassConfigure.ResetMessagingApp

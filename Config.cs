@@ -8,9 +8,13 @@ using ProtoTest.TestRunner.Nightshade;
 
 namespace ProtoTest.Nightshade
 {
+    /// <summary>
+    /// Reads values from the App.Config file and stores them in properties.  
+    /// All framework code should reference the properties, not access the config directly.
+    /// Tests may use properties or access config as needed.  
+    /// </summary>
     public static class Config
     {
-
         public static string DeviceType = GetConfigValue("DeviceType", "null");
         public static string Host1Type = GetConfigValue("Host1Type", "null");
         public static string Host2Type = GetConfigValue("Host2Type", "null");
@@ -32,7 +36,10 @@ namespace ProtoTest.Nightshade
         public static bool LogDriveCommands = IsTruthy(Config.GetConfigValue("LogDriveCommands", "False"));
         public static int VideoFrameRate = int.Parse(Config.GetConfigValue("VideoFrameRate", "20"));
         public static int ClickExecuteDelay = int.Parse(Config.GetConfigValue("ClickExecuteDelay", "10"));
+        
         public static string MouseClickDelay = Config.GetConfigValue("MouseClickPressTime", "0.02");
+        public static bool LogDiagnosticMessages = IsTruthy(Config.GetConfigValue("LogDiagnosticMessages", "true"));
+        public static bool LogTestMessages = IsTruthy(Config.GetConfigValue("LogTestMessages", "true"));
 
         public static int CalendarAppointmentsIterations = int.Parse(Config.GetConfigValue("CalendarAppointmentsIterations", "5"));
         public static string AudioTestFileNamePrefix = GetConfigValue("AudioTestFileNamePrefix", "Audio Test ");

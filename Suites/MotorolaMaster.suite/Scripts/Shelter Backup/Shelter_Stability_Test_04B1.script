@@ -1,7 +1,0 @@
-//Motorola Shelter Stability Test 04 -- Make a 2G voice call from the call history list
-//Component of Script Series 04
-//Completed 6-10-2013
-
-//Subroutine B1 -- Shelter Device B - Setup
-run ClassNavigate.ResetState
-run ClassConfigure.MuteNotifications

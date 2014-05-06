@@ -7,6 +7,9 @@ using Gallio.Framework;
 
 namespace ProtoTest.Nightshade
 {
+    /// <summary>
+    /// Non terminating validations.  
+    /// </summary>
     class VerificationErrors
     {
         public static List<VerificationError> Errors = new List<VerificationError>();

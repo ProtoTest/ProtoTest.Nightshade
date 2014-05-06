@@ -6,17 +6,17 @@ using Gallio.Framework;
 using Gallio.Framework.Pattern;
 using Gallio.Model;
 using MbUnit.Framework;
-using ProtoTest.Nightshade;
-using ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System;
-using ProtoTest.Nightshade.PageObjects.Steps.System;
 using ProtoTest.TestRunner.Nightshade;
 
 namespace ProtoTest.Nightshade
 {
+    /// <summary>
+    /// All test classes should inherit this class.  
+    /// Framework functionality is triggered by the [FixtureSetUp] methods
+    /// </summary>
     public class EggplantTestBase
     {
         private static Process EggPlantDriveProcess;
-        private BackgroundVideoRecorder recorder;
         public static EggplantDriver _Driver;
        
         public static EggplantDriver Driver
@@ -60,28 +60,6 @@ namespace ProtoTest.Nightshade
         {
             Config.DeviceType = Config.Host2Type;
             Driver.Connect(Config.Host2Ip, Config.Host2Port.ToString());
-            
-        }
-
-        public void StartVideoRecording()
-        {
-            if (Config.RecordVideo)
-            {
-                recorder = new BackgroundVideoRecorder(Config.VideoFrameRate);
-                recorder.Start();    
-            }
-            
-        }
-
-        public void StopVideoRecording()
-        {
-            if (Config.RecordVideo)
-            {
-                recorder.Stop();
-                recorder.Dispose();
-                Thread.Sleep(1000);
-                TestLog.EmbedVideo(TestStep.CurrentStep.FullName + "_Video", recorder.video);    
-            }
             
         }
 
@@ -152,7 +130,7 @@ namespace ProtoTest.Nightshade
                 }
                 
             }
-            TestLog.Warnings.WriteLine("Eggplant drive did not appear to launch after 5 attempts");
+            Assert.Fail("Eggplant drive did not appear to launch after 5 attempts");
         }
 
         private void VerifyEnvironment()
@@ -173,7 +151,7 @@ namespace ProtoTest.Nightshade
             VerifyEnvironment();
             Config.BatchFilePath = Common.CreateBatchFile();
             TestAssemblyExecutionParameters.DefaultTestCaseTimeout = null;
-            Driver = new EggplantDriver(Config.DriveTimeoutSec*1000);
+            Driver = EggplantDriver.GetDriver();
             StopEggplant();
             StartEggplant();
         }
@@ -200,7 +178,6 @@ namespace ProtoTest.Nightshade
             TestLog.WriteLine("Eggplant Testbase Teardown started.");
             Thread.Sleep(1000);
             LogScreenshotOnError();
-            //Driver.Disconnect();
         }
 
 
