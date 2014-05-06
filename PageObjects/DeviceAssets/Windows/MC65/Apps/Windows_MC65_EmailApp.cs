@@ -88,8 +88,8 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             EggplantTestBase.Info("Clearing 'Deleted Items' folder...");
             startBar.MenuButton.Click();
             var driver = new EggplantDriver();
-            driver.PressKey("t");
-            driver.PressKey("e");
+            driver.PressKey("t"); //Opens "Tools" menu
+            driver.PressKey("e"); //Selects the "Empty Deleted Items" option
             popup.ClickYes();
             ShowMenuDropdown.Click();
             InboxIcon.Click();
@@ -148,13 +148,13 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             driver.PressKey("Return");
             EggplantTestBase.Info("Contact added.  Inserting subject...");
             SubjectField.Click();
-            driver.Type("Test no atch ");
+            driver.Type("Test with attch ");
             string randomNumber = utilities.GetRandomNumberSixDigits();
             driver.Type(randomNumber);
             EggplantTestBase.Info("Subject added.  Inserting body text...");
             Thread.Sleep(5000);
             EmailBodyField.Click();
-            driver.Type("Lorem ipsum dolor sit ");
+            driver.Type("Lorem ipsum attach # ");
             driver.Type(randomNumber);
             Thread.Sleep(5000);
             EggplantTestBase.Info("Body text added.  Inserting attachment...");

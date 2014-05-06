@@ -143,9 +143,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System
             {
                 EggplantTestBase.Info("Closing all active apps.");
                 var driver = new EggplantDriver();
-                driver.PressKey("F4");
+                driver.PressKey("F4"); //Closes open window
                 Thread.Sleep(1000);
-                driver.PressKey("F4");
+                driver.PressKey("F4"); //Closes open window
             }
             return this;
         }

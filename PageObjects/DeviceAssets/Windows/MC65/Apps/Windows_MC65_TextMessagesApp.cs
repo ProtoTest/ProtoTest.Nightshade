@@ -96,8 +96,9 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
             EggplantTestBase.Info("Permanently deleting all text messages...");
             startBar.MenuButton.Click();
             var driver = new EggplantDriver();
-            driver.PressKey("t");
-            driver.PressKey("e");
+            driver.PressKey("t"); //Open "Tools" menu
+            Thread.Sleep(1000);
+            driver.PressKey("e"); //Select "Empty Deleted Items" option
             popup.ClickYes();
             EggplantTestBase.Info("Returning to inbox...");
             ShowMenuDropdown.Click();

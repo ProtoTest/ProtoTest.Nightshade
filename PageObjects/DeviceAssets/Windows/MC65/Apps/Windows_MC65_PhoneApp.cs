@@ -145,7 +145,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.Apps
         {
             EggplantTestBase.Info("Ending call...");
             var driver = new EggplantDriver();
-            driver.PressKey("F4");
+            driver.PressKey("F4");  //Terimnates phone call
             return this;
         }
 
