@@ -32,7 +32,7 @@ namespace ProtoTest.Nightshade.PageObjects.DeviceAssets.Windows.MC65.System
         public EggplantElement ToolsMenuOption = new EggplantElement(By.Image("MC65/System/MenuOptions/ToolsMenuOption"));
         public EggplantElement EmptyDeletedItemsMenuOption = new EggplantElement(By.Image("MC65/System/MenuOptions/EmptyDeletedItemsMenuOption"));
         public EggplantElement InsertMenuOption = new EggplantElement(By.Image("MC65/System/MenuOptions/InsertMenuOption"));
-        public EggplantElement PictureMenuOption = new EggplantElement(By.Image("MC65/System/MenuOptions/InsertMenuOption"));
+        public EggplantElement PictureMenuOption = new EggplantElement(By.Image("MC65/System/MenuOptions/PictureMenuOption"));
 
         public Windows_MC65_StartBar VerifyElements()
         {
