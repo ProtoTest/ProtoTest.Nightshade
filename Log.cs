@@ -34,6 +34,13 @@ namespace ProtoTest.Nightshade
             }
         }
 
+        public static void Info(string message)
+        {
+            message = string.Format("|   {0}", message);
+            TestLog.WriteLine(message);
+            DiagnosticLog.WriteLine(message);
+        }
+
         public static void Message(string message)
         {
             LogString(message);

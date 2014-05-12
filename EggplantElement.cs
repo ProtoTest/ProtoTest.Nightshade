@@ -39,7 +39,7 @@ namespace ProtoTest.Nightshade
         public string GetText()
         {
             WaitForPresent();
-            EggplantTestBase.Log(string.Format("Reading text on element {0}.", locator));
+            Log.Message(string.Format("Reading text on element {0}.", locator));
             var text = Driver.ReadText(locator);
             return text;
         }
@@ -49,7 +49,7 @@ namespace ProtoTest.Nightshade
         public EggplantElement Click()
         {
             WaitForPresent();
-            EggplantTestBase.Log(string.Format("Clicking on element {0}.",locator));
+            Log.Message(string.Format("Clicking on element {0}.",locator));
             Thread.Sleep(Config.ClickExecuteDelay);
             Driver.Click(locator);
             Thread.Sleep(2000);
@@ -59,7 +59,7 @@ namespace ProtoTest.Nightshade
         public EggplantElement DoubleClick()
         {
             WaitForPresent();
-            EggplantTestBase.Log(string.Format("Double-clicking on element {0}.", locator));
+            Log.Message(string.Format("Double-clicking on element {0}.", locator));
             Thread.Sleep(Config.ClickExecuteDelay);
             Driver.DoubleTap(locator);
             Thread.Sleep(2000);
@@ -69,7 +69,7 @@ namespace ProtoTest.Nightshade
         public EggplantElement Press()
         {
             WaitForPresent();
-            EggplantTestBase.Log(string.Format("Performing click+hold on element {0}.", locator));
+            Log.Message(string.Format("Performing click+hold on element {0}.", locator));
             Driver.Press(locator);
             Thread.Sleep(2000);
             return this;
@@ -77,9 +77,9 @@ namespace ProtoTest.Nightshade
 
         public EggplantElement Type(string text)
         {
-            EggplantTestBase.Log(string.Format("Clicking on text field..."));
+            Log.Message(string.Format("Clicking on text field..."));
             Click();
-            EggplantTestBase.Log(string.Format("Typing text:({0}).", text));
+            Log.Message(string.Format("Typing text:({0}).", text));
             Thread.Sleep(2000);
             Driver.Type(text);
             Thread.Sleep(2000);
@@ -94,14 +94,14 @@ namespace ProtoTest.Nightshade
 
         public EggplantElement WaitForPresent(int secs)
         {
-            EggplantTestBase.Log(string.Format("Waiting for element {0} to be present.",locator));
+            Log.Message(string.Format("Waiting for element {0} to be present.",locator));
             var now = DateTime.Now;
             var endTime = DateTime.Now.AddSeconds(secs);
             while(now<endTime)
             {
                 if (Driver.IsPresent(locator))
                 {
-                    EggplantTestBase.Log(string.Format("Verification Passed : Element {0} is present.", locator));
+                    Log.Message(string.Format("Verification Passed : Element {0} is present.", locator));
                     return this;
                 }
                 else
@@ -111,7 +111,7 @@ namespace ProtoTest.Nightshade
                 }
             }
             TestLog.BeginSection("ERROR FOUND");
-            EggplantTestBase.Log(string.Format("!----ERROR : Element not found: " + locator + "."));
+            Log.Message(string.Format("!----ERROR : Element not found: " + locator + "."));
             LogSourceImage();
             //LogFailureImage(string.Format("!----ERROR : Element not found: " + locator + "."));
             TestLog.End();
@@ -150,14 +150,14 @@ namespace ProtoTest.Nightshade
 
         public EggplantElement WaitForNotPresent(int secs)
         {
-            EggplantTestBase.Log(string.Format("Waiting for element {0} to not be present for " +secs+ " seconds.", locator));
+            Log.Message(string.Format("Waiting for element {0} to not be present for " +secs+ " seconds.", locator));
             var now = DateTime.Now;
             var endTime = DateTime.Now.AddSeconds(secs);
             while (now < endTime)
             {
                 if (!Driver.IsPresent(locator))
                 {
-                    EggplantTestBase.Log("Element no longer present.");
+                    Log.Message("Element no longer present.");
                     return this;
                 }
                 else
@@ -167,7 +167,7 @@ namespace ProtoTest.Nightshade
                 }
             }
 
-            EggplantTestBase.Log(string.Format("Element still present: " + locator));
+            Log.Message(string.Format("Element still present: " + locator));
             LogSourceImage();
             throw new Exception(string.Format("WaitForNotPresent Failed : Element was still present after {0} seconds", secs));
         }
@@ -175,21 +175,21 @@ namespace ProtoTest.Nightshade
         // Soft verification failures - Test will keep progressing
         public EggplantElement VerifyPresent()
         {
-            EggplantTestBase.Log(string.Format("Verifying element {0} should be present.",locator));
+            Log.Message(string.Format("Verifying element {0} should be present.",locator));
             if (!Driver.IsPresent(locator))
             {
                 VerificationErrors.AddVerificationError(string.Format("Verification Error : Element {0} should be present.", locator));
             }
             else
             {
-                EggplantTestBase.Log(string.Format("Verification Passed : Element {0} is present.", locator));
+                Log.Message(string.Format("Verification Passed : Element {0} is present.", locator));
             }
             return this;
         }
 
         public EggplantElement VerifyNotPresent()
         {
-            EggplantTestBase.Log(string.Format("Verifying element {0} is not be present.",locator));
+            Log.Message(string.Format("Verifying element {0} is not be present.",locator));
 
             if (Driver.IsPresent(locator))
             {
@@ -197,7 +197,7 @@ namespace ProtoTest.Nightshade
             }
             else
             {
-                EggplantTestBase.Log(string.Format("Verification Passed : Element {0} is not be present",locator));
+                Log.Message(string.Format("Verification Passed : Element {0} is not be present",locator));
             }
             return this;
         }

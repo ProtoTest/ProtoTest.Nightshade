@@ -63,20 +63,6 @@ namespace ProtoTest.Nightshade
             
         }
 
-        public static void Log(string message)
-        {
-            message = string.Format("({0}): {1}", DateTime.Now.ToString("H:mm:ss:FFF"), message);
-            TestLog.WriteLine(message);
-            DiagnosticLog.WriteLine(message);
-        }
-
-        public static void Info(string message)
-        {
-            message = string.Format("|   {0}", message);
-            TestLog.WriteLine(message);
-            DiagnosticLog.WriteLine(message);
-        }
-
         private void LogScreenshotOnError()
         {
             if (TestContext.CurrentContext.Outcome != TestOutcome.Passed)
@@ -137,7 +123,7 @@ namespace ProtoTest.Nightshade
         {
             if (!System.IO.Directory.Exists(Config.SuitePath))
             {
-                Assert.Fail("Cannot find suite located at : " + Config.SuitePath + " Add an App.Config key 'SuitePath' with the correct locatijon of your Eggpplant .suite folder");
+                Assert.Fail("Cannot find suite located at : " + Config.SuitePath + " Add an App.Config key 'SuitePath' with the correct location of your Eggpplant .suite folder");
             }
             if (!System.IO.File.Exists(Config.RunScriptPath))
             {

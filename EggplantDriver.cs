@@ -185,7 +185,7 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             if (Config.LogDriveCommands)
             {
-                EggplantTestBase.Log(string.Format("Executing command: {0}", command));
+                Log.Message(string.Format("Executing command: {0}", command));
             }
             Thread.Sleep(Config.DelayTimeMs);
             return driveService.Execute(command);
@@ -335,7 +335,7 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             text = "\"" + text + "\"";
             ExecuteCommand("TypeText", text);
-            EggplantTestBase.Info("Driver - Typing text: (" + text + ").");
+            Log.Info("Driver - Typing text: (" + text + ").");
             Thread.Sleep(2000);
         }
 
@@ -353,7 +353,7 @@ namespace ProtoTest.TestRunner.Nightshade
         public void PressKey(string text)
         {
             ExecuteCommand("TypeText", text);
-            EggplantTestBase.Info("Driver - Pressing keyboard key: (" + text + ").");
+            Log.Info("Driver - Pressing keyboard key: (" + text + ").");
             Thread.Sleep(2000);
         }
 
