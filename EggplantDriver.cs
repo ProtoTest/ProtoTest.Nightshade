@@ -113,8 +113,10 @@ namespace ProtoTest.TestRunner.Nightshade
         /// <param name="description"></param>
         public void ExecuteScript(string scriptName, string description)
         {
-            DiagnosticLog.WriteLine("Executing test : " + scriptName);
-            TestLog.WriteLine(description);
+            Log.Message("Executing test : " + scriptName);
+            Log.Message("Test description : " + description);
+            //DiagnosticLog.WriteLine("Executing test : " + scriptName);
+            //TestLog.WriteLine(description);
             driveService.Execute("RunWithNewResults(" + scriptName + ")");
         }
 
@@ -128,6 +130,7 @@ namespace ProtoTest.TestRunner.Nightshade
             {
                 try
                 {
+                    //Log.Message("Trying to connect to device (" + i + ") : " + host);
                     TestLog.WriteLine("Trying to connect to device (" + i + ") : " + host);
                     DiagnosticLog.WriteLine("Trying to connect to device (" + i + ") : " + host);
                     if (port == "0")
@@ -138,8 +141,10 @@ namespace ProtoTest.TestRunner.Nightshade
                     {
                         Execute(string.Format("Connect (ServerID:\"{0}\", portNum: \"{1}\")", host, port));
                     }
-                    
+
+                    //Log.Message("Connection established to device : " + GetConnectionInfo());
                     DiagnosticLog.WriteLine("Connection established to device : " + GetConnectionInfo());
+                    TestLog.WriteLine("Connection established to device : " + GetConnectionInfo());
                     return;
                 }
                 catch (Exception e)

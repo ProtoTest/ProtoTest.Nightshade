@@ -126,6 +126,8 @@ namespace ProtoTest.Nightshade
                 string pathToImage = Config.SuitePath + "\\Images\\" + nameOfImage;
                 if (Directory.Exists(pathToImage))
                 {
+                    TestLog.Failures.WriteLine("Below element collection was not found on device screen - refer to attached screenshot.");
+                    TestLog.Failures.WriteLine("Note: screenshot will not appear if error was within Teardown.");
                     foreach (var file in Directory.GetFiles(pathToImage, "*.png"))
                     {
                         TestLog.Failures.EmbedImage(null, Image.FromFile(file));
@@ -135,7 +137,8 @@ namespace ProtoTest.Nightshade
                 else
                 {
                     pathToImage += ".png";
-                    TestLog.Failures.WriteLine("This element was not found in attached device screenshot.");
+                    TestLog.Failures.WriteLine("Below element was not found on device screen - refer to attached screenshot.");
+                    TestLog.Failures.WriteLine("Note: screenshot will not appear if error was within Teardown.");
                     TestLog.Failures.EmbedImage(null, Image.FromFile(pathToImage));
                     TestLog.EmbedImage(null, Image.FromFile(pathToImage));
                 }

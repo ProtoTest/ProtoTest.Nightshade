@@ -40,6 +40,8 @@ namespace ProtoTest.Nightshade
         public static string MouseClickDelay = Config.GetConfigValue("MouseClickPressTime", "0.02");
         public static bool LogDiagnosticMessages = IsTruthy(Config.GetConfigValue("LogDiagnosticMessages", "true"));
         public static bool LogTestMessages = IsTruthy(Config.GetConfigValue("LogTestMessages", "true"));
+        public static bool LogInfoMessagesInDiagLog = IsTruthy(Config.GetConfigValue("LogInfoMessagesInDiagLog", "true"));
+        public static bool LogInfoMessagesInTestLog = IsTruthy(Config.GetConfigValue("LogInfoMessagesInTestLog", "true"));
 
         public static int CalendarAppointmentsIterations = int.Parse(Config.GetConfigValue("CalendarAppointmentsIterations", "5"));
         public static string AudioTestFileNamePrefix = GetConfigValue("AudioTestFileNamePrefix", "Audio Test ");

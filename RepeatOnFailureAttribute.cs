@@ -76,7 +76,8 @@ namespace ProtoTest.Nightshade
                             failureCount++;
                         }
 
-                        TestLog.WriteLine(String.Format(
+                        //TestLog.WriteLine(String.Format(
+                        Log.Message(String.Format(
                             failureCount == _maxNumberOfAttempts
                                 ? "Tried {0} times to get a pass test result but didn't get it"
                                 : "The test passed on attempt {1} out of {0}", _maxNumberOfAttempts, failureCount + 1));

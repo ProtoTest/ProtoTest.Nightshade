@@ -81,7 +81,8 @@ namespace ProtoTest.Nightshade
                            // failureCount++;
                         }
 
-                        TestLog.WriteLine(String.Format("Ran the test for {0} minutes", _minutes));
+                        Log.Message(String.Format("Ran the test for {0} minutes", _minutes));
+                        //TestLog.WriteLine(String.Format("Ran the test for {0} minutes", _minutes));
 
                         return outcome;
                     });
