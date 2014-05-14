@@ -47,8 +47,8 @@ namespace ProtoTest.Nightshade
         public static string DeleteContactsStarting = GetConfigValue("DeleteContactsStarting", "null");
         public static string DeleteContactsTotalCount = GetConfigValue("DeleteContactsTotalCount", "null");
         public static string DownloadAppTestPath = GetConfigValue("DownloadAppTestPath", "null");
-        public static string WaitForSMSToArrive = GetConfigValue("WaitForSMSToArrive", "60");
-        public static string WaitForMMSToArrive = GetConfigValue("WaitForMMSToArrive", "60");
+        public static string WaitForTextMsgToArrive = GetConfigValue("WaitForTextMsgToArrive", "60");
+        public static string WaitForEmailToArrive = GetConfigValue("WaitForEmailToArrive", "60");
         public static string WaitForBrowserPageToLoad = GetConfigValue("WaitForBrowserPageToLoad", "60");
   
         /// <summary>
