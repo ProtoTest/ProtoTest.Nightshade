@@ -47,6 +47,9 @@ namespace ProtoTest.Nightshade
         public static string DeleteContactsStarting = GetConfigValue("DeleteContactsStarting", "null");
         public static string DeleteContactsTotalCount = GetConfigValue("DeleteContactsTotalCount", "null");
         public static string DownloadAppTestPath = GetConfigValue("DownloadAppTestPath", "null");
+        public static string WaitForSMSToArrive = GetConfigValue("WaitForSMSToArrive", "60");
+        public static string WaitForMMSToArrive = GetConfigValue("WaitForMMSToArrive", "60");
+        public static string WaitForBrowserPageToLoad = GetConfigValue("WaitForBrowserPageToLoad", "60");
   
         /// <summary>
         ///     Returns the App.config value for requested key, or default value if not defined.
