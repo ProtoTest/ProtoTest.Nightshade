@@ -94,7 +94,7 @@ namespace ProtoTest.Nightshade
 
         public EggplantElement WaitForPresent(int secs)
         {
-            Log.Message(string.Format("Waiting for element {0} to be present.",locator));
+            Log.Message(string.Format("Waiting for element {0} to be present within (" + secs + ") seconds.",locator));
             var now = DateTime.Now;
             var endTime = DateTime.Now.AddSeconds(secs);
             while(now<endTime)
