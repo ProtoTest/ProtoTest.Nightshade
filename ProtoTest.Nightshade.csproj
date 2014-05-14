@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="IEDriverServer.exe" />
+    <Content Include="VersionHistory.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
