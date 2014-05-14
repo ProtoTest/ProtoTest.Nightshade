@@ -154,14 +154,16 @@ namespace ProtoTest.Nightshade
         [SetUp]
         public void SetUp()
         {
-            LastTestName = TestContext.CurrentContext.TestStep.FullName; 
+            LastTestName = TestContext.CurrentContext.TestStep.FullName;
+            DiagnosticLog.WriteLine(">>> BEGINNING EGGPLANT TESTBASE SETUP.");
+            TestLog.WriteLine(">>> BEGINNING EGGPLANT TESTBASE SETUP.");
         }
 
         [TearDown]
         public void Teardown()
         {
-            DiagnosticLog.WriteLine("Eggplant Testbase Teardown started.");
-            TestLog.WriteLine("Eggplant Testbase Teardown started.");
+            DiagnosticLog.WriteLine(">>> BEGINNING EGGPLANT TESTBASE TEARDOWN.");
+            TestLog.WriteLine(">>> BEGINNING EGGPLANT TESTBASE TEARDOWN.");
             Thread.Sleep(1000);
             LogScreenshotOnError();
         }
