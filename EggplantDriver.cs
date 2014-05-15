@@ -131,8 +131,8 @@ namespace ProtoTest.TestRunner.Nightshade
                 try
                 {
                     //Log.Message("Trying to connect to device (" + i + ") : " + host);
-                    TestLog.WriteLine("Trying to connect to device (" + i + ") : " + host);
-                    DiagnosticLog.WriteLine("Trying to connect to device (" + i + ") : " + host);
+                    TestLog.WriteLine("Attempt #" + i + " - trying to connect to device @ " + host);
+                    DiagnosticLog.WriteLine("Attempt #" + i + " - trying to connect to device @ " + host);
                     if (port == "0")
                     {
                         Execute(string.Format("Connect (ServerID:\"{0}\")", host));
