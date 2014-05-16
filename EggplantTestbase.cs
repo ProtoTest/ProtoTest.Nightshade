@@ -46,21 +46,18 @@ namespace ProtoTest.Nightshade
         {
             Driver.Execute("set the ImageSearchTime to " + Config.ElementSearchTime);
             Driver.Execute("set the ImageSearchCount to " + Config.ImageSearchCount);
-
         }
 
         public void ConnectToHost1()
         {
             Config.DeviceType = Config.Host1Type;
             Driver.Connect(Config.Host1Ip,Config.Host1Port.ToString());
-   
         }
 
         public void ConnectToHost2()
         {
             Config.DeviceType = Config.Host2Type;
-            Driver.Connect(Config.Host2Ip, Config.Host2Port.ToString());
-            
+            Driver.Connect(Config.Host2Ip, Config.Host2Port.ToString());         
         }
 
         private void LogTestState()
