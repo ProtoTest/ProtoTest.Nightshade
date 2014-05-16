@@ -29,7 +29,10 @@ namespace ProtoTest.TestRunner.Nightshade
             {
                 if (process.ProcessName == name)
                 {
-                    DiagnosticLog.WriteLine("Killing Process : " + name);
+                    if (Config.LogStepsDiagnosticOutput)
+                    {
+                        DiagnosticLog.WriteLine("Killing Process : " + name);
+                    }
                     process.Kill();
                     process.WaitForExit();
                 }

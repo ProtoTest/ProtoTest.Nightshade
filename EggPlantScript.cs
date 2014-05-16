@@ -8,6 +8,7 @@ using Gallio.Common.Markup;
 using Gallio.Framework;
 using Gallio.Model;
 using MbUnit.Framework;
+using ProtoTest.Nightshade;
 using Action = Gallio.Common.Action;
 
 namespace ProtoTest.TestRunner.Nightshade

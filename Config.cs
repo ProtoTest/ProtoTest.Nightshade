@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.IO;
 using System.Reflection;
 using System.Xml;
@@ -33,15 +31,17 @@ namespace ProtoTest.Nightshade
         public static bool AutoCaptureScreen = IsTruthy(GetConfigValue("AutoCaptureScreen", "True"));
         public static bool RecordVideo = IsTruthy(GetConfigValue("RecordVideo", "False"));
         public static int ImageSearchCount = int.Parse(Config.GetConfigValue("ImageSearchCount", "1"));
-        public static bool LogDriveCommands = IsTruthy(Config.GetConfigValue("LogDriveCommands", "False"));
         public static int VideoFrameRate = int.Parse(Config.GetConfigValue("VideoFrameRate", "20"));
         public static int ClickExecuteDelay = int.Parse(Config.GetConfigValue("ClickExecuteDelay", "10"));
         
-        public static string MouseClickDelay = Config.GetConfigValue("MouseClickPressTime", "0.02");
-        public static bool LogDiagnosticMessages = IsTruthy(Config.GetConfigValue("LogDiagnosticMessages", "true"));
-        public static bool LogTestMessages = IsTruthy(Config.GetConfigValue("LogTestMessages", "true"));
-        public static bool LogInfoMessagesInDiagLog = IsTruthy(Config.GetConfigValue("LogInfoMessagesInDiagLog", "true"));
-        public static bool LogInfoMessagesInTestLog = IsTruthy(Config.GetConfigValue("LogInfoMessagesInTestLog", "true"));
+        public static string MouseClickDelay = Config.GetConfigValue("MouseClickPressTime", "0.02"); //Eggplant key press time length
+
+        public static bool LogStepsDiagnosticOutput = IsTruthy(Config.GetConfigValue("LogStepsDiagnosticOutput", "true"));  //Logging output will appear during runtime
+        public static bool LogStepsTestReport = IsTruthy(Config.GetConfigValue("LogStepsTestReport", "true"));  //Logging ouput will appear within test report
+        public static bool LogSystemState = IsTruthy(Config.GetConfigValue("LogSystemState", "true"));  //Logs system state items
+        public static bool LogInfoMessages = IsTruthy(Config.GetConfigValue("LogInfoMessages", "true"));  //Logs conceptual test steps
+        public static bool LogNightshadeCommands = IsTruthy(Config.GetConfigValue("LogNightshadeCommands", "true"));  //Logs Nightshade commands passed into xml rpc
+        public static bool LogSensetalkCommands = IsTruthy(Config.GetConfigValue("LogSensetalkCommands", "False"));  //Logs Sensetalk commands passed into xml rpc
 
         public static int CalendarAppointmentsIterations = int.Parse(Config.GetConfigValue("CalendarAppointmentsIterations", "5"));
         public static string AudioTestFileNamePrefix = GetConfigValue("AudioTestFileNamePrefix", "Audio Test ");

@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using CookComputing.XmlRpc;
 using Gallio.Framework;
-using Gallio.Model;
-using MbUnit.Framework;
-using ProtoTest.Nightshade;
+using ProtoTest.TestRunner.Nightshade;
 
-namespace ProtoTest.TestRunner.Nightshade
+namespace ProtoTest.Nightshade
 {
     /// <summary>
     ///     EggplantDrigver class wraps all calls to the XMLRPC service with easy to use methods.
@@ -55,7 +51,8 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             try
             {
-                DiagnosticLog.WriteLine("Starting Eggplant Drive using batch file : " + batchPath);
+                //DiagnosticLog.WriteLine("Starting Eggplant Drive using batch file : " + batchPath);
+                Log.SystemState("Starting Eggplant Drive using batch file : " + batchPath);
                 Process cmdProcess = Common.ExecuteBatchFile(batchPath);
                 driveRunning = true; 
                 return cmdProcess;
@@ -69,13 +66,15 @@ namespace ProtoTest.TestRunner.Nightshade
 
         public void WaitForDriveToLoad(int waitForDriveMs)
         {
-            DiagnosticLog.WriteLine("Waiting for drive");
+            //DiagnosticLog.WriteLine("Waiting for Eggplant drive to load...");
+            Log.SystemState("Waiting for Eggplant Drive to load...");
             for (int i = 0; i < waitForDriveMs; i = i + 1000)
             {
                 try
                 {
                     driveService.StartSession(Config.SuitePath);
-                    DiagnosticLog.WriteLine("The suite session has started : " + Config.SuitePath);
+                    //DiagnosticLog.WriteLine("The suite session has started : " + Config.SuitePath);
+                    Log.SystemState("The suite session has started : " + Config.SuitePath);
                     return;
                 }
                 catch (Exception e)
@@ -94,10 +93,12 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             try
             {
-                DiagnosticLog.WriteLine("Trying to stop Eggplant Drive");
+                //DiagnosticLog.WriteLine("Trying to stop Eggplant Drive...");
+                Log.SystemState("Trying to stop Eggplant Drive...");
                 Common.KillProcess("Eggplant");
                 Common.KillProcess("adb");
                 driveRunning = false;
+                Log.SystemState("Eggplant Drive processes killed.");
             }
             catch (Exception e)
             {
@@ -130,9 +131,9 @@ namespace ProtoTest.TestRunner.Nightshade
             {
                 try
                 {
-                    //Log.Message("Trying to connect to device (" + i + ") : " + host);
-                    TestLog.WriteLine("Attempt #" + i + " - trying to connect to device @ " + host);
-                    DiagnosticLog.WriteLine("Attempt #" + i + " - trying to connect to device @ " + host);
+                    Log.SystemState("Trying to connect to device @ " + host +" - Attempt #" + i + ".");
+                    //TestLog.WriteLine("Attempt #" + i + " - Trying to connect to device @ " + host);
+                    //DiagnosticLog.WriteLine("Attempt #" + i + " - Trying to connect to device @ " + host);
                     if (port == "0")
                     {
                         Execute(string.Format("Connect (ServerID:\"{0}\")", host));
@@ -142,14 +143,15 @@ namespace ProtoTest.TestRunner.Nightshade
                         Execute(string.Format("Connect (ServerID:\"{0}\", portNum: \"{1}\")", host, port));
                     }
 
-                    //Log.Message("Connection established to device : " + GetConnectionInfo());
-                    DiagnosticLog.WriteLine("Connection established to device : " + GetConnectionInfo());
-                    TestLog.WriteLine("Connection established to device : " + GetConnectionInfo());
+                    Log.SystemState("Connection established to device : " + GetConnectionInfo());
+                    //DiagnosticLog.WriteLine("Connection established to device : " + GetConnectionInfo());
+                    //TestLog.WriteLine("Connection established to device : " + GetConnectionInfo());
                     return;
                 }
                 catch (Exception e)
                 {
-                    DiagnosticLog.WriteLine("Could not connect, retrying : " + e.Message);
+                    //DiagnosticLog.WriteLine("Could not connect, retrying : " + e.Message);
+                    Log.SystemState("Could not connect to device, retrying : " + e.Message);
                 }
                 
             }
@@ -164,7 +166,8 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             try
             {
-                DiagnosticLog.WriteLine("Trying to disconnect from device : " + host);
+                //DiagnosticLog.WriteLine("Trying to disconnect from device : " + host);
+                Log.SystemState("Trying to disconnect from device : " + host);
                 driveService.Execute("Disconnect " + host);
             }
             catch (Exception e)
@@ -188,7 +191,7 @@ namespace ProtoTest.TestRunner.Nightshade
         /// <param name="command"></param>
         public XmlRpcStruct Execute(string command)
         {
-            if (Config.LogDriveCommands)
+            if (Config.LogSensetalkCommands)
             {
                 Log.Message(string.Format("Executing command: {0}", command));
             }
@@ -206,9 +209,7 @@ namespace ProtoTest.TestRunner.Nightshade
             var output = (string)rpc["Output"];
             return output.TrimEnd("\r\n".ToCharArray());
         }
-
-
-
+        
         /// <summary>
         ///     Ends a suite session.  Should be called before Stopping Drive, or when changing suites.
         /// </summary>
@@ -216,7 +217,8 @@ namespace ProtoTest.TestRunner.Nightshade
         {
             try
             {
-                DiagnosticLog.WriteLine("Ending Eggplant Session");
+                //DiagnosticLog.WriteLine("Ending Eggplant Session");
+                Log.SystemState("Ending Eggplant Session...");
                 driveService.EndSession();
             }
             catch (Exception e)
@@ -234,7 +236,8 @@ namespace ProtoTest.TestRunner.Nightshade
             try
             {
                 this.suitePath = suitePath;
-                DiagnosticLog.WriteLine("Starting eggplant session for suite : " + suitePath);
+                //DiagnosticLog.WriteLine("Starting eggplant session for suite : " + suitePath);
+                Log.SystemState("Starting eggplant session for suite : " + suitePath);
                 driveService.StartSession(suitePath);
             }
             catch (Exception e)

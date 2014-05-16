@@ -12,39 +12,72 @@ namespace ProtoTest.Nightshade
     {
         private static void LogString(string message)
         {
-            if (Config.LogDiagnosticMessages)
+            if (Config.LogStepsDiagnosticOutput)
             {
-                DiagnosticLog.WriteLine(message);
+                if (Config.LogNightshadeCommands)
+                {
+                    DiagnosticLog.WriteLine(message);
+                }
+                
             }
-            if (Config.LogTestMessages)
+            if (Config.LogStepsTestReport)
             {
-                TestLog.WriteLine(message);
+                if (Config.LogNightshadeCommands)
+                {
+                    TestLog.WriteLine(message);
+                }                 
             }
         }
 
         private static void LogError(string message)
         {
-            if (Config.LogDiagnosticMessages)
-            {
+            //if (Config.LogStepsDiagnosticOutput)
+            //{
                 DiagnosticLog.WriteLine(message);
-            }
-            if (Config.LogTestMessages)
-            {
+            //}
+            //if (Config.LogStepsTestReport)
+            //{
                 TestLog.WriteHighlighted(message + "\r\n");
-            }
+            //}
         }
 
+        public static void SystemState(string message)
+        {
+            message = string.Format(">>> {0}", message);
+
+            if (Config.LogStepsDiagnosticOutput)
+            {
+                if (Config.LogSystemState)
+                {
+                    DiagnosticLog.WriteLine(message);
+                }
+            }
+            if (Config.LogStepsTestReport)
+            {
+                if (Config.LogSystemState)
+                {
+                    TestLog.WriteLine(message);
+                }
+            }
+        }
+        
         public static void Info(string message)
         {
             message = string.Format("|   {0}", message);
 
-            if (Config.LogInfoMessagesInDiagLog)
+            if (Config.LogStepsDiagnosticOutput)
             {
-                DiagnosticLog.WriteLine(message);
+                if (Config.LogInfoMessages)
+                {
+                    DiagnosticLog.WriteLine(message);
+                }
             }
-            if (Config.LogInfoMessagesInTestLog)
+            if (Config.LogStepsTestReport)
             {
-                TestLog.WriteLine(message);
+                if (Config.LogInfoMessages)
+                {
+                    TestLog.WriteLine(message);
+                }
             }
         }
 

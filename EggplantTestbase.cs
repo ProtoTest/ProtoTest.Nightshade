@@ -64,15 +64,15 @@ namespace ProtoTest.Nightshade
         {
             if (TestContext.CurrentContext.Outcome == TestOutcome.Passed)
             {
-                //Log.Message(">>> TEST COMPLETE (PASSED).");
-                DiagnosticLog.WriteLine(">>> TEST COMPLETE (PASSED).");
-                TestLog.WriteLine(">>> TEST COMPLETE (PASSED).");
+                Log.SystemState("TEST COMPLETE (PASSED).");
+                //DiagnosticLog.WriteLine(">>> TEST COMPLETE (PASSED).");
+                //TestLog.WriteLine(">>> TEST COMPLETE (PASSED).");
             }
             if (TestContext.CurrentContext.Outcome != TestOutcome.Passed)
             {
-                //Log.Message(">>> TEST FAILED.");
-                DiagnosticLog.WriteLine(">>> TEST FAILED.");
-                TestLog.WriteLine(">>> TEST FAILED.");
+                Log.SystemState("TEST FAILED.");
+                //DiagnosticLog.WriteLine(">>> TEST FAILED.");
+                //TestLog.WriteLine(">>> TEST FAILED.");
             }
         }
 
@@ -80,7 +80,7 @@ namespace ProtoTest.Nightshade
         {
             if (TestContext.CurrentContext.Outcome != TestOutcome.Passed)
             {
-                Log.Message(">>> Test failure detected - capturing device screenshot...");
+                Log.SystemState("Test failure detected - capturing device screenshot...");
                 //DiagnosticLog.WriteLine(">>> Test failure detected - capturing device screenshot...");
                 //TestLog.WriteLine(">>> Test failure detected - capturing device screenshot...");
                 var screenshot = Driver.GetScreenshot();
@@ -169,18 +169,18 @@ namespace ProtoTest.Nightshade
         public void SetUp()
         {
             LastTestName = TestContext.CurrentContext.TestStep.FullName;
-            //Log.Message(">>> BEGINNING EGGPLANT TESTBASE SETUP FOR (" + LastTestName + ").");
-            DiagnosticLog.WriteLine(">>> BEGINNING EGGPLANT TESTBASE SETUP FOR (" + LastTestName + ").");
-            TestLog.WriteLine(">>> BEGINNING EGGPLANT TESTBASE SETUP FOR (" + LastTestName + ").");
+            Log.SystemState("BEGINNING EGGPLANT TESTBASE SETUP FOR (" + LastTestName + ").");
+            //DiagnosticLog.WriteLine(">>> BEGINNING EGGPLANT TESTBASE SETUP FOR (" + LastTestName + ").");
+            //TestLog.WriteLine(">>> BEGINNING EGGPLANT TESTBASE SETUP FOR (" + LastTestName + ").");
         }
 
         [TearDown]
         public void Teardown()
         {
             LogTestState();
-            //Log.Message(">>> BEGINNING EGGPLANT TESTBASE TEARDOWN.");
-            DiagnosticLog.WriteLine(">>> BEGINNING EGGPLANT TESTBASE TEARDOWN.");
-            TestLog.WriteLine(">>> BEGINNING EGGPLANT TESTBASE TEARDOWN.");
+            Log.SystemState("BEGINNING EGGPLANT TESTBASE TEARDOWN.");
+            //DiagnosticLog.WriteLine(">>> BEGINNING EGGPLANT TESTBASE TEARDOWN.");
+            //TestLog.WriteLine(">>> BEGINNING EGGPLANT TESTBASE TEARDOWN.");
             Thread.Sleep(1000);
             LogScreenshotOnError();
         }
