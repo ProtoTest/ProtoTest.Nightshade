@@ -72,6 +72,7 @@
     <Compile Include="RepeatForTime.cs" />
     <Compile Include="RepeatOnFailureAttribute.cs" />
     <Compile Include="SearchRectangle.cs" />
+    <Compile Include="SuiteRepeater.cs" />
     <Compile Include="TestTeardown.cs" />
     <Compile Include="UnitTests.cs" />
     <Compile Include="VerificationErrors.cs" />

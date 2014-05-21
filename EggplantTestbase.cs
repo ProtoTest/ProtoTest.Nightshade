@@ -25,43 +25,32 @@ namespace ProtoTest.Nightshade
             set { _Driver = value; }
         }
 
-        [Factory("GetNumRepetitions")]
-        public static int SuiteRepetitions;
-
-        public static IEnumerable<int> GetNumRepetitions()
-        {
-            var num = int.Parse(Config.GetConfigValue("SuiteRepetitions", "1"));
-            for (var i = 1; i <= num; i++)
-            {
-                yield return i;
-            }
-        }
-
-        public void SkipThisTest(string message)
+        public static void SkipThisTest(string message)
         {
             throw new SilentTestException(TestOutcome.Skipped, message);
         }
 
-        public void SetDefaultSearchTime()
+        public static void SetDefaultSearchTime()
         {
             Driver.Execute("set the ImageSearchTime to " + Config.ElementSearchTime);
             Driver.Execute("set the ImageSearchCount to " + Config.ImageSearchCount);
         }
 
-        public void ConnectToHost1()
+        public static void ConnectToHost1()
         {
             Config.DeviceType = Config.Host1Type;
             Driver.Connect(Config.Host1Ip,Config.Host1Port.ToString());
         }
 
-        public void ConnectToHost2()
+        public static void ConnectToHost2()
         {
             Config.DeviceType = Config.Host2Type;
             Driver.Connect(Config.Host2Ip, Config.Host2Port.ToString());         
         }
 
-        private void LogTestState()
+        private static void LogTestState()
         {
+            Log.SystemState("Determining test state...");
             if (TestContext.CurrentContext.Outcome == TestOutcome.Passed)
             {
                 Log.SystemState("TEST COMPLETE (PASSED).");
@@ -76,7 +65,7 @@ namespace ProtoTest.Nightshade
             }
         }
 
-        private void LogScreenshotOnError()
+        private static void LogScreenshotOnError()
         {
             if (TestContext.CurrentContext.Outcome != TestOutcome.Passed)
             {
@@ -92,7 +81,7 @@ namespace ProtoTest.Nightshade
             }
         }
 
-        public void StopEggplant()
+        public static void StopEggplant()
         {
           try
           {
@@ -111,7 +100,7 @@ namespace ProtoTest.Nightshade
            
         }
 
-        public void StartEggplant()
+        public static void StartEggplant()
         {
             for (var i = 0; i < 5; i++)
             {
@@ -133,7 +122,7 @@ namespace ProtoTest.Nightshade
             Assert.Fail("Eggplant drive did not appear to launch after 5 attempts");
         }
 
-        private void VerifyEnvironment()
+        private static void VerifyEnvironment()
         {
             if (!System.IO.Directory.Exists(Config.SuitePath))
             {
@@ -146,7 +135,7 @@ namespace ProtoTest.Nightshade
         }
 
         [FixtureSetUp]
-        public void FixtureSetup()
+        public static void FixtureSetup()
         {
             VerifyEnvironment();
             Config.BatchFilePath = Common.CreateBatchFile();
@@ -158,7 +147,7 @@ namespace ProtoTest.Nightshade
 
 
         [FixtureTearDown]
-        public void FixtureTeardown()
+        public static void FixtureTeardown()
         {
             StopEggplant();
         }
@@ -166,7 +155,7 @@ namespace ProtoTest.Nightshade
         public static string LastTestName;
 
         [SetUp]
-        public void SetUp()
+        public static void SetUp()
         {
             LastTestName = TestContext.CurrentContext.TestStep.FullName;
             Log.SystemState("BEGINNING EGGPLANT TESTBASE SETUP FOR (" + LastTestName + ").");
@@ -175,7 +164,7 @@ namespace ProtoTest.Nightshade
         }
 
         [TearDown]
-        public void Teardown()
+        public static void Teardown()
         {
             LogTestState();
             Log.SystemState("BEGINNING EGGPLANT TESTBASE TEARDOWN.");
