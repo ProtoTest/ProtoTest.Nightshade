@@ -63,6 +63,7 @@ namespace ProtoTest.TestRunner.Nightshade
             {
                 //DiagnosticLog.WriteLine("Trying to stop Eggplant Drive");
                 Common.KillProcess("Eggplant");
+                Common.KillProcess("adb");
                 Thread.Sleep(5000);
                 driveRunning = false;
             }
